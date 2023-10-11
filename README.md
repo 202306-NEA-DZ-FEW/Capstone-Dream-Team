@@ -3,10 +3,7 @@
 ## Project information
 
 -   Project name: Feed the Needy
--   Project description:
-  The website has two purposes: sponsoring and education.
-  This website provides the means for users to donate in order to make an impact on the issue of hunger locally.  It also provides educational information and pointers to 
-  further resources.
+-   Project description: The website has two purposes: sponsoring and education.
 -   Technology used: Nextjs, TailwindCSS, i18next, Husky, Prettier, Eslint, Commitlinter (Conventional Commits)
 -   Team members: Aboura Bouchra Ikram, Belharazem Walid, Mecheter Mouloud , Merzouk Fatima Zohra, Zaidi Mounib.
 -   Bootcamp: NEA DZ 2023
