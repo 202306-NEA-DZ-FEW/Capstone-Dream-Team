@@ -2,19 +2,23 @@
 
 ## Project information
 
--   Project name: [Project name]
--   Project description: [Project description]
+-   Project name: Feed the Needy
+-   Project description:
+  The website has two purposes: sponsoring and education.
+  This website provides the means for users to donate in order to make an impact on the issue of hunger locally.  It also provides educational information and pointers to 
+  further resources.
 -   Technology used: Nextjs, TailwindCSS, i18next, Husky, Prettier, Eslint, Commitlinter (Conventional Commits)
--   Team members: Member1, Member2, etc,
--   Bootcamp: GIZ YE 2022
+-   Team members: Aboura Bouchra Ikram, Belharazem Walid, Mecheter Mouloud , Merzouk Fatima Zohra, Zaidi Mounib.
+-   Bootcamp: NEA DZ 2023
 
 ## Installation
 
 ```shell
 npm install -g commitizen // Installs commitizen
+npm install               // Installs the node modules
 npx husky install         // Installs Husky
 chmod ug+x .husky/*       // Gives husky executable extension
-npm install               // Installs the node modules
+
 ```
 
 ## Development process
