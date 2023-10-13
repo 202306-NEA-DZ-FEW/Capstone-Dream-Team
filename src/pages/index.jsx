@@ -18,6 +18,7 @@ export default function HomePage() {
                 <Link href='/' locale='ar'>
                     العربية
                 </Link>
+                <p>Hello Team</p>
             </div>
         </Layout>
     );
