@@ -22,6 +22,8 @@ export default function HomePage() {
                 </Link>
                 <p>Hello Team</p>
             </div>
+            <SignIn />
+            <SignUp />
         </Layout>
     );
 }
