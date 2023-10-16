@@ -4,6 +4,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
 
 import Layout from "@/layout/Layout";
+import SignIn from "@/components/Auth/signIn";
+import SignUp from "@/components/Auth/signUp";
 
 export default function HomePage() {
     const { t } = useTranslation("common");
@@ -20,6 +22,8 @@ export default function HomePage() {
                 </Link>
                 <p>Hello Team</p>
             </div>
+            <SignIn />
+            <SignUp />
         </Layout>
     );
 }
