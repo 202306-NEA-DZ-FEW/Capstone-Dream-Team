@@ -9,61 +9,72 @@ import {
     onSnapshot,
 } from "firebase/firestore";
 import {
-    deleteObject, // Import the deleteObject function
+    deleteObject,
     getDownloadURL,
     getStorage,
     ref,
     uploadBytes,
 } from "firebase/storage";
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyCj972QFx8ckAdmZQT5uaDYJYewL3ThhAE",
+    authDomain: "capstone-project-944c9.firebaseapp.com",
+    projectId: "capstone-project-944c9",
+    storageBucket: "capstone-project-944c9.appspot.com",
+    messagingSenderId: "455661891383",
+    appId: "1:455661891383:web:65bbc812478ffda076b4b2",
+};
 
 function MealCard({ meal, onDelete }) {
+    const nameRef = useRef(null);
+
     const handleDelete = () => {
         onDelete(meal.id, meal.imageUrl);
     };
 
+    useEffect(() => {
+        const element = nameRef.current;
+        const fontSize = getComputedStyle(element).fontSize;
+        while (element.scrollWidth > element.offsetWidth) {
+            element.style.fontSize = `${
+                parseFloat(getComputedStyle(element).fontSize) - 1
+            }px`;
+        }
+    }, [meal]);
+
     return (
-        <div className='w-full flex items-center justify-between p-4 border-b'>
-            <div className='flex items-center'>
-                <img
-                    src={meal.imageUrl}
-                    alt={meal.name}
-                    className='w-16 h-16 rounded-md'
-                />
-                <div className='ml-4'>
-                    <h2 className='text-lg font-semibold'>{meal.name}</h2>
-                    <p className='text-gray-600'>
-                        ${meal.price} | {meal.maxMeals} meals left
-                    </p>
-                </div>
+        <div className='p-2 min-w-64 sm:min-w-64 md:min-w-64 lg:min-w-64 xl:min-w-64 flex-col bg-white border-4 rounded-xl flex items-center justify-center'>
+            <Image
+                src={meal.imageUrl}
+                alt={meal.name}
+                width={150}
+                height={150}
+            />
+            <div className='p-2 flex flex-col items-center'>
+                <h1 ref={nameRef} className='font-bold text-lg text-center'>
+                    {meal.name}
+                </h1>
+                <h2 className='text-gray-600 pb-2'>
+                    ${meal.price} | {meal.maxMeals} meals left
+                </h2>
+                <button
+                    onClick={handleDelete}
+                    className='px-3 py-2 bg-red-600 text-white'
+                >
+                    Delete
+                </button>
             </div>
-            <button
-                onClick={handleDelete}
-                className='px-3 py-2 bg-red-600 text-white rounded-md'
-            >
-                Delete
-            </button>
         </div>
     );
 }
 
 function App() {
-    const firebaseConfig = {
-        apiKey: "AIzaSyCj972QFx8ckAdmZQT5uaDYJYewL3ThhAE",
-        authDomain: "capstone-project-944c9.firebaseapp.com",
-        projectId: "capstone-project-944c9",
-        storageBucket: "capstone-project-944c9.appspot.com",
-        messagingSenderId: "455661891383",
-        appId: "1:455661891383:web:65bbc812478ffda076b4b2",
-    };
+    const app = initializeApp(firebaseConfig);
 
-    const initFirebase = () => {
-        return initializeApp(firebaseConfig);
-    };
-
-    const initStorage = () => {
-        return getStorage(initFirebase());
-    };
+    const storage = getStorage(app);
+    const firestore = getFirestore(app);
 
     const [mealName, setMealName] = useState("");
     const [maxMeals, setMaxMeals] = useState("");
@@ -77,39 +88,34 @@ function App() {
 
         if (imageFile) {
             try {
-                const storage = getStorage(initFirebase());
                 const storageRef = ref(storage, `images/${imageFile.name}`);
-                const imageFileBuffer = await imageFile.arrayBuffer();
-                await uploadBytes(storageRef, new Uint8Array(imageFileBuffer));
+                await uploadBytes(storageRef, imageFile);
 
                 const downloadURL = await getDownloadURL(storageRef);
                 setImageUrl(downloadURL);
             } catch (error) {
-                console.error("Error uploading image: ", error);
+                // Handle the error
             }
         }
     };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const docRef = await addDoc(
-                collection(getFirestore(initFirebase()), "meals"),
-                {
-                    name: mealName,
-                    maxMeals: Number(maxMeals),
-                    price: Number(mealPrice),
-                    imageUrl: imageUrl,
-                    mealsLeft: Number(maxMeals),
-                }
-            );
-            console.log("Document written with ID: ", docRef.id);
+            const docRef = await addDoc(collection(firestore, "meals"), {
+                name: mealName,
+                maxMeals: Number(maxMeals),
+                price: Number(mealPrice),
+                imageUrl: imageUrl,
+                mealsLeft: Number(maxMeals),
+            });
 
             setMealName("");
             setMaxMeals("");
             setMealPrice("");
             setImageUrl("");
         } catch (error) {
-            console.error("Error adding document: ", error);
+            // Handle the error
         }
     };
 
@@ -119,10 +125,7 @@ function App() {
 
     const fetchMeals = async () => {
         try {
-            const mealsCollection = collection(
-                getFirestore(initFirebase()),
-                "meals"
-            );
+            const mealsCollection = collection(firestore, "meals");
             const mealsSnapshot = await getDocs(mealsCollection);
 
             const mealsData = mealsSnapshot.docs.map((doc) => ({
@@ -131,30 +134,25 @@ function App() {
             }));
             setMeals(mealsData);
         } catch (error) {
-            console.error("Error fetching meals: ", error);
+            // Handle the error
         }
     };
 
     const handleDeleteMeal = async (mealId, imageUrl) => {
         try {
-            const mealDocRef = doc(
-                getFirestore(initFirebase()),
-                "meals",
-                mealId
-            );
+            const mealDocRef = doc(firestore, "meals", mealId);
             await deleteDoc(mealDocRef);
 
             // Extract the image file name from the URL
             const imageFileName = imageUrl.split("/").pop();
 
             // Construct a reference to the image in Firebase Storage
-            const storage = getStorage(initFirebase());
             const storageRef = ref(storage, `images/${imageFileName}`);
 
             // Delete the image from Firebase Storage
             await deleteObject(storageRef);
         } catch (error) {
-            console.error("Error deleting meal: ", error);
+            // Handle the error
         }
     };
 
@@ -162,7 +160,7 @@ function App() {
         fetchMeals();
 
         const unsubscribe = onSnapshot(
-            collection(getFirestore(initFirebase()), "meals"),
+            collection(firestore, "meals"),
             (snapshot) => {
                 const updatedMeals = snapshot.docs.map((doc) => ({
                     id: doc.id,
@@ -178,34 +176,19 @@ function App() {
     }, []);
 
     return (
-        <main className='ml-60 pt-16 max-h-screen overflow-auto'>
-            <div className='max-w-4xl mx-auto'>
-                <div className='bg-white rounded-3xl p-8 mb-5'>
-                    <div className='max-w-4xl mx-auto'>
-                        <div className='bg-white rounded-3xl p-8 mb-5'>
-                            <h2 className='text-2xl font-semibold mb-5'>
-                                Meals List
-                            </h2>
-                            {meals.map((meal) => (
-                                <MealCard
-                                    key={meal.id}
-                                    meal={meal}
-                                    onDelete={handleDeleteMeal}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
+        <main className='max-h-screen'>
+            <div className='max-w-4xl pl-10 pt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
+                {meals.map((meal) => (
+                    <MealCard
+                        key={meal.id}
+                        meal={meal}
+                        onDelete={handleDeleteMeal}
+                    />
+                ))}
             </div>
-            <div className='relative bg-cyan-200 overflow-hidden flex-grid max-h-screen'>
+            <div className='relative max-w-4xl mx-auto overflow-hidden flex-grid'>
                 {isFormVisible ? (
-                    <div>
-                        <button
-                            onClick={exitForm}
-                            className='px-4 py-2 bg-red-600 text-white rounded-md'
-                        >
-                            Exit
-                        </button>
+                    <div className='flex justify-center'>
                         <form onSubmit={handleSubmit} className='space-y-4'>
                             <div>
                                 <label className='block'>Meal Name</label>
@@ -250,21 +233,33 @@ function App() {
                                     className='w-full px-3 py-2 border border-gray-300 rounded-md'
                                 />
                             </div>
-                            <button
-                                type='submit'
-                                className='px-4 py-2 bg-blue-600 text-white rounded-md'
-                            >
-                                Add Meal
-                            </button>
+                            <div className='flex justify-center'>
+                                <button
+                                    type='submit'
+                                    className='px-4 py-2 bg-blue-600 text-white rounded-md'
+                                >
+                                    Add Meal
+                                </button>
+                            </div>
+                            <div className='flex justify-center'>
+                                <button
+                                    onClick={exitForm}
+                                    className='px-4 py-2 bg-red-600 text-white items-center rounded-md'
+                                >
+                                    Exit
+                                </button>
+                            </div>
                         </form>
                     </div>
                 ) : (
-                    <button
-                        onClick={() => setIsFormVisible(true)}
-                        className='px-4 py-2 bg-blue-600 text-white rounded-md'
-                    >
-                        Add Meal
-                    </button>
+                    <div className='flex justify-end'>
+                        <button
+                            onClick={() => setIsFormVisible(true)}
+                            className='px-4 py-2 bg-blue-600 text-white rounded-md'
+                        >
+                            Add Meal
+                        </button>
+                    </div>
                 )}
             </div>
         </main>

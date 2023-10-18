@@ -19,6 +19,7 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "caniuse-lite": "^1.0.30001549",
         "clsx": "^1.2.1",
         "date-fns": "^2.29.1",
         "eslint-plugin-jest": "^26.6.0",
@@ -32,12 +33,13 @@
         "react-test-renderer": "^18.2.0"
     },
     "devDependencies": {
-        "@commitlint/cli": "^16.3.0",
+        "@commitlint/cli": "^17.8.0",
         "@commitlint/config-conventional": "^16.2.4",
         "@svgr/webpack": "^6.2.1",
         "@testing-library/jest-dom": "^5.16.4",
         "@testing-library/react": "^13.3.0",
         "@types/react": "^18.0.15",
+        "autoprefixer": "^10.4.16",
         "cz-conventional-changelog": "^3.3.0",
         "eslint": "^8.19.0",
         "eslint-config-next": "^13.2.4",
@@ -49,7 +51,7 @@
         "jest": "^27.5.1",
         "lint-staged": "^12.5.0",
         "next-sitemap": "^2.5.28",
-        "postcss": "^8.4.14",
+        "postcss": "^8.4.31",
         "postcss-loader": "^7.0.1",
         "postcss-nesting": "^10.1.10",
         "prettier": "^2.7.1",
