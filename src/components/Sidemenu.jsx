@@ -30,22 +30,15 @@ export default function Sidemenu(props) {
         const fetchInformation = async () => {
             if (auth.currentUser) {
                 const userId = auth.currentUser.uid;
-                console.log("userId:", userId);
                 const docRef = doc(db, "users", userId);
-
-                try {
-                    const docSnap = await getDoc(docRef);
-                    if (docSnap.exists()) {
-                        const userData = { ...docSnap.data(), id: userId };
-                        setUserData(userData);
-                    } else {
-                        console.log("Document does not exist.");
-                    }
-                } catch (error) {
-                    console.error("Error fetching user data:", error);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const userData = { ...docSnap.data(), id: userId };
+                    setUserData(userData);
                 }
+
+                setMounted(true);
             }
-            setMounted(true);
         };
 
         fetchInformation();
