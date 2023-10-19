@@ -63,7 +63,7 @@ function MealCard({ meal, onDelete }) {
     );
 }
 
-function App() {
+function AddMeals() {
     const [mealName, setMealName] = useState("");
     const [maxMeals, setMaxMeals] = useState("");
     const [mealPrice, setMealPrice] = useState("");
@@ -253,4 +253,4 @@ function App() {
     );
 }
 
-export default App;
+export default AddMeals;
