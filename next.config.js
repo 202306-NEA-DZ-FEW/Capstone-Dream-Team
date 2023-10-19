@@ -7,9 +7,7 @@ module.exports = {
         dirs: ["src"],
     },
     reactStrictMode: true,
-};
-module.exports = {
     images: {
-      domains: ["firebasestorage.googleapis.com"],
+        domains: ["firebasestorage.googleapis.com"],
     },
-  };
+};
