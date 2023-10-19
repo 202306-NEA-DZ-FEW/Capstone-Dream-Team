@@ -47,14 +47,7 @@ export default function Sidemenu(props) {
     if (!mounted) return null;
 
     const handleLogout = async () => {
-        try {
-            await signOut(auth);
-            console.log("you are logged out");
-
-            // Redirect or perform any other necessary actions after logging out.
-        } catch (error) {
-            console.error("Error logging out:", error);
-        }
+        await signOut(auth);
     };
 
     return (
