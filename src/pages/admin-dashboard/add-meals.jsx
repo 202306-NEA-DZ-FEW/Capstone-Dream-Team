@@ -14,8 +14,10 @@ import {
 } from "firebase/storage";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import "firebase/storage";
 
 import { db, storage } from "@/util/firebase";
+
 // Firebase configuration
 
 function MealCard({ meal, onDelete }) {
@@ -123,21 +125,23 @@ function App() {
             // Handle the error
         }
     };
-
     const handleDeleteMeal = async (mealId, imageUrl) => {
         try {
             const mealDocRef = doc(db, "meals", mealId);
             await deleteDoc(mealDocRef);
 
             // Extract the image file name from the URL
-            const imageFileName = imageUrl.split("/").pop();
+            const imageFileName = imageUrl.split("/").pop().split("?")[0];
 
             // Construct a reference to the image in Firebase Storage
-            const storageRef = ref(storage, `images/${imageFileName}`);
+            const imageRef = ref(storage, imageUrl);
 
             // Delete the image from Firebase Storage
-            await deleteObject(storageRef);
+            await deleteObject(imageRef);
+
+            console.log("Image deleted successfully.");
         } catch (error) {
+            console.error("Error deleting meal and image:", error);
             // Handle the error
         }
     };
