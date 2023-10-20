@@ -36,12 +36,11 @@ export default function Sidemenu(props) {
                     const userData = { ...docSnap.data(), id: userId };
                     setUserData(userData);
                 }
-
-                setMounted(true);
             }
         };
 
         fetchInformation();
+        setMounted(true);
     }, []);
 
     if (!mounted) return null;
@@ -65,10 +64,10 @@ export default function Sidemenu(props) {
                             />
                             <div className='flex-col justify-center items-start inline-flex'>
                                 <div className="w-[150px] text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']">
-                                    {userData ? userData.name : null}
+                                    {userData ? userData.name : "Loading..."}
                                 </div>
                                 <div className="w-[150px] text-neutral-800  dark:text-white text-sm font-normal font-['Open Sans']">
-                                    {userData ? userData.email : null}
+                                    {userData ? userData.email : "loading..."}
                                 </div>
                             </div>
                         </div>
