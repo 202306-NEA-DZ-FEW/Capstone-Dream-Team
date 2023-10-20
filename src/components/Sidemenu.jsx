@@ -1,4 +1,4 @@
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,31 +21,53 @@ import placeholderImage from "../images/placeholderImage.png";
 import { auth, db } from "../util/firebase";
 
 export default function Sidemenu(props) {
+    // Import and destructure the 'useTheme' hook and React state management functions.
     const { theme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-    const currentTheme = theme === "system" ? "light" : theme; // State for the current theme
-    const [userData, setUserData] = useState(null);
 
+    // Initialize state variables for component mounting, current theme, user data, and authenticated user.
+    const [mounted, setMounted] = useState(false); // Indicates if the component is mounted.
+    const currentTheme = theme === "system" ? "light" : theme; // State for the current theme.
+    const [userData, setUserData] = useState(null); // State to store user data.
+    const [authUser, setAuthUser] = useState(null); // State to store the authenticated user.
+
+    // Use 'useEffect' to run code when 'authUser' changes.
     useEffect(() => {
+        // Use Firebase's 'onAuthStateChanged' to listen for changes in user authentication state.
+        onAuthStateChanged(auth, (user) => {
+            // If a user is authenticated, set 'authUser' to the user; otherwise, set it to null.
+            user ? setAuthUser(user) : setAuthUser(null);
+        });
+
+        // Define a function to fetch user information from Firestore.
         const fetchInformation = async () => {
-            if (auth.currentUser) {
-                const userId = auth.currentUser.uid;
-                const docRef = doc(db, "users", userId);
-                const docSnap = await getDoc(docRef);
+            if (authUser) {
+                // Check if an authenticated user exists.
+                const userId = authUser.uid; // Get the user's unique identifier (UID).
+                const docRef = doc(db, "users", userId); // Create a reference to the user's Firestore document.
+                const docSnap = await getDoc(docRef); // Fetch the user's document.
+
                 if (docSnap.exists()) {
+                    // Check if the document exists.
+                    // Extract and store user data, including the user's ID.
                     const userData = { ...docSnap.data(), id: userId };
                     setUserData(userData);
                 }
             }
         };
 
+        // Call the 'fetchInformation' function to initiate data fetching.
         fetchInformation();
-        setMounted(true);
-    }, []);
 
+        // Mark the component as mounted by setting 'mounted' to true.
+        setMounted(true);
+    }, [authUser]); // Run the effect when 'authUser' changes.
+
+    // If the component is not yet mounted, return null to prevent rendering.
     if (!mounted) return null;
 
+    // Define a function to handle user logout.
     const handleLogout = async () => {
+        // Sign out the authenticated user using Firebase's 'signOut' function.
         await signOut(auth);
     };
 
@@ -64,7 +86,7 @@ export default function Sidemenu(props) {
                             />
                             <div className='flex-col justify-center items-start inline-flex'>
                                 <div className="w-[150px] text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']">
-                                    {userData ? userData.name : "Loading..."}
+                                    {userData ? userData.name : "loading..."}
                                 </div>
                                 <div className="w-[150px] text-neutral-800  dark:text-white text-sm font-normal font-['Open Sans']">
                                     {userData ? userData.email : "loading..."}
