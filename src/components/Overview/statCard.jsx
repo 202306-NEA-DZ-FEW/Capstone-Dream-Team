@@ -1,13 +1,13 @@
-/* eslint-disable unused-imports/no-unused-vars */
 import { collection, getDocs, query, where } from "firebase/firestore";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 import { db } from "@/util/firebase";
 
-const StatCard = async () => {
+const StatCard = () => {
     const [totalDonors, setTotalDonors] = useState(0);
     const fetchData = async () => {
         const q = query(
-            collection(db, "Donors"),
+            collection(db, "donor"),
             where("restaurant_id", "==", 3)
         );
         const querySnapshot = await getDocs(q);
