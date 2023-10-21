@@ -18,7 +18,7 @@ class MyDocument extends Document {
                         crossOrigin='anonymous'
                     />
                 </Head>
-                <body>
+                <body dir='ltr'>
                     <Main />
                     <NextScript />
                 </body>
