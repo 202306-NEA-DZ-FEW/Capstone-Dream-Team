@@ -1,3 +1,35 @@
 {
-    "test": "Hello"
+    "test": "Hi",
+    "signupPage": {
+        "email": "Email",
+        "password": "Password",
+        "buttons": {
+            "first": "Sign in with Google",
+            "second": " Sign up with Google"
+        },
+        "signIn": {
+            "title": "Sign In",
+            "subtitle": {
+                "first": "Don't you an account ?",
+                "second": "Sign Up"
+            },
+            "subtitle2": "I forgot my password"
+        },
+        "signUp": {
+            "title": "Create Account",
+            "title2": "Sign Up",
+            "subtitle": {
+                "first": "You have already an account ?",
+                "second": "Sign In"
+            },
+            "name": "Name of Restaurant",
+            "confirm-password": "Confirm Your Password"
+        },
+        "reset-password": {
+            "title": "Reset Your Password",
+            "subtitle": "Write your e-mail to request password reset",
+            "successMessage": "Reset email sent successfuly",
+            "failureMessage": "Error sending password reset email. Please try again."
+        }
+    }
 }
