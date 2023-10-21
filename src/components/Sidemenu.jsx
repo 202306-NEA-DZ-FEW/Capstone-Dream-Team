@@ -1,4 +1,7 @@
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import Image from "next/image";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 import React from "react";
 import { useEffect, useState } from "react";
@@ -14,15 +17,59 @@ import Dashboard from "./Dashboard";
 import History from "./History";
 import Meals from "./Meals";
 import Settings from "./Settings";
+import placeholderImage from "../images/placeholderImage.png";
+import { auth, db } from "../util/firebase";
 
 export default function Sidemenu(props) {
+    // Import and destructure the 'useTheme' hook and React state management functions.
     const { theme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-    const currentTheme = theme === "system" ? "light" : theme; // State for the current theme
+
+    // Initialize state variables for component mounting, current theme, user data, and authenticated user.
+    const [mounted, setMounted] = useState(false); // Indicates if the component is mounted.
+    const currentTheme = theme === "system" ? "light" : theme; // State for the current theme.
+    const [userData, setUserData] = useState(null); // State to store user data.
+    const [authUser, setAuthUser] = useState(null); // State to store the authenticated user.
+
+    // Use 'useEffect' to run code when 'authUser' changes.
     useEffect(() => {
+        // Use Firebase's 'onAuthStateChanged' to listen for changes in user authentication state.
+        onAuthStateChanged(auth, (user) => {
+            // If a user is authenticated, set 'authUser' to the user; otherwise, set it to null.
+            user ? setAuthUser(user) : setAuthUser(null);
+        });
+
+        // Define a function to fetch user information from Firestore.
+        const fetchInformation = async () => {
+            if (authUser) {
+                // Check if an authenticated user exists.
+                const userId = authUser.uid; // Get the user's unique identifier (UID).
+                const docRef = doc(db, "users", userId); // Create a reference to the user's Firestore document.
+                const docSnap = await getDoc(docRef); // Fetch the user's document.
+
+                if (docSnap.exists()) {
+                    // Check if the document exists.
+                    // Extract and store user data, including the user's ID.
+                    const userData = { ...docSnap.data(), id: userId };
+                    setUserData(userData);
+                }
+            }
+        };
+
+        // Call the 'fetchInformation' function to initiate data fetching.
+        fetchInformation();
+
+        // Mark the component as mounted by setting 'mounted' to true.
         setMounted(true);
-    }, []);
+    }, [authUser]); // Run the effect when 'authUser' changes.
+
+    // If the component is not yet mounted, return null to prevent rendering.
     if (!mounted) return null;
+
+    // Define a function to handle user logout.
+    const handleLogout = async () => {
+        // Sign out the authenticated user using Firebase's 'signOut' function.
+        await signOut(auth);
+    };
 
     return (
         <>
@@ -32,17 +79,17 @@ export default function Sidemenu(props) {
                         <div className='justify-start items-center gap-3 inline-flex'>
                             <Image
                                 className='w-14 h-14 relative rounded-2xl'
-                                src='/'
+                                src={placeholderImage}
                                 width={56}
                                 height={56}
                                 alt='admin photo'
                             />
                             <div className='flex-col justify-center items-start inline-flex'>
                                 <div className="w-[150px] text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']">
-                                    ADMIN
+                                    {userData ? userData.name : "loading..."}
                                 </div>
                                 <div className="w-[150px] text-neutral-800  dark:text-white text-sm font-normal font-['Open Sans']">
-                                    Admin@demo.com
+                                    {userData ? userData.email : "loading..."}
                                 </div>
                             </div>
                         </div>
@@ -152,8 +199,11 @@ export default function Sidemenu(props) {
                                 <div className='w-6 h-6 relative'>
                                     <IoLogOutOutline />
                                 </div>
-                                <button className="text-zinc-950  dark:text-white text-base font-normal font-['Open Sans'] leading-snug">
-                                    Logout
+                                <button
+                                    className="text-zinc-950  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
+                                    onClick={handleLogout}
+                                >
+                                    <Link href='/'>Logout</Link>
                                 </button>
                             </div>
                         </div>
