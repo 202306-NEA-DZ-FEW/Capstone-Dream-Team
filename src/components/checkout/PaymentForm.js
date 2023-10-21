@@ -1,81 +1,63 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 
-const CARD_OPTIONS = {
-    iconStyle: "solid",
-    style: {
-        base: {
-            iconColor: "#c4f0ff",
-            color: "#fff",
-            fontWeight: 500,
-            fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-            fontSize: "16px",
-            fontSmoothing: "antialiased",
-            ":-webkit-autofill": { color: "#fce883" },
-            "::placeholder": { color: "#87bbfd" },
-        },
-        invalid: {
-            iconColor: "#ffc7ee",
-            color: "#ffc7ee",
-        },
-    },
-};
+const PaymentForm = () => {
+    const [paymentLoading, setPaymentLoading] = useState(false);
+    const [paymentSuccess, setPaymentSuccess] = useState(false);
+    const [error, setError] = useState(null);
 
-export default function PaymentForm() {
-    const [success, setSuccess] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
-            type: "card",
-            card: elements.getElement(CardElement),
-        });
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-        if (!error) {
-            try {
-                const { id } = paymentMethod;
-                const response = await axios.post(
-                    "http://localhost:3000/checkout",
-                    {
-                        amount: 1000,
-                        id,
-                    }
-                );
+        setPaymentLoading(true);
 
-                if (response.data.success) {
-                    console.log("Successful payment");
-                    setSuccess(true);
+        try {
+            const response = await axios.post("/api/create-payment-intent", {
+                // Include any necessary data for the payment
+            });
+
+            const { error, paymentIntent } = await stripe.confirmCardPayment(
+                response.data.client_secret,
+                {
+                    payment_method: {
+                        card: elements.getElement(CardElement),
+                    },
                 }
-            } catch (error) {
-                console.log("Error", error);
+            );
+            if (error) {
+                setError(error.message);
+            } else if (paymentIntent.status === "succeeded") {
+                setPaymentSuccess(true);
             }
-        } else {
-            console.log(error.message);
+        } catch (err) {
+            setError("An error occurred while processing your payment.");
+        } finally {
+            setPaymentLoading(false);
         }
     };
 
     return (
-        <>
-            {!success ? (
-                <form onSubmit={handleSubmit}>
-                    <fieldset className='FormGroup'>
-                        <div className='FormRow'>
-                            <CardElement options={CARD_OPTIONS} />
-                        </div>
-                    </fieldset>
-                    <button>Pay</button>
-                </form>
-            ) : (
-                <div>
-                    <h2>
-                        You just bought a sweet spatula congrats this is the
-                        best decision of your life
-                    </h2>
-                </div>
+        <div>
+            <h2>Checkout</h2>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Card details:
+                    <CardElement />
+                </label>
+                {error && <p style={{ color: "red" }}>{error}</p>}
+                <button type='submit' disabled={paymentLoading}>
+                    {paymentLoading ? "Processing..." : "Pay"}
+                </button>
+            </form>
+            {paymentSuccess && (
+                <p style={{ color: "green" }}>Payment was successful!</p>
             )}
-        </>
+        </div>
     );
-}
+};
+
+export default PaymentForm;
