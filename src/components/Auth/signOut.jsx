@@ -20,9 +20,9 @@ const SignOut = () => {
         if (authUser) {
             signOut(auth)
                 .then(() => {
-                    console.log("Signed out succesfully");
+                    alert("Signed out succesfully");
                 })
-                .catch((error) => console.log(error));
+                .catch((error) => alert("Error, please try again"));
         }
     };
 
@@ -47,7 +47,7 @@ const SignOut = () => {
                         : "font-bold border border-border p-1 px-2 rounded-md text-content hover:bg-teal-500"
                 }`}
             >
-                {authUser ? "Sign Out" : <Link href={"/signin"}>Sign In</Link>}
+                {authUser ? "Sign Out" : <Link href={"/signup"}>Sign In</Link>}
             </button>
         </div>
     );
