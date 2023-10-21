@@ -2,10 +2,13 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
+import { useEffect } from "react";
 
 import Layout from "@/layout/Layout";
 import SignIn from "@/components/Auth/signIn";
 import SignUp from "@/components/Auth/signUp";
+import SignOut from "@/components/Auth/signOut";
+import ResetPassword from "@/components/Auth/resetPassword";
 
 export default function HomePage() {
     const { t } = useTranslation("common");
@@ -24,6 +27,8 @@ export default function HomePage() {
             </div>
             <SignIn />
             <SignUp />
+            <SignOut />
+            <ResetPassword />
         </Layout>
     );
 }

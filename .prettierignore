@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/public 
 
 # testing
 /coverage
@@ -41,3 +42,5 @@ CHANGELOG.md
 # tailwind
 postcss.config.js
 tailwind.config.js
+
+.json
