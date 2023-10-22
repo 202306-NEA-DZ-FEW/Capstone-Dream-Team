@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import Navbar from "@/components/Navbar";
+
 export default function Layout({ children }) {
     // Put Header or Footer around the children element
     // Example
@@ -11,5 +13,10 @@ export default function Layout({ children }) {
     //     </>
     // );
 
-    return <>{children}</>;
+    return (
+        <>
+            <Navbar />
+            {children}
+        </>
+    );
 }
