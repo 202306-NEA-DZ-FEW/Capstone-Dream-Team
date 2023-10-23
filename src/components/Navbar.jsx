@@ -148,7 +148,7 @@ export default function Navbar() {
                                 >
                                     <div>
                                         <Link
-                                            href='/admin-dashoard'
+                                            href='/admin-dashboard'
                                             className='  block  px-4 py-2 text-sm capitalize text-gray-800 hover:bg-indigo-500
             hover:text-white'
                                         >
