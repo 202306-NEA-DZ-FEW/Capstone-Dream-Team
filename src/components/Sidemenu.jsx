@@ -13,10 +13,10 @@ import { LiaHistorySolid } from "react-icons/lia";
 import { PiMoonStarsLight } from "react-icons/pi";
 import { TbDeviceAnalytics } from "react-icons/tb";
 
+import AddMeals from "./Add-meals";
 import Analytics from "./Analytics";
-import Dashboard from "./Overview/Dashboard";
 import Adminhistory from "./History/Adminhistory";
-import Meals from "./Meals";
+import Dashboard from "./Overview/Dashboard";
 import Settings from "./Settings";
 import { auth, db } from "../util/firebase";
 
@@ -30,7 +30,7 @@ export default function Sidemenu(props) {
         {
             name: "Meals/Coupons",
             icon: <HiOutlineChartBarSquare />,
-            element: <Meals />,
+            element: <AddMeals />,
         },
         {
             name: "History",

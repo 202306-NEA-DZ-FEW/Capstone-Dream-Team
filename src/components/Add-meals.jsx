@@ -9,6 +9,7 @@ import {
     where,
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { deleteObject } from "firebase/storage";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { auth, db, storage } from "src/util/firebase.js";
@@ -39,7 +40,10 @@ function MealCard({ meal, onDelete }) {
                 height={150}
             />
             <div className='p-2 flex flex-col items-center'>
-                <h1 ref={nameRef} className='font-bold text-lg text-center'>
+                <h1
+                    ref={nameRef}
+                    className='font-bold text-lg text-black text-center'
+                >
                     {meal.name}
                 </h1>
                 <h2 className='text-gray-600 pb-2'>
@@ -142,11 +146,12 @@ function AddMeals() {
             const mealDocRef = doc(db, "meals", mealId);
             await deleteDoc(mealDocRef);
 
+            // Delete the image from Firebase Storage
+            const storageRef = ref(storage, imageUrl); // Use the image URL as the reference
+            await deleteObject(storageRef);
+
             // Fetch updated meals and update the state
             fetchMeals(restaurantId);
-
-            // Handle image deletion (you should add the image deletion logic here)
-            // You can choose to delete the image at this point or handle it in the back end
         } catch (error) {
             console.error("Error deleting meal:", error);
         }
@@ -238,7 +243,7 @@ function AddMeals() {
                                     type='submit'
                                     className='px-4 py-2 bg-blue-600 text-white rounded-md'
                                 >
-                                    Add Meal
+                                    Add A Meal
                                 </button>
                             </div>
                             <div className='flex justify-center'>
@@ -257,7 +262,7 @@ function AddMeals() {
                             onClick={() => setIsFormVisible(true)}
                             className='px-4 py-2 bg-blue-600 text-white rounded-md'
                         >
-                            Add Meal
+                            Add A Meal
                         </button>
                     </div>
                 )}
