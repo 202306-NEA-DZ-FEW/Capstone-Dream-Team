@@ -1,24 +1,18 @@
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
     addDoc,
     collection,
     deleteDoc,
     doc,
     getDocs,
-    onSnapshot,
+    query,
+    where,
 } from "firebase/firestore";
-import {
-    deleteObject,
-    getDownloadURL,
-    ref,
-    uploadBytes,
-} from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { deleteObject } from "firebase/storage";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import "firebase/storage";
-
-import { db, storage } from "@/util/firebase";
-
-// Firebase configuration
+import React, { useEffect, useRef, useState } from "react";
+import { auth, db, storage } from "src/util/firebase.js";
 
 function MealCard({ meal, onDelete }) {
     const nameRef = useRef(null);
@@ -46,7 +40,10 @@ function MealCard({ meal, onDelete }) {
                 height={150}
             />
             <div className='p-2 flex flex-col items-center'>
-                <h1 ref={nameRef} className='font-bold text-lg text-center'>
+                <h1
+                    ref={nameRef}
+                    className='font-bold text-lg text-black text-center'
+                >
                     {meal.name}
                 </h1>
                 <h2 className='text-gray-600 pb-2'>
@@ -63,13 +60,14 @@ function MealCard({ meal, onDelete }) {
     );
 }
 
-function App() {
+function AddMeals() {
     const [mealName, setMealName] = useState("");
     const [maxMeals, setMaxMeals] = useState("");
     const [mealPrice, setMealPrice] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [isFormVisible, setIsFormVisible] = useState(false);
     const [meals, setMeals] = useState([]);
+    const [restaurantId, setRestaurantId] = useState("");
 
     const handleImageUpload = async (event) => {
         const imageFile = event.target.files[0];
@@ -82,28 +80,41 @@ function App() {
                 const downloadURL = await getDownloadURL(storageRef);
                 setImageUrl(downloadURL);
             } catch (error) {
-                // Handle the error
+                console.error("Error uploading image:", error);
             }
         }
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        try {
-            const docRef = await addDoc(collection(db, "meals"), {
-                name: mealName,
-                maxMeals: Number(maxMeals),
-                price: Number(mealPrice),
-                imageUrl: imageUrl,
-                mealsLeft: Number(maxMeals),
-            });
+        const user = auth.currentUser;
 
-            setMealName("");
-            setMaxMeals("");
-            setMealPrice("");
-            setImageUrl("");
-        } catch (error) {
-            // Handle the error
+        if (!restaurantId) {
+            console.error("Restaurant ID is missing.");
+            return;
+        }
+
+        if (user) {
+            try {
+                const docRef = await addDoc(collection(db, "meals"), {
+                    name: mealName,
+                    maxMeals: Number(maxMeals),
+                    price: Number(mealPrice),
+                    imageUrl: imageUrl,
+                    mealsLeft: Number(maxMeals),
+                    restaurantId: restaurantId,
+                });
+
+                // Fetch updated meals and update the state
+                fetchMeals(restaurantId);
+
+                setMealName("");
+                setMaxMeals("");
+                setMealPrice("");
+                setImageUrl("");
+            } catch (error) {
+                console.error("Error adding meal:", error);
+            }
         }
     };
 
@@ -111,10 +122,14 @@ function App() {
         setIsFormVisible(false);
     };
 
-    const fetchMeals = async () => {
+    const fetchMeals = async (restaurantId) => {
         try {
             const mealsCollection = collection(db, "meals");
-            const mealsSnapshot = await getDocs(mealsCollection);
+            const mealsQuery = query(
+                mealsCollection,
+                where("restaurantId", "==", restaurantId)
+            );
+            const mealsSnapshot = await getDocs(mealsQuery);
 
             const mealsData = mealsSnapshot.docs.map((doc) => ({
                 id: doc.id,
@@ -122,40 +137,43 @@ function App() {
             }));
             setMeals(mealsData);
         } catch (error) {
-            // Handle the error
+            console.error("Error fetching meals:", error);
         }
     };
+
     const handleDeleteMeal = async (mealId, imageUrl) => {
         try {
             const mealDocRef = doc(db, "meals", mealId);
             await deleteDoc(mealDocRef);
 
-            // Extract the image file name from the URL
-            const imageFileName = imageUrl.split("/").pop().split("?")[0];
-
-            // Construct a reference to the image in Firebase Storage
-            const imageRef = ref(storage, imageUrl);
-
             // Delete the image from Firebase Storage
-            await deleteObject(imageRef);
+            const storageRef = ref(storage, imageUrl); // Use the image URL as the reference
+            await deleteObject(storageRef);
 
-            console.log("Image deleted successfully.");
+            // Fetch updated meals and update the state
+            fetchMeals(restaurantId);
         } catch (error) {
-            console.error("Error deleting meal and image:", error);
-            // Handle the error
+            console.error("Error deleting meal:", error);
         }
     };
 
-    useEffect(() => {
-        fetchMeals();
-
-        const unsubscribe = onSnapshot(collection(db, "meals"), (snapshot) => {
-            const updatedMeals = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
-            setMeals(updatedMeals);
+    const checkAuthenticationState = () => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is logged in, get their restaurant ID and fetch meals
+                const restaurantId = user.uid;
+                setRestaurantId(restaurantId);
+                fetchMeals(restaurantId);
+            } else {
+                console.log("User is not logged in as a restaurant.");
+            }
         });
+        return unsubscribe;
+    };
+
+    useEffect(() => {
+        const unsubscribe = checkAuthenticationState();
 
         return () => {
             unsubscribe();
@@ -225,7 +243,7 @@ function App() {
                                     type='submit'
                                     className='px-4 py-2 bg-blue-600 text-white rounded-md'
                                 >
-                                    Add Meal
+                                    Add A Meal
                                 </button>
                             </div>
                             <div className='flex justify-center'>
@@ -244,7 +262,7 @@ function App() {
                             onClick={() => setIsFormVisible(true)}
                             className='px-4 py-2 bg-blue-600 text-white rounded-md'
                         >
-                            Add Meal
+                            Add A Meal
                         </button>
                     </div>
                 )}
@@ -253,4 +271,4 @@ function App() {
     );
 }
 
-export default App;
+export default AddMeals;

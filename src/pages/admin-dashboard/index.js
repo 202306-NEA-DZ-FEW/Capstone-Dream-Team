@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 
 import Dashboard from "@/components/Overview/Dashboard";
 
+import Layout from "@/layout/Layout";
 import { auth } from "@/util/firebase";
 
 import Sidemenu from "../../components/Sidemenu";
-import Layout from "@/layout/Layout";
 
 export default function AdminDashboard() {
     const [component, setComponent] = useState(<Dashboard />);
@@ -37,7 +37,7 @@ export default function AdminDashboard() {
                 <div className='flex'>
                     {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
                     <Sidemenu handleClick={handleClick}></Sidemenu>
-                    <div className='flex justify-items-center items-center p-8 text-2xl font-bold'>
+                    <div className='flex justify-items-center ml-auto p-8 text-2xl font-bold'>
                         {component}
                     </div>
                 </div>
