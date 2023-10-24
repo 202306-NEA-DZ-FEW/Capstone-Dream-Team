@@ -1,14 +1,20 @@
+import { signOut } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { BiSolidUpArrowCircle } from "react-icons/bi";
 import { BsSun } from "react-icons/bs";
 import { HiOutlineMoon } from "react-icons/hi";
+import { HiOutlineUserCircle } from "react-icons/hi";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 
+import { auth } from "../util/firebase";
 export default function Navbar() {
     const [mounted, setMounted] = useState(false);
     const { theme, setTheme } = useTheme();
+    const [dropdownOpen, setDropdownopen] = useState(false);
     const currentTheme = theme === "system" ? "light" : theme;
 
     useEffect(() => {
@@ -16,6 +22,14 @@ export default function Navbar() {
     }, []);
 
     if (!mounted) return null;
+    const handleDropdown = () => {
+        setDropdownopen(!dropdownOpen);
+    };
+    const handleLogout = async () => {
+        // Sign out the authenticated user using Firebase's 'signOut' function.
+        await signOut(auth);
+        setDropdownopen(!dropdownOpen);
+    };
 
     return (
         <>
@@ -108,6 +122,63 @@ export default function Navbar() {
                                 ></BsSun>
                             </div>
                         )}
+                        <div>
+                            <button
+                                onClick={handleDropdown}
+                                class='relative z-10 block rounded-md p-1
+             text-gray-600 dark:text-white
+            overflow-hidden focus:outline-none focus:border-green'
+                            >
+                                <div className='flex gap-0'>
+                                    <HiOutlineUserCircle
+                                        size={20}
+                                    ></HiOutlineUserCircle>
+                                    {dropdownOpen === false ? (
+                                        <IoIosArrowDropdownCircle className='pt-1 self-end'></IoIosArrowDropdownCircle>
+                                    ) : (
+                                        <BiSolidUpArrowCircle></BiSolidUpArrowCircle>
+                                    )}
+                                </div>
+                            </button>
+
+                            {dropdownOpen === true && auth.currentUser && (
+                                <div
+                                    className='absolute right-0 mt-2 py-2 w-48 bg-white rounded-md
+        shadow-xl z-20'
+                                >
+                                    <div>
+                                        <Link
+                                            href='/admin-dashboard'
+                                            className='  block  px-4 py-2 text-sm capitalize text-gray-800 hover:bg-indigo-500
+            hover:text-white'
+                                        >
+                                            Dashboard
+                                        </Link>
+                                        <button
+                                            onClick={handleLogout}
+                                            className='block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-indigo-500
+            hover:text-white'
+                                        >
+                                            Sign Out
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                            {dropdownOpen === true && !auth.currentUser && (
+                                <div
+                                    className='absolute right-0 mt-2 py-2 w-48 bg-white rounded-md border-t-[1px] border-gray-200
+        shadow-xl z-20'
+                                >
+                                    <Link
+                                        href='/signup'
+                                        className='block px-4 py-2 text-sm capitalize text-gray-800 hover:bg-indigo-500
+        hover:text-white'
+                                    >
+                                        signIn
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </nav>
