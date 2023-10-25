@@ -1,7 +1,7 @@
 import React from "react";
-
 import Historybar from "./Historybar";
 import Historycard from "./Historycard";
+
 export default function Adminhistory() {
     return (
         <div className='flex-col pl-50 space-y-20'>
