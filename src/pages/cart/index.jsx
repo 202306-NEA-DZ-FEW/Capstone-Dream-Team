@@ -16,22 +16,22 @@ function Cart() {
     //const [mealObject, setMealObject] = useState({});
 
     /*useEffect(() => {
-    const fetchMealData = async () => {
-      const docRef = doc(db, "meal", "0u1KPSVJy697wvUZ611rh8fD6S");
-      const docSnap = await getDoc(docRef);
+  const fetchMealData = async () => {
+    const docRef = doc(db, "meal", "0u1KPSVJy697wvUZ611rh8fD6S");
+    const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        setMealObject(docSnap.data());
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    };
+    if (docSnap.exists()) {
+      setMealObject(docSnap.data());
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  };
 
-    fetchMealData();
+  fetchMealData();
 
 
-  }, []);*/
+}, []);*/
 
     //console.log(mealObject)
 
@@ -43,13 +43,13 @@ function Cart() {
         const fetchMeals = async () => {
             // Function to retrieve the unique identifier from the cookie
             /* function getCookie(name) {
-         const value = `; ${document.cookie}`;
-         const parts = value.split(`; ${name}=`);
-         if (parts.length === 2) return parts.pop().split(';').shift();
-       }
+   const value = `; ${document.cookie}`;
+   const parts = value.split(`; ${name}=`);
+   if (parts.length === 2) return parts.pop().split(';').shift();
+ }
  
-       // Retrieve the unique identifier from the cookie
-       const visitorID = getCookie('visitorID');*/
+ // Retrieve the unique identifier from the cookie
+ const visitorID = getCookie('visitorID');*/
 
             const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
 
@@ -124,35 +124,35 @@ function Cart() {
 
     return (
         /*<div>
-      <Card mealObject={mealObject} />
-    </div>*/
+  <Card mealObject={mealObject} />
+</div>*/
 
         /*<div class="flex items-center bg-red-500 rounded-lg p-4 mb-4 shadow-md w-3/5">
 
-      <div class="w-16 h-16 mr-4">
-        <img src="meal-image.jpg" alt="Meal Image" className="w-full h-full object-cover rounded-lg" />
-      </div>
+  <div class="w-16 h-16 mr-4">
+    <img src="meal-image.jpg" alt="Meal Image" className="w-full h-full object-cover rounded-lg" />
+  </div>
 
 
-      <div class=" w-80">
+  <div class=" w-80">
 
-        <p class="text-lg font-semibold mb-1">Meal Name</p>
-
-
-        <p class="text-sm text-gray-500 mb-2">Meal Information</p>
-
-      </div>
-
-      <p class="text-lg font-semibold mr-2">$10.99</p>
+    <p class="text-lg font-semibold mb-1">Meal Name</p>
 
 
-      <p class="text-gray-500">x2</p>
+    <p class="text-sm text-gray-500 mb-2">Meal Information</p>
+
+  </div>
+
+  <p class="text-lg font-semibold mr-2">$10.99</p>
+
+
+  <p class="text-gray-500">x2</p>
 
 
 
-      <p class="text-lg font-semibold mt-2">$21.98</p>
+  <p class="text-lg font-semibold mt-2">$21.98</p>
 
-    </div>
+</div>
 */
 
         <Layout>
