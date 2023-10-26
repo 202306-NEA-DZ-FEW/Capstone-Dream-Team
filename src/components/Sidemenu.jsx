@@ -7,20 +7,47 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
 import { BsSun } from "react-icons/bs";
-import { HiOutlineChartBarSquare, HiOutlineMoon } from "react-icons/hi2";
+import { HiOutlineChartBarSquare } from "react-icons/hi2";
 import { IoLogOutOutline } from "react-icons/io5";
 import { LiaHistorySolid } from "react-icons/lia";
+import { PiMoonStarsLight } from "react-icons/pi";
 import { TbDeviceAnalytics } from "react-icons/tb";
 
+import AddMeals from "./Add-meals";
 import Analytics from "./Analytics";
-import Dashboard from "./Dashboard";
-import History from "./History";
-import Meals from "./Meals";
+import Adminhistory from "./History/Adminhistory";
+import Dashboard from "./Overview/Dashboard";
 import Settings from "./Settings";
-import placeholderImage from "../images/placeholderImage.png";
 import { auth, db } from "../util/firebase";
 
 export default function Sidemenu(props) {
+    const components = [
+        {
+            name: "Dashboard",
+            icon: <AiOutlineHome></AiOutlineHome>,
+            element: <Dashboard />,
+        },
+        {
+            name: "Meals/Coupons",
+            icon: <HiOutlineChartBarSquare />,
+            element: <AddMeals />,
+        },
+        {
+            name: "History",
+            icon: <LiaHistorySolid />,
+            element: <Adminhistory />,
+        },
+        {
+            name: "Analytics",
+            icon: <TbDeviceAnalytics />,
+            element: <Analytics />,
+        },
+        {
+            name: "Settings",
+            icon: <AiOutlineSetting />,
+            element: <Settings />,
+        },
+    ];
     // Import and destructure the 'useTheme' hook and React state management functions.
     const { theme, setTheme } = useTheme();
 
@@ -73,17 +100,18 @@ export default function Sidemenu(props) {
 
     return (
         <>
-            <div className='w-[280px] h-[1033px] relative'>
-                <div className='w-[260px] h-[1033px] px-6 pt-6 pb-8 left-0 top-0 absolute bg-[#BEEBDD]  dark:bg-black border-r border-green-200 flex-col justify-between items-start inline-flex'>
-                    <div className='self-stretch h-[576px] flex-col justify-start items-start gap-11 flex'>
+            <div className='w-1/5 h-full relative'>
+                <div className='w-full  pl-4 pt-8 pb-8  bg-[#BEEBDD]  dark:bg-[#3e3e3e] shadow-xl border-r border-green-200 flex-col justify-between items-start inline-flex gap-8'>
+                    <div className='self-stretch  flex-col justify-start items-start gap-12 flex'>
                         <div className='justify-start items-center gap-3 inline-flex'>
                             <Image
-                                className='w-14 h-14 relative rounded-2xl'
-                                src={placeholderImage}
-                                width={56}
-                                height={56}
+                                className='w-12 h-12 relative rounded-2xl'
+                                src='/images/placeholderImage.png'
+                                width={40}
+                                height={40}
                                 alt='admin photo'
                             />
+
                             <div className='flex-col justify-center items-start inline-flex'>
                                 <div className="w-[150px] text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']">
                                     {userData ? userData.name : "loading..."}
@@ -93,149 +121,71 @@ export default function Sidemenu(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className='h-14 p-4 bg-neutral-100 rounded-2xl flex-col justify-center items-start gap-2.5 flex'>
-                            <div className='w-[186px] h-6 justify-start items-center gap-4 inline-flex'>
-                                <div className='w-6 h-6 relative'>
-                                    <div className='w-3.5 h-3.5 left-[4px] top-[4px] absolute rounded-full border border-zinc-800' />
-                                </div>
-                                <div className="w-[146px] text-zinc-800 text-base font-normal font-['Open Sans'] leading-snug">
-                                    Search...
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex-col justify-start items-start gap-6 flex'>
-                            <div className='p-4  active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-2.5 flex'>
-                                <div className='w-[186px] h-6 justify-start items-center gap-4 inline-flex'>
-                                    <div className='w-6 h-6 relative'>
-                                        <AiOutlineHome
-                                            style={{ display: "inline" }}
-                                        />
+
+                        <div className='flex-col pt-2 pb-2 justify-start items-start gap-4 flex'>
+                            {components.map((component, index) => (
+                                <div
+                                    key={index}
+                                    className='p-2 active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-1 flex'
+                                >
+                                    <div className='h-4 justify-start items-center gap-2 inline-flex'>
+                                        <div className=' w-6  relative'>
+                                            {component.icon}
+                                        </div>
+                                        <button
+                                            className="text-[#333333]  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
+                                            onClick={() =>
+                                                props.handleClick(
+                                                    component.element
+                                                )
+                                            }
+                                        >
+                                            {component.name}
+                                        </button>
                                     </div>
-                                    <button
-                                        className="text-zinc-950  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
-                                        onClick={() =>
-                                            props.handleClick(<Dashboard />)
-                                        }
-                                    >
-                                        Dashboard
-                                    </button>
                                 </div>
-                            </div>
-                            <div className='p-4  active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-2.5 flex'>
-                                <div className='w-[186px] h-6 justify-start items-center gap-4 inline-flex'>
-                                    <div className='w-6 h-6 relative'>
-                                        <div className='w-[18px] h-[18px] left-[3px] top-[3px] absolute ' />
-                                        <HiOutlineChartBarSquare
-                                            style={{ display: "inline" }}
-                                        />
-                                    </div>
-                                    <button
-                                        className="text-zinc-950  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
-                                        onClick={() =>
-                                            props.handleClick(<Meals />)
-                                        }
-                                    >
-                                        Meals/Coupons
-                                    </button>
-                                </div>
-                            </div>
-                            <div className='p-4  active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-2.5 flex'>
-                                <div className='w-[186px] h-6 justify-start items-center gap-4 inline-flex'>
-                                    <div className='w-6 h-6 relative'>
-                                        <LiaHistorySolid
-                                            style={{ display: "inline" }}
-                                        />
-                                    </div>
-                                    <button
-                                        className="text-zinc-950  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
-                                        onClick={() =>
-                                            props.handleClick(<History />)
-                                        }
-                                    >
-                                        History
-                                    </button>
-                                </div>
-                            </div>
-                            <div className='p-4   active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-2.5 flex'>
-                                <div className='w-[186px] h-6 justify-start items-center gap-4 inline-flex'>
-                                    <div className='w-6 h-6 relative'>
-                                        <TbDeviceAnalytics
-                                            className=' dark:stroke-white'
-                                            style={{ display: "inline" }}
-                                        />
-                                    </div>
-                                    <button
-                                        className="text-zinc-950  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
-                                        onClick={() =>
-                                            props.handleClick(<Analytics />)
-                                        }
-                                    >
-                                        Analytics
-                                    </button>
-                                </div>
-                            </div>
-                            <div className='p-4  active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-2.5 flex'>
-                                <div className='w-[186px] h-6 justify-start items-center gap-4 inline-flex'>
-                                    <div className='w-6 h-6 relative'>
-                                        <AiOutlineSetting
-                                            style={{ display: "inline" }}
-                                        />
-                                    </div>
-                                    <button
-                                        className="text-zinc-950  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
-                                        onClick={() =>
-                                            props.handleClick(<Settings />)
-                                        }
-                                    >
-                                        Settings
-                                    </button>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
-                    <div className='self-stretch h-[120px] flex-col justify-start items-start gap-2 flex'>
-                        <div className='p-4  active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-2.5 flex'>
-                            <div className='w-[186px] h-6 justify-start items-center gap-4 inline-flex'>
-                                <div className='w-6 h-6 relative'>
+                    <div className='self-stretch h-full w-full flex-col justify-start pt-16 items-start gap-2 flex'>
+                        <div className='px-2   active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-1 flex'>
+                            <div className='justify-start items-center gap-1 inline-flex'>
+                                <div className='pt-1 w-6 h-6 relative'>
                                     <IoLogOutOutline />
                                 </div>
                                 <button
-                                    className="text-zinc-950  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
+                                    className="text-[#333333]  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
                                     onClick={handleLogout}
                                 >
                                     <Link href='/'>Logout</Link>
                                 </button>
                             </div>
                         </div>
-                        <div className='self-stretch pl-4 py-3 rounded-lg justify-between items-center inline-flex'>
-                            <div className='w-[124px] justify-start items-center gap-4 flex'>
+                        <div className='self-stretch pl-3 pr-6 py-3 rounded-lg justify-between items-center inline-flex'>
+                            <div className=' justify-start items-center gap-1 flex'>
                                 <div className='w-6 h-6 relative'>
                                     <div>
                                         {" "}
                                         {currentTheme === "dark" ? (
-                                            <HiOutlineMoon
-                                                style={{ display: "inline" }}
-                                            ></HiOutlineMoon>
-                                        ) : (
                                             <BsSun
                                                 style={{ display: "inline" }}
                                             ></BsSun>
+                                        ) : (
+                                            <PiMoonStarsLight
+                                                style={{ display: "inline" }}
+                                            ></PiMoonStarsLight>
                                         )}
                                     </div>
-                                    <div className='w-[0px] h-5 left-[12px] top-[2px] absolute'></div>
-                                    <div className='origin-top-left rotate-90 w-[0px] h-5 left-[22px] top-[12px] absolute'></div>
-                                    <div className='origin-top-left rotate-[-135deg] w-[0px] h-5 left-[4.93px] top-[19.07px] absolute'></div>
-                                    <div className='origin-top-left -rotate-45 w-[0px] h-5 left-[4.93px] top-[4.93px] absolute'></div>
                                 </div>
-                                <div className="text-zinc-950  dark:text-white text-base font-normal font-['Open Sans'] leading-snug">
-                                    {currentTheme === "dark" ? "dark" : "light"}{" "}
+                                <div className="text-[#333333] dark:text-white text-base font-normal font-['Open Sans'] leading-snug">
+                                    {currentTheme === "dark" ? "light" : "dark"}{" "}
                                     mode
                                 </div>
                             </div>
                             {currentTheme === "light" ? (
                                 <label
                                     htmlFor='check'
-                                    className='w-12 h-7 rounded-full relative bg-white  cursor-pointer'
+                                    className='w-12 h-5 rounded-full relative bg-white  cursor-pointer'
                                 >
                                     <input
                                         type='checkbox'
@@ -243,12 +193,12 @@ export default function Sidemenu(props) {
                                         className='sr-only '
                                         onClick={() => setTheme("dark")}
                                     />
-                                    <span className='w-2/5 h-4/5 top-1 left-1 rounded-full bg-[#E9B824] absolute flex justify-center items-center'></span>
+                                    <span className='w-2/5 h-3/5 top-1 left-1 rounded-full bg-[#E9B824] absolute flex justify-center items-center'></span>
                                 </label>
                             ) : (
                                 <label
                                     htmlFor='check'
-                                    className='w-12 h-7 rounded-full relative bg-white  cursor-pointer'
+                                    className='w-12 h-5 rounded-full relative bg-white  cursor-pointer'
                                 >
                                     <input
                                         type='checkbox'
@@ -256,7 +206,7 @@ export default function Sidemenu(props) {
                                         className='sr-only peer'
                                         onClick={() => setTheme("light")}
                                     />
-                                    <span className='w-2/5 h-4/5 top-1 left-6 rounded-full bg-black absolute flex justify-center items-center'></span>
+                                    <span className='w-2/5 h-3/5 top-1 left-6 rounded-full bg-black absolute flex justify-center items-center'></span>
                                 </label>
                             )}
                         </div>

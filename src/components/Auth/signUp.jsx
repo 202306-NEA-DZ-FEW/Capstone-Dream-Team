@@ -1,16 +1,18 @@
 import {
     createUserWithEmailAndPassword,
-    updateProfile,
     GoogleAuthProvider,
+    setCustomUserClaims, // Import setCustomUserClaims
     signInWithPopup,
+    updateProfile,
 } from "firebase/auth";
-import React, { useState } from "react";
-import { auth, db } from "../../util/firebase";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { FaEnvelope, FaLock, FaUtensils } from "react-icons/fa";
-import SignUpWithGoogleButton from "./buttons/googleSignUpButton";
 import { useTranslation } from "next-i18next";
+import React, { useState } from "react";
+import { FaEnvelope, FaLock, FaUtensils } from "react-icons/fa";
+
+import SignUpWithGoogleButton from "./buttons/googleSignUpButton";
+import { auth, db } from "../../util/firebase";
 
 const provider = new GoogleAuthProvider();
 
@@ -29,10 +31,11 @@ const SignUp = ({ updateComponent }) => {
             return;
         }
 
-        if (password != passConfirm) {
+        if (password !== passConfirm) {
             alert("Please confirm your password");
             return;
         }
+
         try {
             const userCredential = await createUserWithEmailAndPassword(
                 auth,
@@ -42,6 +45,10 @@ const SignUp = ({ updateComponent }) => {
 
             const userId = userCredential?.user?.uid;
             //console.log(userCredential);
+
+            // Set custom claim for the user to indicate the role
+            await setCustomUserClaims(userId, { role: "restaurant" });
+
             router.push("/admin-dashboard");
 
             const userDocRef = collection(db, "restaurant");
@@ -55,14 +62,12 @@ const SignUp = ({ updateComponent }) => {
             await updateProfile(auth.currentUser, {
                 displayName: name,
             });
-        } catch {
-            (error) => {
-                alert("Error, please try again");
-            };
+        } catch (error) {
+            alert("Error, please try again");
         }
     };
 
-    //Function to hundle name change
+    //Function to handle name change
     const handleNameChange = (e) => {
         const inputValue = e.target.value;
 
@@ -76,12 +81,15 @@ const SignUp = ({ updateComponent }) => {
         // If the input contains special characters, do nothing (prevent input)
     };
 
-    // Sign up with google
+    // Sign up with Google
     const signUpWithGoogle = async () => {
         try {
             const userCredential = await signInWithPopup(auth, provider);
 
             const userId = userCredential?.user?.uid;
+
+            // Set custom claim for the user to indicate the role
+            await setCustomUserClaims(userId, { role: "restaurant" });
 
             router.push("/admin-dashboard");
 
@@ -92,10 +100,8 @@ const SignUp = ({ updateComponent }) => {
                 restaurantId: userId,
                 // Add other user-related data as needed
             });
-        } catch {
-            (error) => {
-                alert("Error, please try again");
-            };
+        } catch (error) {
+            alert("Error, please try again");
         }
     };
 
@@ -158,7 +164,6 @@ const SignUp = ({ updateComponent }) => {
                     </div>
                     <div className='mb-6 relative'>
                         <FaLock className='absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400' />
-
                         <input
                             type='password'
                             id='confirmpass'

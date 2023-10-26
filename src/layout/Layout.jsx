@@ -1,7 +1,9 @@
-import * as React from "react";
-
 import { useRouter } from "next/router";
+import { ThemeProvider } from "next-themes";
+import * as React from "react";
 import { useEffect } from "react";
+
+import Navbar from "@/components/Navbar";
 
 export default function Layout({ children }) {
     const router = useRouter();
@@ -23,5 +25,12 @@ export default function Layout({ children }) {
     //     </>
     // );
 
-    return <>{children}</>;
+    return (
+        <>
+            <ThemeProvider enableSystem={true} attribute='class'>
+                <Navbar />
+                {children}
+            </ThemeProvider>
+        </>
+    );
 }
