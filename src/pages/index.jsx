@@ -4,12 +4,16 @@ import * as React from "react";
 
 import Layout from "@/layout/Layout";
 
+import Slider from "../components/Home/Slider";
+
 export default function HomePage() {
     const { t } = useTranslation("common");
 
     return (
         <>
-            <Layout></Layout>
+            <Layout>
+                <Slider></Slider>
+            </Layout>
         </>
     );
 }

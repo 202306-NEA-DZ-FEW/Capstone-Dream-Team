@@ -12,7 +12,7 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { IoEarthOutline } from "react-icons/io5";
 
-import { auth } from "../util/firebase";
+import { auth } from "../../util/firebase";
 
 export default function Navbar({ locale }) {
     const [mounted, setMounted] = useState(false);
