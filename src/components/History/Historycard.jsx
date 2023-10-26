@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { db } from "../util/firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+
+import { db } from "../../util/firebase";
 
 export default function Historycard() {
     const [blogData, setBlogData] = useState([]);
@@ -22,6 +23,7 @@ export default function Historycard() {
                     return {
                         Name: Donors.donor_first_name,
                         meal: Donors.meal_id,
+
                         numbmeal: Donors.meal_quantity,
                         price: Donors.meal_price,
                         DATE: Donors.date, // Add this line to retrieve the meal
