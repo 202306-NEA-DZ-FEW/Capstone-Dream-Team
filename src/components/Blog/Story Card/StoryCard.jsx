@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function StorySection() {
+export default function StoryCard() {
     return (
         <div className='container mx-auto p-4'>
             {/* Story Card */}
@@ -56,13 +56,18 @@ export default function StorySection() {
                         </p>
 
                         {/* Read More Link */}
-                        <a
-                            className='flex items-baseline mt-3 text-teal-500 hover:text-teal-900 focus:text-teal-900'
-                            href=''
-                        >
-                            <span>Read More</span>
-                            <span className='text-xs ml-1'>&#x279c;</span>
-                        </a>
+                        <div className='flex justify-between mt-3'>
+                            <a
+                                className='flex items-baseline  text-teal-500 hover:text-teal-900 focus:text-teal-900'
+                                href=''
+                            >
+                                <span>Read More</span>
+                                <span className='text-xs ml-1'>&#x279c;</span>
+                            </a>
+                            <div className='flex items-baseline text-sm ml-1 text-gray-500'>
+                                <span>26/10/2023</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
