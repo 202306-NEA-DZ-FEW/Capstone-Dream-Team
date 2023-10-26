@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 
 export default function Layout({ children }) {
     const router = useRouter();
+
     useEffect(() => {
         if (router.locale === "ar") {
             document.body.dir = "rtl";
@@ -28,7 +29,7 @@ export default function Layout({ children }) {
     return (
         <>
             <ThemeProvider enableSystem={true} attribute='class'>
-                <Navbar />
+                <Navbar locale={router.locale} />
                 {children}
             </ThemeProvider>
         </>
