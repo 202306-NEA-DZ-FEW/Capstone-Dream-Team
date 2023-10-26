@@ -31,5 +31,24 @@
             "successMessage": "Reset email sent successfuly",
             "failureMessage": "Error sending password reset email. Please try again."
         }
+    },
+    "cartPage": {
+        "cart": {
+            "meal": "Meal",
+            "price": "Price",
+            "quantity": "QTY",
+            "subtotal": "Subtotal",
+            "remove": "Remove",
+            "summary": "Summary",
+            "totalMeals": "Total Meals",
+            "averagePayPerMeal": "Average Price Per Meal",
+            "total": "Total",
+            "donate": "Donate",
+            "message": "Your Cart is Empty"
+        },
+        "card": {
+            "restaurant": "Restaurant",
+            "quantityLeft": "Qty Left"
+        }
     }
 }

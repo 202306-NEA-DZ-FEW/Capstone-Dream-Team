@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import React, { useState } from "react";
 import { auth, db } from "../../util/firebase";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { FaEnvelope, FaLock, FaUtensils } from "react-icons/fa";
 import SignUpWithGoogleButton from "./buttons/googleSignUpButton";
@@ -41,14 +41,14 @@ const SignUp = ({ updateComponent }) => {
             );
 
             const userId = userCredential?.user?.uid;
-
+            //console.log(userCredential);
             router.push("/admin-dashboard");
 
             const userDocRef = collection(db, "restaurant");
             await setDoc(doc(userDocRef, userId), {
-                name: name,
+                restaurantName: name,
                 email: email,
-                uid: userId,
+                restaurantId: userId,
                 // Add other user-related data as needed
             });
             // Update profile name
@@ -87,9 +87,9 @@ const SignUp = ({ updateComponent }) => {
 
             const userDocRef = collection(db, "restaurant");
             await setDoc(doc(userDocRef, userId), {
-                name: userCredential.user.displayName,
+                restaurantName: userCredential.user.displayName,
                 email: userCredential.user.email,
-                uid: userId,
+                restaurantId: userId,
                 // Add other user-related data as needed
             });
         } catch {
