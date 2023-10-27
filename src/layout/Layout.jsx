@@ -3,7 +3,7 @@ import { ThemeProvider } from "next-themes";
 import * as React from "react";
 import { useEffect } from "react";
 
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Home/Navbar";
 
 export default function Layout({ children }) {
     const router = useRouter();

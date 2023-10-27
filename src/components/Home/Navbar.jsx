@@ -1,8 +1,10 @@
 import { signOut } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiFillCaretDown } from "react-icons/ai";
 import { BiSolidUpArrowCircle } from "react-icons/bi";
@@ -12,7 +14,7 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { IoEarthOutline } from "react-icons/io5";
 
-import { auth } from "../util/firebase";
+import { auth } from "../../util/firebase";
 
 export default function Navbar({ locale }) {
     const [mounted, setMounted] = useState(false);
@@ -21,9 +23,20 @@ export default function Navbar({ locale }) {
     const currentTheme = theme === "system" ? "light" : theme;
     const [clicked, setClicked] = useState(false);
 
-    const handleClick = () => {
-        setClicked(!clicked);
+    const router = useRouter();
+    const { t } = useTranslation();
+
+    // Function to change the language
+    const changeLanguage = (newLanguage) => {
+        const { pathname, query, asPath } = router;
+
+        // Use the router to change the locale in the URL
+        router.push({ pathname, query }, asPath, { locale: newLanguage });
     };
+
+    function handleClick() {
+        setClicked(!clicked);
+    }
 
     useEffect(() => {
         setMounted(true);
@@ -41,7 +54,7 @@ export default function Navbar({ locale }) {
 
     return (
         <>
-            <nav className='sticky z-10 w-full h-10 lg:h-16 top-0 shadow bg-white backdrop-filter backdrop-blur-lg opacity-80 dark:bg-gradient-to-r dark:from-[#101d31]  dark:via-[#730073]  dark:to-[#3e3e3e]'>
+            <nav className='sticky z-10 w-full h-10 lg:h-16 top-0 shadow bg-white backdrop-filter backdrop-blur-lg backdrop-opacity-25 opacity-80 dark:bg-gradient-to-r dark:from-[#101d31]  dark:via-[#730073]  dark:to-[#3e3e3e]'>
                 <div className='flex  h-full justify-between items-center text-sm'>
                     <div className='flex justify-center md:justify-between w-full h-full px-2'>
                         {currentTheme === "light" ? (
@@ -108,7 +121,7 @@ export default function Navbar({ locale }) {
 
                     <div className='flex  items-center px-6 space-x-4'>
                         <button className='ml-2 text-[10px] px-[2px] py-[3px] w-[60px] bg-teal-500 dark:bg-purple-600 text-white md:py-[6px] md:px-[2px] md:text-[14px]  md:w-[100px] rounded hover:shadow-lg transform hover:scale-105'>
-                            Donate now
+                            <Link href='/meals'>Donate now</Link>
                         </button>
                         <Link href='/'>
                             {" "}
@@ -225,9 +238,13 @@ export default function Navbar({ locale }) {
                                             }`}
                                         >
                                             {" "}
-                                            <Link href='/' locale='en'>
+                                            <button
+                                                onClick={() =>
+                                                    changeLanguage("en")
+                                                }
+                                            >
                                                 English
-                                            </Link>
+                                            </button>
                                         </li>
                                         <li
                                             className={`${
@@ -237,9 +254,13 @@ export default function Navbar({ locale }) {
                                             }`}
                                         >
                                             {" "}
-                                            <Link href='/' locale='ar'>
+                                            <button
+                                                onClick={() =>
+                                                    changeLanguage("ar")
+                                                }
+                                            >
                                                 العربية
-                                            </Link>
+                                            </button>
                                         </li>
                                     </ul>
                                 </div>
