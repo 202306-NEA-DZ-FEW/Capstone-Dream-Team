@@ -1,32 +1,66 @@
 import React from "react";
 
-export default function Mealcard({ mealId, price, maxQuantity, description }) {
+export default function Mealcard({ price, maxQuantity, name }) {
     return (
-        <div className='w-80 h-96 relative'>
-            <div className='w-80 h-96 left-0 top-0 absolute bg-red-700 shadow' />
-            <div className='w-80 h-96 left-0 top-[92px] absolute bg-white rounded-3xl shadow' />
-            <div className="left-[14px] top-[393px] absolute text-black text-base font-medium font-['Roboto']">
-                {maxQuantity}{" "}
+        <div className='mb-10 w-80 h-96 relative'>
+            <div className='w-80 h-96 left-0 top-0 absolute bg-transparent' />
+            <div className='w-80 h-96 left-0 top-[92px] absolute bg-rose-100 rounded-3xl shadow'>
+                {/**meal name*/}
+                <div className="left-1/2 -translate-x-1/2 top-[160px] absolute justify-center text-black text-2xl font-bold font-['Roboto']">
+                    {name}
+                </div>
+
+                {/**meal price*/}
+                <div className="left-1/2 -translate-x-1/2 top-[195px] absolute text-neutral-400 text-lg font-semibold font-['Roboto']">
+                    {price} £
+                </div>
+
+                {/**separation ine */}
+                <div className='w-72 h-px left-1/2 -translate-x-1/2 top-[243px] absolute border-2 border-neutral-400 border-opacity-20'></div>
+
+                {/* the donate button */}
+                <div className='w-60 h-11 left-1/2 -translate-x-1/2 top-[329px] absolute'>
+                    <div className='w-60 h-11 left-0 top-0 absolute bg-rose-400 rounded-full' />
+                    <div className="w-32 h-3.5 left-[57.88px] top-[10.42px] absolute text-center text-black text-xl font-bold font-['Roboto'] leading-relaxed">
+                        Donate (12$)
+                    </div>
+                </div>
+
+                {/* Qty */}
+                <div className='mt-[267px] pl-5 pr-5 flex justify-between items-center'>
+                    <div className="text-neutral-400 text-base font-medium font-['Roboto']">
+                        In stock: {maxQuantity}
+                    </div>
+                    <ul className='w-32 h-8 flex items-center'>
+                        <li className='w-9 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex'>
+                            <div className='justify-center items-center gap-3.5 flex'>
+                                <div className="text-neutral-700 text-lg font-medium font-['Poppins']">
+                                    -
+                                </div>
+                            </div>
+                        </li>
+                        <li className='w-16 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex'>
+                            <div className='justify-center items-center gap-3.5 flex'>
+                                <div className="text-neutral-700 text-lg font-medium font-['Poppins']">
+                                    1
+                                </div>
+                            </div>
+                        </li>
+                        <li className='w-9 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex'>
+                            <div className='justify-center items-center gap-3.5 flex'>
+                                <div className="text-neutral-700 text-lg font-medium font-['Poppins']">
+                                    +
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div className="left-[238px] top-[393px] absolute text-black text-base font-medium font-['Roboto']">
-                {description}
-            </div>
-            <div className="left-[76px] top-[256px] absolute text-black text-2xl font-bold font-['Roboto']">
-                {mealId}
-            </div>
-            <div className="left-[108px] top-[291px] absolute text-neutral-400 text-lg font-semibold font-['Roboto']">
-                {price}
-            </div>
-            <div className='w-72 h-px left-[7px] top-[339px] absolute border-2 border-neutral-400 border-opacity-20'></div>
-            <div className="left-[14px] top-[355px] absolute text-neutral-400 text-base font-medium font-['Roboto']">
-                max Quantity
-            </div>
-            <div className="left-[251px] top-[355px] absolute text-neutral-400 text-base font-medium font-['Roboto']">
-                description
-            </div>
+
+            {/** meal image */}
             <img
-                className='w-60 h-60 left-[40px] top-0 absolute'
-                src='https://via.placeholder.com/235x235'
+                className='w-60 h-60 left-1/2 -translate-x-1/2 top-0 absolute rounded-full'
+                src='/images/meals/italian-cuisine-pasta-organic-food-restaurant-foods.jpg'
             />
         </div>
     );
