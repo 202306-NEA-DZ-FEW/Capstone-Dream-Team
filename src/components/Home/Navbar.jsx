@@ -1,8 +1,10 @@
 import { signOut } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiFillCaretDown } from "react-icons/ai";
 import { BiSolidUpArrowCircle } from "react-icons/bi";
@@ -21,9 +23,20 @@ export default function Navbar({ locale }) {
     const currentTheme = theme === "system" ? "light" : theme;
     const [clicked, setClicked] = useState(false);
 
-    const handleClick = () => {
-        setClicked(!clicked);
+    const router = useRouter();
+    const { t } = useTranslation();
+
+    // Function to change the language
+    const changeLanguage = (newLanguage) => {
+        const { pathname, query, asPath } = router;
+
+        // Use the router to change the locale in the URL
+        router.push({ pathname, query }, asPath, { locale: newLanguage });
     };
+
+    function handleClick() {
+        setClicked(!clicked);
+    }
 
     useEffect(() => {
         setMounted(true);
@@ -225,9 +238,13 @@ export default function Navbar({ locale }) {
                                             }`}
                                         >
                                             {" "}
-                                            <Link href='/' locale='en'>
+                                            <button
+                                                onClick={() =>
+                                                    changeLanguage("en")
+                                                }
+                                            >
                                                 English
-                                            </Link>
+                                            </button>
                                         </li>
                                         <li
                                             className={`${
@@ -237,9 +254,13 @@ export default function Navbar({ locale }) {
                                             }`}
                                         >
                                             {" "}
-                                            <Link href='/' locale='ar'>
+                                            <button
+                                                onClick={() =>
+                                                    changeLanguage("ar")
+                                                }
+                                            >
                                                 العربية
-                                            </Link>
+                                            </button>
                                         </li>
                                     </ul>
                                 </div>
