@@ -15,8 +15,8 @@ import { TbDeviceAnalytics } from "react-icons/tb";
 
 import AddMeals from "./Add-meals";
 import Analytics from "./Analytics";
+import Dashboard from "./Dashboard";
 import Adminhistory from "./History/Adminhistory";
-import Dashboard from "./Overview/Dashboard";
 import Settings from "./Settings";
 import { auth, db } from "../util/firebase";
 
@@ -100,10 +100,10 @@ export default function Sidemenu(props) {
 
     return (
         <>
-            <div className='w-1/5 h-full relative'>
-                <div className='w-full  pl-4 pt-8 pb-8  bg-[#BEEBDD]  dark:bg-[#3e3e3e] shadow-xl border-r border-green-200 flex-col justify-between items-start inline-flex gap-8'>
-                    <div className='self-stretch  flex-col justify-start items-start gap-12 flex'>
-                        <div className='justify-start items-center gap-3 inline-flex'>
+            <div className='w-1/5  h-screen  z-8 '>
+                <div className='w-full h-full pl-3 pt-6  bg-[#BEEBDD]  dark:border-gray-200  shadow-xl border-r border-green-200 flex-col justify-between items-start inline-flex gap-8  dark:bg-[#352F44] '>
+                    <div className='  flex-col justify-start items-start gap-4 flex'>
+                        <div className='justify-center md:justify-start items-center gap-3  md:inline-flex lg:inline-flex'>
                             <Image
                                 className='w-12 h-12 relative rounded-2xl'
                                 src='/images/placeholderImage.png'
@@ -116,7 +116,7 @@ export default function Sidemenu(props) {
                                 <div className="w-[150px] text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']">
                                     {userData ? userData.name : "loading..."}
                                 </div>
-                                <div className="w-[150px] text-neutral-800  dark:text-white text-sm font-normal font-['Open Sans']">
+                                <div className="w-[150px] text-neutral-800  dark:text-white text-[10px] lg:text-[14px] font-normal font-['Open Sans']">
                                     {userData ? userData.email : "loading..."}
                                 </div>
                             </div>
@@ -133,7 +133,7 @@ export default function Sidemenu(props) {
                                             {component.icon}
                                         </div>
                                         <button
-                                            className="text-[#333333]  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
+                                            className="text-[#333333]  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug"
                                             onClick={() =>
                                                 props.handleClick(
                                                     component.element
@@ -147,14 +147,14 @@ export default function Sidemenu(props) {
                             ))}
                         </div>
                     </div>
-                    <div className='self-stretch h-full w-full flex-col justify-start pt-16 items-start gap-2 flex'>
+                    <div className='self-stretch h-full w-full flex-col justify-start pt-8 items-start gap-2 flex'>
                         <div className='px-2   active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-1 flex'>
                             <div className='justify-start items-center gap-1 inline-flex'>
                                 <div className='pt-1 w-6 h-6 relative'>
                                     <IoLogOutOutline />
                                 </div>
                                 <button
-                                    className="text-[#333333]  dark:text-white text-base font-normal font-['Open Sans'] leading-snug"
+                                    className="text-[#333333]  dark:text-white text-sm font-normal font-['Open Sans'] leading-snug"
                                     onClick={handleLogout}
                                 >
                                     <Link href='/'>Logout</Link>
@@ -177,7 +177,7 @@ export default function Sidemenu(props) {
                                         )}
                                     </div>
                                 </div>
-                                <div className="text-[#333333] dark:text-white text-base font-normal font-['Open Sans'] leading-snug">
+                                <div className="text-[#333333] dark:text-white text-sm font-normal font-['Open Sans'] leading-snug">
                                     {currentTheme === "dark" ? "light" : "dark"}{" "}
                                     mode
                                 </div>

@@ -31,5 +31,24 @@
             "successMessage": "إرسال الإيمايل بنجاح",
             "failureMessage": "فشل في إرسال الإيمايل ، أعد المحاولة"
         }
+    },
+    "cartPage": {
+        "cart": {
+            "meal": "الوجبة",
+            "price": "الثمن",
+            "quantity": "الكمية",
+            "subtotal": "المجموع",
+            "remove": "حذف",
+            "summary": "الملخص",
+            "totalMeals": "عدد الوجبات",
+            "averagePayPerMeal": "متوسط ثمن الوجبة",
+            "total": "المجموع الكلي",
+            "donate": "تبرع",
+            "message": "السلة فارغة"
+        },
+        "card": {
+            "restaurant": "إسم المطعم",
+            "quantityLeft": "الكمية المتبقية"
+        }
     }
 }
