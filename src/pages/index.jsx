@@ -4,6 +4,7 @@ import * as React from "react";
 
 import Layout from "@/layout/Layout";
 
+import Process from "../components/Home/Process";
 import Slider from "../components/Home/Slider";
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
         <>
             <Layout>
                 <Slider></Slider>
+                <Process></Process>
             </Layout>
         </>
     );
