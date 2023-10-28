@@ -23,6 +23,7 @@ export default function Historycard() {
                     return {
                         Name: Donors.donor_first_name,
                         meal: Donors.meal_id,
+
                         numbmeal: Donors.meal_quantity,
                         price: Donors.meal_price,
                         DATE: Donors.date, // Add this line to retrieve the meal
