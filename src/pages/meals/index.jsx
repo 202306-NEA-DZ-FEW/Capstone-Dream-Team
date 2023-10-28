@@ -1,10 +1,12 @@
 import Meals from "../../components/meal/meals";
-import React, { useState, useEffect } from "react";
-
+import React from "react";
+import Layout from "@/layout/Layout";
 export default function Mealspage() {
     return (
         <>
-            <Meals />
+            <Layout>
+                <Meals />
+            </Layout>
         </>
     );
 }
