@@ -163,7 +163,7 @@ function AddMeals() {
                 setRestaurantName(user.displayName);
                 fetchMeals(restaurantId);
             } else {
-                console.log("User is not logged in as a restaurant.");
+                console.error("User is not logged in as a restaurant.");
             }
         });
         return unsubscribe;
