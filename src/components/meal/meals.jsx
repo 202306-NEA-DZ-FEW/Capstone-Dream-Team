@@ -54,12 +54,12 @@ export default function Meals() {
     return (
         <>
             {rest.map((restaurant, index) => (
-                <div className='mt-10 pt-10' key={index}>
+                <div className='pt-3 pb-10 ' key={index}>
                     <Mealbar
                         name={restaurant.Name}
                         current_restaurant_Id={restaurant.current_restaurant_Id}
                     />
-                    <div className='pt-10 pl-10 pr-20 flex justify-center items-center'>
+                    <div className='pt-3 pl-10 pr-20 pb-10 flex justify-center items-center'>
                         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20'>
                             {restaurant.mealDetails
                                 .slice(0, 4)
