@@ -2,8 +2,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import Link from "next/link";
 import { ThemeProvider } from "next-themes";
 import React, { useEffect, useState } from "react";
-import React from "react";
-
 
 import Dashboard from "@/components/Dashboard";
 
@@ -31,8 +29,6 @@ export default function AdminDashboard() {
     }, []); // Pass an empty dependency array to run this effect only once.
 
     return (
-
-=======
         <Layout>
             {/* to check whether the user is signed in    */}
             {authUser ? (
@@ -41,7 +37,6 @@ export default function AdminDashboard() {
                     {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
                     <Sidemenu handleClick={handleClick}></Sidemenu>
                     <div className='flex w-4/5 justify-items-center  p-8 text-2xl font-bold overflow-scroll'>
-
                         {component}
                     </div>
                 </div>
@@ -52,7 +47,6 @@ export default function AdminDashboard() {
                     {" "}
                     <div className='flex text-2xl font-semibold'>
                         You need to have an acount to enter the dashboard page !
-
                     </div>
                     <Link href='/'>
                         <button className='w-[160px] text-lg bg-teal-500 text-white py-2 px-4 rounded hover:shadow-lg transform hover:scale-105 '>
