@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 import Navbar from "@/components/Home/Navbar";
 
-
 export default function Layout({ children }) {
     const router = useRouter();
 
@@ -23,7 +22,7 @@ export default function Layout({ children }) {
     //     <>
     //         <Navbar />
     //         {children}
-    //   
+    //
     //     </>
     // );
 
