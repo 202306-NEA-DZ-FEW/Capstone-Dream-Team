@@ -2,8 +2,10 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
 
-import Layout from "@/layout/Layout";
+import Goals from "@/components/Home/Goals";
 
+import Layout from "@/layout/Layout";
+import VideoSection from "@/components/Home/VideoSection";
 import Process from "../components/Home/Process";
 import Slider from "../components/Home/Slider";
 
@@ -15,6 +17,8 @@ export default function HomePage() {
             <Layout>
                 <Slider></Slider>
                 <Process></Process>
+                <Goals></Goals>
+                <VideoSection></VideoSection>
             </Layout>
         </>
     );

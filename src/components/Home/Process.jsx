@@ -14,9 +14,9 @@ export default function Process() {
         },
     ];
     return (
-        <div className='w-full h-full flex-col mt-4 p-6 justify-center  text-center'>
+        <div className='w-full h-full flex-col mt-6 p-6 justify-center  text-center'>
             <h1 className='font-bold mr-6 text-2xl '>Donation Process</h1>
-            <div className='md:flex w-full h-full '>
+            <div className='md:flex md:justify-center w-full h-full '>
                 {images.map((image, index) => (
                     <div
                         key={index}
@@ -30,12 +30,12 @@ export default function Process() {
                                 alt='step'
                             />
                         </div>
-                        <div className='flex md:w-1/2 md:h-full md:ml-20 md:text-sm justify-center md:mt-3'>
-                            <div className=' w-1/2 h-1/3 md:w-full  bg-teal-600 bg-opacity-70 rounded-[15px] '>
+                        <div className='flex md:w-1/2 md:h-full md:ml-10  md:text-xs md:mt-3 xl:ml-20 justify-center '>
+                            <div className=' w-1/2 h-1/3 md:w-[140px] md:h-[130px] lg:w-[250px] lg:h-[130px]  bg-teal-600 bg-opacity-70 rounded-[15px] '>
                                 <h1 className='text-lg pt-2 text-white font-bold '>
                                     Step {index + 1}
                                 </h1>
-                                <p className='text-center p-2 pt-4'>
+                                <p className='text-center p-2 pt-2'>
                                     {image.text}
                                 </p>
                             </div>
