@@ -112,7 +112,7 @@ export default function Navbar({ locale }) {
                             </Link>
                             <Link
                                 className='py-2 px-1 hover:border-b-2 hover:border-[#67b99a] hover:text-[#67b99a] active:border-b-2 active:border-[#036666] active:text-[#036666]'
-                                href='/'
+                                href='/meals'
                             >
                                 Meals
                             </Link>
