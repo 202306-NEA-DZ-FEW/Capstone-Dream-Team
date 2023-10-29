@@ -50,5 +50,11 @@
             "restaurant": "Restaurant",
             "quantityLeft": "Qty Left"
         }
+    },
+    "mealsPage": {
+        "donate": "Donate",
+        "show_meals": "Show all meals",
+        "available_meals": "Available Meals",
+        "stock": "In stock"
     }
 }

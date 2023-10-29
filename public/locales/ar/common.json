@@ -50,5 +50,11 @@
             "restaurant": "إسم المطعم",
             "quantityLeft": "الكمية المتبقية"
         }
+    },
+    "mealsPage": {
+        "donate": "تبرع",
+        "show_meals": "عرض جميع الوجبات",
+        "available_meals": "الوجبات المتوفرة",
+        "stock": "في المخزن"
     }
 }
