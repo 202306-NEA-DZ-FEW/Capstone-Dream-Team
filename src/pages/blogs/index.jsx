@@ -1,4 +1,5 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
@@ -10,30 +11,46 @@ import { db } from "@/util/firebase";
 
 export default function Blog({ articles, stories }) {
     const { t } = useTranslation("common");
+    const router = useRouter();
     const [numToShow, setNumToShow] = useState(4);
 
     const showMoreStories = () => {
         setNumToShow(numToShow + 2); // Show all stories when the button is clicked
     };
+    const showLessStories = () => {
+        setNumToShow(4); // Show all stories when the button is clicked
+    };
     return (
         <Layout>
             <div className='flex flex-col'>
-                <div class='container mx-auto flex px-5 py-24 items-center justify-center flex-col'>
-                    <div class='text-center lg:w-2/3 w-full'>
-                        <p class='sm:text-4xl text-4xl mb-4 font-medium p-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal-500'>
+                <div className='container mx-auto flex px-5 py-24 items-center justify-center flex-col'>
+                    <div className='text-center lg:w-2/3 w-full'>
+                        <p className='sm:text-4xl text-4xl mb-4 font-medium p-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-200 via-teal-400 to-teal-600'>
                             {t("blogPage.title")}
                         </p>
-                        <p class='mb-8 leading-relaxed'>
+                        <p className='mb-8 sm:text-2xl text-2xl '>
                             {t("blogPage.sub-text")}
                         </p>
                     </div>
                 </div>
-                <StoryCardList articles={articles} numToShow={numToShow} />
+                <StoryCardList
+                    language={router.locale}
+                    articles={articles}
+                    numToShow={numToShow}
+                />
                 {numToShow < articles.length && (
                     <div className='flex flex-row-reverse'>
                         <p className='text-base text-teal-500 font-bold no-underline hover:underline py-5 px-24'>
                             <span onClick={showMoreStories}>See More</span>
                             <span className='text-xs ml-1'>&#x279c;</span>
+                        </p>
+                    </div>
+                )}
+                {numToShow > articles.length && (
+                    <div className='flex flex-row-reverse'>
+                        <p className='text-base text-teal-500 font-bold no-underline hover:underline py-5 px-24'>
+                            <span onClick={showLessStories}>See Less</span>
+                            <span className='text-xs ml-1'>&uarr;</span>
                         </p>
                     </div>
                 )}

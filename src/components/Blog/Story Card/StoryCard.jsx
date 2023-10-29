@@ -1,6 +1,8 @@
+import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
 
-export default function StoryCard({ article, index }) {
+export default function StoryCard({ article, index, language }) {
+    const { t } = useTranslation("common");
     const [isPair, setIsPair] = useState(true);
     useEffect(() => {
         if (index % 2 == 0) setIsPair(true);
@@ -26,8 +28,7 @@ export default function StoryCard({ article, index }) {
                     <div
                         className='absolute left-0 top-0 inset-0 w-full h-full object-center bg-opacity-30 bg-cover'
                         style={{
-                            backgroundImage:
-                                "url(./images/fatoom_in_yemen.png)",
+                            backgroundImage: "url(images/fatoom_in_yemen.png)",
                             backgroundBlendMode: "multiply",
                         }}
                     ></div>
@@ -50,30 +51,41 @@ export default function StoryCard({ article, index }) {
                 </div>
 
                 {/* Right Side (Text Content) */}
-                <div className='z-10 w-full h-full md:w-3/5 flex items-center -mt-6 md:mt-0'>
+                <div className='z-0 w-full h-full md:w-3/5 flex items-center -mt-6 md:mt-0'>
                     <div className='p-8 md:pr-18 md:pl-14 md:py-12 mx-2 md:mx-0 h-full bg-white rounded-lg md:rounded-none shadow-xl md:shadow-none'>
-                        {/* Title (Visible on Desktop) */}
-                        <h3 className='hidden md:block font-bold text-2xl text-teal-500 mb-2'>
+                        {/* Title (Visible on Mobile) */}
+                        <h3 className='hidden md:block font-bold text-2xl text-teal-500 mb-2 line-clamp-1 max-h-8'>
                             {article.title}
                         </h3>
-
                         {/* Main Text Content */}
                         <p className='text-gray-600 text-justify text-base md:line-clamp-6 line-clamp-3'>
                             {article.content}
                         </p>
 
                         {/* Read More Link */}
-                        <div className='flex justify-between mt-3'>
+                        <div
+                            className={`flex justify-between ${
+                                language === "ar" ? "flex-row-reverse" : "flex"
+                            } mt-3`}
+                        >
+                            <div className='flex items-baseline text-sm ml-1 text-gray-500'>
+                                <span>{article.publish_date}</span>
+                            </div>{" "}
                             <a
                                 className='flex items-baseline text-teal-500 hover:text-teal-900 focus:text-teal-900'
                                 href=''
                             >
-                                <span>Read More</span>
-                                <span className='text-xs ml-1'>&#x279c;</span>
+                                <span>{t("readMore")}</span>
+                                {language === "ar" ? (
+                                    <span className='text-xs ml-1'>
+                                        &#x2190;
+                                    </span>
+                                ) : (
+                                    <span className='text-xs ml-1'>
+                                        &#x279c;
+                                    </span>
+                                )}
                             </a>
-                            <div className='flex items-baseline text-sm ml-1 text-gray-500'>
-                                <span>{article.publish_date}</span>
-                            </div>
                         </div>
                     </div>
                 </div>
