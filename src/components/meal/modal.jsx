@@ -97,17 +97,22 @@ const Modal = ({ currentRestaurantId }) => {
 
                             {/* Modal body */}
                             <div className='p-6 space-y-6'>
-                                <div className='pt-10 pl-10 pr-20 pb-20 flex justify-center items-center'>
-                                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20'>
+                                <div className='pb-10 pt-5 flex justify-center items-center'>
+                                    <div className='grid center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20 md:gap-10 xl:gap-8'>
                                         {meals.map((mealDetail, mealIndex) => (
-                                            <Mealcard
+                                            <div
+                                                className='flex md:mb-10'
                                                 key={mealIndex}
-                                                price={mealDetail.price}
-                                                maxQuantity={
-                                                    mealDetail.maxQuantity
-                                                }
-                                                name={mealDetail.name}
-                                            />
+                                            >
+                                                <Mealcard
+                                                    key={mealIndex}
+                                                    price={mealDetail.price}
+                                                    maxQuantity={
+                                                        mealDetail.maxQuantity
+                                                    }
+                                                    name={mealDetail.name}
+                                                />
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
