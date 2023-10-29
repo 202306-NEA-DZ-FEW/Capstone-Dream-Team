@@ -56,7 +56,7 @@ export default function Slider() {
                                     generosity!
                                 </p>
                                 <div className='p-6 md:mx-4'>
-                                    <button className='ml-2 text-[10px] px-[2px] py-[3px] w-[60px] bg-teal-500 dark:bg-purple-600 text-white md:py-[6px] md:px-[2px] md:text-[14px]  md:w-[100px] rounded hover:shadow-lg transform hover:scale-105'>
+                                    <button className='ml-2 text-[10px] px-[2px] py-[3px] w-[60px] bg-teal-500 dark:bg-[#32CD32] text-white md:py-[6px] md:px-[2px] md:text-[14px]  md:w-[100px] rounded hover:shadow-lg transform hover:scale-105'>
                                         <Link href='/meals'>Donate now</Link>
                                     </button>
                                 </div>
