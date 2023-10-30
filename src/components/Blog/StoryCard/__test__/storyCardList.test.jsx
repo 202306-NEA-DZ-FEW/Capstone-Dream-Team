@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 
 import StoryCardList from "../storyCardList";
 import i18n from "../../../../util/i18n";
-const articles = [
+const stories = [
     {
         title: "Sample Title 1",
         content: "Sample Content 1",
@@ -20,11 +20,7 @@ it("renders correctly", () => {
     const tree = renderer
         .create(
             <I18nextProvider i18n={i18n}>
-                <StoryCardList
-                    articles={articles}
-                    numToShow={2}
-                    language='en'
-                />
+                <StoryCardList stories={stories} numToShow={2} language='en' />
             </I18nextProvider>
         )
         .toJSON();
