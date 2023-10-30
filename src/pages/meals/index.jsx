@@ -9,6 +9,7 @@ export default function Mealspage() {
         <>
             <Layout>
                 <Meals />
+
                 {/* <Adminhistory /> */}
             </Layout>
         </>
