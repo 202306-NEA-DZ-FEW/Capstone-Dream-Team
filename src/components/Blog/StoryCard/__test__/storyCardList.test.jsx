@@ -1,7 +1,7 @@
 import { I18nextProvider } from "react-i18next";
 import renderer from "react-test-renderer";
 
-import StoryCardList from "../StoryCardList";
+import StoryCardList from "../storyCardList";
 import i18n from "../../../../util/i18n";
 const articles = [
     {

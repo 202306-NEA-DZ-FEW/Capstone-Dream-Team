@@ -4,7 +4,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 
-import StoryCardList from "@/components/Blog/Story Card/storyCardList";
+import StoryCardList from "@/components/Blog/StoryCard/storyCardList";
 
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";

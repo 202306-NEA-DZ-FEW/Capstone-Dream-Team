@@ -1,4 +1,5 @@
 import React from "react";
+
 import BlogCard from "./blogCard";
 
 export default function BlogCardList() {
