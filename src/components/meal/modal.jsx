@@ -2,9 +2,12 @@ import Mealcard from "./mealcard";
 import React, { useState, useEffect } from "react";
 import { collection, query, getDocs, where } from "firebase/firestore";
 import { db } from "../../util/firebase"; // Replace with your Firebase config import
+import { useTranslation } from "next-i18next";
 
 const Modal = ({ currentRestaurantId }) => {
     const [meals, setMeals] = useState([]);
+    const { t } = useTranslation("common");
+
     const [isModalVisible, setModalVisible] = useState(false);
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
@@ -51,7 +54,7 @@ const Modal = ({ currentRestaurantId }) => {
                 type='button'
                 onClick={toggleModal}
             >
-                Show All Meals
+                {t("mealsPage.show_meals")}
             </button>
 
             {/* Main modal */}
@@ -69,7 +72,7 @@ const Modal = ({ currentRestaurantId }) => {
                             <div className='flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600'>
                                 <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>
                                     {" "}
-                                    Available Meals{" "}
+                                    {t("mealsPage.available_meals")}{" "}
                                 </h3>
                                 <button
                                     type='button'
