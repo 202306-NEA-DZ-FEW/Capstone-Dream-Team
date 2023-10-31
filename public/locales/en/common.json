@@ -51,27 +51,47 @@
             "quantityLeft": "Qty Left"
         }
     },
+    "settings": {
+        "my_account": "My account",
+        "settings": "settings",
+        "save": "save",
+        "user_information": "user information",
+        "drag_and_drop": "Drag and drop",
+        "or_browse": "or browse",
+        "to_upload": "to upload",
+        "restaurant_name": "restaurant name",
+        "email_address": "EMAIL ADDRESS",
+        "verify_your_email": "Verify your email",
+        "first_name": "first name (Owner)",
+        "last_name": "last name (Owner)",
+        "contact_information": "contact information",
+        "address": "address",
+        "city": "city",
+        "country": "country",
+        "postal_code": "postal code",
+        "phone_number": "phone number",
+        "description": "description",
+        "reset_your_password": "reset your password",
+        "reset": "reset",
+        "enter_your_password": "enter your password",
+        "enter_your_new_password": "enter your new password",
+        "delete_your_account": "delete your account",
+        "delete": "delete"
+    },
     "mealsPage": {
         "donate": "Donate",
         "show_meals": "Show all meals",
         "available_meals": "Available Meals",
         "stock": "In stock"
     },
-
-    "blogPage":{
-        "title":"Stories of Hope: Nourishing Minds, Changing Lives",
-        "sub-text":"Explore inspiring stories of hope, transformation, and the power of giving. Our journey takes us through the lives of individuals who inspire change, and together, we can make a difference. Join us in our mission to nourish minds, change lives, and support those in need. Your contribution can help us turn these stories into real-world impact.",
-        "BlogCard":{
-        "readMore":"المزيد"
+    "blogPage": {
+        "title": "Stories of Hope: Nourishing Minds, Changing Lives",
+        "sub-text": "Explore inspiring stories of hope, transformation, and the power of giving. Our journey takes us through the lives of individuals who inspire change, and together, we can make a difference. Join us in our mission to nourish minds, change lives, and support those in need. Your contribution can help us turn these stories into real-world impact.",
+        "BlogCard": {
+            "readMore": "المزيد"
         },
-        "BlogCardList":{
-
-        },
-        "StoryCard":{
-
-        },
-        "StoryCardList":{
-
-        }
+        "BlogCardList": {},
+        "StoryCard": {},
+        "StoryCardList": {}
     }
 }
