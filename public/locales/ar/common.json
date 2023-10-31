@@ -50,5 +50,32 @@
             "restaurant": "إسم المطعم",
             "quantityLeft": "الكمية المتبقية"
         }
+    },
+    "settings": {
+        "my_account": "الحساب",
+        "settings": "إعدادات",
+        "save": "تأكيد",
+        "user_information": "معلومات المستخدم",
+        "drag_and_drop": "اسحب الصورة إلى الإطار",
+        "or_browse": "أو أنقر",
+        "to_upload": "للتحميل",
+        "restaurant_name": "إسم المطعم",
+        "email_address": "البريد الإلكتروني",
+        "verify_your_email": "قم بتأكيد بريدك الألكتروني",
+        "first_name": "إسم صاحب المطعم",
+        "last_name": "لقب صاحب المطعم",
+        "contact_information": "معلومات الاتصال",
+        "address": "العنوان",
+        "city": "المدينة",
+        "country": "البلد",
+        "postal_code": "الرمز البريدي",
+        "phone_number": "رقم الهاتف",
+        "description": "وصف",
+        "reset_your_password": "اعد ضبط كلمة السر",
+        "reset": "ضبط",
+        "enter_your_password": "أدخل كلمة السر",
+        "enter_your_new_password": "أدخل كلمة السر الجديدة",
+        "delete_your_account": "حذف الحساب",
+        "delete": "حذف"
     }
 }
