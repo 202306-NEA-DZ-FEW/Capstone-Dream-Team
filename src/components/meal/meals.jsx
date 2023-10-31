@@ -52,29 +52,39 @@ export default function Meals() {
     }, []);
 
     return (
-        <>
+        <div>
             {rest.map((restaurant, index) => (
-                <div className='mt-10 pt-10' key={index}>
-                    <Mealbar
-                        name={restaurant.Name}
-                        current_restaurant_Id={restaurant.current_restaurant_Id}
-                    />
-                    <div className='pt-10 pl-10 pr-20 flex justify-center items-center'>
-                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20'>
+                <div className=' pb-12 pt-3 ' key={index}>
+                    <div>
+                        <Mealbar
+                            name={restaurant.Name}
+                            current_restaurant_Id={
+                                restaurant.current_restaurant_Id
+                            }
+                        />
+                    </div>
+                    <div className='pb-10 pt-5 flex justify-center items-center '>
+                        <div className='grid center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20 md:gap-10 xl:gap-8'>
                             {restaurant.mealDetails
                                 .slice(0, 4)
                                 .map((mealDetail, mealIndex) => (
-                                    <Mealcard
+                                    <div
+                                        className='flex md:mb-10'
                                         key={mealIndex}
-                                        price={mealDetail.price}
-                                        maxQuantity={mealDetail.max_quantity}
-                                        name={mealDetail.name}
-                                    />
+                                    >
+                                        <Mealcard
+                                            price={mealDetail.price}
+                                            maxQuantity={
+                                                mealDetail.max_quantity
+                                            }
+                                            name={mealDetail.name}
+                                        />
+                                    </div>
                                 ))}
                         </div>
                     </div>
                 </div>
             ))}
-        </>
+        </div>
     );
 }
