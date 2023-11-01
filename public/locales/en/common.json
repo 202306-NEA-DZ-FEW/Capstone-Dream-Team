@@ -51,6 +51,25 @@
             "quantityLeft": "Qty Left"
         }
     },
+    "blogPage":{
+        "titleStories":"Stories of Hope: Nourishing Minds, Changing Lives",
+        "sub-textStories":"Explore inspiring stories of hope, transformation, and the power of giving. Our journey takes us through the lives of individuals who inspire change, and together, we can make a difference. Join us in our mission to nourish minds, change lives, and support those in need. Your contribution can help us turn these stories into real-world impact." ,
+        "titleBlogs":"Unlocking Solutions: Understanding the Problems",
+        "sub-textBlogs":"Exploring our collection of insightful articles is the key to understanding the problem, which is half the solution. Our blogs take you through perspectives and ideas illuminating critical issues. Join us as we delve into pressing matters, share knowledge, and rally for a better world. Your engagement, through reading, can turn words into meaningful impact." ,
+        "loadMore": "Load More",
+        "seeMore": "See More",
+        "blogCard":{
+            "readMore":"Read More"
+        },
+        "storyCard":{
+            "readMore":"Read More"
+        },
+        "blog":{
+            "back":"Back",
+            "tags":"Tags",
+            "publishedOn":"Published on"
+        }
+    },
     "settings": {
         "my_account": "My account",
         "settings": "settings",
@@ -84,17 +103,6 @@
         "available_meals": "Available Meals",
         "stock": "In stock"
     },
-    "blogPage": {
-        "title": "Stories of Hope: Nourishing Minds, Changing Lives",
-        "sub-text": "Explore inspiring stories of hope, transformation, and the power of giving. Our journey takes us through the lives of individuals who inspire change, and together, we can make a difference. Join us in our mission to nourish minds, change lives, and support those in need. Your contribution can help us turn these stories into real-world impact.",
-        "BlogCard": {
-            "readMore": "المزيد"
-        },
-        "BlogCardList": {},
-        "StoryCard": {},
-        "StoryCardList": {}
-
-    },
     "history": {
         "History": "History",
         "Doner": "Doner",
@@ -103,6 +111,5 @@
         "Price": "Price",
         "Date": "Date",
         "UsedMeals": "Used Meals"
-
     }
 }
