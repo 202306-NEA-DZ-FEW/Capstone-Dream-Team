@@ -56,5 +56,14 @@
         "show_meals": "Show all meals",
         "available_meals": "Available Meals",
         "stock": "In stock"
+    },
+    "history": {
+        "History": "History",
+        "Doner": "Doner",
+        "Meal": "Meal",
+        "Quantity": "Quantity",
+        "Price": "Price",
+        "Date": "Date",
+        "UsedMeals": "Used Meals"
     }
 }
