@@ -112,7 +112,7 @@ export default function Blogs({ blogs, stories }) {
     );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
     const dataBlogs = [];
     const dataStories = [];
     const q = query(collection(db, "blogs"), where("type", "==", "article"));
