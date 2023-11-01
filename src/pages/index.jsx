@@ -3,9 +3,10 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
 
 import Goals from "@/components/Home/Goals";
+import VideoSection from "@/components/Home/VideoSection";
 
 import Layout from "@/layout/Layout";
-import VideoSection from "@/components/Home/VideoSection";
+
 import Process from "../components/Home/Process";
 import Slider from "../components/Home/Slider";
 
@@ -15,10 +16,12 @@ export default function HomePage() {
     return (
         <>
             <Layout>
-                <Slider></Slider>
-                <Process></Process>
-                <Goals></Goals>
-                <VideoSection></VideoSection>
+                <div className='bg-[#f2f4f4]'>
+                    <Slider></Slider>
+                    <Process></Process>
+                    <Goals></Goals>
+                    <VideoSection></VideoSection>
+                </div>
             </Layout>
         </>
     );

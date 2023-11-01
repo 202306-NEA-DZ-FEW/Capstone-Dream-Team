@@ -1,7 +1,7 @@
 export default function Process() {
     const images = [
         {
-            url: "images/home/process/donate.png",
+            url: "images/home/process/Donate.png",
             text: "Donator buy the coupon in the website ",
         },
         {
