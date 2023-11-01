@@ -65,7 +65,8 @@ export default function Blogs({ blogs, stories }) {
                         </p>
                     </div>
                 )}
-                <hr className='mx-20' />
+                <hr className='mx-auto w-4/5 sm:max-w-xl md:max-w-full lg:max-w-screen-xl' />
+
                 <div className='container mx-auto flex px-5 py-10 items-center justify-center flex-col'>
                     <div className='text-center lg:w-2/3 w-full'>
                         <p className='sm:text-4xl text-4xl mb-4 font-medium p-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-200 via-teal-400 to-teal-600'>

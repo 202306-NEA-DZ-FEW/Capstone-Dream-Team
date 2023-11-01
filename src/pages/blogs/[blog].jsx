@@ -102,8 +102,8 @@ export default function Blog({ blog, similarBlogs }) {
                     </div>
                     {/* Container */}
                 </div>
-            </div>{" "}
-            <hr className='mx-20' />
+            </div>
+            <hr className='mx-auto w-4/5 sm:max-w-xl md:max-w-full lg:max-w-screen-xl' />
             <div>
                 <BlogCardList
                     language={router.locale}
