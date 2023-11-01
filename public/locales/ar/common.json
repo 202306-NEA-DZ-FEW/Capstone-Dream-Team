@@ -69,7 +69,8 @@
             "back":"رجوع",
             "tags":"الكلمات الدلالية",
             "publishedOn":"نشرت يوم"
-        },
+        }
+    },
     "settings": {
         "my_account": "الحساب",
         "settings": "إعدادات",

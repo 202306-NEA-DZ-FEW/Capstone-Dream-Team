@@ -102,8 +102,8 @@ export default function Blog({ blog, similarBlogs }) {
                     </div>
                     {/* Container */}
                 </div>
-            </div>{" "}
-            <hr className='mx-20' />
+            </div>
+            <hr className='mx-auto w-4/5 sm:max-w-xl md:max-w-full lg:max-w-screen-xl' />
             <div>
                 <BlogCardList
                     language={router.locale}
@@ -114,7 +114,7 @@ export default function Blog({ blog, similarBlogs }) {
         </Layout>
     );
 }
-export async function getServerSideProps({ locale, params }) {
+export async function getStaticProps({ locale, params }) {
     const dataBlogs = [];
     const docRef = doc(db, "blogs", params.blog);
     const docSnap = await getDoc(docRef);

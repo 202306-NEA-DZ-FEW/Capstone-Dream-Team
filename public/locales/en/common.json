@@ -68,7 +68,8 @@
             "back":"Back",
             "tags":"Tags",
             "publishedOn":"Published on"
-        },
+        }
+    },
     "settings": {
         "my_account": "My account",
         "settings": "settings",
