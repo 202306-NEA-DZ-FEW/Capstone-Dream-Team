@@ -128,7 +128,7 @@ export async function getStaticPaths() {
     });
     return {
         paths,
-        fallback: true, // Enable ISR for unspecified paths
+        fallback: false, // Enable ISR for unspecified paths
     };
 }
 

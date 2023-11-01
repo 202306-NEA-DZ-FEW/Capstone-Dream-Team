@@ -106,7 +106,7 @@ export default function Story({ story, similarStories }) {
             </div>
             <hr className='mx-auto w-5/6 sm:max-w-xl md:max-w-full lg:max-w-screen-xl' />
             <div className='max-w-3xl mx-auto text-center mt-12'>
-                <h1 className='text-3xl font-bold text-gray-900 leading-tight mb-2 dark:text-white'>
+                <h1 className='text-3l font-bold text-gray-900 leading-tight mb-2 dark:text-white'>
                     Explore These Stories Too
                 </h1>
             </div>
@@ -129,7 +129,7 @@ export async function getStaticPaths() {
     });
     return {
         paths,
-        fallback: true, // Enable ISR for unspecified paths
+        fallback: false, // Enable ISR for unspecified paths
     };
 }
 
