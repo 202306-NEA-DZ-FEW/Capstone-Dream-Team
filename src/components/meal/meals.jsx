@@ -31,6 +31,8 @@ export default function Meals() {
                                 price: mealData.price,
                                 max_quantity: mealData.max_quantity,
                                 name: mealData.name,
+                                description: mealData.description,
+                                id: mealData.id,
                             };
                         });
 
@@ -78,6 +80,7 @@ export default function Meals() {
                                                 mealDetail.max_quantity
                                             }
                                             name={mealDetail.name}
+                                            mealObject={mealDetail}
                                         />
                                     </div>
                                 ))}

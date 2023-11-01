@@ -8,6 +8,8 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
     const [quantity, setQuantity] = useState(1);
     const cartCollection = collection(db, "cart");
 
+    console.log(mealObject);
+
     // Function to handle click on remove button (remove the meal from the cart)
 
     const removeFromCollection = async () => {
@@ -107,12 +109,12 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                     </div>
                 </div>
 
-                <div class='self-center text-center w-[100px]'>
-                    {/* Price */}
+                {/* <div class='self-center text-center w-[100px]'>
+                    Price 
                     <p class='text-gray-800 font-normal text-xl'>
                         ${mealObject.price.toFixed(2)}
                     </p>
-                </div>
+                </div>*/}
 
                 <div class='flex flex-row self-center gap-1 w-[100px] justify-center'>
                     <button

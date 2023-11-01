@@ -38,26 +38,29 @@ function Cart() {
     const { t } = useTranslation("common");
     const [meals, setMeals] = useState([]);
 
-    const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
+    // const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
+
+    const [visitorID, setVisitorID] = useState(null);
+
     useEffect(() => {
         const fetchMeals = async () => {
-            // Function to retrieve the unique identifier from the cookie
-            /* function getCookie(name) {
-   const value = `; ${document.cookie}`;
-   const parts = value.split(`; ${name}=`);
-   if (parts.length === 2) return parts.pop().split(';').shift();
- }
- 
- // Retrieve the unique identifier from the cookie
- const visitorID = getCookie('visitorID');*/
+            //Function to retrieve the unique identifier from the cookie
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(";").shift();
+            }
 
-            const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
+            //Retrieve the unique identifier from the cookie
+            const visitorID = getCookie("visitorID");
+            setVisitorID(visitorID);
+            // const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
 
             if (visitorID) {
                 const cartCollection = collection(db, "cart");
                 const q = query(
                     cartCollection,
-                    where("donorId", "==", visitorID)
+                    where("donor_id", "==", visitorID)
                 );
                 const querySnapshot = await getDocs(q);
                 const mealsData = [];
