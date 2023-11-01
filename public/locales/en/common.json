@@ -111,5 +111,18 @@
         "Price": "Price",
         "Date": "Date",
         "UsedMeals": "Used Meals"
+    },
+    "Navbar":{
+        "home":"Home",
+        "meals":"Meals",
+        "blogs":"Blogs",
+        "restaurant":"Restaurant",
+        "dashboard":"Dashboard ",
+        "signOut":"sign out",
+        "joinUs":"Join us",
+        "signIn":"SignIn",
+        "light mode":"Light mode",
+        "dark mode":"Dark mode",
+        "language":"language"
     }
 }
