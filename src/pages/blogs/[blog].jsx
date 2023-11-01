@@ -114,7 +114,7 @@ export default function Blog({ blog, similarBlogs }) {
         </Layout>
     );
 }
-export async function getStaticProps({ locale, params }) {
+export async function getServerSideProps({ locale, params }) {
     const dataBlogs = [];
     const docRef = doc(db, "blogs", params.blog);
     const docSnap = await getDoc(docRef);
