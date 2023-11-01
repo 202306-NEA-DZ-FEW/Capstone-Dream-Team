@@ -105,5 +105,17 @@
         "BlogCardList": {},
         "StoryCard": {},
         "StoryCardList": {}
+    },"Navbar":{
+        "home":"الرئيسية",
+        "meals":"الوجبات",
+        "blogs":"المقالات",
+        "restaurant":"المطعم",
+        "dashboard":"لوحة التحكم",
+        "signOut":"خروج",
+        "joinUs":"انضم الينا",
+        "signIn":"تسجيل الدخول",
+        "light mode":"وضع الإضاءة",
+        "dark mode":"وضع الظلام",
+        "language":"اللغة"
     }
 }
