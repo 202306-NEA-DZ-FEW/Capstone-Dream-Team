@@ -1,17 +1,20 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 
 export default function Mealcard({ price, maxQuantity, name }) {
+    const { t } = useTranslation("common");
+
     return (
         <div className='mb-10 w-80 h-96 relative'>
             <div className='w-80 h-96 left-0 top-0 absolute bg-transparent' />
             <div className='w-80 h-96 left-0 top-[92px] absolute bg-rose-100 rounded-3xl shadow'>
                 {/**meal name*/}
-                <div className="left-1/2 -translate-x-1/2 top-[160px] absolute justify-center text-black text-2xl font-bold font-['Roboto']">
+                <div className="left-1/2 -translate-x-1/2 top-[160px] absolute justify-center text-black text-xl font-bold font-['Roboto']">
                     {name}
                 </div>
 
                 {/**meal price*/}
-                <div className="left-1/2 -translate-x-1/2 top-[195px] absolute text-neutral-400 text-lg font-semibold font-['Roboto']">
+                <div className="left-1/2 -translate-x-1/2 top-[205px] absolute text-neutral-400 text-lg font-semibold font-['Roboto']">
                     {price} £
                 </div>
 
@@ -22,14 +25,14 @@ export default function Mealcard({ price, maxQuantity, name }) {
                 <div className='w-60 h-11 left-1/2 -translate-x-1/2 top-[329px] absolute'>
                     <div className='w-60 h-11 left-0 top-0 absolute bg-rose-400 rounded-full' />
                     <div className="w-32 h-3.5 left-[57.88px] top-[10.42px] absolute text-center text-black text-xl font-bold font-['Roboto'] leading-relaxed">
-                        Donate (12$)
+                        {t("mealsPage.donate")} £
                     </div>
                 </div>
 
                 {/* Qty */}
                 <div className='mt-[267px] pl-5 pr-5 flex justify-between items-center'>
                     <div className="text-neutral-400 text-base font-medium font-['Roboto']">
-                        In stock: {maxQuantity}
+                        {t("cartPage.card.quantityLeft")}: {maxQuantity}
                     </div>
                     <ul className='w-32 h-8 flex items-center'>
                         <li className='w-9 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex'>
