@@ -4,31 +4,31 @@ exports[`renders correctly 1`] = `
 <div>
   <div>
     <div
-      className=" px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-24 lg:py-12"
+      className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-24 lg:py-12"
     >
       <div
-        className="flex flex-col items-center justify-between lg:flex-row-reverse"
+        className="flex flex-col items-center justify-between lg:flex-row"
       >
         <div
-          className="mb-10 lg:max-w-lg lg:pr-5 lg:mb-0"
+          className="mb-10 lg:max-w-lg lg:px-5 lg:mb-0"
         >
           <div
             className="max-w-xl mb-6"
           >
             <h2
-              className="dark:text-white max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none"
+              className="dark:text-white max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none line-clamp-2"
             >
               Sample Title 1
             </h2>
             <p
-              className="text-base dark:text-white  sm:text-xl text-gray-700 md:text-lg line-clamp-4"
+              className="text-base dark:text-white sm:text-xl text-gray-700 md:text-lg line-clamp-4"
             >
               Sample Content 1
             </p>
             <div>
               <a
                 className="flex "
-                href="/article"
+                href="blogs/1"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
                 onTouchStart={[Function]}
@@ -37,15 +37,15 @@ exports[`renders correctly 1`] = `
                   className="text-base flex text-teal-500 font-bold no-underline hover:underline py-4"
                 >
                   <span>
-                    readMore
+                    blogPage.storyCard.readMore
                   </span>
                   <svg
-                    class="w-4 h-4 ml-1 mt-1"
+                    className="w-4 h-4 ml-1 mt-1"
                     fill="none"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -74,31 +74,31 @@ exports[`renders correctly 1`] = `
   </div>
   <div>
     <div
-      className=" px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-24 lg:py-12"
+      className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-24 lg:py-12"
     >
       <div
-        className="flex flex-col items-center justify-between lg:flex-row-reverse"
+        className="flex flex-col items-center justify-between lg:flex-row"
       >
         <div
-          className="mb-10 lg:max-w-lg lg:pr-5 lg:mb-0"
+          className="mb-10 lg:max-w-lg lg:px-5 lg:mb-0"
         >
           <div
             className="max-w-xl mb-6"
           >
             <h2
-              className="dark:text-white max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none"
+              className="dark:text-white max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none line-clamp-2"
             >
               Sample Title 2
             </h2>
             <p
-              className="text-base dark:text-white  sm:text-xl text-gray-700 md:text-lg line-clamp-4"
+              className="text-base dark:text-white sm:text-xl text-gray-700 md:text-lg line-clamp-4"
             >
               Sample Content 2
             </p>
             <div>
               <a
                 className="flex "
-                href="/article"
+                href="blogs/2"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
                 onTouchStart={[Function]}
@@ -107,15 +107,15 @@ exports[`renders correctly 1`] = `
                   className="text-base flex text-teal-500 font-bold no-underline hover:underline py-4"
                 >
                   <span>
-                    readMore
+                    blogPage.storyCard.readMore
                   </span>
                   <svg
-                    class="w-4 h-4 ml-1 mt-1"
+                    className="w-4 h-4 ml-1 mt-1"
                     fill="none"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     viewBox="0 0 24 24"
                   >
                     <path

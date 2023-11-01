@@ -10,23 +10,17 @@ import StoryCardList from "@/components/Blog/StoryCard/storyCardList";
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
 
-export default function Blog({ blogs, stories }) {
+export default function Blogs({ blogs, stories }) {
     const { t } = useTranslation("common");
     const router = useRouter();
     const [storiesNum, setStoriesNum] = useState(4);
     const [blogsNum, setBlogsNum] = useState(6);
-
     const showMoreStories = () => {
         setStoriesNum(storiesNum + 2); // Show all stories when the button is clicked
     };
-    const showLessStories = () => {
-        setStoriesNum(4); // Show all stories when the button is clicked
-    };
+
     const showMoreBlogs = () => {
-        setStoriesNum(storiesNum + 3); // Show all stories when the button is clicked
-    };
-    const showLessBlogs = () => {
-        setStoriesNum(6); // Show all stories when the button is clicked
+        setBlogsNum(blogsNum + 3); // Show all stories when the button is clicked
     };
     return (
         <Layout>
@@ -48,18 +42,22 @@ export default function Blog({ blogs, stories }) {
                 />
                 {storiesNum < stories.length && (
                     <div className='flex flex-row-reverse justify-center'>
-                        <p className='text-base flex text-teal-500 font-bold no-underline hover:underline py-5 px-24'>
+                        <p className='text-base flex text-teal-500 font-bold no-underline hover:underline pb-5 px-24'>
                             <span onClick={showMoreStories}>
                                 {t("blogPage.loadMore")}
                             </span>
                             <svg
-                                class='w-4 h-4 ml-1 mt-1'
+                                className={`w-4 h-4 ${
+                                    router.locale === "en"
+                                        ? "ml-1 mt-1"
+                                        : "mr-1 mt-2"
+                                } `}
                                 viewBox='0 0 24 24'
                                 stroke='currentColor'
-                                stroke-width='2'
+                                strokeWidth='2'
                                 fill='none'
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
                             >
                                 <path d='M12 5v14'></path>
                                 <path d='M19 12l-7 7-7-7'></path>
@@ -85,18 +83,22 @@ export default function Blog({ blogs, stories }) {
                 />
                 {blogsNum < blogs.length && (
                     <div className='flex flex-row-reverse justify-center '>
-                        <p className='text-base flex text-teal-500 font-bold no-underline hover:underline py-5 px-24'>
+                        <p className='text-base flex text-teal-500 font-bold no-underline hover:underline pb-5 px-24'>
                             <span onClick={showMoreBlogs}>
                                 {t("blogPage.loadMore")}
                             </span>
                             <svg
-                                class='w-4 h-4 ml-1 mt-1'
+                                className={`w-4 h-4 ${
+                                    router.locale === "en"
+                                        ? "ml-1 mt-1"
+                                        : "mr-1 mt-2"
+                                }  `}
                                 viewBox='0 0 24 24'
                                 stroke='currentColor'
-                                stroke-width='2'
+                                strokeWidth='2'
                                 fill='none'
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
                             >
                                 <path d='M12 5v14'></path>
                                 <path d='M19 12l-7 7-7-7'></path>
@@ -114,14 +116,13 @@ export async function getStaticProps({ locale }) {
     const dataStories = [];
     const q = query(collection(db, "blogs"), where("type", "==", "article"));
     const p = query(collection(db, "blogs"), where("type", "==", "story"));
-
     const queryBlog = await getDocs(q);
     const queryStory = await getDocs(p);
     queryBlog.forEach((doc) => {
-        dataBlogs.push(doc.data());
+        dataBlogs.push({ id: doc.id, data: doc.data() });
     });
     queryStory.forEach((doc) => {
-        dataStories.push(doc.data());
+        dataStories.push({ id: doc.id, data: doc.data() });
     });
     return {
         props: {

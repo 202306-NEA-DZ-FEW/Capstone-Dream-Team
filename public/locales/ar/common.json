@@ -59,16 +59,13 @@
         "loadMore": "تحميل المزيد",
         "seeMore": "عرض المزيد",
         "BlogCard":{
-        "readMore":"المزيد"
+        "readMore":"اقرأ المزيد"
         },
-        "BlogCardList":{
-
+        "storyCard":{
+            "readMore":"اقرأ المزيد"
         },
-        "StoryCard":{
-
-        },
-        "StoryCardList":{
-
+        "blog":{
+            "back":"رجوع"
         }
     }
 }

@@ -60,15 +60,12 @@
         "seeMore": "See More",
         "blogCard":{
             "readMore":"Read More"
-                },
-        "blogCardList":{
-
         },
         "storyCard":{
-
+            "readMore":"Read More"
         },
-        "storyCardList":{
-
+        "blog":{
+            "back":"Back"
         }
     }
 }

@@ -5,17 +5,22 @@ import StoryCardList from "../storyCardList";
 import i18n from "../../../../util/i18n";
 const stories = [
     {
-        title: "Sample Title 1",
-        content: "Sample Content 1",
-        publish_date: "2023-10-30",
+        id: "1",
+        data: {
+            title: "Sample Title 1",
+            content: "Sample Content 1",
+            publish_date: "2023-10-30",
+        },
     },
     {
-        title: "Sample Title 2",
-        content: "Sample Content 2",
-        publish_date: "2023-10-31",
+        id: "2",
+        data: {
+            title: "Sample Title 2",
+            content: "Sample Content 2",
+            publish_date: "2023-10-31",
+        },
     },
 ];
-
 it("renders correctly", () => {
     const tree = renderer
         .create(
