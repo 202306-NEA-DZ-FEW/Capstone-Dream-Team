@@ -93,5 +93,16 @@
         "BlogCardList": {},
         "StoryCard": {},
         "StoryCardList": {}
+
+    },
+    "history": {
+        "History": "History",
+        "Doner": "Doner",
+        "Meal": "Meal",
+        "Quantity": "Quantity",
+        "Price": "Price",
+        "Date": "Date",
+        "UsedMeals": "Used Meals"
+
     }
 }
