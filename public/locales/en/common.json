@@ -65,7 +65,9 @@
             "readMore":"Read More"
         },
         "blog":{
-            "back":"Back"
+            "back":"Back",
+            "tags":"Tags",
+            "publishedOn":"Published on"
         }
     }
 }
