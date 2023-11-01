@@ -57,6 +57,16 @@
         "available_meals": "Available Meals",
         "stock": "In stock"
     },
+    "blogPage": {
+        "title": "Stories of Hope: Nourishing Minds, Changing Lives",
+        "sub-text": "Explore inspiring stories of hope, transformation, and the power of giving. Our journey takes us through the lives of individuals who inspire change, and together, we can make a difference. Join us in our mission to nourish minds, change lives, and support those in need. Your contribution can help us turn these stories into real-world impact.",
+        "BlogCard": {
+            "readMore": "المزيد"
+        },
+        "BlogCardList": {},
+        "StoryCard": {},
+        "StoryCardList": {}
+    },
     "history": {
         "History": "History",
         "Doner": "Doner",
