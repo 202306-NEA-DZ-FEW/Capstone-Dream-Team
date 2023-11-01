@@ -65,7 +65,7 @@ export default function Blogs({ blogs, stories }) {
                         </p>
                     </div>
                 )}
-                <hr className='mx-auto w-4/5 sm:max-w-xl md:max-w-full lg:max-w-screen-xl' />
+                <hr className='mx-auto w-5/6 sm:max-w-xl md:max-w-full lg:max-w-screen-xl' />
 
                 <div className='container mx-auto flex px-5 py-10 items-center justify-center flex-col'>
                     <div className='text-center lg:w-2/3 w-full'>
@@ -112,7 +112,7 @@ export default function Blogs({ blogs, stories }) {
     );
 }
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
     const dataBlogs = [];
     const dataStories = [];
     const q = query(collection(db, "blogs"), where("type", "==", "article"));

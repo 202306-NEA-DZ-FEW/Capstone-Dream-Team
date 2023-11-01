@@ -17,10 +17,10 @@ import BlogCardList from "@/components/Blog/BlogCard/blogCardList";
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
 
-export default function Blog({ blog, similarBlogs }) {
+export default function Story({ story, similarStories }) {
     const { t } = useTranslation("common");
     const router = useRouter();
-    const paragraphs = blog.content.split("\n\n");
+    const paragraphs = story.content.split("\n\n");
     return (
         <Layout>
             {/* Container */}
@@ -41,10 +41,11 @@ export default function Blog({ blog, similarBlogs }) {
                             </Link>
                         </p>
                         <h1 className='dark:text-white font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl'>
-                            {blog.title}
+                            {story.title}
                         </h1>
                         <p className='dark:text-white text-sm md:text-base font-normal text-gray-600'>
-                            {t("blogPage.blog.publishedOn")} {blog.publish_date}
+                            {t("blogPage.blog.publishedOn")}{" "}
+                            {story.publish_date}
                         </p>
                     </div>
                     <div className='py-3'>
@@ -73,7 +74,7 @@ export default function Blog({ blog, similarBlogs }) {
                     } py-6`}
                 >
                     {t("blogPage.blog.tags")}:
-                    {blog.tags.map((tag, index) => (
+                    {story.tags.map((tag, index) => (
                         <div className='flex' key={index}>
                             <p
                                 href='#'
@@ -83,7 +84,7 @@ export default function Blog({ blog, similarBlogs }) {
                             >
                                 {tag}
                             </p>
-                            {index < blog.tags.length - 1 ? ", " : ". "}
+                            {index < story.tags.length - 1 ? ", " : ". "}
                         </div>
                     ))}
                 </div>
@@ -97,42 +98,60 @@ export default function Blog({ blog, similarBlogs }) {
                     />
                     <div className='flex-1 px-2 pt-1'>
                         <p className='text-base font-bold text-base md:text-xl leading-none mb-2'>
-                            {blog.author}
+                            {story.author}
                         </p>
                     </div>
                     {/* Container */}
                 </div>
             </div>
-            <hr className='mx-auto w-4/5 sm:max-w-xl md:max-w-full lg:max-w-screen-xl' />
+            <hr className='mx-auto w-5/6 sm:max-w-xl md:max-w-full lg:max-w-screen-xl' />
+            <div className='max-w-3xl mx-auto text-center mt-12'>
+                <h1 className='text-3xl font-bold text-gray-900 leading-tight mb-2 dark:text-white'>
+                    Explore These Stories Too
+                </h1>
+            </div>
             <div>
                 <BlogCardList
                     language={router.locale}
-                    blogs={similarBlogs}
+                    blogs={similarStories}
                     numToShow={3}
                 />
             </div>
         </Layout>
     );
 }
-export async function getServerSideProps({ locale, params }) {
-    const dataBlogs = [];
-    const docRef = doc(db, "blogs", params.blog);
+export async function getStaticPaths() {
+    const paths = [];
+    const q = query(collection(db, "blogs"), where("type", "==", "story"));
+    const queryStory = await getDocs(q);
+    queryStory.forEach((doc) => {
+        paths.push({ params: { story: doc.id } });
+    });
+    return {
+        paths,
+        fallback: true, // Enable ISR for unspecified paths
+    };
+}
+
+export async function getStaticProps({ locale, params }) {
+    const dataStories = [];
+    const docRef = doc(db, "blogs", params.story);
     const docSnap = await getDoc(docRef);
-    const blog = docSnap.data();
+    const story = docSnap.data();
     const q = query(
         collection(db, "blogs"),
-        where("type", "==", "article"),
-        where("tags", "array-contains-any", blog.tags)
+        where("tags", "array-contains-any", story.tags)
     );
-    const queryBlog = await getDocs(q);
-    queryBlog.forEach((doc) => {
-        dataBlogs.push({ id: doc.id, data: doc.data() });
+    const queryStory = await getDocs(q);
+    queryStory.forEach((doc) => {
+        if (params.story != doc.id)
+            dataStories.push({ id: doc.id, data: doc.data() });
     });
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
-            blog: blog,
-            similarBlogs: dataBlogs,
+            story: story,
+            similarStories: dataStories,
         },
     };
 }

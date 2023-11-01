@@ -25,7 +25,7 @@ export default function BlogCard({ blog, language }) {
             </div>
             <div className='flex justify-between items-center'>
                 <Link
-                    href={`/blogs/${blog.id}`}
+                    href={`/blogs/blog/${blog.id}`}
                     className='text-teal-500 inline-flex items-center md:mb-2 lg:mb-0'
                 >
                     <span className='no-underline hover:underline'>

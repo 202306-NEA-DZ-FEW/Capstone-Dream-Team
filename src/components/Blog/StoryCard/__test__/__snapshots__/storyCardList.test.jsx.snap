@@ -28,7 +28,7 @@ exports[`renders correctly 1`] = `
             <div>
               <a
                 className="flex "
-                href="blogs/1"
+                href="blogs/story/1"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
                 onTouchStart={[Function]}
@@ -98,7 +98,7 @@ exports[`renders correctly 1`] = `
             <div>
               <a
                 className="flex "
-                href="blogs/2"
+                href="blogs/story/2"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
                 onTouchStart={[Function]}

@@ -33,7 +33,7 @@ exports[`renders correctly 1`] = `
   >
     <a
       className="text-teal-500 inline-flex items-center md:mb-2 lg:mb-0"
-      href="/blogs/1"
+      href="/blogs/blog/1"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onTouchStart={[Function]}

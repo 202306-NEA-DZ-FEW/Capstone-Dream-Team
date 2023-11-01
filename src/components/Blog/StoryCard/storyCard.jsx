@@ -25,7 +25,10 @@ export default function StoryCard({ story, index, language }) {
                             {story.data.content}
                         </p>
                         <div>
-                            <Link href={`blogs/${story.id}`} className='flex '>
+                            <Link
+                                href={`blogs/story/${story.id}`}
+                                className='flex '
+                            >
                                 <p className='text-base flex text-teal-500 font-bold no-underline hover:underline py-4'>
                                     <span>
                                         {t("blogPage.storyCard.readMore")}
