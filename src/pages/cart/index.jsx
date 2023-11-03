@@ -187,6 +187,7 @@ function Cart() {
                             <Card
                                 mealObject={meal}
                                 onUpdateQuantity={updateQuantity}
+                                onRemoveFromCart={removeFromCart}
                                 key={meal.id}
                             />
                         ))

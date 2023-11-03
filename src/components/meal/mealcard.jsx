@@ -2,7 +2,13 @@ import React from "react";
 import { useTranslation } from "next-i18next";
 import AddToCartButton from "../Cart/addToCartButton";
 
-export default function Mealcard({ price, maxQuantity, name, mealObject }) {
+export default function Mealcard({
+    price,
+    maxQuantity,
+    name,
+    image,
+    mealObject,
+}) {
     const { t } = useTranslation("common");
 
     return (
@@ -69,7 +75,7 @@ export default function Mealcard({ price, maxQuantity, name, mealObject }) {
             {/** meal image */}
             <img
                 className='w-60 h-60 left-1/2 -translate-x-1/2 top-0 absolute rounded-full'
-                src='/images/meals/italian-cuisine-pasta-organic-food-restaurant-foods.jpg'
+                src={image}
             />
         </div>
     );

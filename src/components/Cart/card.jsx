@@ -21,7 +21,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                 docData.price === mealObject.price &&
                 docData.description === mealObject.description &&
                 docData.id === mealObject.id &&
-                docData.donorId === mealObject.donorId &&
+                docData.donor_id === mealObject.donor_id &&
                 docData.restaurantId === mealObject.restaurantId
             ) {
                 deleteDoc(doc(db, "cart", docSnapshot.id))
@@ -44,7 +44,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
         if (
             !isNaN(newQuantity) &&
             newQuantity >= 1 &&
-            newQuantity <= mealObject.mealsLeft
+            newQuantity <= mealObject.maxmeals
         ) {
             setQuantity(newQuantity);
 
@@ -55,7 +55,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
     const totalMealPrice = mealObject.price * quantity;
 
     function increament() {
-        if (quantity <= mealObject.mealsLeft) {
+        if (quantity <= mealObject.maxmeals) {
             const newQuantity = quantity + 1;
 
             setQuantity(newQuantity);
@@ -88,33 +88,33 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                     <div class='w-28 h-28'>
                         <img
                             class='w-full h-full'
-                            src={mealObject.imageUrl}
+                            src={mealObject.image}
                             alt='image'
                         />
                     </div>
                     <div class='flex flex-col gap-1 w-60'>
                         <p class='text-lg text-gray-800 font-semibold'>
-                            {mealObject.name}
+                            {mealObject.description}
                         </p>
-                        <p class='text-xs text-gray-600 font-semibold'>
+                        {/* <p class='text-xs text-gray-600 font-semibold'>
                             {t("cartPage.card.restaurant")}:{" "}
                             <span class='font-normal'>{mealObject.name}</span>
-                        </p>
+                        </p>*/}
                         <p class='text-xs text-gray-600 font-semibold'>
                             {t("cartPage.card.quantityLeft")}:{" "}
                             <span class='font-normal'>
-                                {mealObject.mealsLeft}
+                                {mealObject.maxmeals}
                             </span>
                         </p>
                     </div>
                 </div>
 
-                {/* <div class='self-center text-center w-[100px]'>
-                    Price 
+                <div class='self-center text-center w-[100px]'>
+                    {/* Price */}
                     <p class='text-gray-800 font-normal text-xl'>
                         ${mealObject.price.toFixed(2)}
                     </p>
-                </div>*/}
+                </div>
 
                 <div class='flex flex-row self-center gap-1 w-[100px] justify-center'>
                     <button
