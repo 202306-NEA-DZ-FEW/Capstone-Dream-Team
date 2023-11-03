@@ -1,6 +1,6 @@
 import {
     collection,
-    setDoc,
+    addDoc,
     deleteDoc,
     doc,
     getDocs,
@@ -13,7 +13,9 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function AddToCartButton({ mealObject }) {
+    //cookie ; uid
     const [visitorID, setVisitorID] = useState(null);
+
     const [isInCart, setIsInCart] = useState(false);
 
     // Referance to "cart" collection in firebase
@@ -118,7 +120,7 @@ function AddToCartButton({ mealObject }) {
         } else {
             // If the item is not in the cart, add it
 
-            await setDoc(doc(db, "cart"), {
+            await addDoc(collection(db, "cart"), {
                 ...mealObject,
                 donor_id: visitorID,
             });
@@ -132,9 +134,11 @@ function AddToCartButton({ mealObject }) {
         <div>
             <button
                 onClick={toggleCart}
-                className={`${isInCart ? "bg-red-500" : "bg-blue-500"}`}
+                className={`w-32 h-3.5 left-[57.88px] top-[10.42px] absolute text-center text-black text-xl font-bold font-['Roboto'] leading-relaxed ${
+                    isInCart ? "bg-red-500" : "bg-blue-500"
+                }`}
             >
-                {isInCart ? "Remove from Cart" : "Add to Cart"}
+                {isInCart ? "Cancel" : `Donate....`}
             </button>
         </div>
     );

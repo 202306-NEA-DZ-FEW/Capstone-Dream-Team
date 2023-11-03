@@ -1,7 +1,14 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
+import AddToCartButton from "../Cart/addToCartButton";
 
-export default function Mealcard({ price, maxQuantity, name }) {
+export default function Mealcard({
+    price,
+    maxQuantity,
+    name,
+    image,
+    mealObject,
+}) {
     const { t } = useTranslation("common");
 
     return (
@@ -22,11 +29,16 @@ export default function Mealcard({ price, maxQuantity, name }) {
                 <div className='w-72 h-px left-1/2 -translate-x-1/2 top-[243px] absolute border-2 border-neutral-400 border-opacity-20'></div>
 
                 {/* the donate button */}
-                <div className='w-60 h-11 left-1/2 -translate-x-1/2 top-[329px] absolute'>
+                {/* <div className='w-60 h-11 left-1/2 -translate-x-1/2 top-[329px] absolute'>
                     <div className='w-60 h-11 left-0 top-0 absolute bg-rose-400 rounded-full' />
                     <div className="w-32 h-3.5 left-[57.88px] top-[10.42px] absolute text-center text-black text-xl font-bold font-['Roboto'] leading-relaxed">
                         {t("mealsPage.donate")} £
+                        <AddToCartButton mealObject={{ name: { name }, price: { price }, description: ' .description.' }} /> 
+
                     </div>
+                </div> */}
+                <div className='w-60 h-11 left-1/2 -translate-x-1/2 top-[329px] absolute'>
+                    <AddToCartButton mealObject={mealObject} />
                 </div>
 
                 {/* Qty */}
@@ -63,7 +75,7 @@ export default function Mealcard({ price, maxQuantity, name }) {
             {/** meal image */}
             <img
                 className='w-60 h-60 left-1/2 -translate-x-1/2 top-0 absolute rounded-full'
-                src='/images/meals/italian-cuisine-pasta-organic-food-restaurant-foods.jpg'
+                src={image}
             />
         </div>
     );

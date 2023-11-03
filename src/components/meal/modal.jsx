@@ -18,11 +18,11 @@ const Modal = ({ currentRestaurantId }) => {
 
     useEffect(() => {
         async function fetchMeals() {
-            const mealCollection = collection(db, "meal");
+            const mealCollection = collection(db, "meals");
             try {
                 const mealQuery = query(
                     mealCollection,
-                    where("restaurant_id", "==", currentRestaurantId)
+                    where("restaurantId", "==", currentRestaurantId)
                 );
                 const mealSnapshot = await getDocs(mealQuery);
 
@@ -30,8 +30,11 @@ const Modal = ({ currentRestaurantId }) => {
                     const mealData = mealDoc.data();
                     return {
                         price: mealData.price,
-                        maxQuantity: mealData.max_quantity,
+                        maxmeals: mealData.maxMeals,
                         name: mealData.name,
+                        image: mealData.imageUrl,
+                        description: mealData.name,
+                        mealDetails: mealData,
                     };
                 });
 
@@ -111,9 +114,11 @@ const Modal = ({ currentRestaurantId }) => {
                                                     key={mealIndex}
                                                     price={mealDetail.price}
                                                     maxQuantity={
-                                                        mealDetail.maxQuantity
+                                                        mealDetail.maxmeals
                                                     }
                                                     name={mealDetail.name}
+                                                    image={mealDetail.image}
+                                                    mealObject={mealDetail}
                                                 />
                                             </div>
                                         ))}
