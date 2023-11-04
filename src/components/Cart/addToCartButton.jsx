@@ -1,16 +1,17 @@
 import {
-    collection,
     addDoc,
+    collection,
     deleteDoc,
     doc,
     getDocs,
+    onSnapshot,
     query,
     where,
-    onSnapshot,
 } from "firebase/firestore";
-import { db } from "@/util/firebase";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+
+import { db } from "@/util/firebase";
 
 function AddToCartButton({ mealObject }) {
     //cookie ; uid

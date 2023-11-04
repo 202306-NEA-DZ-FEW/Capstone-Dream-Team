@@ -1,8 +1,8 @@
 //import Mealcard from "./mealcard";
-import React, { useState } from "react";
 //import { collection, query, getDocs, where } from "firebase/firestore";
 //import { db } from "../../util/firebase"; // Replace with your Firebase config import
 import { useTranslation } from "next-i18next";
+import React, { useState } from "react";
 
 {
     /* this compo must be imported in the card component so it popup once the Donate button is clicked */
