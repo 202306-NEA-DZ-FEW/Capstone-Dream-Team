@@ -59,7 +59,7 @@ function AddToCartButton({ mealObject }) {
                 where("name", "==", mealObject.name),
                 where("price", "==", mealObject.price),
                 where("description", "==", mealObject.description),
-                where("donor_id", "==", visitorID)
+                where("donorId", "==", visitorID)
             );
 
             const querySnapshot = await getDocs(q);
@@ -100,7 +100,7 @@ function AddToCartButton({ mealObject }) {
                 where("name", "==", mealObject.name),
                 where("price", "==", mealObject.price),
                 where("description", "==", mealObject.description),
-                where("donor_id", "==", visitorID)
+                where("donorId", "==", visitorID)
             );
 
             const querySnapshot = await getDocs(q);
@@ -122,7 +122,7 @@ function AddToCartButton({ mealObject }) {
 
             await addDoc(collection(db, "cart"), {
                 ...mealObject,
-                donor_id: visitorID,
+                donorId: visitorID,
             });
 
             console.log("Document added to cart successfully!");

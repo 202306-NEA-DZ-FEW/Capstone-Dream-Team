@@ -21,7 +21,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                 docData.price === mealObject.price &&
                 docData.description === mealObject.description &&
                 docData.id === mealObject.id &&
-                docData.donor_id === mealObject.donor_id &&
+                docData.donorId === mealObject.donorId &&
                 docData.restaurantId === mealObject.restaurantId
             ) {
                 deleteDoc(doc(db, "cart", docSnapshot.id))
@@ -44,7 +44,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
         if (
             !isNaN(newQuantity) &&
             newQuantity >= 1 &&
-            newQuantity <= mealObject.maxmeals
+            newQuantity <= mealObject.maxMeals
         ) {
             setQuantity(newQuantity);
 
@@ -55,7 +55,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
     const totalMealPrice = mealObject.price * quantity;
 
     function increament() {
-        if (quantity <= mealObject.maxmeals) {
+        if (quantity <= mealObject.maxMeals) {
             const newQuantity = quantity + 1;
 
             setQuantity(newQuantity);
@@ -88,7 +88,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                     <div class='w-28 h-28'>
                         <img
                             class='w-full h-full'
-                            src={mealObject.image}
+                            src={mealObject.imageUrl}
                             alt='image'
                         />
                     </div>
@@ -103,7 +103,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                         <p class='text-xs text-gray-600 font-semibold'>
                             {t("cartPage.card.quantityLeft")}:{" "}
                             <span class='font-normal'>
-                                {mealObject.maxmeals}
+                                {mealObject.maxMeals}
                             </span>
                         </p>
                     </div>

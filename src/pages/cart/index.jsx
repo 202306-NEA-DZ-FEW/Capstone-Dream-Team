@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Layout from "@/layout/Layout";
+import Checkout from "@/components/Cart/checkout";
 
 function Cart() {
     //const [mealObject, setMealObject] = useState({});
@@ -60,7 +61,7 @@ function Cart() {
                 const cartCollection = collection(db, "cart");
                 const q = query(
                     cartCollection,
-                    where("donor_id", "==", visitorID)
+                    where("donorId", "==", visitorID)
                 );
                 const querySnapshot = await getDocs(q);
                 const mealsData = [];
@@ -238,7 +239,8 @@ function Cart() {
                         </div>
                         <div class='flex gap-2'>
                             <button class='transition-colors text-sm bg-teal-500 hover:bg-purple-700 p-2 rounded-sm w-full text-white text-hover shadow-md'>
-                                {t("cartPage.cart.donate")}
+                                {/* {t("cartPage.cart.donate")} */}
+                                <Checkout />
                             </button>
                         </div>
                     </div>
