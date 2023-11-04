@@ -4,9 +4,9 @@ import AddToCartButton from "../Cart/addToCartButton";
 
 export default function Mealcard({
     price,
-    maxQuantity,
+    maxMeals,
     name,
-    image,
+    imageUrl,
     mealObject,
 }) {
     const { t } = useTranslation("common");
@@ -44,7 +44,7 @@ export default function Mealcard({
                 {/* Qty */}
                 <div className='mt-[267px] pl-5 pr-5 flex justify-between items-center'>
                     <div className="text-neutral-400 text-base font-medium font-['Roboto']">
-                        {t("cartPage.card.quantityLeft")}: {maxQuantity}
+                        {t("cartPage.card.quantityLeft")}: {maxMeals}
                     </div>
                     <ul className='w-32 h-8 flex items-center'>
                         <li className='w-9 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex'>
@@ -75,7 +75,7 @@ export default function Mealcard({
             {/** meal image */}
             <img
                 className='w-60 h-60 left-1/2 -translate-x-1/2 top-0 absolute rounded-full'
-                src={image}
+                src={imageUrl}
             />
         </div>
     );

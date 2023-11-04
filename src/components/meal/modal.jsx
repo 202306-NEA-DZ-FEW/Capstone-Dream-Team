@@ -30,10 +30,11 @@ const Modal = ({ currentRestaurantId }) => {
                     const mealData = mealDoc.data();
                     return {
                         price: mealData.price,
-                        maxmeals: mealData.maxMeals,
+                        maxMeals: mealData.maxMeals,
                         name: mealData.name,
-                        image: mealData.imageUrl,
                         description: mealData.name,
+                        imageUrl: mealData.imageUrl,
+                        restaurantId: mealData.restaurantId,
                         mealDetails: mealData,
                     };
                 });
@@ -113,11 +114,13 @@ const Modal = ({ currentRestaurantId }) => {
                                                 <Mealcard
                                                     key={mealIndex}
                                                     price={mealDetail.price}
-                                                    maxQuantity={
-                                                        mealDetail.maxmeals
+                                                    maxMeals={
+                                                        mealDetail.maxMeals
                                                     }
                                                     name={mealDetail.name}
-                                                    image={mealDetail.image}
+                                                    imageUrl={
+                                                        mealDetail.imageUrl
+                                                    }
                                                     mealObject={mealDetail}
                                                 />
                                             </div>

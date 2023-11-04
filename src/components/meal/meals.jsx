@@ -29,11 +29,11 @@ export default function Meals() {
                             const mealData = mealDoc.data();
                             return {
                                 price: mealData.price,
-                                maxmeals: mealData.maxMeals,
+                                maxMeals: mealData.maxMeals,
                                 name: mealData.name,
                                 description: mealData.name,
-                                image: mealData.imageUrl,
-                                //id: mealData.id,
+                                imageUrl: mealData.imageUrl,
+                                restaurantId: mealData.restaurantId,
                             };
                         });
 
@@ -77,9 +77,9 @@ export default function Meals() {
                                     >
                                         <Mealcard
                                             price={mealDetail.price}
-                                            maxQuantity={mealDetail.maxmeals}
+                                            maxMeals={mealDetail.maxMeals}
                                             name={mealDetail.name}
-                                            image={mealDetail.image}
+                                            imageUrl={mealDetail.imageUrl}
                                             mealObject={mealDetail}
                                         />
                                     </div>
