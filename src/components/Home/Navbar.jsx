@@ -24,7 +24,7 @@ export default function Navbar({ locale }) {
     const [clicked, setClicked] = useState(false);
 
     const router = useRouter();
-    const { t } = useTranslation();
+    const { t } = useTranslation("common");
 
     // Function to change the language
     const changeLanguage = (newLanguage) => {
@@ -57,217 +57,6 @@ export default function Navbar({ locale }) {
     };
     return (
         <>
-            {/* <nav className='sticky z-10 w-full h-10 lg:h-16 top-0 shadow bg-white backdrop-filter backdrop-blur-lg backdrop-opacity-25 opacity-80 dark:bg-gradient-to-r dark:from-[#101d31]  dark:via-[#730073]  dark:to-[#3e3e3e]'>
-                <div className='flex w-full h-full justify-between items-center text-sm'>
-                    <div className='flex justify-center w-1/3 h-full '>
-                        {currentTheme === "light" ? (
-                            <div className='flex w-1/3 items-center cursor-pointer'>
-                                <Link href='/'>
-                                    <Image
-                                        src='/images/logo.svg'
-                                        alt='logo'
-                                        width={60}
-                                        height={70}
-                                    ></Image>
-                                </Link>
-                                <Link href='/'>
-                                    <Image
-                                        src='/images/logoName.svg'
-                                        alt='logo'
-                                        width={120}
-                                        height={80}
-                                    ></Image>
-                                </Link>
-                            </div>
-                        ) : (
-                            <div className='flex justify-center w-1/3 h-full  cursor-pointer'>
-                                <Link href='/'>
-                                    <Image
-                                        src='/images/darklogo.svg'
-                                        alt='logo'
-                                        width={67}
-                                        height={65}
-                                    ></Image>
-                                </Link>
-                                <Link href='/'>
-                                    <Image
-                                        src='/images/darklogoName.svg'
-                                        alt='logo'
-                                        width={120}
-                                        height={80}
-                                    ></Image>
-                                </Link>
-                            </div>
-                        )}
-
-                        <div className='flex w-1/3 h-full justify-center items-center text-[10px] md:text-[14px] space-x-4  md:space-x-8 '>
-                            <Link
-                                className='py-2 px-1 ml-4 hover:border-b-2 hover:border-[#67b99a] hover:text-[#67b99a] active:border-b-2 active:border-[#036666] active:text-[#036666]'
-                                href='/'
-                            >
-                                Home
-                            </Link>
-                            <Link
-                                className='py-2 px-1 hover:border-b-2 hover:border-[#67b99a] hover:text-[#67b99a] active:border-b-2 active:border-[#036666] active:text-[#036666]'
-                                href='/'
-                            >
-                                Blogs
-                            </Link>
-                            <Link
-                                className='py-2 px-1 hover:border-b-2 hover:border-[#67b99a] hover:text-[#67b99a] active:border-b-2 active:border-[#036666] active:text-[#036666]'
-                                href='/meals'
-                            >
-                                Meals
-                            </Link>
-                            <div className="md:pb-9 py-2 px-1">
-                            <div className="flex-col absolute  ">
-                            <div
-                                onClick={handleDropdown}
-                                className='z-20 p-1 dark:text-white hover:border-b-2  hover:border-[#67b99a] hover:text-[#67b99a] '
-                            >
-                                <div className='flex gap-0 z-15'>
-                                   join us
-                                    {dropdownOpen === false ? (
-                                        <IoIosArrowDropdownCircle className='pt-1 self-end'></IoIosArrowDropdownCircle>
-                                    ) : (
-                                        <BiSolidUpArrowCircle></BiSolidUpArrowCircle>
-                                    )} 
-                                </div>
-                            </div>
-
-                            {dropdownOpen === true && auth.currentUser && (
-                                <div
-                                    className={`${
-                                        locale === "en"
-                                            ? " py-2 w-46 bg-white rounded-sm shadow-xl z-20"
-                                            : "  py-2 w-46 bg-white rounded-sm shadow-xl z-20"
-                                    }`}
-                                >
-                                    <div>
-                                        <Link
-                                            href='/admin-dashboard'
-                                            className={`${
-                                                locale === "en"
-                                                    ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                    : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                            }`}
-                                        >
-                                            Dashboard
-                                        </Link>
-                                        <button
-                                            onClick={handleLogout}
-                                            className={`${
-                                                locale === "en"
-                                                    ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                    : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                            }`}
-                                        >
-                                            Sign Out
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
-                            {dropdownOpen === true && !auth.currentUser && (
-                                <div
-                                    className={`${
-                                        locale === "en"
-                                            ? "absolute right-[80px] mt-2 py-2 w-46 bg-white rounded-sm shadow-xl z-20"
-                                            : "absolute left-[80px] mt-2 py-2 w-46 bg-white rounded-sm shadow-xl z-20"
-                                    }`}
-                                >
-                                    <Link
-                                        href='/signup'
-                                        className={`${
-                                            locale === "en"
-                                                ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                        }`}
-                                    >
-                                        signIn
-                                    </Link>
-                                </div>
-                            )}
-                        </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div className='flex w-1/3 items-center space-x-4'>
-                        <Link href='/'>
-                            {" "}
-                            <AiOutlineShoppingCart className=' w-[12px] pt-1 h-[16px]  md:w-6 md:h-6 relative' />{" "}
-                        </Link>
-
-                        {currentTheme === "light" ? (
-                            <div className='w-[6px] h-[20px]  md:w-4 md:h-6 relative cursor-pointer'>
-                                <HiOutlineMoon
-                                    style={{ display: "inline" }}
-                                    size={16}
-                                    onClick={() => setTheme("dark")}
-                                ></HiOutlineMoon>
-                            </div>
-                        ) : (
-                            <div className='w-2 h-4 md:w-6 md:h-6 relative cursor-pointer'>
-                                <BsSun
-                                    style={{ display: "inline" }}
-                                    onClick={() => setTheme("light")}
-                                ></BsSun>
-                            </div>
-                        )}
-                        
-                        <div>
-                            <button className='z-20 flex' onClick={handleClick}>
-                                <IoEarthOutline size={20}></IoEarthOutline>{" "}
-                                <AiFillCaretDown className='pt-1 self-end'></AiFillCaretDown>
-                            </button>
-                            {clicked && (
-                                <div
-                                    className={`${
-                                        locale === "en"
-                                            ? "absolute right-0 mt-2 py-2 w-38 bg-white rounded-sm shadow-xl z-20"
-                                            : "absolute left-0 mt-2 py-2 w-38 bg-white rounded-sm shadow-xl z-20"
-                                    }`}
-                                >
-                                    <ul>
-                                        <li
-                                            className={`${
-                                                locale === "en"
-                                                    ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                    : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                            }`}
-                                        >
-                                            {" "}
-                                            <button
-                                                onClick={() =>
-                                                    changeLanguage("en")
-                                                }
-                                            >
-                                                English
-                                            </button>
-                                        </li>
-                                        <li
-                                            className={`${
-                                                locale === "en"
-                                                    ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                    : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                            }`}
-                                        >
-                                            {" "}
-                                            <button
-                                                onClick={() =>
-                                                    changeLanguage("ar")
-                                                }
-                                            >
-                                                العربية
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </nav> */}
             <nav className='sticky z-20 top-0 shadow bg-white border-gray-200 py-2.5 dark:bg-gray-900 backdrop-filter backdrop-blur-lg backdrop-opacity-25 opacity-80 dark:bg-gradient-to-b dark:from-black dark:via-gray-900 dark:to-gray-700 '>
                 <div className='flex flex-wrap items-center justify-between max-w-screen-xl px-2 mx-auto'>
                     {currentTheme === "light" ? (
@@ -431,7 +220,7 @@ export default function Navbar({ locale }) {
                                     className='block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                     href='/'
                                 >
-                                    Home
+                                    {t("Navbar.home")}
                                 </Link>
                             </li>
                             <li>
@@ -439,7 +228,7 @@ export default function Navbar({ locale }) {
                                     className='block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                     href='/meals'
                                 >
-                                    Meals
+                                    {t("Navbar.meals")}
                                 </Link>
                             </li>
                             <li>
@@ -447,7 +236,7 @@ export default function Navbar({ locale }) {
                                     href='/meals'
                                     className='block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                 >
-                                    Blogs
+                                    {t("Navbar.blogs")}
                                 </Link>
                             </li>
                             <li>
@@ -457,8 +246,8 @@ export default function Navbar({ locale }) {
                                         className='block py-2 pl-2 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                     >
                                         {!auth.currentUser
-                                            ? "Join us"
-                                            : "restaurant"}
+                                            ? t("Navbar.joinUs")
+                                            : t("Navbar.restaurant")}
                                     </span>
 
                                     {dropdownOpen === true && auth.currentUser && (
@@ -478,7 +267,7 @@ export default function Navbar({ locale }) {
                                                             : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
                                                     }`}
                                                 >
-                                                    Dashboard
+                                                    {t("Navbar.dashboard")}
                                                 </Link>
                                                 <button
                                                     onClick={handleLogout}
@@ -488,7 +277,7 @@ export default function Navbar({ locale }) {
                                                             : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
                                                     }`}
                                                 >
-                                                    Sign Out
+                                                    {t("Navbar.signOut")}
                                                 </button>
                                             </div>
                                         </div>
@@ -510,7 +299,7 @@ export default function Navbar({ locale }) {
                                                             : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
                                                     }`}
                                                 >
-                                                    signIn
+                                                    {t("Navbar.signIn")}
                                                 </Link>
                                             </div>
                                         )}
@@ -526,7 +315,9 @@ export default function Navbar({ locale }) {
                                             style={{ display: "inline" }}
                                             size={18}
                                         ></PiMoonLight>
-                                        <span className='px-2'>Light mode</span>
+                                        <span className='px-2'>
+                                            {t("Navbar.light mode")}
+                                        </span>
                                     </div>
                                 ) : (
                                     <div
@@ -536,7 +327,9 @@ export default function Navbar({ locale }) {
                                         <BsSun
                                             style={{ display: "inline" }}
                                         ></BsSun>
-                                        <span className='px-2'>Dark mode</span>
+                                        <span className='px-2'>
+                                            {t("Navbar.dark mode")}
+                                        </span>
                                     </div>
                                 )}
                             </li>
@@ -546,7 +339,9 @@ export default function Navbar({ locale }) {
                                     onClick={handleClick}
                                 >
                                     <IoEarthOutline size={20}></IoEarthOutline>{" "}
-                                    <span className='px-2'>Language</span>
+                                    <span className='px-2'>
+                                        {t("Navbar.language")}
+                                    </span>
                                 </button>
                                 {isMobileMenuOpen === true && clicked && (
                                     <div

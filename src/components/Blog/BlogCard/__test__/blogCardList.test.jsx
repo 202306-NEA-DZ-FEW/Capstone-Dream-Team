@@ -1,9 +1,9 @@
 import { I18nextProvider } from "react-i18next";
 import renderer from "react-test-renderer";
 
-import StoryCardList from "../storyCardList";
+import BlogCardList from "../blogCardList";
 import i18n from "../../../../util/i18n";
-const stories = [
+const blogs = [
     {
         id: "1",
         data: {
@@ -25,7 +25,7 @@ it("renders correctly", () => {
     const tree = renderer
         .create(
             <I18nextProvider i18n={i18n}>
-                <StoryCardList stories={stories} numToShow={2} language='en' />
+                <BlogCardList blogs={blogs} numToShow={2} language='en' />
             </I18nextProvider>
         )
         .toJSON();
