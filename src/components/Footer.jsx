@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 export default function Footer() {
+    const { t } = useTranslation("common");
+
     return (
         <footer className='bg-teal-950 h-100 text-white p-6'>
-            <div className='flex items-center flex-row'>
+            <div className='flex items-center flex-row '>
                 <img
                     src='/images/logo.svg'
                     alt='Logo'
@@ -31,28 +34,29 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className='flex justify-between'>
-                <div>
+            <div className='flex flex-col md:flex-row justify-between '>
+                <div className='text-center md:text-left'>
                     <p>© 2021 Buy me a meal. All rights reserved.</p>
                     <p>3348 Nw 23rd Ave, Suite A, Gainesville, FL 32605</p>
                     <p>+1 352-505-9106</p>
                     <p>support@buymeameal.com</p>
                 </div>
-                <div>
-                    <div className='font-bold mb-2 mr-40 justify-evenly items-center flex-grid gap-4 '>
-                        <Link href='/home' passHref>
-                            <h1 className='cursor-pointer'>Home</h1>
-                        </Link>
-                        <Link href='/meals' passHref>
-                            <h1 className='cursor-pointer'>Meals</h1>
-                        </Link>
-                        <Link href='/blog' passHref>
-                            <h1 className='cursor-pointer'>Blog</h1>
-                        </Link>
-                    </div>
+
+                <div className='font-bold mb-2 md:flex md:flex-col md:items-center flex-grid justify-center'>
+                    <Link href='/home' passHref>
+                        <h1 className='cursor-pointer'>{t("footer.home")}</h1>
+                    </Link>
+                    <Link href='/meals' passHref>
+                        <h1 className='cursor-pointer'>{t("footer.meals")}</h1>
+                    </Link>
+                    <Link href='/blog' passHref>
+                        <h1 className='cursor-pointer'>{t("footer.blog")}</h1>
+                    </Link>
                 </div>
                 <div>
-                    <h2 className='font-bold mr-20 mb-2'>Follow us</h2>
+                    <h2 className='font-bold mr-20 mb-2'>
+                        {t("footer.followUs")}
+                    </h2>
                     <div className='flex flex-col'>
                         <p href='#'>LinkedIn</p>
                         <p href='#'>Instagram</p>
