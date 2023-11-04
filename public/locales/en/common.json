@@ -124,5 +124,11 @@
         "light mode":"Light mode",
         "dark mode":"Dark mode",
         "language":"language"
+    },
+    "footer": {
+        "home": "Home",
+        "meals": "meals",
+        "blog": "blog",
+        "followUs":"follow us"
     }
 }
