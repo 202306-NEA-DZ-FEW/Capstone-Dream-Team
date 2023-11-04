@@ -70,7 +70,7 @@ export default function Sidemenu(props) {
             if (authUser) {
                 // Check if an authenticated user exists.
                 const userId = authUser.uid; // Get the user's unique identifier (UID).
-                const docRef = doc(db, "users", userId); // Create a reference to the user's Firestore document.
+                const docRef = doc(db, "restaurant", userId); // Create a reference to the user's Firestore document.
                 const docSnap = await getDoc(docRef); // Fetch the user's document.
 
                 if (docSnap.exists()) {
@@ -106,7 +106,11 @@ export default function Sidemenu(props) {
                         <div className='justify-center md:justify-start items-center gap-3  md:inline-flex lg:inline-flex'>
                             <Image
                                 className='w-12 h-12 relative rounded-2xl'
-                                src='/images/placeholderImage.png'
+                                src={
+                                    userData && userData.image
+                                        ? userData.image
+                                        : "/images/placeholderImage.png"
+                                }
                                 width={40}
                                 height={40}
                                 alt='admin photo'
@@ -114,7 +118,9 @@ export default function Sidemenu(props) {
 
                             <div className='flex-col justify-center items-start inline-flex'>
                                 <div className="w-[150px] text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']">
-                                    {userData ? userData.name : "loading..."}
+                                    {userData
+                                        ? userData.restaurantName
+                                        : "loading..."}
                                 </div>
                                 <div className="w-[150px] text-neutral-800  dark:text-white text-[10px] lg:text-[14px] font-normal font-['Open Sans']">
                                     {userData ? userData.email : "loading..."}

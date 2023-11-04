@@ -1,5 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import Link from "next/link";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ThemeProvider } from "next-themes";
 import React, { useEffect, useState } from "react";
 
@@ -57,4 +58,12 @@ export default function AdminDashboard() {
             )}
         </Layout>
     );
+}
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["common"])),
+            // Will be passed to the page component as props
+        },
+    };
 }

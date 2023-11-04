@@ -35,10 +35,8 @@ const Modal = ({ currentRestaurantId }) => {
                         description: mealData.name,
                         imageUrl: mealData.imageUrl,
                         restaurantId: mealData.restaurantId,
-                        mealDetails: mealData,
                     };
                 });
-
                 setMeals(mealDetails);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -50,7 +48,7 @@ const Modal = ({ currentRestaurantId }) => {
 
     return (
         <div>
-            {/* Modal toggle */}
+            {}
             <button
                 data-modal-target='default-modal'
                 data-modal-toggle='default-modal'
