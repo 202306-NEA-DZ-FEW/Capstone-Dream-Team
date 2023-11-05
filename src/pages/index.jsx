@@ -2,12 +2,16 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
 
+import AboutUs from "@/components/Home/AboutUs";
+import Blogs from "@/components/Home/Blogs";
+import Donation from "@/components/Home/Donation";
 import Goals from "@/components/Home/Goals";
-import VideoSection from "@/components/Home/VideoSection";
+import Joinus from "@/components/Home/Joinus";
+import Sponsors from "@/components/Home/Sponsors";
 
 import Layout from "@/layout/Layout";
 
-import Process from "../components/Home/Process";
+import Restaurant from "../components/Home/Restaurant";
 import Slider from "../components/Home/Slider";
 
 export default function HomePage() {
@@ -16,11 +20,15 @@ export default function HomePage() {
     return (
         <>
             <Layout>
-                <div className='bg-[#f2f4f4]'>
+                <div className='bg-white dark:bg-gray-900'>
                     <Slider></Slider>
-                    <Process></Process>
+                    <Donation></Donation>
                     <Goals></Goals>
-                    <VideoSection></VideoSection>
+                    <Restaurant></Restaurant>
+                    <Joinus></Joinus>
+                    <Sponsors></Sponsors>
+                    <Blogs></Blogs>
+                    <AboutUs></AboutUs>
                 </div>
             </Layout>
         </>
