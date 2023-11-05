@@ -1,7 +1,6 @@
 import {
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
-    setCustomUserClaims, // Import setCustomUserClaims
     signInWithPopup,
     updateProfile,
 } from "firebase/auth";
@@ -46,9 +45,6 @@ const SignUp = ({ updateComponent }) => {
             const userId = userCredential?.user?.uid;
             //console.log(userCredential);
 
-            // Set custom claim for the user to indicate the role
-            await setCustomUserClaims(userId, { role: "restaurant" });
-
             router.push("/admin-dashboard");
 
             const userDocRef = collection(db, "restaurant");
@@ -64,6 +60,7 @@ const SignUp = ({ updateComponent }) => {
             });
         } catch (error) {
             alert("Error, please try again");
+            console.log(error);
         }
     };
 
@@ -87,9 +84,6 @@ const SignUp = ({ updateComponent }) => {
             const userCredential = await signInWithPopup(auth, provider);
 
             const userId = userCredential?.user?.uid;
-
-            // Set custom claim for the user to indicate the role
-            await setCustomUserClaims(userId, { role: "restaurant" });
 
             router.push("/admin-dashboard");
 

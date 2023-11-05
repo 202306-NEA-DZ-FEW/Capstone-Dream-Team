@@ -5,12 +5,15 @@ import {
     query,
     where,
 } from "firebase/firestore";
-import { db } from "@/util/firebase";
-import Card from "@/components/Cart/card";
-import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useEffect, useState } from "react";
+
+import Card from "@/components/Cart/card";
+import Checkout from "@/components/Cart/checkout";
+
 import Layout from "@/layout/Layout";
+import { db } from "@/util/firebase";
 
 function Cart() {
     //const [mealObject, setMealObject] = useState({});
@@ -38,20 +41,23 @@ function Cart() {
     const { t } = useTranslation("common");
     const [meals, setMeals] = useState([]);
 
-    const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
+    // const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
+
+    const [visitorID, setVisitorID] = useState(null);
+
     useEffect(() => {
         const fetchMeals = async () => {
-            // Function to retrieve the unique identifier from the cookie
-            /* function getCookie(name) {
-   const value = `; ${document.cookie}`;
-   const parts = value.split(`; ${name}=`);
-   if (parts.length === 2) return parts.pop().split(';').shift();
- }
- 
- // Retrieve the unique identifier from the cookie
- const visitorID = getCookie('visitorID');*/
+            //Function to retrieve the unique identifier from the cookie
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(";").shift();
+            }
 
-            const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
+            //Retrieve the unique identifier from the cookie
+            const visitorID = getCookie("visitorID");
+            setVisitorID(visitorID);
+            // const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
 
             if (visitorID) {
                 const cartCollection = collection(db, "cart");
@@ -184,6 +190,7 @@ function Cart() {
                             <Card
                                 mealObject={meal}
                                 onUpdateQuantity={updateQuantity}
+                                onRemoveFromCart={removeFromCart}
                                 key={meal.id}
                             />
                         ))
@@ -232,10 +239,12 @@ function Cart() {
                                 </p>
                             </div>
                         </div>
-                        <div class='flex gap-2'>
-                            <button class='transition-colors text-sm bg-teal-500 hover:bg-purple-700 p-2 rounded-sm w-full text-white text-hover shadow-md'>
-                                {t("cartPage.cart.donate")}
-                            </button>
+                        <div>
+                            <Checkout />
+                            {/* <button >
+                                 {t("cartPage.cart.donate")} 
+                                
+                            </button>*/}
                         </div>
                     </div>
                 </div>

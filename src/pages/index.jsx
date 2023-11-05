@@ -2,12 +2,15 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
 
+
 import AboutUs from "@/components/Home/AboutUs";
 import Blogs from "@/components/Home/Blogs";
 import Donation from "@/components/Home/Donation";
 import Goals from "@/components/Home/Goals";
 import Joinus from "@/components/Home/Joinus";
 import Sponsors from "@/components/Home/Sponsors";
+import Footer from "@/components/Footer";
+
 
 import Layout from "@/layout/Layout";
 
@@ -31,6 +34,7 @@ export default function HomePage() {
                     <AboutUs></AboutUs>
                 </div>
             </Layout>
+            <Footer />
         </>
     );
 }

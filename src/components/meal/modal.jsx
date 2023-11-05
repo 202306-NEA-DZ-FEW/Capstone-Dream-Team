@@ -2,9 +2,12 @@ import Mealcard from "./mealcard";
 import React, { useState, useEffect } from "react";
 import { collection, query, getDocs, where } from "firebase/firestore";
 import { db } from "../../util/firebase"; // Replace with your Firebase config import
+import { useTranslation } from "next-i18next";
 
 const Modal = ({ currentRestaurantId }) => {
     const [meals, setMeals] = useState([]);
+    const { t } = useTranslation("common");
+
     const [isModalVisible, setModalVisible] = useState(false);
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
@@ -15,11 +18,11 @@ const Modal = ({ currentRestaurantId }) => {
 
     useEffect(() => {
         async function fetchMeals() {
-            const mealCollection = collection(db, "meal");
+            const mealCollection = collection(db, "meals");
             try {
                 const mealQuery = query(
                     mealCollection,
-                    where("restaurant_id", "==", currentRestaurantId)
+                    where("restaurantId", "==", currentRestaurantId)
                 );
                 const mealSnapshot = await getDocs(mealQuery);
 
@@ -27,11 +30,13 @@ const Modal = ({ currentRestaurantId }) => {
                     const mealData = mealDoc.data();
                     return {
                         price: mealData.price,
-                        maxQuantity: mealData.max_quantity,
+                        maxMeals: mealData.maxMeals,
                         name: mealData.name,
+                        description: mealData.name,
+                        imageUrl: mealData.imageUrl,
+                        restaurantId: mealData.restaurantId,
                     };
                 });
-
                 setMeals(mealDetails);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -43,7 +48,7 @@ const Modal = ({ currentRestaurantId }) => {
 
     return (
         <div>
-            {/* Modal toggle */}
+            {}
             <button
                 data-modal-target='default-modal'
                 data-modal-toggle='default-modal'
@@ -51,7 +56,7 @@ const Modal = ({ currentRestaurantId }) => {
                 type='button'
                 onClick={toggleModal}
             >
-                Show All Meals
+                {t("mealsPage.show_meals")}
             </button>
 
             {/* Main modal */}
@@ -69,7 +74,7 @@ const Modal = ({ currentRestaurantId }) => {
                             <div className='flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600'>
                                 <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>
                                     {" "}
-                                    Available Meals{" "}
+                                    {t("mealsPage.available_meals")}{" "}
                                 </h3>
                                 <button
                                     type='button'
@@ -107,10 +112,14 @@ const Modal = ({ currentRestaurantId }) => {
                                                 <Mealcard
                                                     key={mealIndex}
                                                     price={mealDetail.price}
-                                                    maxQuantity={
-                                                        mealDetail.maxQuantity
+                                                    maxMeals={
+                                                        mealDetail.maxMeals
                                                     }
                                                     name={mealDetail.name}
+                                                    imageUrl={
+                                                        mealDetail.imageUrl
+                                                    }
+                                                    mealObject={mealDetail}
                                                 />
                                             </div>
                                         ))}

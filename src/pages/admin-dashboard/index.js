@@ -1,13 +1,15 @@
 import { onAuthStateChanged } from "firebase/auth";
 import Link from "next/link";
-import React from "react";
-import { useEffect, useState } from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { ThemeProvider } from "next-themes";
+import React, { useEffect, useState } from "react";
 
 import Dashboard from "@/components/Dashboard";
 
 import Layout from "@/layout/Layout";
 import { auth } from "@/util/firebase";
 
+// Import the AddMeals component
 import Sidemenu from "../../components/Sidemenu";
 
 export default function AdminDashboard() {
@@ -25,8 +27,7 @@ export default function AdminDashboard() {
             // If a user is authenticated, set 'authUser' to the user; otherwise, set it to null.
             user ? setAuthUser(user) : setAuthUser(null);
         });
-        [];
-    });
+    }, []); // Pass an empty dependency array to run this effect only once.
 
     return (
         <Layout>
@@ -57,4 +58,12 @@ export default function AdminDashboard() {
             )}
         </Layout>
     );
+}
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["common"])),
+            // Will be passed to the page component as props
+        },
+    };
 }

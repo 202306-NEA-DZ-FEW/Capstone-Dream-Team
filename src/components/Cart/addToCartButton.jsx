@@ -1,19 +1,22 @@
 import {
+    addDoc,
     collection,
-    setDoc,
     deleteDoc,
     doc,
     getDocs,
+    onSnapshot,
     query,
     where,
-    onSnapshot,
 } from "firebase/firestore";
-import { db } from "@/util/firebase";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
+import { db } from "@/util/firebase";
+
 function AddToCartButton({ mealObject }) {
+    //cookie ; uid
     const [visitorID, setVisitorID] = useState(null);
+
     const [isInCart, setIsInCart] = useState(false);
 
     // Referance to "cart" collection in firebase
@@ -57,7 +60,7 @@ function AddToCartButton({ mealObject }) {
                 where("name", "==", mealObject.name),
                 where("price", "==", mealObject.price),
                 where("description", "==", mealObject.description),
-                where("donor_id", "==", visitorID)
+                where("donorId", "==", visitorID)
             );
 
             const querySnapshot = await getDocs(q);
@@ -98,7 +101,7 @@ function AddToCartButton({ mealObject }) {
                 where("name", "==", mealObject.name),
                 where("price", "==", mealObject.price),
                 where("description", "==", mealObject.description),
-                where("donor_id", "==", visitorID)
+                where("donorId", "==", visitorID)
             );
 
             const querySnapshot = await getDocs(q);
@@ -118,9 +121,9 @@ function AddToCartButton({ mealObject }) {
         } else {
             // If the item is not in the cart, add it
 
-            await setDoc(doc(db, "cart"), {
+            await addDoc(collection(db, "cart"), {
                 ...mealObject,
-                donor_id: visitorID,
+                donorId: visitorID,
             });
 
             console.log("Document added to cart successfully!");
@@ -132,9 +135,11 @@ function AddToCartButton({ mealObject }) {
         <div>
             <button
                 onClick={toggleCart}
-                className={`${isInCart ? "bg-red-500" : "bg-blue-500"}`}
+                className={`w-32 h-3.5 left-[57.88px] top-[10.42px] absolute text-center text-black text-xl font-bold font-['Roboto'] leading-relaxed ${
+                    isInCart ? "bg-red-500" : "bg-blue-500"
+                }`}
             >
-                {isInCart ? "Remove from Cart" : "Add to Cart"}
+                {isInCart ? "Cancel" : `Donate....`}
             </button>
         </div>
     );

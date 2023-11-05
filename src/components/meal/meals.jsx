@@ -10,7 +10,7 @@ export default function Meals() {
     useEffect(() => {
         async function fetchMeals() {
             const restaurantCollection = collection(db, "restaurant");
-            const mealCollection = collection(db, "meal");
+            const mealCollection = collection(db, "meals");
             try {
                 const querySnapshot = await getDocs(restaurantCollection);
                 const data = await Promise.all(
@@ -21,7 +21,7 @@ export default function Meals() {
                         // Fetch details for each meal using restaurant_id
                         const mealQuery = query(
                             mealCollection,
-                            where("restaurant_id", "==", restaurantId)
+                            where("restaurantId", "==", restaurantId)
                         );
                         const mealSnapshot = await getDocs(mealQuery);
 
@@ -29,15 +29,18 @@ export default function Meals() {
                             const mealData = mealDoc.data();
                             return {
                                 price: mealData.price,
-                                max_quantity: mealData.max_quantity,
+                                maxMeals: mealData.maxMeals,
                                 name: mealData.name,
+                                description: mealData.name,
+                                imageUrl: mealData.imageUrl,
+                                restaurantId: mealData.restaurantId,
                             };
                         });
 
                         return {
-                            Name: restaurant.name,
+                            Name: restaurant.restaurantName,
                             email: restaurant.email,
-                            current_restaurant_Id: restaurant.uid,
+                            current_restaurant_Id: restaurant.restaurantId,
                             mealDetails: mealDetails,
                         };
                     })
@@ -74,10 +77,10 @@ export default function Meals() {
                                     >
                                         <Mealcard
                                             price={mealDetail.price}
-                                            maxQuantity={
-                                                mealDetail.max_quantity
-                                            }
+                                            maxMeals={mealDetail.maxMeals}
                                             name={mealDetail.name}
+                                            imageUrl={mealDetail.imageUrl}
+                                            mealObject={mealDetail}
                                         />
                                     </div>
                                 ))}

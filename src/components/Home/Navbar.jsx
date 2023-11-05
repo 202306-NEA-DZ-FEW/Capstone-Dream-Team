@@ -21,7 +21,7 @@ export default function Navbar({ locale }) {
     const [clicked, setClicked] = useState(false);
 
     const router = useRouter();
-    const { t } = useTranslation();
+    const { t } = useTranslation("common");
 
     // Function to change the language
     const changeLanguage = (newLanguage) => {
@@ -54,6 +54,7 @@ export default function Navbar({ locale }) {
     };
     return (
         <>
+
             <nav className='sticky z-20 top-0 font-sans uppercase  shadow bg-white border-gray-200 py-2.5 dark:bg-gray-900 backdrop-filter backdrop-blur-lg backdrop-opacity-25 opacity-80 dark:bg-gradient-to-b dark:from-black dark:via-gray-900 dark:to-gray-700 '>
                 <div className='flex flex-wrap items-center justify-between max-w-screen-xl px-2 mx-auto'>
                     {currentTheme === "light" ? (
@@ -69,6 +70,7 @@ export default function Navbar({ locale }) {
                                 </Link>
                             </div>
                             <div className='pt-4'>
+          
                                 <Link href='/'>
                                     <Image
                                         src='/images/logoName.png'
@@ -219,7 +221,7 @@ export default function Navbar({ locale }) {
                                     className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                     href='/'
                                 >
-                                    Home
+                                    {t("Navbar.home")}
                                 </Link>
                             </li>
                             <li>
@@ -227,7 +229,7 @@ export default function Navbar({ locale }) {
                                     className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                     href='/meals'
                                 >
-                                    Meals
+                                    {t("Navbar.meals")}
                                 </Link>
                             </li>
                             <li>
@@ -235,7 +237,7 @@ export default function Navbar({ locale }) {
                                     href='/blogs'
                                     className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                 >
-                                    Blogs
+                                    {t("Navbar.blogs")}
                                 </Link>
                             </li>
                             <li>
@@ -245,8 +247,8 @@ export default function Navbar({ locale }) {
                                         className='block py-2 pl-2 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                     >
                                         {!auth.currentUser
-                                            ? "Join us"
-                                            : "restaurant"}
+                                            ? t("Navbar.joinUs")
+                                            : t("Navbar.restaurant")}
                                     </span>
 
                                     {dropdownOpen === true && auth.currentUser && (
@@ -266,7 +268,7 @@ export default function Navbar({ locale }) {
                                                             : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
                                                     }`}
                                                 >
-                                                    Dashboard
+                                                    {t("Navbar.dashboard")}
                                                 </Link>
                                                 <button
                                                     onClick={handleLogout}
@@ -276,7 +278,7 @@ export default function Navbar({ locale }) {
                                                             : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
                                                     }`}
                                                 >
-                                                    Sign Out
+                                                    {t("Navbar.signOut")}
                                                 </button>
                                             </div>
                                         </div>
@@ -298,7 +300,7 @@ export default function Navbar({ locale }) {
                                                             : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
                                                     }`}
                                                 >
-                                                    signIn
+                                                    {t("Navbar.signIn")}
                                                 </Link>
                                             </div>
                                         )}
@@ -314,7 +316,9 @@ export default function Navbar({ locale }) {
                                             style={{ display: "inline" }}
                                             size={18}
                                         ></PiMoonLight>
-                                        <span className='px-2'>Light mode</span>
+                                        <span className='px-2'>
+                                            {t("Navbar.light mode")}
+                                        </span>
                                     </div>
                                 ) : (
                                     <div
@@ -324,7 +328,9 @@ export default function Navbar({ locale }) {
                                         <BsSun
                                             style={{ display: "inline" }}
                                         ></BsSun>
-                                        <span className='px-2'>Dark mode</span>
+                                        <span className='px-2'>
+                                            {t("Navbar.dark mode")}
+                                        </span>
                                     </div>
                                 )}
                             </li>
@@ -334,7 +340,9 @@ export default function Navbar({ locale }) {
                                     onClick={handleClick}
                                 >
                                     <IoEarthOutline size={20}></IoEarthOutline>{" "}
-                                    <span className='px-2'>Language</span>
+                                    <span className='px-2'>
+                                        {t("Navbar.language")}
+                                    </span>
                                 </button>
                                 {isMobileMenuOpen === true && clicked && (
                                     <div
