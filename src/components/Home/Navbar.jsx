@@ -54,7 +54,6 @@ export default function Navbar({ locale }) {
     };
     return (
         <>
-
             <nav className='sticky z-20 top-0 font-sans uppercase  shadow bg-white border-gray-200 py-2.5 dark:bg-gray-900 backdrop-filter backdrop-blur-lg backdrop-opacity-25 opacity-80 dark:bg-gradient-to-b dark:from-black dark:via-gray-900 dark:to-gray-700 '>
                 <div className='flex flex-wrap items-center justify-between max-w-screen-xl px-2 mx-auto'>
                     {currentTheme === "light" ? (
@@ -70,7 +69,6 @@ export default function Navbar({ locale }) {
                                 </Link>
                             </div>
                             <div className='pt-4'>
-          
                                 <Link href='/'>
                                     <Image
                                         src='/images/logoName.png'
