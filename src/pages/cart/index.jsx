@@ -240,7 +240,7 @@ function Cart() {
                             </div>
                         </div>
                         <div>
-                            <Checkout />
+                            <Checkout Total={totalCartPrice.toFixed(2)} />
                             {/* <button >
                                  {t("cartPage.cart.donate")} 
                                 

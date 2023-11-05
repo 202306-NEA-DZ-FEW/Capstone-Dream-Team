@@ -44,8 +44,7 @@ const Checkout = ({ Total }) => {
                             {/* TITLE & HIDE X */}
                             <div className='flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600'>
                                 <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>
-                                    {" "}
-                                    {t("mealsPage.available_meals")}{" "}
+                                    Checkout
                                 </h3>
                                 <button
                                     type='button'
@@ -204,7 +203,7 @@ const Checkout = ({ Total }) => {
                                                     className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded'
                                                     type='submit'
                                                 >
-                                                    $3.00
+                                                    ${Total}
                                                 </button>
                                             </div>
                                         </form>
