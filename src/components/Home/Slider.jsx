@@ -91,19 +91,7 @@ export default function Slider() {
                         Donate Now
                     </Link>
                 </div>
-                <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4'>
-                    <div class='w-1/2 sm:w-full  top-0 right-0 bottom-0 flex-col '>
-                        <img
-                            src='images/home/slider/slider1.png'
-                            alt='serve'
-                            width='220px'
-                        />
-                        <img
-                            src='images/home/slider/phoneDonation.png'
-                            alt='serve'
-                            width='200px'
-                        />
-                    </div>
+                <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4'>
                     <div class='w-1/2 sm:w-full  top-0 right-0 bottom-0 flex-col '>
                         <img
                             src='images/home/slider/Homeless man sitting on ground flat vector illustration.jpg'
@@ -114,12 +102,6 @@ export default function Slider() {
                             src='images/home/slider/slider3.png'
                             alt='serve'
                             width='240px'
-                        />
-                        <img
-                            className='rounded-full'
-                            src='images/home/slider/slider5.jpg'
-                            alt='serve'
-                            width='220px'
                         />
                     </div>
                     <div class='w-1/2 sm:w-full top-0 right-0 mt-16 '>
