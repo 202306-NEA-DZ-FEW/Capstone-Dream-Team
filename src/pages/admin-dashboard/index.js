@@ -34,7 +34,7 @@ export default function AdminDashboard() {
             {/* to check whether the user is signed in    */}
             {authUser ? (
                 // we show the page of the admin dashboard
-                <div className='flex w-full h-screen'>
+                <div className='flex w-full h-screen overflow-hidden'>
                     {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
                     <Sidemenu handleClick={handleClick}></Sidemenu>
                     <div className='flex w-4/5 justify-items-center  p-8 text-2xl font-bold overflow-scroll'>

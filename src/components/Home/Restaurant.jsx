@@ -1,6 +1,6 @@
 export default function Restaurant() {
     return (
-        <div class=' mt-20 bg-gradient-to-bl from-[#FCDBB4] to-violet-50 flex items-center justify-center '>
+        <div class=' mt-20 bg-gradient-to-bl from-white to-blue-50 flex items-center justify-center '>
             <div class='container mx-auto p-4'>
                 <h2 className='max-w-lg mb-6 font-sans text-2xl text-center font-bold leading-none tracking-tight text-[#192655] sm:text-3xl md:mx-auto'>
                     Join Us - Restaurants can make a Difference
@@ -12,15 +12,15 @@ export default function Restaurant() {
                     community but also promote your restaurant to a wider
                     audience. Here is how you can participate:
                 </p>
-                <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+                <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8'>
                     <div class='bg-white rounded-lg border p-4'>
                         <img
-                            src='images/home/restaurant/pics of food.jpg'
-                            alt='Placeholder Image'
-                            class='w-full h-48 rounded-md object-cover'
+                            src='images/home/restaurant/res1-removebg-preview.png'
+                            alt='take pictures of meal'
+                            class='w-full just h-52 rounded-md object-cover'
                         ></img>
                         <div class='px-1 py-4'>
-                            <div class='font-bold text-xl mb-2'>
+                            <div class='font-bold text-orange-400 text-xl mb-2'>
                                 List Your Meals
                             </div>
                             <p class='text-gray-700 text-base'>
@@ -34,12 +34,12 @@ export default function Restaurant() {
                     </div>
                     <div class='bg-white rounded-lg border p-4'>
                         <img
-                            src='images/home/restaurant/accept.jpg'
-                            alt='Placeholder Image'
+                            src='images/home/restaurant/res2-removebg-preview.png'
+                            alt='accept coupon'
                             class='w-full h-48 rounded-md object-cover'
                         ></img>
                         <div class='px-1 py-4'>
-                            <div class='font-bold text-xl mb-2'>
+                            <div class='font-bold text-orange-400 text-xl mb-2'>
                                 Accept Coupons
                             </div>
                             <p class='text-gray-700 text-base'>
@@ -52,12 +52,12 @@ export default function Restaurant() {
                     </div>
                     <div class='bg-white rounded-lg border p-4'>
                         <img
-                            src='images/home/restaurant/controle.jpg'
-                            alt='Placeholder Image'
+                            src='images/home/restaurant/res3-removebg-preview.png'
+                            alt='dashboard control'
                             class='w-full h-48 rounded-md object-cover'
                         ></img>
                         <div class='px-1 py-4'>
-                            <div class='font-bold text-xl mb-2'>
+                            <div class='font-bold text-orange-400 text-xl mb-2'>
                                 Dashboard Control
                             </div>
                             <p class='text-gray-700 text-base'>
@@ -71,12 +71,12 @@ export default function Restaurant() {
                     </div>
                     <div class='bg-white rounded-lg border p-4'>
                         <img
-                            src='images/home/restaurant/delete.jpg'
-                            alt='Placeholder Image'
+                            src='images/home/restaurant/res4-removebg-preview.png'
+                            alt='delete'
                             class='w-full h-48 rounded-md object-cover'
                         ></img>
                         <div class='px-1 py-4'>
-                            <div class='font-bold text-xl mb-2'>
+                            <div class='font-bold text-orange-400 text-xl mb-2'>
                                 Coupon Deletion
                             </div>
                             <p class='text-gray-700 text-base'>

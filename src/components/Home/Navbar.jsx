@@ -58,48 +58,29 @@ export default function Navbar({ locale }) {
                 <div className='flex flex-wrap items-center justify-between max-w-screen-xl px-2 mx-auto'>
                     {currentTheme === "light" ? (
                         <div className='flex  h-12 mr-3 sm:h-12 sm:mb-2'>
-                            <div className='flex h-full w-1/3 pt-3 justify-center items-center'>
+                            <div className='flex h-full w-full ml-6 pt-3 justify-center items-center'>
                                 <Link href='/'>
                                     <Image
-                                        src='/images/home/Navbar/logo.png'
+                                        src='/images/home/Navbar/removal.ai_8894e20c-b8f7-497d-acb4-0f55ec1a5d7e-fatimalogo1.png'
                                         alt='logo'
-                                        width={60}
-                                        height={30}
-                                    ></Image>
-                                </Link>
-                            </div>
-                            <div className='pt-4'>
-                                <Link href='/'>
-                                    <Image
-                                        src='/images/logoName.png'
-                                        alt='logo'
-                                        width={150}
-                                        height={50}
+                                        width={100}
+                                        height={40}
                                     ></Image>
                                 </Link>
                             </div>
                         </div>
                     ) : (
                         <div className='flex  h-9 mr-3 sm:h-8 sm:mb-2'>
-                            <div className='flex h-full w-1/3 pt-3 justify-center items-center'>
+                            <div className='flex h-full w-full pt-3 justify-center items-center'>
                                 <Link href='/'>
                                     <Image
-                                        src='/images/darklogo.svg'
+                                        src='/images/home/Navbar/removal.ai_8894e20c-b8f7-497d-acb4-0f55ec1a5d7e-fatimalogo1.png'
                                         alt='logo'
-                                        width={55}
-                                        height={30}
+                                        width={100}
+                                        height={40}
                                     ></Image>
                                 </Link>
                             </div>
-
-                            <Link href='/'>
-                                <Image
-                                    src='/images/darklogoName.svg'
-                                    alt='logo'
-                                    width={120}
-                                    height={40}
-                                ></Image>
-                            </Link>
                         </div>
                     )}
                     <div className='flex items-center text-[#192655] px-2 lg:order-2 '>
