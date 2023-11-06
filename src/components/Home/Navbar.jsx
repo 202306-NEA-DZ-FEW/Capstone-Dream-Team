@@ -4,14 +4,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useTheme } from "next-themes";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { AiFillCaretDown } from "react-icons/ai";
-import { BiSolidUpArrowCircle } from "react-icons/bi";
 import { BsSun } from "react-icons/bs";
-import { PiMoonLight } from "react-icons/pi";
-import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { IoEarthOutline } from "react-icons/io5";
+import { PiMoonLight } from "react-icons/pi";
 
 import { auth } from "../../util/firebase";
 
@@ -57,28 +54,30 @@ export default function Navbar({ locale }) {
     };
     return (
         <>
-            <nav className='sticky z-20 top-0 shadow bg-white border-gray-200 py-2.5 dark:bg-gray-900 backdrop-filter backdrop-blur-lg backdrop-opacity-25 opacity-80 dark:bg-gradient-to-b dark:from-black dark:via-gray-900 dark:to-gray-700 '>
+            <nav className='sticky z-20 top-0 font-sans uppercase  shadow bg-white border-gray-200 py-2.5 dark:bg-gray-900 backdrop-filter backdrop-blur-lg backdrop-opacity-25 opacity-80 dark:bg-gradient-to-b dark:from-black dark:via-gray-900 dark:to-gray-700 '>
                 <div className='flex flex-wrap items-center justify-between max-w-screen-xl px-2 mx-auto'>
                     {currentTheme === "light" ? (
-                        <div className='flex  h-9 mr-3 sm:h-8 sm:mb-2'>
+                        <div className='flex  h-12 mr-3 sm:h-12 sm:mb-2'>
                             <div className='flex h-full w-1/3 pt-3 justify-center items-center'>
                                 <Link href='/'>
                                     <Image
-                                        src='/images/logo.svg'
+                                        src='/images/home/Navbar/logo.png'
                                         alt='logo'
-                                        width={55}
+                                        width={60}
                                         height={30}
                                     ></Image>
                                 </Link>
                             </div>
-                            <Link href='/'>
-                                <Image
-                                    src='/images/logoName.svg'
-                                    alt='logo'
-                                    width={120}
-                                    height={40}
-                                ></Image>
-                            </Link>
+                            <div className='pt-4'>
+                                <Link href='/'>
+                                    <Image
+                                        src='/images/logoName.png'
+                                        alt='logo'
+                                        width={150}
+                                        height={50}
+                                    ></Image>
+                                </Link>
+                            </div>
                         </div>
                     ) : (
                         <div className='flex  h-9 mr-3 sm:h-8 sm:mb-2'>
@@ -103,13 +102,13 @@ export default function Navbar({ locale }) {
                             </Link>
                         </div>
                     )}
-                    <div className='flex items-center px-2 lg:order-2 '>
+                    <div className='flex items-center text-[#192655] px-2 lg:order-2 '>
                         <Link href='/'>
                             {" "}
                             <AiOutlineShoppingCart className='pt-1 w-6 h-6 relative ' />{" "}
                         </Link>
                         {currentTheme === "light" ? (
-                            <div className='hidden lg:inline-block  w-4 h-6 mx-4 relative cursor-pointer'>
+                            <div className='hidden lg:inline-block text-[#192655] w-4 h-6 mx-4 relative cursor-pointer'>
                                 <PiMoonLight
                                     style={{ display: "inline" }}
                                     size={18}
@@ -126,7 +125,7 @@ export default function Navbar({ locale }) {
                         )}
 
                         <button
-                            className='hidden lg:inline-block z-20'
+                            className='hidden text-[#192655] lg:inline-block z-20'
                             onClick={handleClick}
                         >
                             <IoEarthOutline size={20}></IoEarthOutline>{" "}
@@ -217,7 +216,7 @@ export default function Navbar({ locale }) {
                         <ul className='flex flex-col mt-4 font-medium lg:flex-row lg:space-x-6 lg:mt-0'>
                             <li>
                                 <Link
-                                    className='block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
+                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                     href='/'
                                 >
                                     {t("Navbar.home")}
@@ -225,7 +224,7 @@ export default function Navbar({ locale }) {
                             </li>
                             <li>
                                 <Link
-                                    className='block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
+                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                     href='/meals'
                                 >
                                     {t("Navbar.meals")}
@@ -233,8 +232,8 @@ export default function Navbar({ locale }) {
                             </li>
                             <li>
                                 <Link
-                                    href='/meals'
-                                    className='block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
+                                    href='/blogs'
+                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                 >
                                     {t("Navbar.blogs")}
                                 </Link>
@@ -243,7 +242,7 @@ export default function Navbar({ locale }) {
                                 <div className='relative group'>
                                     <span
                                         onClick={handleDropdown}
-                                        className='block py-2 pl-2 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
+                                        className='block py-2 pl-2 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
                                     >
                                         {!auth.currentUser
                                             ? t("Navbar.joinUs")
