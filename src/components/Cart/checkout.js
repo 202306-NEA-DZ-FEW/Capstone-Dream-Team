@@ -1,14 +1,26 @@
-//import Mealcard from "./mealcard";
-//import { collection, query, getDocs, where } from "firebase/firestore";
-//import { db } from "../../util/firebase"; // Replace with your Firebase config import
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
+
+import {
+    addDoc,
+    doc,
+    collection,
+    query,
+    where,
+    getDocs,
+    deleteDoc,
+} from "firebase/firestore";
+
+import { db } from "@/util/firebase";
+
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import axios from "axios";
 
 {
     /* this compo must be imported in the card component so it popup once the Donate button is clicked */
 }
 
-const Checkout = ({ Total }) => {
+const Checkout = ({ Total, cart }) => {
     const { t } = useTranslation("common");
 
     const [isModalVisible, setModalVisible] = useState(false);
@@ -18,6 +30,90 @@ const Checkout = ({ Total }) => {
 
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
+    };
+
+    console.log(cart);
+
+    const [paymentLoading, setPaymentLoading] = useState(false);
+    const [paymentSuccess, setPaymentSuccess] = useState(false);
+    const [error, setError] = useState(null);
+
+    const stripe = useStripe();
+    const elements = useElements();
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        setPaymentLoading(true);
+
+        try {
+            const response = await axios.post("/api/create-payment-intent", {
+                // Include any necessary data for the payment
+            });
+
+            const { error, paymentIntent } = await stripe.confirmCardPayment(
+                response.data.client_secret,
+                {
+                    payment_method: {
+                        card: elements.getElement(CardElement),
+                    },
+                }
+            );
+            if (error) {
+                setError(error.message);
+            } else if (paymentIntent.status === "succeeded") {
+                // new array called info that add the name of the donor to it
+                const info = cart.map((obj) => ({
+                    ...obj,
+                    donor_name: name,
+                    donor_email: email,
+                    meal_state: obj.quantity,
+                }));
+
+                // add the info array to the firestore donors collection
+                const donorscollection = collection(db, "donors"); // Reference to the 'donors' collection
+                // Use a forEach loop to add each object to the 'donors' collection
+                info.forEach(async (obj) => {
+                    try {
+                        const doc = await addDoc(donorscollection, obj);
+                        console.log(
+                            "Document written with ID: ",
+                            cart[0].donorId
+                        );
+                    } catch (error) {
+                        console.error("Error adding document: ", error);
+                    }
+                });
+
+                // delete the documents of the donors from the cart collection
+                const cartcollection = collection(db, "cart");
+                // Create a query to select documents in "cartcollection" where "Qty" is 33
+                const q = query(
+                    cartcollection,
+                    where("donorId", "==", cart[0].donorId)
+                );
+                // Get the documents that match the query
+                const querySnapshot = await getDocs(q);
+                // Iterate over the matching documents and delete them
+                querySnapshot.forEach(async (doc) => {
+                    try {
+                        await deleteDoc(doc.ref);
+                        console.log("Document deleted with ID: ", doc.id);
+                    } catch (error) {
+                        console.error("Error deleting document: ", error);
+                    }
+                });
+
+                setPaymentSuccess(true);
+            }
+        } catch (err) {
+            setError("An error occurred while processing your payment.");
+        } finally {
+            setPaymentLoading(false);
+        }
     };
 
     return (
@@ -44,8 +140,7 @@ const Checkout = ({ Total }) => {
                             {/* TITLE & HIDE X */}
                             <div className='flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600'>
                                 <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>
-                                    {" "}
-                                    {t("mealsPage.available_meals")}{" "}
+                                    Checkout
                                 </h3>
                                 <button
                                     type='button'
@@ -73,7 +168,10 @@ const Checkout = ({ Total }) => {
                             <div className='p-6 space-y-6'>
                                 <div className='pb-10 pt-5 flex justify-center items-center'>
                                     <div className='leading-loose'>
-                                        <form className='max-w-xl m-4 p-10 bg-white rounded shadow-xl'>
+                                        <form
+                                            className='max-w-xl m-4 p-10 bg-white rounded shadow-xl'
+                                            onSubmit={handleSubmit}
+                                        >
                                             <p className='text-gray-800 font-medium'>
                                                 Customer information
                                             </p>
@@ -92,6 +190,11 @@ const Checkout = ({ Total }) => {
                                                     required=''
                                                     placeholder='Your Name'
                                                     aria-label='Name'
+                                                    onChange={(event) =>
+                                                        setName(
+                                                            event.target.value
+                                                        )
+                                                    }
                                                 />
                                             </div>
                                             <div className='mt-2'>
@@ -109,6 +212,11 @@ const Checkout = ({ Total }) => {
                                                     required=''
                                                     placeholder='Your Email'
                                                     aria-label='Email'
+                                                    onChange={(event) =>
+                                                        setEmail(
+                                                            event.target.value
+                                                        )
+                                                    }
                                                 />
                                             </div>
                                             <div className='mt-2'>
@@ -183,11 +291,8 @@ const Checkout = ({ Total }) => {
                                                 Payment information
                                             </p>
                                             <div className=''>
-                                                <label
-                                                    className='block text-sm text-gray-600'
-                                                    htmlFor='cus_name'
-                                                >
-                                                    Card
+                                                <label>
+                                                    <CardElement />
                                                 </label>
                                                 <input
                                                     className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
@@ -199,15 +304,25 @@ const Checkout = ({ Total }) => {
                                                     aria-label='Name'
                                                 />
                                             </div>
+
                                             <div className='mt-4'>
                                                 <button
                                                     className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded'
                                                     type='submit'
+                                                    disabled={paymentLoading}
                                                 >
-                                                    $3.00
+                                                    {paymentLoading
+                                                        ? "Processing..."
+                                                        : "Pay"}
+                                                    ${Total}
                                                 </button>
                                             </div>
                                         </form>
+                                        {paymentSuccess && (
+                                            <p style={{ color: "green" }}>
+                                                Payment was successful!
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                             </div>
