@@ -25,8 +25,8 @@ const SignUp = ({ updateComponent }) => {
 
     const handleSignUp = async (e) => {
         e.preventDefault();
-        if (password.length < 6) {
-            alert("Password must be at least 6 characters long");
+        if (password.length < 8) {
+            alert("Password must be at least 8 characters long");
             return;
         }
 
@@ -67,15 +67,7 @@ const SignUp = ({ updateComponent }) => {
     //Function to handle name change
     const handleNameChange = (e) => {
         const inputValue = e.target.value;
-
-        // Define a regular expression to allow only letters, spaces, and hyphens
-        const regex = /^[a-zA-Z\s-]*$/;
-
-        if (regex.test(inputValue)) {
-            // Input is valid, update the name state
-            setName(inputValue);
-        }
-        // If the input contains special characters, do nothing (prevent input)
+        setName(inputValue);
     };
 
     // Sign up with Google
