@@ -4,6 +4,7 @@ import { useState } from "react";
 //import { UserData } from "./data";
 import LineChart from "./lineChart";
 import StatCard from "./statCardList";
+import StatCardList from "./statCardList";
 
 export default function Overview() {
     // const [userData, setUserData] = useState({
@@ -26,7 +27,7 @@ export default function Overview() {
     // });
     return (
         <div>
-            <StatCard />
+            <StatCardList />
             <div style={{ width: 700 }}>{/*<LineChart chartData={} /> */}</div>
         </div>
     );
