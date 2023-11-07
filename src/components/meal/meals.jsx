@@ -34,6 +34,7 @@ export default function Meals() {
                                 description: mealData.name,
                                 imageUrl: mealData.imageUrl,
                                 restaurantId: mealData.restaurantId,
+                                quantity: 1,
                             };
                         });
 
@@ -80,7 +81,7 @@ export default function Meals() {
                                             maxMeals={mealDetail.maxMeals}
                                             name={mealDetail.name}
                                             imageUrl={mealDetail.imageUrl}
-                                            mealObject={mealDetail}
+                                            mealDetail={mealDetail}
                                         />
                                     </div>
                                 ))}

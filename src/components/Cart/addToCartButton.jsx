@@ -39,8 +39,17 @@ function AddToCartButton({ mealObject }) {
         } else {
             // If the visitorID doesn't exist, create it
             const uniqueID = uuidv4();
-            // Set the unique identifier in a cookie
-            document.cookie = `visitorID=${uniqueID}`; // add experiation
+            const oneDayInMilliseconds = 24 * 60 * 60 * 1000; // One day in milliseconds
+
+            // Get the current date and time
+            const now = new Date();
+
+            // Calculate the expiration date by adding the time duration to the current date
+            const expirationDate = new Date(
+                now.getTime() + oneDayInMilliseconds
+            );
+            // Set the cookie with an expiration date
+            document.cookie = `visitorID=${uniqueID}; expires=${expirationDate.toUTCString()}; path=/`; // add experiation
             // Put it in the state
             setVisitorID(uniqueID);
         }

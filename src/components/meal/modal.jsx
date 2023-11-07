@@ -119,7 +119,7 @@ const Modal = ({ currentRestaurantId }) => {
                                                     imageUrl={
                                                         mealDetail.imageUrl
                                                     }
-                                                    mealObject={mealDetail}
+                                                    mealDetail={mealDetail}
                                                 />
                                             </div>
                                         ))}
