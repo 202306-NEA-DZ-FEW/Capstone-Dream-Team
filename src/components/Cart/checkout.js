@@ -44,6 +44,23 @@ const Checkout = ({ Total, cart }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
 
+    //functuion to set the Date
+    function getCurrentDate() {
+        const currentDate = new Date();
+        const day = currentDate.getDate();
+        const month = currentDate.getMonth() + 1; // Months are 0-based, so add 1
+        const year = currentDate.getFullYear();
+
+        // Ensure day and month have two digits (e.g., 05 instead of 5)
+        const formattedDay = day < 10 ? `0${day}` : day;
+        const formattedMonth = month < 10 ? `0${month}` : month;
+
+        return `${formattedDay}/${formattedMonth}/${year}`;
+    }
+
+    const formattedDate = getCurrentDate();
+    //console.log(formattedDate);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -52,6 +69,7 @@ const Checkout = ({ Total, cart }) => {
         try {
             const response = await axios.post("/api/create-payment-intent", {
                 // Include any necessary data for the payment
+                //amount: Total,
             });
 
             const { error, paymentIntent } = await stripe.confirmCardPayment(
@@ -70,7 +88,8 @@ const Checkout = ({ Total, cart }) => {
                     ...obj,
                     donor_name: name,
                     donor_email: email,
-                    meal_state: obj.quantity,
+                    active_meal: obj.quantity,
+                    date: formattedDate,
                 }));
 
                 // add the info array to the firestore donors collection
@@ -173,7 +192,7 @@ const Checkout = ({ Total, cart }) => {
                                             onSubmit={handleSubmit}
                                         >
                                             <p className='text-gray-800 font-medium'>
-                                                Customer information
+                                                Donor information
                                             </p>
                                             <div className=''>
                                                 <label

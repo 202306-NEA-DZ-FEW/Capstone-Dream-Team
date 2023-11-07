@@ -6,16 +6,15 @@ const stripeInstance = new stripe(stripeSecretKey);
 export default async function createPaymentIntent(req, res) {
     if (req.method === "POST") {
         try {
+            //const { amount } = req.body;
             // Create a PaymentIntent using the Stripe API
             const paymentIntent = await stripeInstance.paymentIntents.create({
-                amount: 9000,
+                amount: 5000,
                 currency: "usd",
                 description: "Product purchase",
                 payment_method: "pm_card_visa",
                 payment_method_types: ["card"],
-                metadata: {
-                    order_id: "12345",
-                },
+                metadata: { order_id: "12345" },
             });
             // Send the client secret in the server response
             res.json(paymentIntent);
