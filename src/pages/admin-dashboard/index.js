@@ -14,10 +14,8 @@ import { auth } from "@/util/firebase";
 import Sidemenu from "../../components/Sidemenu";
 
 export default function AdminDashboard() {
-   
     const [show, setShow] = useState(false);
     const [component, setComponent] = useState(<Overview />);
-
 
     function handleClick(selectedComponent) {
         setComponent(selectedComponent);
