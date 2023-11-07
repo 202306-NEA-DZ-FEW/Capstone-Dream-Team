@@ -1,15 +1,50 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 import AddToCartButton from "../Cart/addToCartButton";
+import { useState } from "react";
 
 export default function Mealcard({
     price,
     maxMeals,
     name,
     imageUrl,
-    mealObject,
+    mealDetail,
 }) {
     const { t } = useTranslation("common");
+    const [quantity, setQuantity] = useState(1);
+    const [mealObject, setMealObject] = useState(mealDetail);
+
+    // Function to handle quantity change
+
+    const handleQuantityChange = (event) => {
+        const newQuantity = parseInt(event.target.value, 10);
+        if (
+            !isNaN(newQuantity) &&
+            newQuantity >= 1 &&
+            newQuantity <= mealObject.maxMeals
+        ) {
+            setQuantity(newQuantity);
+            setMealObject({ ...mealObject, quantity: newQuantity });
+        }
+    };
+
+    function increament() {
+        if (quantity < mealObject.maxMeals) {
+            const newQuantity = quantity + 1;
+
+            setQuantity(newQuantity);
+            setMealObject({ ...mealObject, quantity: newQuantity });
+        }
+    }
+
+    function decreament() {
+        if (quantity > 1) {
+            const newQuantity = quantity - 1;
+
+            setQuantity(newQuantity);
+            setMealObject({ ...mealObject, quantity: newQuantity });
+        }
+    }
 
     return (
         <div className='mb-10 w-80 h-96 relative'>
@@ -47,27 +82,33 @@ export default function Mealcard({
                         {t("cartPage.card.quantityLeft")}: {maxMeals}
                     </div>
                     <ul className='w-32 h-8 flex items-center'>
-                        <li className='w-9 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex'>
+                        <button
+                            onClick={decreament}
+                            className='w-9 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex'
+                        >
                             <div className='justify-center items-center gap-3.5 flex'>
                                 <div className="text-neutral-700 text-lg font-medium font-['Poppins']">
                                     -
                                 </div>
                             </div>
-                        </li>
-                        <li className='w-16 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex'>
-                            <div className='justify-center items-center gap-3.5 flex'>
-                                <div className="text-neutral-700 text-lg font-medium font-['Poppins']">
-                                    1
-                                </div>
-                            </div>
-                        </li>
-                        <li className='w-9 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex'>
+                        </button>
+                        <input
+                            type='text'
+                            id='input'
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                            className='w-16 h-8 bg-zinc-100 border border-stone-300 justify-center text-center gap-2.5 flex'
+                        />
+                        <button
+                            onClick={increament}
+                            className='w-9 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex'
+                        >
                             <div className='justify-center items-center gap-3.5 flex'>
                                 <div className="text-neutral-700 text-lg font-medium font-['Poppins']">
                                     +
                                 </div>
                             </div>
-                        </li>
+                        </button>
                     </ul>
                 </div>
             </div>

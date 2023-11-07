@@ -14,18 +14,17 @@ import { PiMoonStarsLight } from "react-icons/pi";
 import { TbDeviceAnalytics } from "react-icons/tb";
 
 import AddMeals from "./Add-meals";
-import Analytics from "./Analytics";
-import Dashboard from "./Dashboard";
 import Adminhistory from "./History/Adminhistory";
+import Overview from "./Overview/Overview";
 import Settings from "./Settings";
 import { auth, db } from "../util/firebase";
 
 export default function Sidemenu(props) {
     const components = [
         {
-            name: "Dashboard",
+            name: "Overview",
             icon: <AiOutlineHome></AiOutlineHome>,
-            element: <Dashboard />,
+            element: <Overview />,
         },
         {
             name: "Meals/Coupons",
@@ -36,11 +35,6 @@ export default function Sidemenu(props) {
             name: "History",
             icon: <LiaHistorySolid />,
             element: <Adminhistory />,
-        },
-        {
-            name: "Analytics",
-            icon: <TbDeviceAnalytics />,
-            element: <Analytics />,
         },
         {
             name: "Settings",
