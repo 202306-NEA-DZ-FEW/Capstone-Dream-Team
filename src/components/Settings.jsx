@@ -2,7 +2,13 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { auth, db, storage } from "@/util/firebase";
-import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import {
+    doc,
+    getDoc,
+    updateDoc,
+    deleteDoc,
+    deleteField,
+} from "firebase/firestore";
 import {
     updateProfile,
     sendEmailVerification,
@@ -12,7 +18,7 @@ import {
     EmailAuthProvider,
     deleteUser,
 } from "firebase/auth";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes, getStorage } from "firebase/storage";
 import { deleteObject } from "firebase/storage";
 import { useTranslation } from "next-i18next";
 
@@ -38,7 +44,10 @@ export default function Settings() {
     const [password, setPassword] = useState("");
     // states for logo preview
     const [isDragOver, setIsDragOver] = useState(false);
-    const [previewSrc, setPreviewSrc] = useState("");
+    const [previewSrc, setPreviewSrc] = useState(null);
+    // state for remove logo button
+    const [showButton, setShowButton] = useState(false);
+    const [hidden, setHidden] = useState(false);
 
     const router = useRouter();
     const user = auth.currentUser;
@@ -301,6 +310,32 @@ export default function Settings() {
             });
     };
 
+    const handleDeleteLogo = (e) => {
+        e.preventDefault();
+
+        if (previewSrc) {
+            const desertRef = ref(storage, previewSrc);
+            // Delete the logo image from storage
+            deleteObject(desertRef);
+            // update logo url in user profile
+            updateProfile(auth.currentUser, {
+                photoURL: null,
+            })
+                .then(() => {
+                    console.log("Profile image removed successfully");
+                })
+                .catch((error) => {
+                    console.error("Error removing profile image:", error);
+                });
+
+            // update logo in firestore
+            const userId = user.uid;
+            const docRef = doc(db, "restaurant", userId);
+            updateDoc(docRef, { image: deleteField() });
+            setPreviewSrc(null);
+        }
+    };
+
     return (
         <>
             <Head>
@@ -337,7 +372,7 @@ export default function Settings() {
                                     type='button'
                                     onClick={handleSettings}
                                 >
-                                    {t("settings.settings")}
+                                    {t("settings.edit")}
                                 </button>
                             </div>
                         </div>
@@ -359,8 +394,12 @@ export default function Settings() {
                                 >
                                     <input
                                         type='file'
-                                        className='absolute  inset-0 h-60 w-70 opacity-0 z-50'
+                                        className='absolute inset-0 h-60 w-70 opacity-0 z-20'
                                         onChange={handleFileChange}
+                                        onMouseEnter={() => setShowButton(true)}
+                                        onMouseLeave={() =>
+                                            setShowButton(false)
+                                        }
                                     />
                                     <div className='text-center'>
                                         <img
@@ -387,25 +426,36 @@ export default function Settings() {
                                                     {" "}
                                                     {t("settings.to_upload")}
                                                 </span>
-                                                <input
+                                                {/* <input
                                                     id='file-upload'
                                                     name='file-upload'
                                                     type='file'
                                                     className='sr-only'
-                                                />
+                                                    />*/}
                                             </label>
                                         </h3>
                                     </div>
                                     {previewSrc && (
-                                        <div
-                                            class='absolute h-60 w-70  flex items-center justify-center overflow-hidden  absolute top-0 left-0 object-cover'
-                                            style={{ "z-index": 10 }}
-                                        >
+                                        <div class='absolute h-60 w-70  flex items-center justify-center overflow-hidden  absolute top-0 left-0 object-cover'>
                                             <img
                                                 src={previewSrc}
-                                                className='h-full w-full '
+                                                className='h-full w-full'
                                             />
                                         </div>
+                                    )}
+                                    {showButton && previewSrc && (
+                                        <button
+                                            className='absolute top-1 right-1 z-40 rounded-full bg-red-500 text-white text-sm w-8 h-8 flex items-center justify-center'
+                                            onMouseEnter={() =>
+                                                setShowButton(true)
+                                            }
+                                            onMouseLeave={() =>
+                                                setShowButton(false)
+                                            }
+                                            onClick={handleDeleteLogo}
+                                        >
+                                            X
+                                        </button>
                                     )}
                                 </div>
 
