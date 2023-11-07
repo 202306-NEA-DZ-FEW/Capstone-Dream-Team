@@ -4,7 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ThemeProvider } from "next-themes";
 import React, { useEffect, useState } from "react";
 
-import Dashboard from "@/components/Dashboard";
+import Overview from "@/components/Overview/Overview";
 
 import Layout from "@/layout/Layout";
 import { auth } from "@/util/firebase";
@@ -13,7 +13,7 @@ import { auth } from "@/util/firebase";
 import Sidemenu from "../../components/Sidemenu";
 
 export default function AdminDashboard() {
-    const [component, setComponent] = useState(<Dashboard />);
+    const [component, setComponent] = useState(<Overview />);
 
     function handleClick(selectedComponent) {
         setComponent(selectedComponent);
