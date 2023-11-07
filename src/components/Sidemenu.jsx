@@ -100,8 +100,8 @@ export default function Sidemenu(props) {
 
     return (
         <>
-            <div className='w-1/5  h-screen z-8  '>
-                <div className='w-full h-full pl-3 pt-6  bg-[#BEEBDD]  dark:border-gray-200  shadow-xl border-r border-green-200 flex-col justify-between items-start inline-flex gap-8  dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-700  '>
+            <div className='col-span-1  h-screen z-8 fixed  '>
+                <div className='w-full h-full pl-3 pt-6  bg-white  dark:border-gray-200  shadow-xl border-r border-gray-200 flex-col justify-between items-start inline-flex gap-8  dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-700  '>
                     <div className='  flex-col justify-start items-start gap-4 flex'>
                         <div className='justify-center md:justify-start items-center gap-3  md:inline-flex lg:inline-flex'>
                             <Image

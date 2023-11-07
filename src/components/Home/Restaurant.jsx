@@ -17,7 +17,7 @@ export default function Restaurant() {
                         <img
                             src='images/home/restaurant/res1-removebg-preview.png'
                             alt='take pictures of meal'
-                            class='w-full just h-52 rounded-md object-cover'
+                            class='w-full just h-48 rounded-md object-cover'
                         ></img>
                         <div class='px-1 py-4'>
                             <div class='font-bold text-orange-400 text-xl mb-2'>

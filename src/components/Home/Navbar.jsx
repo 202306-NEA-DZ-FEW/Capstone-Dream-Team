@@ -61,7 +61,7 @@ export default function Navbar({ locale }) {
                             <div className='flex h-full w-full ml-6 pt-3 justify-center items-center'>
                                 <Link href='/'>
                                     <Image
-                                        src='/images/home/Navbar/removal.ai_8894e20c-b8f7-497d-acb4-0f55ec1a5d7e-fatimalogo1.png'
+                                        src='/images/home/Navbar/logo.png'
                                         alt='logo'
                                         width={100}
                                         height={40}
@@ -74,7 +74,7 @@ export default function Navbar({ locale }) {
                             <div className='flex h-full w-full pt-3 justify-center items-center'>
                                 <Link href='/'>
                                     <Image
-                                        src='/images/home/Navbar/removal.ai_8894e20c-b8f7-497d-acb4-0f55ec1a5d7e-fatimalogo1.png'
+                                        src='/images/home/Navbar/logo.png'
                                         alt='logo'
                                         width={100}
                                         height={40}
