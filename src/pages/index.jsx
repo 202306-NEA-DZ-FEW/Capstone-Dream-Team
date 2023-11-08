@@ -29,9 +29,14 @@ export default function HomePage({ blogs, locale }) {
                     <Goals></Goals>
                     <Restaurant></Restaurant>
                     <Joinus></Joinus>
-                    <div className=' pt-12 py-6'>
-                        <h1 className='text-center max-w-lg mb-6  font-sans text-3xl font-bold leading-none tracking-tight text-[#192655] sm:text-4xl md:mx-auto'>
-                            blogs
+                    <span className='mx-80 text-center border-t-2 '></span>
+                    <div className='pt-12 py-6'>
+                        <h2 className=' mb-6  font-sans text-2xl  leading-none tracking-tight text-gray-600 sm:text-2xl mx-12'>
+                            Explore here articles about hunger and poverty in
+                            our world
+                        </h2>
+                        <h1 className=' text-lg font-bold md:text-2xl mx-16'>
+                            Blogs :
                         </h1>
                         <div className='sm:max-w-sm sm:mx-auto lg:max-w-full'>
                             <BlogCardList
