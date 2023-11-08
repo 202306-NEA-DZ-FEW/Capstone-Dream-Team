@@ -19,6 +19,8 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@stripe/react-stripe-js": "^2.3.1",
+        "axios": "^1.6.0",
         "chart.js": "^4.4.0",
         "clsx": "^1.2.1",
         "date-fns": "^2.29.1",
@@ -35,6 +37,7 @@
         "react-router-dom": "^6.3.0",
         "react-slideshow-image": "^4.3.0",
         "react-test-renderer": "^18.2.0",
+        "stripe": "^14.3.0",
         "uuid": "^9.0.1"
     },
     "devDependencies": {

@@ -7,26 +7,26 @@ import {
     updateDoc,
 } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
-
 import React, { useEffect, useState } from "react";
-import { db } from "../../util/firebase";
+import { auth, db } from "../../util/firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export default function Historycard() {
     const [blogData, setBlogData] = useState([]);
     const { t } = useTranslation("common");
-    //const [authUser, setAuthUser] = useState(null); // State to store the authenticated user.
+    const [authUser, setAuthUser] = useState(null); // State to store the authenticated user.
 
-    //const user = auth.currentUser
+    const user = auth.currentUser;
     useEffect(() => {
         // // Use Firebase's 'onAuthStateChanged' to listen for changes in user authentication state.
-        // onAuthStateChanged(auth, (user) => {
-        //     // If a user is authenticated, set 'authUser' to the user; otherwise, set it to null.
-        //     user ? setAuthUser(user) : setAuthUser(null);
-        // });
+        onAuthStateChanged(auth, (user) => {
+            //     // If a user is authenticated, set 'authUser' to the user; otherwise, set it to null.
+            user ? setAuthUser(user) : setAuthUser(null);
+        });
         async function fetchBlogs() {
             const q = query(
-                collection(db, "Donors"),
-                where("restaurant_id", "==", 3)
+                collection(db, "donors"),
+                where("restaurantId", "==", user.uid)
             );
 
             try {
@@ -34,11 +34,11 @@ export default function Historycard() {
                 const data = querySnapshot.docs.map((doc) => {
                     const Donors = doc.data();
                     return {
-                        Name: Donors.donor_first_name,
-                        meal: Donors.meal_id,
-                        numb_meal: Donors.meal_quantity,
-                        numbmeal: Donors.meal_quantity,
-                        price: Donors.meal_price,
+                        Name: Donors.donor_name,
+                        meal: Donors.name,
+                        numb_meal: Donors.quantity,
+                        numbmeal: Donors.active_meal,
+                        price: Donors.price,
                         DATE: Donors.date,
                         docId: doc.id, // Add the Firestore document ID
                     };
@@ -60,12 +60,12 @@ export default function Historycard() {
             setBlogData(updatedData);
 
             // Update the Firestore document with the new value
-            const donorDocRef = doc(db, "Donors", updatedData[index].docId);
+            const donorDocRef = doc(db, "donors", updatedData[index].docId);
             const newNumbmeal = updatedData[index].numbmeal;
 
             try {
                 await updateDoc(donorDocRef, {
-                    meal_quantity: newNumbmeal,
+                    active_meal: newNumbmeal,
                 });
             } catch (error) {
                 console.error("Error updating document:", error);

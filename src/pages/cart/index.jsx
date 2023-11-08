@@ -71,7 +71,7 @@ function Cart() {
                     const mealData = doc.data();
                     mealsData.push({
                         ...mealData,
-                        quantity: 1,
+                        //quantity: 1,
                     });
                 });
 
@@ -185,7 +185,7 @@ function Cart() {
                         </p>
                     </div>
                     {/* I map here to put the Cards*/}
-                    {visitorID ? (
+                    {visitorID && meals.length !== 0 ? (
                         meals.map((meal) => (
                             <Card
                                 mealObject={meal}
@@ -218,7 +218,11 @@ function Cart() {
                             </p>
                             <div>
                                 <p class='text-end font-bold'>
-                                    ${(totalCartPrice / totalMeals).toFixed(2)}
+                                    {Number.isNaN(totalCartPrice / totalMeals)
+                                        ? "$0"
+                                        : `$${(
+                                              totalCartPrice / totalMeals
+                                          ).toFixed(2)}`}
                                 </p>
                                 {/*<p class="text-gray-600 text-sm font-normal">Arrives on Jul 16</p>*/}
                             </div>
@@ -240,7 +244,10 @@ function Cart() {
                             </div>
                         </div>
                         <div>
-                            <Checkout />
+                            <Checkout
+                                Total={totalCartPrice.toFixed(2)}
+                                cart={meals}
+                            />
                             {/* <button >
                                  {t("cartPage.cart.donate")} 
                                 

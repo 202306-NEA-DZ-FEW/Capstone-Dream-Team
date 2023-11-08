@@ -5,7 +5,7 @@ import { useTranslation } from "next-i18next";
 
 function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
     const { t } = useTranslation("common");
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState(mealObject.quantity);
     const cartCollection = collection(db, "cart");
 
     console.log(mealObject);
@@ -55,7 +55,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
     const totalMealPrice = mealObject.price * quantity;
 
     function increament() {
-        if (quantity <= mealObject.maxMeals) {
+        if (quantity < mealObject.maxMeals) {
             const newQuantity = quantity + 1;
 
             setQuantity(newQuantity);
