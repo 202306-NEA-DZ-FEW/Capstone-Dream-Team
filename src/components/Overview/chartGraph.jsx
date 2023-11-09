@@ -19,14 +19,68 @@ import {
     where,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 import { auth, db } from "@/util/firebase";
 
-function BarChart() {
+function ChartGraph() {
     const [authUser, setAuthUser] = useState(null);
     const [chartData, setChartData] = useState(null); // Changed variable name
-
+    // const options = {
+    //     responsive: true,
+    //     plugins: {
+    //         legend: {
+    //             position: "top",
+    //         },
+    //         title: {
+    //             display: true,
+    //             text: "Chart.js Line Chart",
+    //         },
+    //     },
+    //     scales: {
+    //         x: {
+    //             beginAtZero: true,
+    //         },
+    //         y: {
+    //             beginAtZero: true,
+    //             ticks: {
+    //                 // Your custom Y-axis values here
+    //                 stepSize: 5, // You can set the step size
+    //                 min: 0, // Minimum value
+    //                 max: 20, // Maximum value
+    //             },
+    //         },
+    //     },
+    // };
+    const options = {
+        maintainAspectRatio: false,
+        aspectRatio: 0.6,
+        plugins: {
+            legend: {
+                labels: {
+                    color: "red",
+                },
+            },
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: "green",
+                },
+                grid: {
+                    color: "blue",
+                },
+            },
+            y: {
+                ticks: {
+                    color: "black",
+                },
+                grid: {
+                    color: "black",
+                },
+            },
+        },
+    };
     Chart.register(
         CategoryScale,
         LinearScale,
@@ -38,7 +92,6 @@ function BarChart() {
         TimeScale,
         BarElement
     );
-
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             user ? setAuthUser(user) : setAuthUser(null);
@@ -76,19 +129,10 @@ function BarChart() {
                         {
                             label: "Donation per day",
                             data: chartArray.map((data) => data.count),
-                            backgroundColor: "rgba(75,192,192,1)",
-                            borderColor: "rgba(0,0,0,1)",
-                            borderWidth: 2,
+                            borderColor: "rgb(255, 99, 132)",
+                            backgroundColor: "rgba(255, 99, 132, 0.5)",
                         },
                     ],
-                    scales: {
-                        x: {
-                            type: "time",
-                            time: {
-                                unit: "day",
-                            },
-                        },
-                    },
                 };
                 setChartData(chartData); // Corrected variable name
             }
@@ -104,10 +148,13 @@ function BarChart() {
     }, [authUser]);
 
     return (
-        <div className='w-full h-full'>
-            {chartData && <Bar data={chartData} />}
+        <div className='h-1/2 w-1/2 bg-white'>
+            hey
+            {chartData && (
+                <Line className='border' data={chartData} options={options} />
+            )}
         </div>
     );
 }
 
-export default BarChart;
+export default ChartGraph;

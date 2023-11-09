@@ -37,7 +37,7 @@ export default function AdminDashboard() {
                 <div className='flex w-full h-screen'>
                     {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
                     <Sidemenu handleClick={handleClick}></Sidemenu>
-                    <div className='flex w-4/5 justify-items-center  p-8 text-2xl font-bold overflow-scroll'>
+                    <div className='flex w-4/5 justify-items-center  px-8 text-2xl font-bold'>
                         {component}
                     </div>
                 </div>
