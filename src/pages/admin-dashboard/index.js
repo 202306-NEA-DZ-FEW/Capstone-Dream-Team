@@ -3,6 +3,7 @@ import Link from "next/link";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ThemeProvider } from "next-themes";
 import React, { useEffect, useState } from "react";
+import { IoIosArrowDropright } from "react-icons/io";
 
 import Overview from "@/components/Overview/Overview";
 
@@ -13,6 +14,7 @@ import { auth } from "@/util/firebase";
 import Sidemenu from "../../components/Sidemenu";
 
 export default function AdminDashboard() {
+    const [show, setShow] = useState(false);
     const [component, setComponent] = useState(<Overview />);
 
     function handleClick(selectedComponent) {
@@ -28,17 +30,29 @@ export default function AdminDashboard() {
             user ? setAuthUser(user) : setAuthUser(null);
         });
     }, []); // Pass an empty dependency array to run this effect only once.
-
+    const handleShow = () => {
+        setShow(true);
+    };
     return (
         <Layout>
             {/* to check whether the user is signed in    */}
             {authUser ? (
                 // we show the page of the admin dashboard
-                <div className='flex w-full h-screen'>
-                    {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
-                    <Sidemenu handleClick={handleClick}></Sidemenu>
-                    <div className='flex w-4/5 justify-items-center  px-8 text-2xl font-bold'>
-                        {component}
+                <div className='grid grid-cols-4'>
+                    <div
+                        onClick={handleShow}
+                        className='z-20 inline-block md:hidden absolute top-12 ml-11 w-28 h-24 '
+                    >
+                        <IoIosArrowDropright></IoIosArrowDropright>
+                    </div>
+                    <Sidemenu handleClick={handleClick} show={show}></Sidemenu>
+
+                    <div className='col-span-4 grid grid-cols-8 w-full h-screen overflow-hidden'>
+                        {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
+                        <div className='col-span-2'></div>
+                        <div className='col-span-6 justify-items-center  p-8 text-2xl font-bold overflow-scroll'>
+                            {component}
+                        </div>
                     </div>
                 </div>
             ) : (
@@ -49,7 +63,7 @@ export default function AdminDashboard() {
                     <div className='flex text-2xl font-semibold'>
                         You need to have an acount to enter the dashboard page !
                     </div>
-                    <Link href='/'>
+                    <Link href='/signIn'>
                         <button className='w-[160px] text-lg bg-teal-500 text-white py-2 px-4 rounded hover:shadow-lg transform hover:scale-105 '>
                             Create account
                         </button>
