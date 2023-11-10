@@ -11,7 +11,6 @@ import { HiOutlineChartBarSquare } from "react-icons/hi2";
 import { IoLogOutOutline } from "react-icons/io5";
 import { LiaHistorySolid } from "react-icons/lia";
 import { PiMoonStarsLight } from "react-icons/pi";
-import { TbDeviceAnalytics } from "react-icons/tb";
 
 import AddMeals from "./Add-meals";
 import Adminhistory from "./History/Adminhistory";

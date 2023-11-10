@@ -9,7 +9,6 @@ export default function Overview() {
         weekday: "long",
     }).format(date);
 
-    console.log("formattedDate", formattedDate);
     // Now 'formattedDate' contains the full name of the day (e.g., "Monday")
 
     // Push 'formattedDate' to Firebase along with other data
