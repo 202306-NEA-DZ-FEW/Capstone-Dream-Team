@@ -1,11 +1,10 @@
 import { onAuthStateChanged } from "firebase/auth";
 import Link from "next/link";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { ThemeProvider } from "next-themes";
 import React, { useEffect, useState } from "react";
 import { IoIosArrowDropright } from "react-icons/io";
 
-import Overview from "@/components/Overview/Overview";
+import Overview from "@/components/Overview/overview";
 
 import Layout from "@/layout/Layout";
 import { auth } from "@/util/firebase";

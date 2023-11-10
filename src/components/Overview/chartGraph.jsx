@@ -53,8 +53,6 @@ function ChartGraph() {
     //     },
     // };
     const options = {
-        maintainAspectRatio: false,
-        aspectRatio: 0.6,
         plugins: {
             legend: {
                 labels: {
@@ -67,15 +65,9 @@ function ChartGraph() {
                 ticks: {
                     color: "green",
                 },
-                grid: {
-                    color: "blue",
-                },
             },
             y: {
                 ticks: {
-                    color: "black",
-                },
-                grid: {
                     color: "black",
                 },
             },
@@ -148,7 +140,7 @@ function ChartGraph() {
     }, [authUser]);
 
     return (
-        <div className='h-1/2 w-1/2 bg-white'>
+        <div className='h-2/3 max-w-full bg-white'>
             hey
             {chartData && (
                 <Line className='border' data={chartData} options={options} />
