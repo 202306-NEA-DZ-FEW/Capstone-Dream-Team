@@ -104,14 +104,34 @@ export default function Sidemenu(props) {
             >
                 <IoIosArrowDropright
                     onClick={handleShow}
-                    className={`z-40 md:hidden absolute top-9 -right-4 cursor-pointer w-8 h-10 duration-300 ${
+                    className={`z-40 md:hidden absolute top-16 -right-4 cursor-pointer w-8 h-10 duration-300 ${
                         !open && "rotate-180 "
                     } `}
                 ></IoIosArrowDropright>
 
-                <div className='w-full h-full pl-3 pt-6  bg-white  dark:border-gray-200  shadow-xl border-r border-gray-200 flex-col justify-between items-start inline-flex gap-8  dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-700  '>
-                    <div className='  flex-col justify-start items-start gap-4 flex'>
-                        <div className='justify-center md:justify-start items-center gap-3  md:inline-flex lg:inline-flex'>
+                <div
+                    className='w-full h-full pl-3  bg-white  dark:border-gray-200  shadow-xl border-r border-gray-200 flex-col justify-between items-start inline-flex gap-8  dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-700 bg-cover '
+                    style={{
+                        backgroundImage: "url(images/sidemenu/background.png)",
+                    }}
+                >
+                    <div className=' flex-col justify-start items-start gap-4 flex'>
+                        <div className=' md:border-b md:border-gray-400 items-center gap-3 my-6 mx-auto justify-start md:justify-center '>
+                            <div
+                                className={`w-16 h-16 bg-white rounded-full border border-blue-200 md:w-20 mt-2 mb-4 md:mb-6  md:h-20 relative  ease-out duration-500  ${
+                                    open &&
+                                    "mr-32 scale-50 p-0 mb-2 md:transform-none md:mx-auto md:mt-2 md:mb-6"
+                                }`}
+                            >
+                                <Link href='/'>
+                                    <img
+                                        src='images/home/Navbar/sidebarLogo.png'
+                                        alt='logo'
+                                    ></img>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className='md:justify-center items-center gap-3  inline-flex justify-start lg:inline-flex'>
                             <Image
                                 className={`w-12 h-12 relative rounded-2xl ease-out duration-700 ${
                                     !open && "rotate-[360deg]"
@@ -192,65 +212,6 @@ export default function Sidemenu(props) {
                                     </button>
                                 </div>{" "}
                             </Link>
-                        </div>
-                        <div className='self-stretch pl-3 pr-6 py-3 rounded-lg justify-between items-center inline-flex'>
-                            <div className=' justify-start items-center gap-1 flex'>
-                                <div className='w-6 h-6 relative'>
-                                    <div>
-                                        {" "}
-                                        {currentTheme === "dark" ? (
-                                            <BsSun
-                                                size={20}
-                                                style={{ display: "inline" }}
-                                                onClick={() =>
-                                                    setTheme("light")
-                                                }
-                                            ></BsSun>
-                                        ) : (
-                                            <PiMoonStarsLight
-                                                size={20}
-                                                style={{ display: "inline" }}
-                                                onClick={() => setTheme("dark")}
-                                            ></PiMoonStarsLight>
-                                        )}
-                                    </div>
-                                </div>
-                                <div
-                                    className={`text-[#333333] dark:text-white text-sm font-normal font-['Open Sans'] leading-snug duration-300 ${
-                                        open && "scale-0 md:transform-none"
-                                    }`}
-                                >
-                                    {currentTheme === "dark" ? "light" : "dark"}{" "}
-                                    mode
-                                </div>
-                            </div>
-                            {currentTheme === "light" ? (
-                                <label
-                                    htmlFor='check'
-                                    className='w-12 h-5 rounded-full relative bg-white  cursor-pointer'
-                                >
-                                    <input
-                                        type='checkbox'
-                                        id='check'
-                                        className='sr-only '
-                                        onClick={() => setTheme("dark")}
-                                    />
-                                    <span className='w-2/5 h-3/5 top-1 left-1 rounded-full bg-[#E9B824] absolute flex justify-center items-center'></span>
-                                </label>
-                            ) : (
-                                <label
-                                    htmlFor='check'
-                                    className='w-12 h-5 rounded-full relative bg-white  cursor-pointer'
-                                >
-                                    <input
-                                        type='checkbox'
-                                        id='check'
-                                        className='sr-only peer'
-                                        onClick={() => setTheme("light")}
-                                    />
-                                    <span className='w-2/5 h-3/5 top-1 left-6 rounded-full bg-black absolute flex justify-center items-center'></span>
-                                </label>
-                            )}
                         </div>
                     </div>
                 </div>
