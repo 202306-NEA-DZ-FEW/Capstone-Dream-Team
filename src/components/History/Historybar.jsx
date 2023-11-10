@@ -12,18 +12,3 @@ export default function Historybar() {
         </div>
     );
 }
-
-// import { render } from "@testing-library/react";
-// import Historybar from "./Historybar"; // Import your component
-
-// describe("Historybar", () => {
-//   it("renders the Historybar component", () => {
-//     const { getByText } = render(<Historybar />);
-
-//     // You can use queries to find elements in the rendered component
-//     const historyText = getByText("History");
-
-//     // Assert that the "History" text is present in the component
-//     expect(historyText).toBeInTheDocument();
-//   });
-// });

@@ -23,7 +23,10 @@ const customJestConfig = {
         "^@/(.*)$": "<rootDir>/src/$1",
         "^~/(.*)$": "<rootDir>/public/$1",
     },
+
 };
+
+
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 module.exports = createJestConfig(customJestConfig);

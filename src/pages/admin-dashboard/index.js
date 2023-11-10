@@ -50,7 +50,7 @@ export default function AdminDashboard() {
                     <div className='col-span-4 grid grid-cols-8 w-full h-screen overflow-hidden'>
                         {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
                         <div className='col-span-2'></div>
-                        <div className='col-span-6 justify-items-center  p-8 text-2xl font-bold overflow-scroll'>
+                        <div className='col-span-6 justify-items-center  pt-4 text-2xl font-bold overflow-scroll'>
                             {component}
                         </div>
                     </div>

@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="mb-10 w-80 h-96 relative"
+>
+  <div
+    className="w-80 h-96 left-0 top-[92px] absolute  rounded-3xl shadow bg-orange-100"
+  >
+    <div
+      className="top-[160px] absolute flex-col left-1/2 -translate-x-1/2 "
+    >
+      <p
+        className="flex text-black text-xl font-bold justify-center items-center font-roboto whitespace-nowrap pb-2"
+      >
+        Msemen
+      </p>
+      <div
+        className="  flex text-neutral-400 text-lg font-semibold font-['Roboto'] justify-center item-center"
+      >
+        400
+         £
+      </div>
+    </div>
+    <div
+      className="w-72 h-px left-1/2 -translate-x-1/2 top-[243px] absolute border-2 border-neutral-400 border-opacity-20"
+    />
+    <div
+      className="w-60 h-11 left-1/2 -translate-x-1/2 top-[329px] absolute"
+    >
+      <div>
+        AddToCartButton component
+      </div>
+    </div>
+    <div
+      className="mt-[267px] pl-5 pr-5 flex justify-between items-center"
+    >
+      <div
+        className="text-neutral-400 text-base font-medium font-['Roboto']"
+      >
+        cartPage.card.quantityLeft
+        : 
+        25
+      </div>
+      <ul
+        className="w-32 h-8 flex items-center"
+      >
+        <button
+          className="w-9 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex"
+          onClick={[Function]}
+        >
+          <div
+            className="justify-center items-center gap-3.5 flex"
+          >
+            <div
+              className="text-neutral-700 text-lg font-medium font-['Poppins']"
+            >
+              -
+            </div>
+          </div>
+        </button>
+        <input
+          className="w-16 h-8 bg-zinc-100 border border-stone-300 justify-center text-center gap-2.5 flex"
+          id="input"
+          onChange={[Function]}
+          type="text"
+          value={1}
+        />
+        <button
+          className="w-9 h-8 bg-zinc-100 border border-stone-300 justify-center items-center gap-2.5 flex"
+          onClick={[Function]}
+        >
+          <div
+            className="justify-center items-center gap-3.5 flex"
+          >
+            <div
+              className="text-neutral-700 text-lg font-medium font-['Poppins']"
+            >
+              +
+            </div>
+          </div>
+        </button>
+      </ul>
+    </div>
+  </div>
+  <img
+    className="w-60 h-60 left-1/2 -translate-x-1/2 top-0 absolute rounded-full"
+    src="https://via.placeholder.com/444x530"
+  />
+</div>
+`;

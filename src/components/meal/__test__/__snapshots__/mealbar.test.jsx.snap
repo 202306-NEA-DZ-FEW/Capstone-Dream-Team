@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="bg-neutral-100 rounded-full p-4  flex items-center space-x-3"
+>
+  <img
+    className="w-14 h-14 rounded-full"
+    src="https://viaplaceholder.com/56x56"
+  />
+  <div
+    className="flex flex-row items-center justify-between w-full"
+  >
+    <span
+      className="text-3xl font-bold font-Roboto leading-relaxed"
+    >
+      Restaurant
+    </span>
+    <span
+      className="text-xl font-Roboto leading-relaxed ml-auto"
+    >
+      <div>
+        <button
+          className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus-ring-blue-800"
+          data-modal-target="default-modal"
+          data-modal-toggle="default-modal"
+          onClick={[Function]}
+          type="button"
+        >
+          mealsPage.show_meals
+        </button>
+      </div>
+    </span>
+  </div>
+</div>
+`;

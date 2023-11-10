@@ -11,7 +11,7 @@ import {
     deleteDoc,
 } from "firebase/firestore";
 
-import { db } from "@/util/firebase";
+import { db } from "../../util/firebase";
 
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
@@ -126,6 +126,8 @@ const Checkout = ({ Total, cart }) => {
                     }
                 });
 
+                // add your code here !!!
+
                 setPaymentSuccess(true);
             }
         } catch (err) {
@@ -192,7 +194,7 @@ const Checkout = ({ Total, cart }) => {
                                             onSubmit={handleSubmit}
                                         >
                                             <p className='text-gray-800 font-medium'>
-                                                Donor information
+                                                Donor informations
                                             </p>
                                             <div className=''>
                                                 <label
@@ -245,7 +247,7 @@ const Checkout = ({ Total, cart }) => {
                                                 >
                                                     Address
                                                 </label>
-                                                <input
+                                                {/* <input
                                                     className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
                                                     id='cus_email'
                                                     name='cus_email'
@@ -253,7 +255,7 @@ const Checkout = ({ Total, cart }) => {
                                                     required=''
                                                     placeholder='Street'
                                                     aria-label='Email'
-                                                />
+                                                /> */}
                                             </div>
                                             <div className='mt-2'>
                                                 <label
@@ -307,13 +309,32 @@ const Checkout = ({ Total, cart }) => {
                                                 />
                                             </div>
                                             <p className='mt-4 text-gray-800 font-medium'>
-                                                Payment information
+                                                Payment informations
                                             </p>
                                             <div className=''>
                                                 <label>
-                                                    <CardElement />
+                                                    <div className='p-4 bg-gray-200 rounded'>
+                                                        <CardElement
+                                                            options={{
+                                                                style: {
+                                                                    base: {
+                                                                        fontSize:
+                                                                            "16px",
+                                                                        color: "#424770",
+                                                                        "::placeholder":
+                                                                            {
+                                                                                color: "#aab7c4",
+                                                                            },
+                                                                    },
+                                                                    invalid: {
+                                                                        color: "#9e2146",
+                                                                    },
+                                                                },
+                                                            }}
+                                                        />
+                                                    </div>
                                                 </label>
-                                                <input
+                                                {/* <input
                                                     className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
                                                     id='cus_name'
                                                     name='cus_name'
@@ -321,7 +342,7 @@ const Checkout = ({ Total, cart }) => {
                                                     required=''
                                                     placeholder='Card Number MM/YY CVC'
                                                     aria-label='Name'
-                                                />
+                                                /> */}
                                             </div>
 
                                             <div className='mt-4'>
