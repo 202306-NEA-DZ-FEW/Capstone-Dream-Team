@@ -74,7 +74,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
 
     return (
         <div>
-            <div className='flex items-center justify-between items-center'>
+            <div className='rounded-xl flex items-center justify-between items-center p-4 bg-red-100'>
                 {/** image + meal name */}
                 <div className='flex flex-col lg:flex-row gap-6 items-center'>
                     {/** image */}
@@ -86,7 +86,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                         />
                     </div>
                     {/** meal name */}
-                    <div class='flex-col gap-1 w-60 order-1 lg:order-2'>
+                    <div class='flex-col gap-1 max-w-60 order-1 lg:order-2'>
                         <p class='text-lg text-center text-gray-800 font-semibold'>
                             {mealObject.description}
                         </p>
@@ -94,16 +94,16 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                 </div>
 
                 {/** price + Qty */}
-                <div className='flex flex-col lg:flex-row gap-6 items-center'>
-                    <div class='self-center text-center w-[100px] hidden md:hidden sm:hidden lg:block '>
-                        <p class='text-gray-800 font-normal text-xl'>
+                <div className='flex flex-col gap-8 md:flex-row md:gap-20 items-center'>
+                    <div className='self-center text-center max-w-[100px] hidden md:hidden sm:hidden lg:block '>
+                        <p className='text-lg text-center text-gray-800 font-semibold'>
                             ${mealObject.price.toFixed(2)}
                         </p>
                     </div>
 
-                    <div class='flex flex-row self-center gap-1 w-[100px] justify-center'>
+                    <div class='flex flex-row self-center gap-1 max-w-[100px] justify-center'>
                         <button
-                            class='w-5 h-5 self-center rounded-full border border-gray-300'
+                            className='w-5 h-5 self-center rounded-full border border-gray-300'
                             onClick={decreament}
                         >
                             <svg
@@ -122,7 +122,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                             type='text'
                             id={`${mealObject.id}`}
                             value={quantity}
-                            class='w-8 h-8 text-center text-gray-900 text-sm outline-none border border-gray-300 rounded-sm'
+                            className='w-8 h-8 text-center text-lg text-center text-gray-800 font-semibold outline-none border border-gray-300 rounded-sm'
                             onChange={handleQuantityChange}
                         />
                         <button
@@ -143,16 +143,16 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                         </button>
                     </div>
 
-                    <div class='self-center text-center w-[100px]'>
-                        <p class='text-gray-800 font-normal text-xl'>
+                    <div className='self-center text-center max-w-[100px]'>
+                        <p className='text-gray-800 font-normal text-xl'>
                             ${totalMealPrice.toFixed(2)}
                         </p>
                     </div>
                 </div>
 
                 {/** Delete from cart */}
-                <div class='flex self-center w-[100px] text-center '>
-                    <button class=' ' onClick={removeFromCollection}>
+                <div className='flex self-center max-w-[100px] text-center '>
+                    <button className=' ' onClick={removeFromCollection}>
                         <svg
                             class=''
                             height='24px'
@@ -186,9 +186,9 @@ export default Card;
 
 {
     /* <p class='text-xs text-gray-600 font-semibold'>
-                            {t("cartPage.card.quantityLeft")}:{" "}
-                            <span class='font-normal'>
-                                {mealObject.maxMeals}
-                            </span>
-                        </p> */
+       {t("cartPage.card.quantityLeft")}:{" "}
+       <span class='font-normal'>
+           {mealObject.maxMeals}
+       </span>
+    </p> */
 }

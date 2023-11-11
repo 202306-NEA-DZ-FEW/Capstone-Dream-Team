@@ -34,7 +34,7 @@
     },
     "cartPage": {
         "cart": {
-            "meal": "Meal",
+            "meal": "Meals",
             "price": "Price",
             "quantity": "QTY",
             "subtotal": "Subtotal",
