@@ -141,7 +141,7 @@ const Checkout = ({ Total, cart }) => {
         <div>
             {/* Modal toggle : must be donate button from the mouloud component !!!! */}
             <button
-                className='transition-colors text-sm bg-teal-500 hover:bg-purple-700 p-2 rounded-sm w-full text-white text-hover shadow-md'
+                className='transition-colors rounded-full text-sm bg-orange-400  hover:bg-opacity-50 p-2 rounded-sm w-full text-white text-hover shadow-md'
                 onClick={toggleModal}
             >
                 DONATE NOW
@@ -153,9 +153,9 @@ const Checkout = ({ Total, cart }) => {
                     id='default-modal'
                     tabIndex='-1'
                     aria-hidden='true'
-                    className='fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full'
+                    className='fixed flex justify-center items-center w-full z-50 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100% - 1rem)] max-h-full'
                 >
-                    <div className='relative w-full max-h-full'>
+                    <div className='relative w-full max-w-full max-h-full sm:max-w-2xl'>
                         {/* Modal content */}
                         <div className='relative bg-white border-4 border-blue-500 rounded-lg shadow dark:bg-gray-700'>
                             {/* TITLE & HIDE X */}

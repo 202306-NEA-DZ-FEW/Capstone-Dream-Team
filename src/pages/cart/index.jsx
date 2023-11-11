@@ -162,9 +162,9 @@ function Cart() {
 */
 
         <Layout>
-            <div class='flex flex-col md:flex-row w-screen h-full  py-7 pl-2 pr-2'>
+            <div class='flex flex-col lg:flex-row w-screen h-full py-7 pl-2 pr-2'>
                 {/* Header Section */}
-                <div class='w-full flex flex-col h-fit gap-4 p-4'>
+                <div class='w-full lg:w-2/3 flex flex-col h-fit gap-4 p-4'>
                     <div class='flex flex-col md:flex-row gap-3 justify-between pl-4 pr-4 h-14 border-b-2'>
                         <div class='  gap-6'>
                             <p class='text-blue-900 text-xl font-semibold w-[376px]'>
@@ -200,7 +200,7 @@ function Cart() {
                 </div>
 
                 {/* Checkout Card Section */}
-                <div class='flex flex-col w-full md:w-1/3 h-fit gap-4 p-4'>
+                <div class='flex flex-col w-full lg:w-1/3 h-fit gap-4 p-4'>
                     <p class='text-blue-900 text-xl font-semibold'>
                         {t("cartPage.cart.summary")}
                     </p>
@@ -227,11 +227,7 @@ function Cart() {
                                 {/*<p class="text-gray-600 text-sm font-normal">Arrives on Jul 16</p>*/}
                             </div>
                         </div>
-                        {/*<hr class="bg-gray-200 h-0.5" />
-          <div class="flex flex-row justify-between">
-            <p class="text-gray-600">Discount Coupon</p>
-            <a class="text-gray-500 text-base underline" href="#">Add</a>
-  </div>*/}
+
                         <hr class='bg-gray-200 h-0.5' />
                         <div class='flex flex-row justify-between'>
                             <p class='text-gray-600'>

@@ -73,99 +73,85 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
     }
 
     return (
-        /* <div>
-       <p>{mealObject.name}</p>
-       <p>{mealObject.price}</p>
-       <p>{mealObject.description}</p>
-       <AddToCartButton mealObject={mealObject} />
- 
- 
-     </div>*/
-
-        <div class='flex flex-col p-4 text-lg font-semibold border-b-2 rounded-sm'>
-            <div class='flex flex-col md:flex-row gap-3 justify-between '>
-                <div class='flex flex-row gap-6 items-center'>
-                    <div class='w-28 h-28'>
+        <div>
+            <div className='flex items-center justify-between items-center'>
+                {/** image + meal name */}
+                <div className='flex flex-col lg:flex-row gap-6 items-center'>
+                    {/** image */}
+                    <div class='flex-col w-28 h-28 order-2 lg:order-1'>
                         <img
                             class='w-full h-full'
                             src={mealObject.imageUrl}
                             alt='image'
                         />
                     </div>
-                    <div class='flex flex-col gap-1 w-60'>
-                        <p class='text-lg text-gray-800 font-semibold'>
+                    {/** meal name */}
+                    <div class='flex-col gap-1 w-60 order-1 lg:order-2'>
+                        <p class='text-lg text-center text-gray-800 font-semibold'>
                             {mealObject.description}
-                        </p>
-                        {/* <p class='text-xs text-gray-600 font-semibold'>
-                            {t("cartPage.card.restaurant")}:{" "}
-                            <span class='font-normal'>{mealObject.name}</span>
-                        </p>*/}
-                        <p class='text-xs text-gray-600 font-semibold'>
-                            {t("cartPage.card.quantityLeft")}:{" "}
-                            <span class='font-normal'>
-                                {mealObject.maxMeals}
-                            </span>
                         </p>
                     </div>
                 </div>
 
-                <div class='self-center text-center w-[100px]'>
-                    {/* Price */}
-                    <p class='text-gray-800 font-normal text-xl'>
-                        ${mealObject.price.toFixed(2)}
-                    </p>
-                </div>
+                {/** price + Qty */}
+                <div className='flex flex-col lg:flex-row gap-6 items-center'>
+                    <div class='self-center text-center w-[100px] hidden md:hidden sm:hidden lg:block '>
+                        <p class='text-gray-800 font-normal text-xl'>
+                            ${mealObject.price.toFixed(2)}
+                        </p>
+                    </div>
 
-                <div class='flex flex-row self-center gap-1 w-[100px] justify-center'>
-                    <button
-                        class='w-5 h-5 self-center rounded-full border border-gray-300'
-                        onClick={decreament}
-                    >
-                        <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            viewBox='0 0 24 24'
-                            fill='none'
-                            stroke='#d1d5db'
-                            stroke-width='2'
-                            stroke-linecap='round'
-                            stroke-linejoin='round'
+                    <div class='flex flex-row self-center gap-1 w-[100px] justify-center'>
+                        <button
+                            class='w-5 h-5 self-center rounded-full border border-gray-300'
+                            onClick={decreament}
                         >
-                            <path d='M5 12h14' />
-                        </svg>
-                    </button>
-                    <input
-                        type='text'
-                        id={`${mealObject.id}`}
-                        value={quantity}
-                        class='w-8 h-8 text-center text-gray-900 text-sm outline-none border border-gray-300 rounded-sm'
-                        onChange={handleQuantityChange}
-                    />
-                    <button
-                        class='w-5 h-5 self-center rounded-full border border-gray-300'
-                        onClick={increament}
-                    >
-                        <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            viewBox='0 0 24 24'
-                            fill=''
-                            stroke='#9ca3af'
-                            stroke-width='2'
-                            stroke-linecap='round'
-                            stroke-linejoin='round'
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                viewBox='0 0 24 24'
+                                fill='none'
+                                stroke='#d1d5db'
+                                stroke-width='2'
+                                stroke-linecap='round'
+                                stroke-linejoin='round'
+                            >
+                                <path d='M5 12h14' />
+                            </svg>
+                        </button>
+                        <input
+                            type='text'
+                            id={`${mealObject.id}`}
+                            value={quantity}
+                            class='w-8 h-8 text-center text-gray-900 text-sm outline-none border border-gray-300 rounded-sm'
+                            onChange={handleQuantityChange}
+                        />
+                        <button
+                            class='w-5 h-5 self-center rounded-full border border-gray-300'
+                            onClick={increament}
                         >
-                            <path d='M12 5v14M5 12h14' />
-                        </svg>
-                    </button>
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                viewBox='0 0 24 24'
+                                fill=''
+                                stroke='#9ca3af'
+                                stroke-width='2'
+                                stroke-linecap='round'
+                                stroke-linejoin='round'
+                            >
+                                <path d='M12 5v14M5 12h14' />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class='self-center text-center w-[100px]'>
+                        <p class='text-gray-800 font-normal text-xl'>
+                            ${totalMealPrice.toFixed(2)}
+                        </p>
+                    </div>
                 </div>
 
-                <div class='self-center text-center w-[100px]'>
-                    {/* subtotal*/}
-                    <p class='text-gray-800 font-normal text-xl'>
-                        ${totalMealPrice.toFixed(2)}
-                    </p>
-                </div>
-
-                <div class='self-center w-[100px] text-center '>
+                {/** Delete from cart */}
+                <div class='flex self-center w-[100px] text-center '>
                     <button class=' ' onClick={removeFromCollection}>
                         <svg
                             class=''
@@ -197,3 +183,12 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
 }
 
 export default Card;
+
+{
+    /* <p class='text-xs text-gray-600 font-semibold'>
+                            {t("cartPage.card.quantityLeft")}:{" "}
+                            <span class='font-normal'>
+                                {mealObject.maxMeals}
+                            </span>
+                        </p> */
+}
