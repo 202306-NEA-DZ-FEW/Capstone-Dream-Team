@@ -8,43 +8,37 @@ import { useEffect, useState } from "react";
 import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
 import { BsSun } from "react-icons/bs";
 import { HiOutlineChartBarSquare } from "react-icons/hi2";
+import { IoIosArrowDropright } from "react-icons/io";
 import { IoLogOutOutline } from "react-icons/io5";
 import { LiaHistorySolid } from "react-icons/lia";
 import { PiMoonStarsLight } from "react-icons/pi";
-import { TbDeviceAnalytics } from "react-icons/tb";
 
 import AddMeals from "./Add-meals";
-import Analytics from "./Analytics";
-import Dashboard from "./Dashboard";
 import Adminhistory from "./History/Adminhistory";
+import Overview from "./Overview/overview";
 import Settings from "./Settings";
 import { auth, db } from "../util/firebase";
 
 export default function Sidemenu(props) {
     const components = [
         {
-            name: "Dashboard",
-            icon: <AiOutlineHome></AiOutlineHome>,
-            element: <Dashboard />,
+            name: "Overview",
+            icon: <AiOutlineHome size={20}></AiOutlineHome>,
+            element: <Overview />,
         },
         {
             name: "Meals/Coupons",
-            icon: <HiOutlineChartBarSquare />,
+            icon: <HiOutlineChartBarSquare size={20} />,
             element: <AddMeals />,
         },
         {
             name: "History",
-            icon: <LiaHistorySolid />,
+            icon: <LiaHistorySolid size={20} />,
             element: <Adminhistory />,
         },
         {
-            name: "Analytics",
-            icon: <TbDeviceAnalytics />,
-            element: <Analytics />,
-        },
-        {
             name: "Settings",
-            icon: <AiOutlineSetting />,
+            icon: <AiOutlineSetting size={20} />,
             element: <Settings />,
         },
     ];
@@ -56,7 +50,7 @@ export default function Sidemenu(props) {
     const currentTheme = theme === "system" ? "light" : theme; // State for the current theme.
     const [userData, setUserData] = useState(null); // State to store user data.
     const [authUser, setAuthUser] = useState(null); // State to store the authenticated user.
-
+    const [open, setOpen] = useState(true);
     // Use 'useEffect' to run code when 'authUser' changes.
     useEffect(() => {
         // Use Firebase's 'onAuthStateChanged' to listen for changes in user authentication state.
@@ -97,15 +91,51 @@ export default function Sidemenu(props) {
         // Sign out the authenticated user using Firebase's 'signOut' function.
         await signOut(auth);
     };
+    const handleShow = () => {
+        setOpen(!open);
+    };
 
     return (
         <>
-            <div className='w-1/5  h-screen  z-8 '>
-                <div className='w-full h-full pl-3 pt-6  bg-[#BEEBDD]  dark:border-gray-200  shadow-xl border-r border-green-200 flex-col justify-between items-start inline-flex gap-8  dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-700  '>
-                    <div className='  flex-col justify-start items-start gap-4 flex'>
-                        <div className='justify-center md:justify-start items-center gap-3  md:inline-flex lg:inline-flex'>
+            <div
+                className={`col-span-1  h-screen z-30 fixed duration-300  ${
+                    !open ? "w-60" : "w-20 md:w-60"
+                }`}
+            >
+                <IoIosArrowDropright
+                    onClick={handleShow}
+                    className={`z-40 md:hidden absolute top-16 -right-4 cursor-pointer w-8 h-10 duration-300 ${
+                        !open && "rotate-180 "
+                    } `}
+                ></IoIosArrowDropright>
+
+                <div
+                    className='w-full h-full pl-3  bg-white  dark:border-gray-200  shadow-xl border-r border-gray-200 flex-col justify-between items-start inline-flex gap-8  dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-700 bg-cover '
+                    style={{
+                        backgroundImage: "url(images/sidemenu/background.png)",
+                    }}
+                >
+                    <div className=' flex-col justify-start items-start gap-4 flex'>
+                        <div className=' md:border-b md:border-gray-400 items-center gap-3 my-6 mx-auto justify-start md:justify-center '>
+                            <div
+                                className={`w-16 h-16 bg-white rounded-full border border-blue-200 md:w-20 mt-2 mb-4 md:mb-6  md:h-20 relative  ease-out duration-500  ${
+                                    open &&
+                                    "mr-32 scale-50 p-0 mb-2 md:transform-none md:mx-auto md:mt-2 md:mb-6"
+                                }`}
+                            >
+                                <Link href='/'>
+                                    <img
+                                        src='images/home/Navbar/sidebarLogo.png'
+                                        alt='logo'
+                                    ></img>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className='md:justify-center items-center gap-3  inline-flex justify-start lg:inline-flex'>
                             <Image
-                                className='w-12 h-12 relative rounded-2xl'
+                                className={`w-12 h-12 relative rounded-2xl ease-out duration-700 ${
+                                    !open && "rotate-[360deg]"
+                                }`}
                                 src={
                                     userData && userData.image
                                         ? userData.image
@@ -116,7 +146,11 @@ export default function Sidemenu(props) {
                                 alt='admin photo'
                             />
 
-                            <div className='flex-col justify-center items-start inline-flex'>
+                            <div
+                                className={`flex-col justify-center items-start inline-flex ${
+                                    open && "scale-0 md:transform-none"
+                                }`}
+                            >
                                 <div className="w-[150px] text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']">
                                     {userData
                                         ? userData.restaurantName
@@ -132,19 +166,22 @@ export default function Sidemenu(props) {
                             {components.map((component, index) => (
                                 <div
                                     key={index}
-                                    className='p-2 active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-1 flex'
+                                    className='p-2 rounded-lg flex-col justify-start items-start gap-1 flex'
                                 >
-                                    <div className='h-4 justify-start items-center gap-2 inline-flex'>
-                                        <div className=' w-6  relative'>
+                                    <div
+                                        className='h-4 justify-start items-center gap-2 inline-flex'
+                                        onClick={() =>
+                                            props.handleClick(component.element)
+                                        }
+                                    >
+                                        <div className='   relative'>
                                             {component.icon}
                                         </div>
                                         <button
-                                            className="text-[#333333]  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug"
-                                            onClick={() =>
-                                                props.handleClick(
-                                                    component.element
-                                                )
-                                            }
+                                            className={`text-[#333333] hover:text-black  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug duration-300 ${
+                                                open &&
+                                                "scale-0 md:transform-none"
+                                            }`}
                                         >
                                             {component.name}
                                         </button>
@@ -154,67 +191,27 @@ export default function Sidemenu(props) {
                         </div>
                     </div>
                     <div className='self-stretch h-full w-full flex-col justify-start pt-8 items-start gap-2 flex'>
-                        <div className='px-2   active:bg-[#97E5EF] rounded-lg flex-col justify-start items-start gap-1 flex'>
-                            <div className='justify-start items-center gap-1 inline-flex'>
-                                <div className='pt-1 w-6 h-6 relative'>
-                                    <IoLogOutOutline />
-                                </div>
-                                <button
-                                    className="text-[#333333]  dark:text-white text-sm font-normal font-['Open Sans'] leading-snug"
+                        <div className='px-2 rounded-lg flex-col justify-start items-start gap-1 flex'>
+                            <Link href='/'>
+                                <div
+                                    className='justify-start items-center gap-1 inline-flex'
                                     onClick={handleLogout}
                                 >
-                                    <Link href='/'>Logout</Link>
-                                </button>
-                            </div>
-                        </div>
-                        <div className='self-stretch pl-3 pr-6 py-3 rounded-lg justify-between items-center inline-flex'>
-                            <div className=' justify-start items-center gap-1 flex'>
-                                <div className='w-6 h-6 relative'>
-                                    <div>
-                                        {" "}
-                                        {currentTheme === "dark" ? (
-                                            <BsSun
-                                                style={{ display: "inline" }}
-                                            ></BsSun>
-                                        ) : (
-                                            <PiMoonStarsLight
-                                                style={{ display: "inline" }}
-                                            ></PiMoonStarsLight>
-                                        )}
+                                    <div className='pt-1 w-6 h-6 relative'>
+                                        <IoLogOutOutline size={20} />
                                     </div>
-                                </div>
-                                <div className="text-[#333333] dark:text-white text-sm font-normal font-['Open Sans'] leading-snug">
-                                    {currentTheme === "dark" ? "light" : "dark"}{" "}
-                                    mode
-                                </div>
-                            </div>
-                            {currentTheme === "light" ? (
-                                <label
-                                    htmlFor='check'
-                                    className='w-12 h-5 rounded-full relative bg-white  cursor-pointer'
-                                >
-                                    <input
-                                        type='checkbox'
-                                        id='check'
-                                        className='sr-only '
-                                        onClick={() => setTheme("dark")}
-                                    />
-                                    <span className='w-2/5 h-3/5 top-1 left-1 rounded-full bg-[#E9B824] absolute flex justify-center items-center'></span>
-                                </label>
-                            ) : (
-                                <label
-                                    htmlFor='check'
-                                    className='w-12 h-5 rounded-full relative bg-white  cursor-pointer'
-                                >
-                                    <input
-                                        type='checkbox'
-                                        id='check'
-                                        className='sr-only peer'
-                                        onClick={() => setTheme("light")}
-                                    />
-                                    <span className='w-2/5 h-3/5 top-1 left-6 rounded-full bg-black absolute flex justify-center items-center'></span>
-                                </label>
-                            )}
+                                    <button className="text-[#333333]  dark:text-white text-sm font-normal font-['Open Sans'] leading-snug">
+                                        <div
+                                            className={`duration-300 ${
+                                                open &&
+                                                "scale-0 md:transform-none"
+                                            }`}
+                                        >
+                                            Logout
+                                        </div>
+                                    </button>
+                                </div>{" "}
+                            </Link>
                         </div>
                     </div>
                 </div>

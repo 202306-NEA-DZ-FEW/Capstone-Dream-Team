@@ -1,15 +1,21 @@
 export default function Donation() {
     return (
         <>
-            <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 bg-gray-100'>
+            <div
+                className='px-4 py-16 mx-auto my-20 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 bg-gray-100 bg-cover'
+                style={{
+                    backgroundImage:
+                        'url("/images/home/donation/bannerhero.png")',
+                }}
+            >
                 <div className='max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12 '>
-                    <h2 className='max-w-lg mb-6  font-sans text-3xl font-bold leading-none tracking-tight text-[#192655] sm:text-4xl md:mx-auto'>
+                    <h2 className='max-w-lg mb-6  font-sans text-3xl font-bold leading-none tracking-tight text-white sm:text-4xl md:mx-auto'>
                         <span className='relative inline-block'>
                             <span className='relative'>Empower</span>
                         </span>{" "}
                         Change - Become a Donor
                     </h2>
-                    <p className='text-base text-gray-700 md:text-lg'>
+                    <p className='text-base text-white md:text-lg'>
                         At BUY ME A MEAL website,your generosity has the power
                         to change lives. Here is how you can contribute:
                     </p>
@@ -20,7 +26,7 @@ export default function Donation() {
                             <div className='flex items-center justify-center w-16 h-16 mb-4 rounded-full '>
                                 <img
                                     className='w-[200px] h-[120px]'
-                                    src='images/home/donation/Donate.png'
+                                    src='images/home/donation/step1-removebg-preview.png'
                                     alt='step'
                                 />
                             </div>
@@ -42,7 +48,7 @@ export default function Donation() {
                             <div className='flex items-center justify-center w-16 h-16 mb-4 rounded-full '>
                                 <img
                                     className='w-[240px] h-[100px]'
-                                    src='images/home/donation/donation2.png'
+                                    src='images/home/donation/step2-removebg-preview.png'
                                     alt='step'
                                 />
                             </div>
@@ -64,7 +70,7 @@ export default function Donation() {
                             <div className='flex items-center justify-center w-16 h-16 mb-4 rounded-full '>
                                 <img
                                     className='w-[220px] h-[100px]'
-                                    src='images/home/donation/donation3.png'
+                                    src='images/home/donation/step3-removebg-preview.png'
                                     alt='step'
                                 />
                             </div>

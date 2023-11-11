@@ -20,12 +20,14 @@ export default function Goals() {
 
     return (
         <div className='w-full h-full flex-col mt-6 p-6 justify-center  text-center'>
-            <h1 className='font-bold mr-6 text-2xl '>Our Goals </h1>
-            <div className='flex flex-col items-center md:flex-row w-full h-full md:justify-center md:gap-10 '>
+            <h1 className='font-bold mr-6 text-2xl sm:text-3xl lg:text-4xl text-[#192655] '>
+                Our Goals{" "}
+            </h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-4 w-full h-full   '>
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        class=' w-1/2 h-full py-4 px-8 bg-white shadow-lg rounded-lg my-20'
+                        class=' w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20'
                     >
                         <div class='flex justify-center md:justify-end -mt-16'>
                             <img

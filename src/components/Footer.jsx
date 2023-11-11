@@ -5,15 +5,15 @@ export default function Footer() {
     const { t } = useTranslation("common");
 
     return (
-        <footer className='bg-teal-950 h-100 text-white p-6'>
+        <footer className='bg-white h-100 text-[#192655] p-6'>
             <div className='flex items-center flex-row '>
                 <img
-                    src='/images/logo.svg'
+                    src='images/home/Navbar/logo.png'
                     alt='Logo'
                     width='100'
                     height='100'
                 />
-                <h2 className='font-bold text-center mb-2'>Buy me a meal</h2>
+
                 <div className=' ml-auto'>
                     <h2 className='font-bold mb-2'>
                         Subscribe to our newsletter
