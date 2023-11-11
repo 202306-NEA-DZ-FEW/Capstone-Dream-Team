@@ -197,7 +197,7 @@ export default function Navbar({ locale }) {
                         <ul className='flex flex-col mt-4 font-medium lg:flex-row lg:space-x-6 lg:mt-0'>
                             <li>
                                 <Link
-                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
+                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700  '
                                     href='/'
                                 >
                                     {t("Navbar.home")}
@@ -205,7 +205,7 @@ export default function Navbar({ locale }) {
                             </li>
                             <li>
                                 <Link
-                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
+                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700  '
                                     href='/meals'
                                 >
                                     {t("Navbar.meals")}
@@ -214,7 +214,7 @@ export default function Navbar({ locale }) {
                             <li>
                                 <Link
                                     href='/blogs'
-                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
+                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700   '
                                 >
                                     {t("Navbar.blogs")}
                                 </Link>
@@ -223,7 +223,7 @@ export default function Navbar({ locale }) {
                                 <div className='relative group'>
                                     <span
                                         onClick={handleDropdown}
-                                        className='block py-2 pl-2 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 active:text-white active:border-2 active:bg-purple-700  active:rounded'
+                                        className='block py-2 pl-2 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer'
                                     >
                                         {!auth.currentUser
                                             ? t("Navbar.joinUs")
@@ -243,8 +243,8 @@ export default function Navbar({ locale }) {
                                                     href='/admin-dashboard'
                                                     className={`${
                                                         locale === "en"
-                                                            ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                            : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
+                                                            ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
+                                                            : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
                                                     }`}
                                                 >
                                                     {t("Navbar.dashboard")}
@@ -253,8 +253,8 @@ export default function Navbar({ locale }) {
                                                     onClick={handleLogout}
                                                     className={`${
                                                         locale === "en"
-                                                            ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                            : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
+                                                            ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
+                                                            : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
                                                     }`}
                                                 >
                                                     {t("Navbar.signOut")}
@@ -275,8 +275,8 @@ export default function Navbar({ locale }) {
                                                     href='/signup'
                                                     className={`${
                                                         locale === "en"
-                                                            ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                            : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
+                                                            ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
+                                                            : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
                                                     }`}
                                                 >
                                                     {t("Navbar.signIn")}

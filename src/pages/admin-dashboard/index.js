@@ -29,7 +29,7 @@ export default function AdminDashboard() {
     }, []); // Pass an empty dependency array to run this effect only once.
 
     return (
-        <Layout>
+        <>
             {/* to check whether the user is signed in    */}
             {authUser ? (
                 // we show the page of the admin dashboard
@@ -46,20 +46,22 @@ export default function AdminDashboard() {
                 </div>
             ) : (
                 // we show a message so the user sign in first
-
-                <div className='flex flex-col w-full justify-center items-center py-48 space-y-16 '>
-                    {" "}
-                    <div className='flex text-2xl font-semibold'>
-                        You need to have an acount to enter the dashboard page !
+                <Layout>
+                    <div className='flex flex-col w-full justify-center items-center py-48 space-y-16 '>
+                        {" "}
+                        <div className='flex text-2xl font-semibold'>
+                            You need to have an acount to enter the dashboard
+                            page !
+                        </div>
+                        <Link href='/signup'>
+                            <button className='bg-orange-400 hover:bg-orange-600 mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-white tracking-widest hover:shadow-lg transform hover:scale-105 '>
+                                Create account
+                            </button>
+                        </Link>
                     </div>
-                    <Link href='/signup'>
-                        <button className='bg-orange-400 hover:bg-orange-600 mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-white tracking-widest hover:shadow-lg transform hover:scale-105 '>
-                            Create account
-                        </button>
-                    </Link>
-                </div>
+                </Layout>
             )}
-        </Layout>
+        </>
     );
 }
 export async function getStaticProps({ locale }) {
