@@ -69,7 +69,14 @@ const Modal = ({ currentRestaurantId }) => {
                 >
                     <div className='relative w-full max-h-full'>
                         {/* Modal content */}
-                        <div className='relative bg-white border-4 border-blue-500 rounded-lg shadow dark:bg-gray-700'>
+                        <div
+                            style={{
+                                backgroundImage:
+                                    "url(/images/meals/Image218.png)",
+                                backgroundSize: "cover",
+                            }}
+                            className='relative bg-white border-4 border-blue-500 rounded-lg shadow dark:bg-gray-700'
+                        >
                             {/* TITLE & HIDE X */}
                             <div className='flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600'>
                                 <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>

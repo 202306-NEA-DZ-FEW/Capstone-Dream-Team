@@ -59,9 +59,9 @@ const StatCardList = () => {
     }, [authUser]);
 
     return (
-        <div className='m-6'>
+        <div className='mx-6 mb-6'>
             <div className='flex flex-wrap -mx-6'>
-                <div className='w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 '>
+                <div className='w-full mt-6 px-2 sm:w-1/2 xl:w-1/4 '>
                     <StatCard
                         icon={<GiForkKnifeSpoon />}
                         title='Total Meals'
@@ -69,21 +69,21 @@ const StatCardList = () => {
                     />
                 </div>
 
-                <div className='w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 '>
+                <div className='w-full mt-6 px-2 sm:w-1/2 xl:w-1/4 '>
                     <StatCard
                         icon={<BsPersonFillUp />}
                         title='Total Active Meals'
                         number={totalActiveMeals}
                     />
                 </div>
-                <div className='w-full mt-6 px-6 sm:w-1/2 xl:w-1/4'>
+                <div className='w-full mt-6 px-2 sm:w-1/2 xl:w-1/4'>
                     <StatCard
                         icon={<BsPersonFillUp />}
                         title='Total Donors'
                         number={totalDonors}
                     />
                 </div>
-                <div className='w-full mt-6 px-6 sm:w-1/2 xl:w-1/4'>
+                <div className='w-full mt-6 px-2 sm:w-1/2 xl:w-1/4'>
                     <StatCard
                         icon={<BsPersonFillUp />}
                         title='Total Donation'
