@@ -3,7 +3,13 @@ import Modal from "./modal";
 
 export default function Mealbar({ name, current_restaurant_Id, image }) {
     return (
-        <div className='bg-neutral-100 rounded-full p-4  flex items-center space-x-3'>
+        <div
+            className='rounded-full p-4  flex items-center space-x-3'
+            style={{
+                backgroundImage: "url(/images/meals/Image218.png)",
+                backgroundSize: "cover",
+            }}
+        >
             <img className='w-14 h-14 rounded-full' src={image} />
 
             <div className='flex flex-row items-center justify-between w-full'>

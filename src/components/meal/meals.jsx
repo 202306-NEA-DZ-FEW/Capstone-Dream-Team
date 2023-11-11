@@ -59,7 +59,7 @@ export default function Meals() {
     return (
         <div>
             {rest.map((restaurant, index) => (
-                <div className=' pb-12 pt-3 ' key={index}>
+                <div className=' mb-5 mt-10 ' key={index}>
                     <div className=' pl-3 pr-3 '>
                         <Mealbar
                             name={restaurant.Name}
