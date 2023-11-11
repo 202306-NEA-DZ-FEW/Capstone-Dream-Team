@@ -162,7 +162,7 @@ function Cart() {
 */
 
         <Layout>
-            <div class='flex flex-col md:flex-row w-screen h-full  py-7 pl-2 pr-2'>
+            <div class='flex flex-col xl2:flex-row w-screen h-full  py-7 pl-2 pr-2'>
                 {/* Header Section */}
                 <div class='w-full flex flex-col h-fit gap-4 p-4'>
                     <div class='flex flex-col md:flex-row gap-3 justify-between pl-4 pr-4 h-14 border-b-2'>
@@ -200,7 +200,7 @@ function Cart() {
                 </div>
 
                 {/* Checkout Card Section */}
-                <div class='flex flex-col w-full md:w-1/3 h-fit gap-4 p-4'>
+                <div class='flex flex-col w-full xl2:w-1/3 h-fit gap-4 p-4'>
                     <p class='text-blue-900 text-xl font-semibold'>
                         {t("cartPage.cart.summary")}
                     </p>
