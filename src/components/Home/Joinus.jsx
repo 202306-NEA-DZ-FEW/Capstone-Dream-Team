@@ -1,7 +1,7 @@
 import Link from "next/link";
 export default function Joinus() {
     return (
-        <div className='flex-col max-h-full my-10 p-6 m-4 mb-8  '>
+        <div className='flex-col max-w-screen-xl max-h-full my-10 p-6 m-4 mb-8  '>
             <div className='flex max-h-screen '>
                 <div
                     className=' flex flex-col bg-white shadow-xl px-4 py-6 ml-6 h-full mx-2 md:w-3/5 bg-cover hover:-translate-y-4 hover:shadow-xl  ease-out duration-700'
