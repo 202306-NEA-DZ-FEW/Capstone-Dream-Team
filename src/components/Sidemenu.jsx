@@ -15,7 +15,7 @@ import { PiMoonStarsLight } from "react-icons/pi";
 
 import AddMeals from "./Add-meals";
 import Adminhistory from "./History/Adminhistory";
-import Overview from "./Overview/Overview";
+import Overview from "./Overview/overview";
 import Settings from "./Settings";
 import { auth, db } from "../util/firebase";
 

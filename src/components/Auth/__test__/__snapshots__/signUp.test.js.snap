@@ -2,216 +2,255 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex items-center  "
+  className="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl relative z-10 "
 >
-  <div
-    className=" p-8 rounded shadow-md w-96 ml-20 mr-20 mt-10 bg-black bg-opacity-40 hover:bg-opacity-60 "
+  <p
+    className="w-full text-4xl  text-center leading-snug "
   >
-    <h1
-      className="text-2xl font-semibold mb-4 text-white"
+    signupPage.signUp.title
+  </p>
+  <div
+    className="mb-2 flex text-m text-black  "
+  >
+    <p>
+      signupPage.signUp.subtitle.first
+    </p>
+    <span
+      className="ml-1 underline cursor-pointer"
+      onClick={[Function]}
     >
-      signupPage.signUp.title
-    </h1>
+       
+      signupPage.signUp.subtitle.second
+    </span>
+  </div>
+  <form
+    className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8"
+    onSubmit={[Function]}
+  >
     <div
-      className="mb-6 flex text-sm text-white"
+      className="relative"
     >
-      <p>
-        signupPage.signUp.subtitle.first
+      <p
+        class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
+      >
+        signupPage.signUp.name
       </p>
-      <span
-        className="ml-1 underline cursor-pointer"
+      <svg
+        className="absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 416 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M207.9 15.2c.8 4.7 16.1 94.5 16.1 128.8 0 52.3-27.8 89.6-68.9 104.6L168 486.7c.7 13.7-10.2 25.3-24 25.3H80c-13.7 0-24.7-11.5-24-25.3l12.9-238.1C27.7 233.6 0 196.2 0 144 0 109.6 15.3 19.9 16.1 15.2 19.3-5.1 61.4-5.4 64 16.3v141.2c1.3 3.4 15.1 3.2 16 0 1.4-25.3 7.9-139.2 8-141.8 3.3-20.8 44.7-20.8 47.9 0 .2 2.7 6.6 116.5 8 141.8.9 3.2 14.8 3.4 16 0V16.3c2.6-21.6 44.8-21.4 48-1.1zm119.2 285.7l-15 185.1c-1.2 14 9.9 26 23.9 26h56c13.3 0 24-10.7 24-24V24c0-13.2-10.7-24-24-24-82.5 0-221.4 178.5-64.9 300.9z"
+        />
+      </svg>
+      <input
+        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md pl-8"
+        id="name"
+        name="username"
+        onChange={[Function]}
+        placeholder="signupPage.signUp.name"
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="relative"
+    >
+      <p
+        class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
+      >
+        signupPage.email
+      </p>
+      <svg
+        className="absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 512 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
+        />
+      </svg>
+      <input
+        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md pl-8"
+        id="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="123@ex.com"
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="relative"
+    >
+      <p
+        class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
+      >
+        signupPage.password
+      </p>
+      <svg
+        className="absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 448 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"
+        />
+      </svg>
+      <input
+        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md pl-8"
+        id="password"
+        minLength="6"
+        name="password"
+        onChange={[Function]}
+        placeholder="signupPage.password"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="relative"
+    >
+      <p
+        class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
+      >
+        signupPage.signUp.confirm-password
+      </p>
+      <svg
+        className="absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 448 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"
+        />
+      </svg>
+      <input
+        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md pl-8"
+        id="confirmpass"
+        minLength="6"
+        name="password"
+        onChange={[Function]}
+        placeholder="signupPage.signUp.confirm-password"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
+    <div>
+      <button
+        className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500 rounded-lg transition duration-200 hover:bg-indigo-600 ease"
+        type="submit"
+      >
+        signupPage.signUp.title2
+      </button>
+    </div>
+  </form>
+  <div
+    className="mb-6 block text-gray-600 mt-2 w-full"
+  >
+    <div
+      className="inline-block p-2 border border-gray-300 rounded-lg shadow hover:shadow-md hover:bg-indigo-500 cursor-pointer relative bg-white w-full mt-5"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="flex items-center justify-center space-x-2"
         onClick={[Function]}
       >
-         
-        signupPage.signUp.subtitle.second
-      </span>
-    </div>
-    <form
-      onSubmit={[Function]}
-    >
-      <div
-        className="mb-4 relative"
-      >
-        <svg
-          className="absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          strokeWidth="0"
-          style={
-            Object {
-              "color": undefined,
-            }
-          }
-          viewBox="0 0 416 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M207.9 15.2c.8 4.7 16.1 94.5 16.1 128.8 0 52.3-27.8 89.6-68.9 104.6L168 486.7c.7 13.7-10.2 25.3-24 25.3H80c-13.7 0-24.7-11.5-24-25.3l12.9-238.1C27.7 233.6 0 196.2 0 144 0 109.6 15.3 19.9 16.1 15.2 19.3-5.1 61.4-5.4 64 16.3v141.2c1.3 3.4 15.1 3.2 16 0 1.4-25.3 7.9-139.2 8-141.8 3.3-20.8 44.7-20.8 47.9 0 .2 2.7 6.6 116.5 8 141.8.9 3.2 14.8 3.4 16 0V16.3c2.6-21.6 44.8-21.4 48-1.1zm119.2 285.7l-15 185.1c-1.2 14 9.9 26 23.9 26h56c13.3 0 24-10.7 24-24V24c0-13.2-10.7-24-24-24-82.5 0-221.4 178.5-64.9 300.9z"
-          />
-        </svg>
-        <input
-          className="w-full pl-8 pr-2 py-2 rounded border border-gray-300 focus:ring focus:ring-indigo-200 focus:border-indigo-300"
-          id="name"
-          name="username"
-          onChange={[Function]}
-          placeholder="signupPage.signUp.name"
-          required={true}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="mb-4 relative"
-      >
-        <svg
-          className="absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          strokeWidth="0"
-          style={
-            Object {
-              "color": undefined,
-            }
-          }
-          viewBox="0 0 512 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
-          />
-        </svg>
-        <input
-          className="w-full pl-8 pr-2 py-2 rounded border border-gray-300 focus:ring focus:ring-indigo-200 focus:border-indigo-300"
-          id="username"
-          name="username"
-          onChange={[Function]}
-          placeholder="signupPage.email"
-          required={true}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="mb-6 relative"
-      >
-        <svg
-          className="absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          strokeWidth="0"
-          style={
-            Object {
-              "color": undefined,
-            }
-          }
-          viewBox="0 0 448 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"
-          />
-        </svg>
-        <input
-          className="w-full pl-8 pr-2 py-2 rounded border border-gray-300 focus:ring focus:ring-indigo-200 focus:border-indigo-300"
-          id="password"
-          minLength="6"
-          name="password"
-          onChange={[Function]}
-          placeholder="signupPage.password"
-          required={true}
-          type="password"
-          value=""
-        />
-      </div>
-      <div
-        className="mb-6 relative"
-      >
-        <svg
-          className="absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          strokeWidth="0"
-          style={
-            Object {
-              "color": undefined,
-            }
-          }
-          viewBox="0 0 448 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"
-          />
-        </svg>
-        <input
-          className="w-full pl-8 pr-2 py-2 rounded border border-gray-300 focus:ring focus:ring-indigo-200 focus:border-indigo-300"
-          id="confirmpass"
-          minLength="6"
-          name="password"
-          onChange={[Function]}
-          placeholder="signupPage.signUp.confirm-password"
-          required={true}
-          type="password"
-          value=""
-        />
-      </div>
-      <div>
-        <button
-          className="w-full bg-teal-500 text-white py-2 px-4 rounded hover:shadow-lg transform hover:scale-105 "
-          type="submit"
-        >
-          signupPage.signUp.title2
-        </button>
-      </div>
-    </form>
-    <div
-      className="mb-6 block text-gray-600 mt-2"
-    >
-      <div
-        className="inline-block p-2 border border-gray-300 rounded-lg shadow hover:shadow-md cursor-pointer relative bg-white "
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      >
         <div
-          className="flex items-center space-x-2"
-          onClick={[Function]}
+          className="w-6 h-6"
         >
-          <div
-            className="w-6 h-6"
-          >
-            <svg
-              fill="currentColor"
-              height={24}
-              stroke="currentColor"
-              strokeWidth="0"
-              style={
-                Object {
-                  "color": undefined,
-                }
+          <svg
+            enableBackground="new 0 0 48 48"
+            fill="currentColor"
+            height={24}
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
               }
-              viewBox="0 0 488 512"
-              width={24}
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
-              />
-            </svg>
-          </div>
-          <span
-            className="text-md font-semibold hidden"
+            }
+            version="1.1"
+            viewBox="0 0 48 48"
+            width={24}
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+            y="0px"
           >
-            signupPage.buttons.second
-          </span>
+            <path
+              d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
+	c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
+	c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+              fill="#FFC107"
+            />
+            <path
+              d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
+	C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+              fill="#FF3D00"
+            />
+            <path
+              d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
+	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+              fill="#4CAF50"
+            />
+            <path
+              d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
+	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+              fill="#1976D2"
+            />
+          </svg>
         </div>
+        <span
+          className="text-md font-semibold rounded false"
+        >
+          signupPage.buttons.second
+        </span>
       </div>
     </div>
   </div>
