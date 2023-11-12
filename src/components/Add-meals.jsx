@@ -55,28 +55,42 @@ function AddMeals() {
     const [maxMeals, setMaxMeals] = useState("");
     const [mealPrice, setMealPrice] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [imageName, setImageName] = useState("");
     const [meals, setMeals] = useState([]);
     const [restaurantId, setRestaurantId] = useState("");
     const [restaurantName, setRestaurantName] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMealAdded, setIsMealAdded] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const handleImageUpload = async (event) => {
-        const imageFile = event.target.files[0];
+        try {
+            setLoading(false);
+            const imageFile = event.target.files[0];
 
-        if (imageFile) {
-            try {
+            if (imageFile) {
                 const storageRef = ref(storage, `images/${imageFile.name}`);
                 await uploadBytes(storageRef, imageFile);
-
+                setImageName(imageFile.name);
                 const downloadURL = await getDownloadURL(storageRef);
                 setImageUrl(downloadURL);
-            } catch (error) {
-                console.error("Error uploading image:", error);
             }
+        } catch (error) {
+            console.error("Error uploading image:", error);
+        } finally {
+            setLoading(true);
         }
     };
 
+    const handleCloseModel = () => {
+        setMealName("");
+        setMaxMeals("");
+        setMealPrice("");
+        setImageUrl("");
+        setImageName("");
+        setLoading(false);
+        setIsModalOpen(false);
+    };
     const handleSubmit = async (event) => {
         event.preventDefault();
         const user = auth.currentUser;
@@ -100,10 +114,7 @@ function AddMeals() {
 
                 fetchMeals(restaurantId);
 
-                setMealName("");
-                setMaxMeals("");
-                setMealPrice("");
-                setImageUrl("");
+                handleCloseModel();
                 setIsMealAdded(true);
 
                 // Automatically hide the notification after 3 seconds
@@ -178,83 +189,157 @@ function AddMeals() {
     }, []);
 
     return (
-        <main className='max-h-screen'>
-            <div className='flex w-full'>
+        <main className='max-h-screen overflow-hidden'>
+            <div className=''>
                 <button
                     onClick={() => setIsModalOpen(true)}
-                    className='px-4 py-2 bg-blue-600 text-white rounded-md fixed mb-6 top-4 right-4 z-10'
+                    className='inline-flex items-center justify-center bg-blue-500 px-6 py-2 text-lg text-white font-medium uppercase tracking-wide rounded-md'
                 >
                     Add a Meal
                 </button>
 
                 {isModalOpen && (
-                    <div className='fixed inset-0 flex items-center justify-center z-50 bg-gray-500 bg-opacity-75'>
-                        <div className='bg-gray-100 shadow-lg rounded-xl max-w-4xl mx-auto relative'>
-                            <button
-                                onClick={() => setIsModalOpen(false)}
-                                className='absolute top-4 right-4 p-2 mb-2 text-gray-500 hover:text-gray-700 cursor-pointer'
-                            >
-                                X
-                            </button>
-                            <form
-                                onSubmit={handleSubmit}
-                                className='space-y-4 p-4'
-                            >
-                                <div>
-                                    <label className='block'>Meal Name</label>
-                                    <input
-                                        type='text'
-                                        value={mealName}
-                                        onChange={(e) =>
-                                            setMealName(e.target.value)
-                                        }
-                                        className='w-full px-3 py-2 border border-gray-300 rounded-md'
-                                    />
-                                </div>
-                                <div>
-                                    <label className='block'>
-                                        Upload Image
-                                    </label>
-                                    <input
-                                        type='file'
-                                        onChange={handleImageUpload}
-                                        className='w-full px-3 py-2 border border-gray-300 rounded-md'
-                                    />
-                                </div>
-                                <div>
-                                    <label className='block'>
-                                        Max Meals Per Day
-                                    </label>
-                                    <input
-                                        type='number'
-                                        value={maxMeals}
-                                        onChange={(e) =>
-                                            setMaxMeals(e.target.value)
-                                        }
-                                        className='w-full px-3 py-2 border border-gray-300 rounded-md'
-                                    />
-                                </div>
-                                <div>
-                                    <label className='block'>Meal Price</label>
-                                    <input
-                                        type='number'
-                                        value={mealPrice}
-                                        onChange={(e) =>
-                                            setMealPrice(e.target.value)
-                                        }
-                                        className='w-full px-3 py-2 border border-gray-300 rounded-md'
-                                    />
-                                </div>
-                                <div className='flex justify-center'>
-                                    <button
-                                        type='submit'
-                                        className='px-4 py-2 bg-blue-600 text-white rounded-md'
+                    <div className=''>
+                        <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'>
+                            <div className='relative w-auto my-6 mx-auto max-w-3xl'>
+                                <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-auto bg-white outline-none'>
+                                    <div className='flex flex-row-reverse'>
+                                        <button
+                                            onClick={handleCloseModel}
+                                            className='rounded-md p-4 inline-flex items-center justify-center text-gray-700  focus:outline-none'
+                                        >
+                                            <svg
+                                                class='h-6 w-6'
+                                                xmlns='http://www.w3.org/2000/svg'
+                                                fill='none'
+                                                viewBox='0 0 24 24'
+                                                stroke='currentColor'
+                                                aria-hidden='true'
+                                            >
+                                                <path
+                                                    stroke-linecap='round'
+                                                    stroke-linejoin='round'
+                                                    stroke-width='2'
+                                                    d='M6 18L18 6M6 6l12 12'
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <form
+                                        onSubmit={handleSubmit}
+                                        className='space-y-4 p-4'
                                     >
-                                        Add A Meal
-                                    </button>
+                                        <div className='relative py-2'>
+                                            <label className='pt-0 pr-2 pb-0 pl-2 absolute -mt-5 mr-0 mb-0 ml-1 font-medium text-gray-600 bg-white'>
+                                                Meal Name
+                                            </label>
+                                            <input
+                                                type='text'
+                                                value={mealName}
+                                                onChange={(e) =>
+                                                    setMealName(e.target.value)
+                                                }
+                                                className='border placeholder-gray-400 focus:outline-none font-semibold w-full p-4 m-0 text-base block bg-white rounded-md'
+                                            />
+                                        </div>
+                                        <div className='relative py-2 flex'>
+                                            <label
+                                                className='pt-0 pr-2 pb-0 pl-2 absolute -mt-5 mr-0 mb-0 ml-1 font-medium text-gray-600 bg-white cursor-pointer'
+                                                htmlFor='file_input'
+                                            >
+                                                Upload file
+                                            </label>
+                                            <input
+                                                className='hidden w-[100px]'
+                                                id='file_input'
+                                                type='file'
+                                                onChange={handleImageUpload}
+                                                maxLength={50}
+                                            />
+                                            <div className='flex justify-between items-center pr-2 font-semibold m-0 w-full text-base bg-white border rounded-lg cursor-pointer focus:outline-none'>
+                                                <label
+                                                    htmlFor='file_input'
+                                                    className=' p-4 text-clip'
+                                                >
+                                                    {imageName
+                                                        ? imageName
+                                                        : "Choose an Image"}
+                                                </label>
+
+                                                {loading ? (
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            setImageName("");
+                                                            setImageUrl("");
+                                                        }}
+                                                        className={`${
+                                                            imageName
+                                                                ? ""
+                                                                : "hidden"
+                                                        } rounded-md inline-flex items-center justify-center pt-0.5 text-gray-700 focus:outline-none line-clamp-1`}
+                                                    >
+                                                        <svg
+                                                            className='h-5 w-5'
+                                                            xmlns='http://www.w3.org/2000/svg'
+                                                            fill='none'
+                                                            viewBox='0 0 24 24'
+                                                            stroke='currentColor'
+                                                            aria-hidden='true'
+                                                        >
+                                                            <path
+                                                                stroke-linecap='round'
+                                                                stroke-linejoin='round'
+                                                                stroke-width='2'
+                                                                d='M6 18L18 6M6 6l12 12'
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                ) : (
+                                                    <div className='p-2 h-6 w-6 border-gray-300 animate-spin rounded-full border-2 border-t-blue-600'></div>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label className='block'>
+                                                Max Meals Per Day
+                                            </label>
+                                            <input
+                                                type='number'
+                                                value={maxMeals}
+                                                onChange={(e) =>
+                                                    setMaxMeals(e.target.value)
+                                                }
+                                                className='w-full px-3 py-2 border border-gray-300 rounded-md'
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className='block'>
+                                                Meal Price
+                                            </label>
+                                            <input
+                                                type='number'
+                                                value={mealPrice}
+                                                onChange={(e) =>
+                                                    setMealPrice(e.target.value)
+                                                }
+                                                className='w-full px-3 py-2 border border-gray-300 rounded-md'
+                                            />
+                                        </div>
+                                        <div className='flex justify-center'>
+                                            <button
+                                                type='submit'
+                                                className='px-4 py-2 bg-blue-600 text-white rounded-md'
+                                            >
+                                                Add A Meal
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
+                        <div className='opacity-25 fixed inset-0 z-40 bg-black' />
                     </div>
                 )}
 
@@ -271,7 +356,7 @@ function AddMeals() {
                     style={{ overflowY: "auto", maxHeight: "500px" }}
                 >
                     <div className='w-full items-center gap-4'>
-                        {meals.slice(0, 5).map((meal) => (
+                        {meals.map((meal) => (
                             <MealCard
                                 key={meal.id}
                                 meal={meal}
