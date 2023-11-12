@@ -5,7 +5,7 @@ export default function Slider() {
     return (
         <main class='bg-white  font-open-sans'>
             <div class='container mx-auto px-8 py-8 lg:py-10 relative flex flex-col lg:flex-row items-center'>
-                <div class='lg:w-1/2 border shadow-xl bg-white p-6 rounded-xl flex flex-col items-center lg:items-start'>
+                <div class='lg:w-1/2 bg-white p-6 rounded-xl flex flex-col items-center lg:items-start'>
                     <h1 class='text-center p-2 text-3xl sm:text-3xl font-light text-black leading-tight mb-4'>
                         {" "}
                         We are on a mission to combat hunger
