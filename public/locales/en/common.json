@@ -10,7 +10,7 @@
         "signIn": {
             "title": "Sign In",
             "subtitle": {
-                "first": "Don't you an account ?",
+                "first": "Don't you Have an account ?",
                 "second": "Sign Up"
             },
             "subtitle2": "I forgot my password"
@@ -120,10 +120,11 @@
         "dashboard": "Dashboard ",
         "signOut": "sign out",
         "joinUs": "Join us",
-        "signIn": "SignIn",
+        "signIn": "Sign in",
         "light mode": "Light mode",
         "dark mode": "Dark mode",
-        "language": "language"
+        "language": "language",
+        "aboutus":"About us"
     },
     "footer": {
         "home": "Home",

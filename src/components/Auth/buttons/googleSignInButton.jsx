@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { useTranslation } from "next-i18next";
 
 const SignInWithGoogleButton = ({ signInWithGoogle }) => {
@@ -9,20 +9,20 @@ const SignInWithGoogleButton = ({ signInWithGoogle }) => {
 
     return (
         <div
-            className='inline-block p-2 border border-gray-300 rounded-lg shadow hover:shadow-md cursor-pointer relative bg-white '
+            className='inline-block w-full p-2 border border-gray-300 rounded-lg shadow hover:shadow-md hover:bg-indigo-500 cursor-pointer relative bg-white text-center '
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             <div
-                className='flex items-center space-x-2 '
+                className='flex items-center space-x-2 justify-center  '
                 onClick={signInWithGoogle}
             >
-                <div className='w-6 h-6 '>
-                    <FaGoogle size={24} />
+                <div className='w-6 h-6  '>
+                    <FcGoogle size={24} />
                 </div>
                 <span
-                    className={`text-md font-semibold ${
-                        isHovered ? "w-full rounded " : "hidden"
+                    className={`text-md font-semibold rounded ${
+                        isHovered && "text-white"
                     }`}
                 >
                     {t("signupPage.buttons.first")}
