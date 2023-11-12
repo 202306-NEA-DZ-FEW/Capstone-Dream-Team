@@ -75,7 +75,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 550); // Adjust the width as needed
+            setIsSmallScreen(window.innerWidth < 500); // Adjust the width as needed
         };
 
         // Initial check on component mount
