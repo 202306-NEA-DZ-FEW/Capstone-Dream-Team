@@ -60,7 +60,7 @@ export default function HomePage({ blogs, locale }) {
                     </div>
                     <div
                         ref={ref3}
-                        className={`transition-opacity ease-in duration-700 ${
+                        className={`max-w-screen-xl mx-auto transition-opacity ease-in duration-700 ${
                             isVisible3 ? "opacity-100" : "opacity-0"
                         }`}
                     >
@@ -68,7 +68,7 @@ export default function HomePage({ blogs, locale }) {
                     </div>
                     <div
                         ref={ref4}
-                        className={`transition-opacity ease-in duration-700 ${
+                        className={`mx-auto transition-opacity ease-in duration-700 ${
                             isVisible4 ? "opacity-100" : "opacity-0"
                         }`}
                     >
@@ -76,7 +76,7 @@ export default function HomePage({ blogs, locale }) {
                     </div>
                     <div
                         ref={ref5}
-                        className={`transition-opacity ease-in duration-700 ${
+                        className={`mx-auto transition-opacity ease-in duration-700 ${
                             isVisible5 ? "opacity-100" : "opacity-0"
                         }`}
                     >
@@ -86,33 +86,29 @@ export default function HomePage({ blogs, locale }) {
 
                     <div
                         ref={ref6}
-                        className={`my-12 pt-12 py-6  mx-6 bg-cover transition-opacity ease-in duration-700 ${
+                        className={`mx-auto max-w-screen-xl my-12 pt-12 py-6  from-white  transition-opacity ease-in duration-700 ${
                             isVisible6 ? "opacity-100" : "opacity-0"
                         }`}
-                        style={{
-                            backgroundImage:
-                                "url(/images/home/blogs/background.png)",
-                        }}
                     >
                         <div className='m-6 p-12  '>
-                            <h1 className=' text-lg text-center  md:text-4xl uppercase font-extrabold text- mx-auto'>
+                            <h1 className=' text-lg text-center  mb-6 md:text-4xl uppercase font-extrabold text- mx-auto'>
                                 Blogs
                             </h1>
                             <h2 className=' mb-6 text-center font-sans text-2xl  leading-none tracking-tight  sm:text-2xl mx-12'>
                                 Explore here articles about hunger and poverty
                                 in our world
                             </h2>
-                            <div className='sm:max-w-sm sm:mx-auto bg-[#F0FFFF] rounded-xl lg:max-w-full'>
+                            <div className='sm:max-w-sm text-white bg-blue-900 sm:mx-auto rounded-xl lg:max-w-full'>
                                 <BlogCardList
                                     blogs={blogs}
                                     numToShow={3}
                                     language={locale}
                                 ></BlogCardList>
                             </div>
-                            <div className='mt-20 mx-auto'>
+                            <div className='mt-10 mx-auto'>
                                 <Link
-                                    href='/signIn'
-                                    className='bg-white hover:bg-orange-600 hover:text-white  py-3 px-8 text-lg rounded-full font-bold uppercase text-orange-400 border border-orange-400 tracking-widest'
+                                    href='/blogs'
+                                    className='bg-orange-400 hover:bg-orange-600 hover:text-white  py-3 px-8 text-lg rounded-full font-bold uppercase text-white border border-orange-400 tracking-widest'
                                 >
                                     see more
                                 </Link>
@@ -121,7 +117,7 @@ export default function HomePage({ blogs, locale }) {
                     </div>
                     <div
                         ref={ref7}
-                        className={`transition-opacity ease-in duration-700 ${
+                        className={` transition-opacity ease-in duration-700 ${
                             isVisible7 ? "opacity-100" : "opacity-0"
                         }`}
                     >

@@ -5,7 +5,7 @@ export default function Footer() {
     const { t } = useTranslation("common");
 
     return (
-        <footer className='bg-white h-100 text-[#192655] p-6'>
+        <footer className='bg-white h-100 max-w-screen-xl mx-auto text-[#192655] p-6'>
             <div className='flex items-center flex-row '>
                 <img
                     src='images/home/Navbar/logo.png'

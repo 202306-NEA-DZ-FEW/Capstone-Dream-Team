@@ -3,21 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import { useTheme } from "next-themes";
+
 import { useEffect, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsSun } from "react-icons/bs";
 import { IoEarthOutline } from "react-icons/io5";
-import { PiMoonLight } from "react-icons/pi";
 
 import { auth } from "../../util/firebase";
+import CartIcon from "../Cart/cartIcon";
 
 export default function Navbar({ locale }) {
-    const [mounted, setMounted] = useState(false);
-    const { theme, setTheme } = useTheme();
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [dropdownOpen, setDropdownopen] = useState(false);
-    const currentTheme = theme === "system" ? "light" : theme;
+
     const [clicked, setClicked] = useState(false);
 
     const router = useRouter();
@@ -35,11 +33,6 @@ export default function Navbar({ locale }) {
         setClicked(!clicked);
     }
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) return null;
     const handleDropdown = () => {
         setDropdownopen(!dropdownOpen);
     };
@@ -54,59 +47,28 @@ export default function Navbar({ locale }) {
     };
     return (
         <>
-            <nav className='sticky z-20 top-0 font-sans uppercase  shadow bg-white border-gray-200 py-2.5 dark:bg-gray-900 backdrop-filter backdrop-blur-lg backdrop-opacity-25 opacity-80 dark:bg-gradient-to-b dark:from-black dark:via-gray-900 dark:to-gray-700 '>
+            <nav className='sticky z-20 mt-0 top-0 font-sans uppercase  bg-white  py-2.5  lg:backdrop-filter lg:backdrop-blur-lg lg:backdrop-opacity-25 lg:opacity-80 '>
                 <div className='flex flex-wrap items-center justify-between max-w-screen-xl px-2 mx-auto'>
-                    {currentTheme === "light" ? (
-                        <div className='flex  h-12 mr-3 sm:h-12 sm:mb-2'>
-                            <div className='flex h-full w-full ml-6 pt-3 justify-center items-center'>
-                                <Link href='/'>
-                                    <Image
-                                        src='/images/home/Navbar/logo.png'
-                                        alt='logo'
-                                        width={100}
-                                        height={40}
-                                    ></Image>
-                                </Link>
-                            </div>
+                    <div className='flex  h-8 mr-3  sm:mb-2'>
+                        <div className='flex h-full w-full ml-6 pt-3 justify-center items-center'>
+                            <Link href='/'>
+                                <Image
+                                    src='/images/home/Navbar/logo.png'
+                                    alt='logo'
+                                    width={80}
+                                    height={30}
+                                ></Image>
+                            </Link>
                         </div>
-                    ) : (
-                        <div className='flex  h-9 mr-3 sm:h-8 sm:mb-2'>
-                            <div className='flex h-full w-full pt-3 justify-center items-center'>
-                                <Link href='/'>
-                                    <Image
-                                        src='/images/home/Navbar/logo.png'
-                                        alt='logo'
-                                        width={100}
-                                        height={40}
-                                    ></Image>
-                                </Link>
-                            </div>
-                        </div>
-                    )}
+                    </div>
+
                     <div className='flex items-center text-[#192655] px-2 lg:order-2 '>
-                        <Link href='/'>
-                            {" "}
-                            <AiOutlineShoppingCart className='pt-1 w-6 h-6 relative ' />{" "}
+                        <Link href='/cart'>
+                            <CartIcon></CartIcon>
                         </Link>
-                        {currentTheme === "light" ? (
-                            <div className='hidden lg:inline-block text-[#192655] w-4 h-6 mx-4 relative cursor-pointer'>
-                                <PiMoonLight
-                                    style={{ display: "inline" }}
-                                    size={18}
-                                    onClick={() => setTheme("dark")}
-                                ></PiMoonLight>
-                            </div>
-                        ) : (
-                            <div className='hidden lg:inline-block w-4 h-6 mx-4 relative cursor-pointer'>
-                                <BsSun
-                                    style={{ display: "inline" }}
-                                    onClick={() => setTheme("light")}
-                                ></BsSun>
-                            </div>
-                        )}
 
                         <button
-                            className='hidden text-[#192655] lg:inline-block z-20'
+                            className='hidden text-[#192655] lg:inline-block mx-2 z-20'
                             onClick={handleClick}
                         >
                             <IoEarthOutline size={20}></IoEarthOutline>{" "}
@@ -115,16 +77,16 @@ export default function Navbar({ locale }) {
                             <div
                                 className={`${
                                     locale === "en"
-                                        ? "absolute right-0 mt-32 py-2 w-38 bg-white rounded-sm shadow-xl z-20"
-                                        : "absolute left-0 mt-32 py-2 w-38 bg-white rounded-sm shadow-xl z-20"
+                                        ? "absolute right-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
+                                        : "absolute left-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
                                 }`}
                             >
                                 <ul>
                                     <li
                                         className={`${
                                             locale === "en"
-                                                ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
+                                                ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                                : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
                                         }`}
                                     >
                                         {" "}
@@ -137,8 +99,8 @@ export default function Navbar({ locale }) {
                                     <li
                                         className={`${
                                             locale === "en"
-                                                ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
+                                                ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                                : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
                                         }`}
                                     >
                                         {" "}
@@ -154,14 +116,17 @@ export default function Navbar({ locale }) {
                         <button
                             type='button'
                             onClick={toggleMobileMenu}
-                            className='inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
-                            aria-controls='mobile-menu-2'
-                            aria-expanded={isMobileMenuOpen}
+                            className={`inline-flex items-center p-2 ml-1 text-sm text-[#192655] rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  duration-300 ease-in-out'
+                           ${
+                               isMobileMenuOpen
+                                   ? "rotate-180"
+                                   : "transform-none"
+                           }`}
                         >
                             <span className='sr-only'>Open main menu</span>
                             <svg
-                                className={`w-6 h-6  ${
-                                    isMobileMenuOpen ? "hidden" : ""
+                                className={`w-6 h-6 ${
+                                    isMobileMenuOpen ? " hidden" : ""
                                 }`}
                                 fill='currentColor'
                                 viewBox='0 0 20 20'
@@ -174,7 +139,7 @@ export default function Navbar({ locale }) {
                                 ></path>
                             </svg>
                             <svg
-                                className={`w-6 h-6  ${
+                                className={`w-6 h-6 duration-500 ${
                                     isMobileMenuOpen ? "" : "hidden"
                                 }`}
                                 fill='currentColor'
@@ -190,14 +155,16 @@ export default function Navbar({ locale }) {
                         </button>
                     </div>
                     <div
-                        className={`items-center justify-between w-full lg:flex lg:w-auto lg-order-1 ${
-                            isMobileMenuOpen ? "block" : "hidden"
-                        }`}
+                        className={`items-center justify-between lg:flex lg:w-auto lg-order-1  ${
+                            isMobileMenuOpen
+                                ? " duration-700 absolute z-30 bg-white  w-60 border rounded-l-xl shadow-xl lg:border-0 lg:relative lg:h-8 sm:h-screen md:h-screen  top-14 lg:top-0"
+                                : "hidden"
+                        } ${locale === "en" ? "right-0" : " left-0"}`}
                     >
-                        <ul className='flex flex-col mt-4 font-medium lg:flex-row lg:space-x-6 lg:mt-0'>
+                        <ul className='flex flex-col text-lg normal-case space-y-12 lg:space-y-0 items-center mt-4 font-medium lg:flex-row lg:space-x-6 lg:mt-0'>
                             <li>
                                 <Link
-                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700  dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700  '
+                                    className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '
                                     href='/'
                                 >
                                     {t("Navbar.home")}
@@ -205,7 +172,7 @@ export default function Navbar({ locale }) {
                             </li>
                             <li>
                                 <Link
-                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700  '
+                                    className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '
                                     href='/meals'
                                 >
                                     {t("Navbar.meals")}
@@ -214,111 +181,45 @@ export default function Navbar({ locale }) {
                             <li>
                                 <Link
                                     href='/blogs'
-                                    className='block py-2 pl-3 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700   '
+                                    className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '
                                 >
                                     {t("Navbar.blogs")}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href='/aboutUs'
+                                    className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '
+                                >
+                                    {t("Navbar.aboutus")}
                                 </Link>
                             </li>
                             <li>
                                 <div className='relative group'>
                                     <span
                                         onClick={handleDropdown}
-                                        className='block py-2 pl-2 pr-4 text-[#192655] font-bold border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   dark:text-gray-100 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer'
+                                        className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '
                                     >
-                                        {!auth.currentUser
-                                            ? t("Navbar.joinUs")
-                                            : t("Navbar.restaurant")}
-                                    </span>
-
-                                    {dropdownOpen === true && auth.currentUser && (
-                                        <div
-                                            className={`${
-                                                locale === "en"
-                                                    ? "absolute py-2 w-46 bg-white rounded-sm shadow-xl z-20"
-                                                    : " absolute py-2 w-46 bg-white rounded-sm shadow-xl z-20"
-                                            }`}
-                                        >
-                                            <div>
-                                                <Link
-                                                    href='/admin-dashboard'
-                                                    className={`${
-                                                        locale === "en"
-                                                            ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
-                                                            : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
-                                                    }`}
-                                                >
-                                                    {t("Navbar.dashboard")}
-                                                </Link>
-                                                <button
-                                                    onClick={handleLogout}
-                                                    className={`${
-                                                        locale === "en"
-                                                            ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
-                                                            : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
-                                                    }`}
-                                                >
-                                                    {t("Navbar.signOut")}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )}
-                                    {dropdownOpen === true &&
-                                        !auth.currentUser && (
-                                            <div
-                                                className={`${
-                                                    locale === "en"
-                                                        ? "absolute py-2 w-46 bg-white rounded-sm shadow-xl z-20"
-                                                        : " absolute py-2 w-46 bg-white rounded-sm shadow-xl z-20"
-                                                }`}
-                                            >
-                                                <Link
-                                                    href='/signup'
-                                                    className={`${
-                                                        locale === "en"
-                                                            ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
-                                                            : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600  hover:text-white"
-                                                    }`}
-                                                >
-                                                    {t("Navbar.signIn")}
-                                                </Link>
-                                            </div>
+                                        {!auth.currentUser ? (
+                                            <Link href='/signup'>
+                                                {t("Navbar.signIn")}{" "}
+                                            </Link>
+                                        ) : (
+                                            <Link href='/admin-dashboard'>
+                                                {" "}
+                                                {t("Navbar.dashboard")}
+                                            </Link>
                                         )}
+                                    </span>
                                 </div>
                             </li>
-                            <li className='lg:hidden'>
-                                {currentTheme === "light" ? (
-                                    <div
-                                        className='block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50  lg:border-0 lg:hover:text-purple-700  dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer'
-                                        onClick={() => setTheme("dark")}
-                                    >
-                                        <PiMoonLight
-                                            style={{ display: "inline" }}
-                                            size={18}
-                                        ></PiMoonLight>
-                                        <span className='px-2'>
-                                            {t("Navbar.light mode")}
-                                        </span>
-                                    </div>
-                                ) : (
-                                    <div
-                                        className='block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700  dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700  cursor-pointer'
-                                        onClick={() => setTheme("light")}
-                                    >
-                                        <BsSun
-                                            style={{ display: "inline" }}
-                                        ></BsSun>
-                                        <span className='px-2'>
-                                            {t("Navbar.dark mode")}
-                                        </span>
-                                    </div>
-                                )}
-                            </li>
+
                             <li className='lg:hidden'>
                                 <button
-                                    className='flex py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700  dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 '
+                                    className='flex py-2 pl-3 pr-4 text-[#192655]   lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   '
                                     onClick={handleClick}
                                 >
-                                    <IoEarthOutline size={20}></IoEarthOutline>{" "}
+                                    <IoEarthOutline size={30}></IoEarthOutline>{" "}
                                     <span className='px-2'>
                                         {t("Navbar.language")}
                                     </span>
@@ -335,8 +236,8 @@ export default function Navbar({ locale }) {
                                             <li
                                                 className={`${
                                                     locale === "en"
-                                                        ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                        : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
+                                                        ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-500 hover:text-white"
+                                                        : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-500 hover:text-white"
                                                 }`}
                                             >
                                                 {" "}
@@ -351,8 +252,8 @@ export default function Navbar({ locale }) {
                                             <li
                                                 className={`${
                                                     locale === "en"
-                                                        ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
-                                                        : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-teal-500 hover:text-white"
+                                                        ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-500 hover:text-white"
+                                                        : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-500 hover:text-white"
                                                 }`}
                                             >
                                                 {" "}
