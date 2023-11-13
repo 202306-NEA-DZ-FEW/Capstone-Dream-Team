@@ -1,4 +1,5 @@
 import React from "react";
+import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 
 export default function Teamcard({ name, profile, img }) {
     return (
@@ -20,14 +21,14 @@ export default function Teamcard({ name, profile, img }) {
                                     <div className='flex items-center'>
                                         <div className='relative flex items-center justify-center p-3 mb-3 transition-all translate-x-20 bg-white rounded group-hover:translate-x-0 wishlist hover:bg-blue-200 group'>
                                             <svg
-                                                xmlns='http://www.w3.org/2000/svg'
+                                                xmlns='https://react-icons.github.io/react-icons/search?q=git'
                                                 width='16'
                                                 height='16'
                                                 fill='currentColor'
                                                 className='w-6 h-6 text-blue-800 bi bi-linkedin dark:text-gray-400'
                                                 viewBox='0 0 16 16'
                                             >
-                                                <path d='M14 0H2C.895 0 0 .895 0 2v12c0 1.105.895 2 2 2h12c1.105 0 2-.895 2-2V2c0-1.105-.895-2-2-2zm-2 14h-1V7.678c0-1.253-.497-2.466-1.379-3.337C9.752 3.9 8.398 4.8 8 6.07V14H7V7.678C7 6.42 7.448 5.207 8.455 4.325 9.147 3.707 10 3.28 10 3.28c.295-.194.64-.465 1-1.166.297.542 1.048 1.38 2 3.086l1 2.121z' />
+                                                <AiFillLinkedin></AiFillLinkedin>{" "}
                                             </svg>
                                         </div>
                                     </div>
@@ -41,7 +42,8 @@ export default function Teamcard({ name, profile, img }) {
                                                 className='w-6 h-6 text-blue-800 bi bi-github dark:text-gray-400'
                                                 viewBox='0 0 16 16'
                                             >
-                                                <path d='M8 .25a8 8 0 0 0-2.534 15.534c.4.073.547-.173.547-.385 0-.19-.007-.692-.01-1.357-2.233.487-2.705-1.073-2.705-1.073C3.04 11.61 4.25 11.136 4.25 11.136c1.582-.108 1.92 1.53 1.92 1.53 1.12 1.922 2.943 1.368 3.66 1.045.113-.813.434-1.368.791-1.68-2.77-.313-5.672-1.385-5.672-6.17 0-1.365.49-2.48 1.28-3.36-.128-.315-.553-1.587.12-3.307 0 0 1.05-.335 3.44 1.28 1-.28 2.06-.42 3.12-.424 1.06.004 2.12.144 3.12.424 2.39-1.615 3.44-1.28 3.44-1.28.673 1.72.248 3.992.12 4.307.75.82 1.28 1.995 1.28 3.36 0 4.794-2.902 5.855-5.675 6.163.447.385.84 1.15.84 2.325 0 1.677-.015 3.033-.015 3.447 0 .213.145.462.55.384A8 8 0 0 0 8 .25z' />
+                                                {" "}
+                                                <AiFillGithub></AiFillGithub>
                                             </svg>
                                         </div>
                                     </div>

@@ -30,27 +30,27 @@ export default function Aboutus() {
                                 About this project (website){" "}
                             </h2>
                             <p className='font-normal text-base leading-6 text-gray-600 mt-6'>
-                                It is the capstone projet of the Re:coded
-                                Bootcamp / It is the capstone projet of the
-                                Re:coded Bootcamp / It is the capstone projet of
-                                the Re:coded Bootcamp / It is the capstone
-                                projet of the Re:coded Bootcamp / It is the
-                                capstone projet of the Re:coded Bootcamp
+                                It is the capstone project of the Re:coded
+                                Bootcamp / It is the capstone project of the
+                                Re:coded Bootcamp / It is the capstone project
+                                of the Re:coded Bootcamp / It is the capstone
+                                project of the Re:coded Bootcamp / It is the
+                                capstone project of the Re:coded Bootcamp
                             </p>
                         </div>
-                        <div className='w-full lg:w-6/12'>
+                        <div className='w-full lg:w-6/12 h-60'>
                             <img
-                                className='lg:block hidden w-full'
+                                className='lg:block hidden w-full h-full object-cover'
                                 src={images[imageIndex]}
                                 alt='people discussing on board'
                             />
                             <img
-                                className='lg:hidden sm:block hidden w-full'
+                                className='lg:hidden sm:block hidden w-full h-full object-cover'
                                 src={images[imageIndex]}
                                 alt='people discussing on board'
                             />
                             <img
-                                className='sm:hidden block w-full'
+                                className='sm:hidden block w-full h-full object-cover'
                                 src={images[imageIndex]}
                                 alt='people discussing on board'
                             />
