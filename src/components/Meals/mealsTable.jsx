@@ -3,8 +3,8 @@ import React from "react";
 const MealsTable = ({ meals, onDelete }) => {
     return (
         <div className='overflow-hidden rounded-md border border-gray-200 shadow-md mt-5'>
-            <table className='w-full text-sm text-left rtl:text-right'>
-                <thead className='text-xs text-white uppercase bg-orange-400 '>
+            <table className='w-full text-center text-sm rtl:text-right'>
+                <thead className='text-xs  uppercase bg-gray-50 '>
                     <tr>
                         <th scope='col' className='px-16 py-3'>
                             Image
@@ -23,20 +23,22 @@ const MealsTable = ({ meals, onDelete }) => {
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className=''>
                     {meals.map((meal) => (
                         <tr
                             key={meal.id}
-                            className='bg-white border-b hover:bg-gray-50'
+                            className='bg-white border-b hover:bg-gray-100'
                         >
-                            <td className='p-4'>
-                                <img
-                                    src={meal.imageUrl}
-                                    className='w-16 md:w-32 max-w-full max-h-full'
-                                    alt={meal.name}
-                                />
+                            <td className='py-4'>
+                                <div className='flex justify-center'>
+                                    <img
+                                        src={meal.imageUrl}
+                                        className='w-20 md:w-20 max-w-full max-h-full'
+                                        alt={meal.name}
+                                    />
+                                </div>
                             </td>
-                            <td className='px-6 py-4 font-semibold text-gray-900 dark:text-white'>
+                            <td className='px-4 py-4 font-semibold text-gray-900 dark:text-white'>
                                 {meal.name}
                             </td>
                             <td className='px-6 py-4 font-semibold text-gray-900 dark:text-white'>
@@ -47,7 +49,7 @@ const MealsTable = ({ meals, onDelete }) => {
                             </td>
                             <td className='px-6 py-4'>
                                 <div className='flex justify-end gap-2'>
-                                    <button>
+                                    {/*   <button>
                                         <svg
                                             xmlns='http://www.w3.org/2000/svg'
                                             fill='none'
@@ -62,7 +64,7 @@ const MealsTable = ({ meals, onDelete }) => {
                                                 d='M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125'
                                             />
                                         </svg>
-                                    </button>
+                                 </button> */}
                                     <button
                                         onClick={() =>
                                             onDelete(meal.id, meal.imageUrl)

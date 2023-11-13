@@ -162,14 +162,24 @@ function AddMeals() {
     }, []);
 
     return (
-        <div className=''>
-            <div className=''>
-                <button
-                    onClick={() => setIsModalOpen(true)}
-                    className='inline-flex items-center justify-center bg-blue-500 px-6 py-2 text-lg text-white font-medium uppercase rounded-md'
-                >
-                    Add a Meal
-                </button>
+        <div>
+            <div>
+                <div className='sm:flex sm:items-center'>
+                    <div className='sm:flex-auto pl-2'>
+                        <h1 className='text-xl text-gray-900'>Meals</h1>
+                        <p className='text-sm font-semibold text-gray-700'>
+                            {`A list of all the restaurant's meals.`}
+                        </p>
+                    </div>
+                    <div className='mt-4 sm:mt-0 sm:ml-16 sm:flex-none'>
+                        <button
+                            onClick={() => setIsModalOpen(true)}
+                            className='inline-flex items-center justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-auto'
+                        >
+                            Add meal
+                        </button>
+                    </div>
+                </div>
 
                 {isModalOpen && (
                     <div className='relative'>
