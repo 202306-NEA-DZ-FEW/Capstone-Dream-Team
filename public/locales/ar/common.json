@@ -133,7 +133,8 @@
         "signIn": "تسجيل الدخول",
         "light mode": "وضع الإضاءة",
         "dark mode": "وضع الظلام",
-        "language": "اللغة"
+        "language": "اللغة",
+        "aboutus":"من نحن"
     },
     "footer": {
         "home": "الصفحة الرئيسية",

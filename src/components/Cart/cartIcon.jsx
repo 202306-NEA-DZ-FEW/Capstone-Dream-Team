@@ -75,10 +75,10 @@ const CartIcon = () => {
     return (
         <button
             type='button'
-            className=' p-2 text-black   focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:transform hover:rotate-12 duration-300'
+            className=' p-2 text-[#192655] font-bold  focus:outline-none  focus:ring-white   hover:transform hover:rotate-12 duration-300'
         >
             <GiShoppingCart
-                className='h-6 w-6 hover:transform hover:scale-125 duration-300 hover:text-teal-500'
+                className='h-6 w-6 hover:transform hover:scale-125 duration-300 hover:text-blue-500'
                 aria-hidden='true'
             />
             {totalInCart > 0 && (
