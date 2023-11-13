@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { collection, deleteDoc, getDocs, doc } from "firebase/firestore";
 import { db } from "@/util/firebase";
 import { useTranslation } from "next-i18next";
 
 function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
     const { t } = useTranslation("common");
     const [quantity, setQuantity] = useState(mealObject.quantity);
     const cartCollection = collection(db, "cart");
@@ -72,6 +73,23 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
         }
     }
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 500); // Adjust the width as needed
+        };
+
+        // Initial check on component mount
+        handleResize();
+
+        // Listen for window resize events
+        window.addEventListener("resize", handleResize);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     return (
         /* <div>
        <p>{mealObject.name}</p>
@@ -83,8 +101,8 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
      </div>*/
 
         <div class='flex flex-col p-4 text-lg font-semibold border-b-2 rounded-sm'>
-            <div class='flex flex-col md:flex-row gap-3 justify-between '>
-                <div class='flex flex-row gap-6 items-center'>
+            <div class='flex flex-row gap-3 justify-between '>
+                <div class='flex flex-col md2:flex-row gap-6 items-center justify-center text-center md2:text-left'>
                     <div class='w-28 h-28'>
                         <img
                             class='w-full h-full'
@@ -92,7 +110,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                             alt='image'
                         />
                     </div>
-                    <div class='flex flex-col gap-1 w-60'>
+                    <div class='flex flex-col gap-1 w-36 md:w-60'>
                         <p class='text-lg text-gray-800 font-semibold'>
                             {mealObject.description}
                         </p>
@@ -100,7 +118,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                             {t("cartPage.card.restaurant")}:{" "}
                             <span class='font-normal'>{mealObject.name}</span>
                         </p>*/}
-                        <p class='text-xs text-gray-600 font-semibold'>
+                        <p class='text-xs text-gray-600 font-semibold hidden md2:block'>
                             {t("cartPage.card.quantityLeft")}:{" "}
                             <span class='font-normal'>
                                 {mealObject.maxMeals}
@@ -109,88 +127,168 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                     </div>
                 </div>
 
-                <div class='self-center text-center w-[100px]'>
+                <div class='self-center text-center w-[100px] hidden md2:block'>
                     {/* Price */}
-                    <p class='text-gray-800 font-normal text-xl'>
+                    <p class='text-gray-800 font-normal text-xl '>
                         ${mealObject.price.toFixed(2)}
                     </p>
                 </div>
 
-                <div class='flex flex-row self-center gap-1 w-[100px] justify-center'>
-                    <button
-                        class='w-5 h-5 self-center rounded-full border border-gray-300'
-                        onClick={decreament}
-                    >
-                        <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            viewBox='0 0 24 24'
-                            fill='none'
-                            stroke='#d1d5db'
-                            stroke-width='2'
-                            stroke-linecap='round'
-                            stroke-linejoin='round'
-                        >
-                            <path d='M5 12h14' />
-                        </svg>
-                    </button>
-                    <input
-                        type='text'
-                        id={`${mealObject.id}`}
-                        value={quantity}
-                        class='w-8 h-8 text-center text-gray-900 text-sm outline-none border border-gray-300 rounded-sm'
-                        onChange={handleQuantityChange}
-                    />
-                    <button
-                        class='w-5 h-5 self-center rounded-full border border-gray-300'
-                        onClick={increament}
-                    >
-                        <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            viewBox='0 0 24 24'
-                            fill=''
-                            stroke='#9ca3af'
-                            stroke-width='2'
-                            stroke-linecap='round'
-                            stroke-linejoin='round'
-                        >
-                            <path d='M12 5v14M5 12h14' />
-                        </svg>
-                    </button>
-                </div>
+                {isSmallScreen ? (
+                    <div className='flex flex-col justify-center items-center gap-4'>
+                        <div class='flex flex-row self-center gap-1 w-[100px] justify-center'>
+                            <button
+                                class='w-5 h-5 self-center rounded-full border border-gray-300'
+                                onClick={decreament}
+                            >
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    viewBox='0 0 24 24'
+                                    fill='none'
+                                    stroke='#d1d5db'
+                                    stroke-width='2'
+                                    stroke-linecap='round'
+                                    stroke-linejoin='round'
+                                >
+                                    <path d='M5 12h14' />
+                                </svg>
+                            </button>
+                            <input
+                                type='text'
+                                id={`${mealObject.id}`}
+                                value={quantity}
+                                class='w-8 h-8 text-center text-gray-900 text-sm outline-none border border-gray-300 rounded-sm'
+                                onChange={handleQuantityChange}
+                            />
+                            <button
+                                class='w-5 h-5 self-center rounded-full border border-gray-300'
+                                onClick={increament}
+                            >
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    viewBox='0 0 24 24'
+                                    fill=''
+                                    stroke='#9ca3af'
+                                    stroke-width='2'
+                                    stroke-linecap='round'
+                                    stroke-linejoin='round'
+                                >
+                                    <path d='M12 5v14M5 12h14' />
+                                </svg>
+                            </button>
+                        </div>
 
-                <div class='self-center text-center w-[100px]'>
-                    {/* subtotal*/}
-                    <p class='text-gray-800 font-normal text-xl'>
-                        ${totalMealPrice.toFixed(2)}
-                    </p>
-                </div>
+                        <div class='self-center text-center w-[100px]'>
+                            {/* subtotal*/}
+                            <p class='text-gray-800 font-normal text-xl'>
+                                ${totalMealPrice.toFixed(2)}
+                            </p>
+                        </div>
+                        <div class='self-center w-[100px] text-center '>
+                            <button class=' ' onClick={removeFromCollection}>
+                                <svg
+                                    class=''
+                                    height='24px'
+                                    width='24px'
+                                    id='Layer_1'
+                                    version='1.1'
+                                    viewBox='0 0 512 512'
+                                >
+                                    <g>
+                                        <path d='M400,113.3h-80v-20c0-16.2-13.1-29.3-29.3-29.3h-69.5C205.1,64,192,77.1,192,93.3v20h-80V128h21.1l23.6,290.7   c0,16.2,13.1,29.3,29.3,29.3h141c16.2,0,29.3-13.1,29.3-29.3L379.6,128H400V113.3z M206.6,93.3c0-8.1,6.6-14.7,14.6-14.7h69.5   c8.1,0,14.6,6.6,14.6,14.7v20h-98.7V93.3z M341.6,417.9l0,0.4v0.4c0,8.1-6.6,14.7-14.6,14.7H186c-8.1,0-14.6-6.6-14.6-14.7v-0.4   l0-0.4L147.7,128h217.2L341.6,417.9z' />
+                                        <g>
+                                            <rect
+                                                height='241'
+                                                width='14'
+                                                x='249'
+                                                y='160'
+                                            />
+                                            <polygon points='320,160 305.4,160 294.7,401 309.3,401' />
+                                            <polygon points='206.5,160 192,160 202.7,401 217.3,401' />
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                ) : (
+                    <>
+                        <div class='flex flex-row self-center gap-1 w-[100px] justify-center'>
+                            <button
+                                class='w-5 h-5 self-center rounded-full border border-gray-300'
+                                onClick={decreament}
+                            >
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    viewBox='0 0 24 24'
+                                    fill='none'
+                                    stroke='#d1d5db'
+                                    stroke-width='2'
+                                    stroke-linecap='round'
+                                    stroke-linejoin='round'
+                                >
+                                    <path d='M5 12h14' />
+                                </svg>
+                            </button>
+                            <input
+                                type='text'
+                                id={`${mealObject.id}`}
+                                value={quantity}
+                                class='w-8 h-8 text-center text-gray-900 text-sm outline-none border border-gray-300 rounded-sm'
+                                onChange={handleQuantityChange}
+                            />
+                            <button
+                                class='w-5 h-5 self-center rounded-full border border-gray-300'
+                                onClick={increament}
+                            >
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    viewBox='0 0 24 24'
+                                    fill=''
+                                    stroke='#9ca3af'
+                                    stroke-width='2'
+                                    stroke-linecap='round'
+                                    stroke-linejoin='round'
+                                >
+                                    <path d='M12 5v14M5 12h14' />
+                                </svg>
+                            </button>
+                        </div>
 
-                <div class='self-center w-[100px] text-center '>
-                    <button class=' ' onClick={removeFromCollection}>
-                        <svg
-                            class=''
-                            height='24px'
-                            width='24px'
-                            id='Layer_1'
-                            version='1.1'
-                            viewBox='0 0 512 512'
-                        >
-                            <g>
-                                <path d='M400,113.3h-80v-20c0-16.2-13.1-29.3-29.3-29.3h-69.5C205.1,64,192,77.1,192,93.3v20h-80V128h21.1l23.6,290.7   c0,16.2,13.1,29.3,29.3,29.3h141c16.2,0,29.3-13.1,29.3-29.3L379.6,128H400V113.3z M206.6,93.3c0-8.1,6.6-14.7,14.6-14.7h69.5   c8.1,0,14.6,6.6,14.6,14.7v20h-98.7V93.3z M341.6,417.9l0,0.4v0.4c0,8.1-6.6,14.7-14.6,14.7H186c-8.1,0-14.6-6.6-14.6-14.7v-0.4   l0-0.4L147.7,128h217.2L341.6,417.9z' />
-                                <g>
-                                    <rect
-                                        height='241'
-                                        width='14'
-                                        x='249'
-                                        y='160'
-                                    />
-                                    <polygon points='320,160 305.4,160 294.7,401 309.3,401' />
-                                    <polygon points='206.5,160 192,160 202.7,401 217.3,401' />
-                                </g>
-                            </g>
-                        </svg>
-                    </button>
-                </div>
+                        <div class='self-center text-center w-[100px]'>
+                            {/* subtotal*/}
+                            <p class='text-gray-800 font-normal text-xl'>
+                                ${totalMealPrice.toFixed(2)}
+                            </p>
+                        </div>
+                        <div class='self-center w-[100px] text-center '>
+                            <button class=' ' onClick={removeFromCollection}>
+                                <svg
+                                    class=''
+                                    height='24px'
+                                    width='24px'
+                                    id='Layer_1'
+                                    version='1.1'
+                                    viewBox='0 0 512 512'
+                                >
+                                    <g>
+                                        <path d='M400,113.3h-80v-20c0-16.2-13.1-29.3-29.3-29.3h-69.5C205.1,64,192,77.1,192,93.3v20h-80V128h21.1l23.6,290.7   c0,16.2,13.1,29.3,29.3,29.3h141c16.2,0,29.3-13.1,29.3-29.3L379.6,128H400V113.3z M206.6,93.3c0-8.1,6.6-14.7,14.6-14.7h69.5   c8.1,0,14.6,6.6,14.6,14.7v20h-98.7V93.3z M341.6,417.9l0,0.4v0.4c0,8.1-6.6,14.7-14.6,14.7H186c-8.1,0-14.6-6.6-14.6-14.7v-0.4   l0-0.4L147.7,128h217.2L341.6,417.9z' />
+                                        <g>
+                                            <rect
+                                                height='241'
+                                                width='14'
+                                                x='249'
+                                                y='160'
+                                            />
+                                            <polygon points='320,160 305.4,160 294.7,401 309.3,401' />
+                                            <polygon points='206.5,160 192,160 202.7,401 217.3,401' />
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );
