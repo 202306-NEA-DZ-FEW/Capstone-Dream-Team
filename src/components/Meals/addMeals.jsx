@@ -13,42 +13,7 @@ import { deleteObject } from "firebase/storage";
 import React, { useEffect, useState } from "react";
 import { auth, db, storage } from "src/util/firebase.js";
 
-function MealCard({ meal, onDelete, maxMeals }) {
-    const handleDelete = () => {
-        onDelete(meal.id, meal.imageUrl);
-    };
-
-    return (
-        <div className='flex-col mb-4 w-full'>
-            <div className='flex flex-row items-center shadow-xl bg-neutral-100 p-4 w-full'>
-                <img
-                    src={meal.imageUrl}
-                    alt={meal.name}
-                    className='w-16 h-16 mr-4 rounded-md'
-                />
-                <div className='flex flex-row items-center w-full bg-neutral-100 ml-4 mr-4'>
-                    <div className='text-2xl font-normal w-1/4 font-Poppins leading-tight'>
-                        {meal.name}
-                    </div>
-                    <div className='text-2xl font-normal w-1/4 font-Poppins leading-tight'>
-                        Price: {meal.price}
-                    </div>
-                    <div className='text-2xl font-normal w-1/4 font-Poppins leading-tight'>
-                        Meals left: {maxMeals}
-                    </div>
-                    <div className='flex items-center ml-auto w-1/4'>
-                        <button
-                            onClick={handleDelete}
-                            className='px-2 py-1 shadow-xl bg-red-600 text-white rounded-md ml-auto'
-                        >
-                            Delete
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
+import MealsTable from "./mealsTable";
 
 function AddMeals() {
     const [mealName, setMealName] = useState("");
@@ -62,12 +27,20 @@ function AddMeals() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMealAdded, setIsMealAdded] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const handleImageUpload = async (event) => {
         try {
             setLoading(false);
             const imageFile = event.target.files[0];
+            const maxSize = 5 * 1024 * 1024; // 5MB in bytes
 
+            if (imageFile.size > maxSize) {
+                // Display an error message or handle the oversized file case
+                setError("Image size exceeds the maximum allowed size.");
+                setLoading(true);
+                return;
+            }
             if (imageFile) {
                 const storageRef = ref(storage, `images/${imageFile.name}`);
                 await uploadBytes(storageRef, imageFile);
@@ -88,7 +61,7 @@ function AddMeals() {
         setMealPrice("");
         setImageUrl("");
         setImageName("");
-        setLoading(false);
+        setLoading(true);
         setIsModalOpen(false);
     };
     const handleSubmit = async (event) => {
@@ -189,19 +162,19 @@ function AddMeals() {
     }, []);
 
     return (
-        <main className='max-h-screen overflow-hidden'>
+        <div className=''>
             <div className=''>
                 <button
                     onClick={() => setIsModalOpen(true)}
-                    className='inline-flex items-center justify-center bg-blue-500 px-6 py-2 text-lg text-white font-medium uppercase tracking-wide rounded-md'
+                    className='inline-flex items-center justify-center bg-blue-500 px-6 py-2 text-lg text-white font-medium uppercase rounded-md'
                 >
                     Add a Meal
                 </button>
 
                 {isModalOpen && (
-                    <div className=''>
-                        <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'>
-                            <div className='relative w-auto my-6 mx-auto max-w-3xl'>
+                    <div className='relative'>
+                        <div className='z-50 justify-center items-center flex overflow-y-auto fixed inset-0 outline-none focus:outline-none'>
+                            <div className='relative sm:w-6/6 md:w-5/6 lg:w-2/6 my-6 mx-auto max-w-3xl'>
                                 <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-auto bg-white outline-none'>
                                     <div className='flex flex-row-reverse'>
                                         <button
@@ -250,16 +223,16 @@ function AddMeals() {
                                                 Upload file
                                             </label>
                                             <input
-                                                className='hidden w-[100px]'
+                                                className='hidden'
                                                 id='file_input'
                                                 type='file'
                                                 onChange={handleImageUpload}
-                                                maxLength={50}
+                                                accept='.png, .jpg, .jpeg'
                                             />
-                                            <div className='flex justify-between items-center pr-2 font-semibold m-0 w-full text-base bg-white border rounded-lg cursor-pointer focus:outline-none'>
+                                            <div className='flex justify-between items-center p-4 font-semibold m-0 w-full text-base bg-white border rounded-md cursor-pointer focus:outline-none'>
                                                 <label
                                                     htmlFor='file_input'
-                                                    className=' p-4 text-clip'
+                                                    className='truncate'
                                                 >
                                                     {imageName
                                                         ? imageName
@@ -277,7 +250,7 @@ function AddMeals() {
                                                             imageName
                                                                 ? ""
                                                                 : "hidden"
-                                                        } rounded-md inline-flex items-center justify-center pt-0.5 text-gray-700 focus:outline-none line-clamp-1`}
+                                                        } rounded-md inline-flex items-center justify-center pt-0.5 text-gray-700 focus:outline-none`}
                                                     >
                                                         <svg
                                                             className='h-5 w-5'
@@ -300,37 +273,48 @@ function AddMeals() {
                                                 )}
                                             </div>
                                         </div>
-
-                                        <div>
-                                            <label className='block'>
+                                        <div className='relative py-2'>
+                                            <label className='pt-0 pr-2 pb-0 pl-2 absolute -mt-5 mr-0 mb-0 ml-1 font-medium text-gray-600 bg-white'>
                                                 Max Meals Per Day
                                             </label>
                                             <input
                                                 type='number'
                                                 value={maxMeals}
                                                 onChange={(e) =>
-                                                    setMaxMeals(e.target.value)
+                                                    setMaxMeals(
+                                                        parseFloat(
+                                                            e.target.value
+                                                        ).toFixed(0)
+                                                    )
                                                 }
-                                                className='w-full px-3 py-2 border border-gray-300 rounded-md'
+                                                className='border placeholder-gray-400 focus:outline-none font-semibold w-full p-4 m-0 text-base block bg-white rounded-md'
                                             />
                                         </div>
-                                        <div>
-                                            <label className='block'>
+                                        <div className='relative py-2'>
+                                            <label className='pt-0 pr-2 pb-0 pl-2 absolute -mt-5 mr-0 mb-0 ml-1 font-medium text-gray-600 bg-white'>
                                                 Meal Price
                                             </label>
-                                            <input
-                                                type='number'
-                                                value={mealPrice}
-                                                onChange={(e) =>
-                                                    setMealPrice(e.target.value)
-                                                }
-                                                className='w-full px-3 py-2 border border-gray-300 rounded-md'
-                                            />
+                                            <div className='flex border p-4 m-0 placeholder-gray-400 font-semibold p-2 text-base bg-white rounded-md'>
+                                                <span className='mx-1'>$</span>
+                                                <input
+                                                    value={mealPrice}
+                                                    type='number'
+                                                    min='0.00'
+                                                    max='10000.00'
+                                                    step='0.01'
+                                                    onChange={(e) =>
+                                                        setMealPrice(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    className='w-full focus:outline-none '
+                                                />
+                                            </div>
                                         </div>
                                         <div className='flex justify-center'>
                                             <button
                                                 type='submit'
-                                                className='px-4 py-2 bg-blue-600 text-white rounded-md'
+                                                className='inline-flex items-center justify-center bg-blue-500 px-6 py-2 text-lg text-white font-medium uppercase tracking-wide rounded-md'
                                             >
                                                 Add A Meal
                                             </button>
@@ -339,35 +323,83 @@ function AddMeals() {
                                 </div>
                             </div>
                         </div>
-                        <div className='opacity-25 fixed inset-0 z-40 bg-black' />
+                        {error && (
+                            <div
+                                id='toast-danger'
+                                className='z-50 fixed top-0 left-1/2 transform -translate-x-1/2 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow'
+                                role='alert'
+                            >
+                                <div className='inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg '>
+                                    <svg
+                                        className='w-5 h-5'
+                                        aria-hidden='true'
+                                        xmlns='http://www.w3.org/2000/svg'
+                                        fill='currentColor'
+                                        viewBox='0 0 20 20'
+                                    >
+                                        <path d='M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z' />
+                                    </svg>
+                                    <span className='sr-only'>Error icon</span>
+                                </div>
+                                <div className='ml-3 text-sm font-normal'>
+                                    {error}
+                                </div>
+                                <button
+                                    type='button'
+                                    className='ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700'
+                                    data-dismiss-target='#toast-danger'
+                                    aria-label='Close'
+                                    onClick={() => setError(null)}
+                                >
+                                    <span className='sr-only'>Close</span>
+                                    <svg
+                                        className='w-3 h-3'
+                                        aria-hidden='true'
+                                        xmlns='http://www.w3.org/2000/svg'
+                                        fill='none'
+                                        viewBox='0 0 14 14'
+                                    >
+                                        <path
+                                            stroke='currentColor'
+                                            stroke-linecap='round'
+                                            stroke-linejoin='round'
+                                            stroke-width='2'
+                                            d='m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6'
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        )}
+                        <div className='opacity-25 fixed inset-0 z-30 bg-black' />
                     </div>
                 )}
 
                 {isMealAdded && (
-                    <div className='fixed inset-x-0 bottom-4 flex items-center justify-center z-50 '>
-                        <div className='bg-gray-100 shadow-lg rounded-xl max-w-4xl p-4 text-center'>
-                            <p>Meal Added Successfully</p>
+                    <div
+                        id='toast-success'
+                        class='z-50 fixed top-0 left-1/2 transform -translate-x-1/2 flex items-center w-full max-w-xs p-4 m-4 text-gray-500 bg-white rounded-lg shadow'
+                        role='alert'
+                    >
+                        <div class='inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg '>
+                            <svg
+                                class='w-5 h-5'
+                                aria-hidden='true'
+                                xmlns='http://www.w3.org/2000/svg'
+                                fill='currentColor'
+                                viewBox='0 0 20 20'
+                            >
+                                <path d='M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z' />
+                            </svg>
+                            <span class='sr-only'>Check icon</span>
+                        </div>
+                        <div class='ml-3 text-sm font-normal'>
+                            Meal Added Successfully
                         </div>
                     </div>
                 )}
-
-                <div
-                    className='grid grid-cols-1 p-8 w-full'
-                    style={{ overflowY: "auto", maxHeight: "500px" }}
-                >
-                    <div className='w-full items-center gap-4'>
-                        {meals.map((meal) => (
-                            <MealCard
-                                key={meal.id}
-                                meal={meal}
-                                onDelete={handleDeleteMeal}
-                                maxMeals={meal.mealsLeft}
-                            />
-                        ))}
-                    </div>
-                </div>
+                <MealsTable meals={meals} onDelete={handleDeleteMeal} />
             </div>
-        </main>
+        </div>
     );
 }
 
