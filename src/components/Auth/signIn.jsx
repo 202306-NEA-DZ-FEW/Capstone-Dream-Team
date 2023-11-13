@@ -45,7 +45,7 @@ const SignIn = ({ updateComponent }) => {
 
     return (
         <div
-            className='flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
+            className='flex flex-col h-1/2 items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
             relative z-10'
         >
             <h1 className='w-full text-4xl  text-center leading-snug '>
