@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl relative z-10 "
+  className="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl   relative z-10 "
 >
   <p
     className="w-full text-4xl  text-center leading-snug "
@@ -31,7 +31,7 @@ exports[`renders correctly 1`] = `
       className="relative"
     >
       <p
-        class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
+        class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600   absolute"
       >
         signupPage.signUp.name
       </p>
@@ -55,7 +55,7 @@ exports[`renders correctly 1`] = `
         />
       </svg>
       <input
-        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md pl-8"
+        className="border placeholder-gray-400 focus:outline-none   focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white   border-gray-300 rounded-md pl-8"
         id="name"
         name="username"
         onChange={[Function]}
@@ -93,7 +93,7 @@ exports[`renders correctly 1`] = `
         />
       </svg>
       <input
-        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md pl-8"
+        className="border placeholder-gray-400 focus:outline-none   focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white   border-gray-300 rounded-md pl-8"
         id="username"
         name="username"
         onChange={[Function]}
@@ -107,7 +107,7 @@ exports[`renders correctly 1`] = `
       className="relative"
     >
       <p
-        class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
+        class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600   absolute"
       >
         signupPage.password
       </p>
@@ -131,7 +131,7 @@ exports[`renders correctly 1`] = `
         />
       </svg>
       <input
-        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md pl-8"
+        className="border placeholder-gray-400 focus:outline-none   focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white   border-gray-300 rounded-md pl-8"
         id="password"
         minLength="6"
         name="password"
@@ -146,7 +146,7 @@ exports[`renders correctly 1`] = `
       className="relative"
     >
       <p
-        class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
+        class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600   absolute"
       >
         signupPage.signUp.confirm-password
       </p>
@@ -170,7 +170,7 @@ exports[`renders correctly 1`] = `
         />
       </svg>
       <input
-        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md pl-8"
+        className="border placeholder-gray-400 focus:outline-none   focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white   border-gray-300 rounded-md pl-8"
         id="confirmpass"
         minLength="6"
         name="password"
@@ -183,7 +183,7 @@ exports[`renders correctly 1`] = `
     </div>
     <div>
       <button
-        className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500 rounded-lg transition duration-200 hover:bg-indigo-600 ease"
+        className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500   rounded-lg transition duration-200 hover:bg-indigo-600 ease"
         type="submit"
       >
         signupPage.signUp.title2

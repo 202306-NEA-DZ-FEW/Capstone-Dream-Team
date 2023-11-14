@@ -101,7 +101,29 @@
         "donate": "تبرع",
         "show_meals": "عرض جميع الوجبات",
         "available_meals": "الوجبات المتوفرة",
-        "stock": "في المخزن"
+        "stock": "في المخزن",
+        "mealsTable": {
+            "image": "الصورة",
+            "name": "الاسم",
+            "quantity": "الكمية",
+            "price": "السعر"
+        },
+        "meals": {
+            "title": "الوجبات",
+            "description": "قائمة بكل وجبات المطعم."
+        },
+        "mealForm": {
+            "mealName": "اسم الوجبة",
+            "chooseImage": "اختيار صورة",
+      "uploadFile": "تحميل صورة",
+            "maxMealsPerDay": "الحد الأقصى للوجبات في اليوم",
+            "mealPrice": "سعر الوجبة",
+            "addMeal": "إضافة وجبة"
+          },
+          "notifications": {
+            "mealAddedSuccessfully": "تمت إضافة الوجبة بنجاح",
+            "imageSizeExceedsMax": "حجم الصورة يتجاوز الحد الأقصى المسموح به"
+          }
     },
     "history": {
         "History": "التاريخ",
