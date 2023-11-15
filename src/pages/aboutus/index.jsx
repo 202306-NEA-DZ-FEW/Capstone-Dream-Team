@@ -158,35 +158,45 @@ export default function Aboutus() {
                     </div>
                 </div>
 
-                <section className='justify-center flex-1 max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6'>
+                <section className='justify-center flex-1 max-w-6xl px-4 py-6 mx-auto lg:max-w-full lg:py-4 md:px-3'>
                     <div className='mb-10 text-center'>
                         <h1 className='text-3xl font-bold text-blue-700 capitalize dark:text-white'>
                             {" "}
                             Meet Our Wonderful Team{" "}
                         </h1>
                     </div>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap'>
                         <Teamcard
+                            linkedin='https://tailgrail.com/tailwind/teams'
+                            github='https://tailgrail.com/'
                             name='Mouloud'
                             profile='Designer'
                             img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
                         />
                         <Teamcard
+                            linkedin=''
+                            github=''
                             name='Mouloud'
                             profile='Designer'
                             img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
                         />
                         <Teamcard
+                            linkedin=''
+                            github=''
                             name='Mouloud'
                             profile='Designer'
                             img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
                         />
                         <Teamcard
+                            linkedin=''
+                            github=''
                             name='Mouloud'
                             profile='Designer'
                             img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
                         />
                         <Teamcard
+                            linkedin=''
+                            github=''
                             name='Mouloud'
                             profile='Designer'
                             img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'

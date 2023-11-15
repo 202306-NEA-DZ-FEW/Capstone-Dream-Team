@@ -1,14 +1,14 @@
 import React from "react";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 
-export default function Teamcard({ name, profile, img }) {
+export default function Teamcard({ name, profile, img, linkedin, github }) {
     return (
         <>
             {" "}
             <div className='flex flex-wrap justify-center '>
                 <div className='w-full px-4 mb-4'>
                     <div className='p-6 shadow-sm rounded-md border border-orange-100 bg-orange-50  dark:bg-gray-700 group'>
-                        <a className='block mb-2' href='#'>
+                        <a className='block mb-2' href={github}>
                             <div className='relative overflow-hidden'>
                                 <div className='mb-5 overflow-hidden'>
                                     <img
@@ -18,7 +18,10 @@ export default function Teamcard({ name, profile, img }) {
                                     />
                                 </div>
                                 <div className='absolute flex flex-col top-4 right-4'>
-                                    <div className='flex items-center'>
+                                    <div
+                                        className='flex items-center'
+                                        href={linkedin}
+                                    >
                                         <div className='relative flex items-center justify-center p-3 mb-3 transition-all translate-x-20 bg-white rounded group-hover:translate-x-0 wishlist hover:bg-blue-200 group'>
                                             <svg
                                                 xmlns='https://react-icons.github.io/ react-icons/search?q=git'
@@ -32,7 +35,10 @@ export default function Teamcard({ name, profile, img }) {
                                             </svg>
                                         </div>
                                     </div>
-                                    <div className='flex items-center'>
+                                    <div
+                                        className='flex items-center'
+                                        href={github}
+                                    >
                                         <div className='relative flex items-center justify-center p-3 mb-3 transition-all translate-x-20 bg-white rounded group-hover:translate-x-0 wishlist hover:bg-blue-200 group'>
                                             <svg
                                                 xmlns='http://www.w3.org/2000/svg'
