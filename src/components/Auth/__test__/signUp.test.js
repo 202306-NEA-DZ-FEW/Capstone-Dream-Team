@@ -1,8 +1,10 @@
+import { I18nextProvider } from "react-i18next";
 import renderer from "react-test-renderer";
-import SignUp from "../signUp";
 
 import { getAuth } from "@/util/firebase";
 
+import SignUp from "../signUp";
+import i18n from "../../../util/i18n";
 // Mock the Firebase services
 jest.mock("@/util/firebase", () => ({
     getAuth: jest.fn(),
@@ -17,6 +19,12 @@ jest.mock("next/router", () => ({
 
 it("renders correctly", () => {
     getAuth.mockReturnValue();
-    const tree = renderer.create(<SignUp />).toJSON();
+    const tree = renderer
+        .create(
+            <I18nextProvider i18n={i18n}>
+                <SignUp />
+            </I18nextProvider>
+        )
+        .toJSON();
     expect(tree).toMatchSnapshot();
 });
