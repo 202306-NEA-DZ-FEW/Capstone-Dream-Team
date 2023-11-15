@@ -11,7 +11,7 @@ import { auth } from "@/util/firebase";
 // Import the AddMeals component
 import Sidemenu from "../../components/Sidemenu";
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ locale }) {
     const [component, setComponent] = useState(<Overview />);
 
     function handleClick(selectedComponent) {
@@ -33,8 +33,11 @@ export default function AdminDashboard() {
             {/* to check whether the user is signed in    */}
             {authUser ? (
                 // we show the page of the admin dashboard
-                <div className='flex flex-row'>
-                    <Sidemenu handleClick={handleClick}></Sidemenu>
+                <div className='flex flex-row '>
+                    <Sidemenu
+                        locale={locale}
+                        handleClick={handleClick}
+                    ></Sidemenu>
 
                     {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
                     <div className='order-1 md:mr-2 md:w-64 w-20'></div>
@@ -48,15 +51,15 @@ export default function AdminDashboard() {
                 <Layout>
                     <div className='flex flex-col w-full justify-center items-center py-48 space-y-16 '>
                         {" "}
-                        <div className='flex text-2xl font-semibold'>
-                            You need to have an acount to enter the dashboard
-                            page !
-                        </div>
-                        <Link href='/signup'>
-                            <button className='bg-orange-400 hover:bg-orange-600 mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-white tracking-widest hover:shadow-lg transform hover:scale-105 '>
-                                Create account
-                            </button>
-                        </Link>
+                        {locale === "en" ? (
+                            <div className='flex text-4xl font-semibold'>
+                                loading...
+                            </div>
+                        ) : (
+                            <div className='flex text-4xl font-semibold'>
+                                تحميل ...
+                            </div>
+                        )}
                     </div>
                 </Layout>
             )}
