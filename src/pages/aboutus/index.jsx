@@ -27,15 +27,21 @@ export default function Aboutus() {
                     <div className='flex lg:flex-row flex-col lg:gap-8 sm:gap-10 gap-12'>
                         <div className='w-full lg:w-6/12'>
                             <h2 className='w-full font-bold text-blue-700 lg:text-4xl text-3xl lg:leading-10 leading-9'>
-                                About this project (website){" "}
+                                About the website{" "}
                             </h2>
                             <p className='font-normal text-base leading-6 text-gray-600 mt-6'>
-                                It is the capstone project of the Re:coded
-                                Bootcamp / It is the capstone project of the
-                                Re:coded Bootcamp / It is the capstone project
-                                of the Re:coded Bootcamp / It is the capstone
-                                project of the Re:coded Bootcamp / It is the
-                                capstone project of the Re:coded Bootcamp
+                                This website serves as the capstone project for
+                                the frontend web development in Re:coded. It is
+                                dedicated to showcasing our ability to create
+                                websites in accordance with specified
+                                requirements and even infuse creativity into the
+                                process. Leveraging our technical skills,
+                                including GitHub, HTML, CSS, JavaScript,
+                                Firebase and Next.js, we successfully executed
+                                this project. Moreover, we employed our soft
+                                skills to facilitate effective communication,
+                                making this experience highly valuable and
+                                ensuring the timely delivery of the project.
                             </p>
                         </div>
                         <div className='w-full h-80 lg:w-6/12 '>
@@ -60,31 +66,31 @@ export default function Aboutus() {
                     <div className='flex lg:flex-row flex-col md:gap-14 gap-16 justify-between lg:mt-20 mt-16'>
                         <div className='w-full lg:w-6/12'>
                             <h2 className='font-bold lg:text-4xl text-3xl lg:leading-9 leading-7 text-blue-700'>
-                                Our Mission
+                                Our Goal
                             </h2>
                             <p className='font-normal text-base leading-6 text-gray-600 mt-6 w-full lg:w-10/12 xl:w-9/12'>
-                                It is a long established fact that a reader will
-                                be distracted by the readable content of a page
-                                when looking at its layout. The point of using
-                                Lorem Ipsum.In the first place we have granted
-                                to God, and by this our present charter
-                                confirmed for us and our heirs forever that the
-                                English Church shall be free, and shall have her
-                                rights entire, and her liberties inviolate; and
-                                we will that it be thus observed; which is
-                                apparent from
+                                Our vision was to create a donation website that
+                                is easy to navigate and understand its purpose.
+                                Firstly, donors can explore relevant blogs on
+                                the Blogs page. To discover restaurants and
+                                their meals, they can visit the Meals page and
+                                add items to their cart for donation. When ready
+                                to make a donation, donors can proceed to the
+                                checkout page by clicking the cart icon,
+                                entering their name, and providing credit card
+                                information. The process is designed to be
+                                swift, without requiring sign-ups that might
+                                elongate the experience.
                             </p>
                             <p className='font-normal text-base leading-6 text-gray-600 w-full lg:w-10/12 xl:w-9/12 mt-10'>
-                                It is a long established fact that a reader will
-                                be distracted by the readable content of a page
-                                when looking at its layout. The point of using
-                                Lorem Ipsum.In the first place we have granted
-                                to God, and by this our present charter
-                                confirmed for us and our heirs forever that the
-                                English Church shall be free, and shall have her
-                                rights entire, and her liberties inviolate; and
-                                we will that it be thus observed; which is
-                                apparent from
+                                On the other hand, restaurants are required to
+                                sign up to add their meals to our database via
+                                the dashboard. Through the dashboard, they can
+                                access an overview of donation history,
+                                visualize the number of donations per month or
+                                year, and update their profile information
+                                (name, image, password, email, etc.) through the
+                                settings.
                             </p>
                         </div>
                         <div className='w-full lg:w-6/12'>
@@ -104,10 +110,10 @@ export default function Aboutus() {
                                             Responsiveness
                                         </p>
                                         <p className='mt-2 font-normal text-base leading-6 text-gray-600'>
-                                            It is a long established fact that a
-                                            reader will be distracted by the
-                                            readable content of a page when
-                                            looking at its layout.
+                                            We have ensured full responsiveness
+                                            across various screen types and
+                                            sizes by utilizing Tailwind CSS for
+                                            this website.
                                         </p>
                                     </div>
                                 </div>
@@ -125,10 +131,10 @@ export default function Aboutus() {
                                             Firebase
                                         </p>
                                         <p className='mt-2 font-normal text-base leading-6 text-gray-600'>
-                                            It is a long established fact that a
-                                            reader will be distracted by the
-                                            readable content of a page when
-                                            looking at its layout.
+                                            We built our backend using Firebase
+                                            and organized it into three blocks:
+                                            a donors collection, a restaurants
+                                            collection, and a meals collection.
                                         </p>
                                     </div>
                                 </div>
@@ -146,10 +152,10 @@ export default function Aboutus() {
                                             Creativity
                                         </p>
                                         <p className='mt-2 font-normal text-base leading-6 text-gray-600'>
-                                            It is a long established fact that a
-                                            reader will be distracted by the
-                                            readable content of a page when
-                                            looking at its layout.
+                                            We enriched our database by working
+                                            with meals instead of coupons ; and
+                                            we used Stripe for real time
+                                            paiment.
                                         </p>
                                     </div>
                                 </div>
@@ -204,18 +210,11 @@ export default function Aboutus() {
                     </div>
                 </section>
 
-                <div className='w-full px-4 mb-32 lg:w-1/3 md:w-1/2 lg:mb-0'>
+                {/* <div className='w-full px-4 mb-32 lg:w-1/3 md:w-1/2 lg:mb-0'>
                     <div className='relative'>
-                        {/* <div className="w-full h-80">
-                            <img
-                                src="https://i.postimg.cc/bNyr5cJq/pexels-anastasia-shuraeva-5704720.jpg"
-                                alt=""
-                                className="object-cover w-full h-full lg:rounded-2xl"
-                            />
-                        </div> */}
                         <Historybar />
                     </div>
-                </div>
+                </div> */}
             </Layout>
         </>
     );

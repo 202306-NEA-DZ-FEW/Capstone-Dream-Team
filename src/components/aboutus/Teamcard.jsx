@@ -18,13 +18,15 @@ export default function Teamcard({ name, profile, img, linkedin, github }) {
                                     />
                                 </div>
                                 <div className='absolute flex flex-col top-4 right-4'>
-                                    <div
+                                    <a
                                         className='flex items-center'
                                         href={linkedin}
+                                        target='_blank' // Add this to open links in a new tab/window
+                                        rel='noopener noreferrer' // Recommended for security reasons when using target="_blank"
                                     >
                                         <div className='relative flex items-center justify-center p-3 mb-3 transition-all translate-x-20 bg-white rounded group-hover:translate-x-0 wishlist hover:bg-blue-200 group'>
                                             <svg
-                                                xmlns='https://react-icons.github.io/ react-icons/search?q=git'
+                                                xmlns='https://react-icons.github.io/react-icons/search?q=git'
                                                 width='16'
                                                 height='16'
                                                 fill='currentColor'
@@ -34,10 +36,12 @@ export default function Teamcard({ name, profile, img, linkedin, github }) {
                                                 <AiFillLinkedin></AiFillLinkedin>{" "}
                                             </svg>
                                         </div>
-                                    </div>
-                                    <div
+                                    </a>
+                                    <a
                                         className='flex items-center'
                                         href={github}
+                                        target='_blank' // Add this to open links in a new tab/window
+                                        rel='noopener noreferrer' // Recommended for security reasons when using target="_blank"
                                     >
                                         <div className='relative flex items-center justify-center p-3 mb-3 transition-all translate-x-20 bg-white rounded group-hover:translate-x-0 wishlist hover:bg-blue-200 group'>
                                             <svg
@@ -52,7 +56,7 @@ export default function Teamcard({ name, profile, img, linkedin, github }) {
                                                 <AiFillGithub></AiFillGithub>
                                             </svg>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                             <h2 className='mb-2 text-xl font-bold dark:text-white'>
