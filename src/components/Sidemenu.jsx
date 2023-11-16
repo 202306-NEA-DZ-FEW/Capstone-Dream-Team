@@ -13,7 +13,7 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { IoEarthOutline } from "react-icons/io5";
 import { LiaHistorySolid } from "react-icons/lia";
 
-import AddMeals from "./Add-meals";
+import AddMeals from "./Meals/addMeals";
 import Adminhistory from "./History/Adminhistory";
 import Overview from "./Overview/overview";
 import Settings from "./Settings";
