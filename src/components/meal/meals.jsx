@@ -33,6 +33,7 @@ export default function Meals() {
                                 name: mealData.name,
                                 description: mealData.name,
                                 imageUrl: mealData.imageUrl,
+                                restaurantName: mealData.restaurantName,
                                 restaurantId: mealData.restaurantId,
                                 quantity: 1,
                             };
