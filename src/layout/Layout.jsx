@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { ThemeProvider } from "next-themes";
 import * as React from "react";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 
 import Navbar from "@/components/Home/Navbar";
 
@@ -29,6 +30,10 @@ export default function Layout({ children }) {
     return (
         <>
             <ThemeProvider enableSystem={true} attribute='class'>
+                <Toaster
+                    position='buttom-right'
+                    toastOptions={{ duration: 7000 }}
+                />
                 <Navbar locale={router.locale} />
                 {children}
             </ThemeProvider>
