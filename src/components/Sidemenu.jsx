@@ -8,7 +8,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
 import { HiOutlineChartBarSquare } from "react-icons/hi2";
-import { IoIosArrowDropright } from "react-icons/io";
+import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import { IoLogOutOutline } from "react-icons/io5";
 import { IoEarthOutline } from "react-icons/io5";
 import { LiaHistorySolid } from "react-icons/lia";
@@ -49,9 +49,10 @@ export default function Sidemenu(props) {
 
     const [userData, setUserData] = useState(null); // State to store user data.
     const [authUser, setAuthUser] = useState(null); // State to store the authenticated user.
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     // Use 'useEffect' to run code when 'authUser' changes.
     const [clicked, setClicked] = useState(false);
+    const [mousenter, setMousenter] = useState(false);
     const router = useRouter();
 
     // Function to change the language
@@ -105,34 +106,44 @@ export default function Sidemenu(props) {
     return (
         <>
             <nav
-                style={{
-                    backgroundImage: "url(images/sidemenu/background.png)",
-                }}
-                className={`col-span-1  h-screen fixed duration-300 bg-cover ${
-                    !open ? "w-60" : "w-20 md:w-60"
+                style={
+                    router.locale === "ar"
+                        ? {
+                              backgroundPositionX: "right",
+                              backgroundImage:
+                                  "url(/images/sidemenu/background.png)",
+                          }
+                        : {
+                              backgroundImage:
+                                  "url(images/sidemenu/background.png)",
+                          }
+                }
+                className={`col-span-1 z-50 h-screen fixed duration-300 bg-cover ${
+                    open ? " w-60" : "w-20 md:w-60"
                 }`}
+                onMouseLeave={() => setOpen(false)}
             >
                 {router.locale === "ar" ? (
-                    <IoIosArrowDropright
+                    <IoIosArrowDropleft
                         onClick={handleShow}
                         className={`z-40 md:hidden absolute top-16 -left-6 cursor-pointer w-8 h-10 duration-300 ${
-                            !open && "rotate-180 "
+                            open && "rotate-180 "
                         } `}
-                    ></IoIosArrowDropright>
+                    ></IoIosArrowDropleft>
                 ) : (
                     <IoIosArrowDropright
                         onClick={handleShow}
                         className={`z-40 md:hidden absolute top-16 -right-4 cursor-pointer w-8 h-10 duration-300 ${
-                            !open && "rotate-180 "
+                            open && "rotate-180 "
                         } `}
                     ></IoIosArrowDropright>
                 )}
                 <div className=' w-full h-full pl-3 shadow-xl border-r border-gray-200 flex flex-col justify-between items-start  gap-8'>
-                    <div className=' flex-col justify-start items-start gap-4 flex '>
-                        <div className=' md:border-b md:border-gray-400 items-center gap-3 my-6 mx-auto justify-start md:justify-center '>
+                    <div className='w-full flex-col justify-start items-start gap-2 flex '>
+                        <div className=' md:border-b md:border-gray-400 items-center gap-3 my-6 md:mx-auto justify-start md:justify-center '>
                             <div
                                 className={`w-16 h-16 bg-white rounded-full border border-blue-200 md:w-20 mt-2 mb-4 md:mb-6  md:h-20 relative  ease-out duration-500  ${
-                                    open &&
+                                    !open &&
                                     (router.locale === "ar"
                                         ? "ml-32 scale-50 p-0 mb-2 md:transform-none md:mx-auto md:mt-2 md:mb-6"
                                         : "mr-24 scale-50 p-0 mb-2 md:transform-none md:mx-auto md:mt-2 md:mb-6")
@@ -146,10 +157,10 @@ export default function Sidemenu(props) {
                                 </Link>
                             </div>
                         </div>
-                        <div className='md:justify-center items-center gap-3  inline-flex justify-start lg:inline-flex'>
+                        <div className='w-full md:justify-center items-center gap-3  inline-flex justify-start lg:inline-flex'>
                             <Image
                                 className={`w-12 h-12 relative rounded-2xl ease-out duration-700 ${
-                                    !open && "rotate-[360deg]"
+                                    open && "rotate-[360deg]"
                                 }`}
                                 src={
                                     userData && userData.image
@@ -163,38 +174,45 @@ export default function Sidemenu(props) {
 
                             <div
                                 className={`flex-col justify-center items-start inline-flex ${
-                                    open && "scale-0 md:transform-none"
+                                    !open && "scale-0 md:transform-none"
                                 }`}
                             >
-                                <div className="w-[150px] text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']">
+                                <div className="w-[150px] break-words text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']">
                                     {userData
                                         ? userData.restaurantName
                                         : "loading..."}
                                 </div>
-                                <div className="w-[150px] text-neutral-800  dark:text-white text-[10px] lg:text-[14px] font-normal font-['Open Sans']">
+                                <div className="w-[150px] break-all text-neutral-800  dark:text-white text-[10px] lg:text-[14px] font-normal font-['Open Sans']">
                                     {userData ? userData.email : "loading..."}
                                 </div>
                             </div>
                         </div>
 
-                        <div className='flex-col pt-2 pb-2 justify-start items-start gap-4 flex'>
+                        <div className='w-full flex-col pt-4 pb-2 justify-start items-start gap-4 flex'>
                             {components.map((component, index) => (
                                 <div
                                     key={index}
-                                    className='p-2 rounded-lg flex-col justify-start items-start gap-1 flex'
+                                    className=' flex-col justify-start items-start gap-1 flex '
                                 >
                                     <div
-                                        className='h-4 justify-start items-center gap-2 inline-flex'
-                                        onClick={() =>
-                                            props.handleClick(component.element)
-                                        }
+                                        className={` h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:bg-blue-600 ${
+                                            clicked === true
+                                                ? "focus:bg-blue-600"
+                                                : "bg-transparent"
+                                        }`}
+                                        onClick={() => {
+                                            props.handleClick(
+                                                component.element
+                                            );
+                                            setClicked(true);
+                                        }}
                                     >
-                                        <div className='   relative'>
+                                        <div className='relative'>
                                             {component.icon}
                                         </div>
                                         <button
-                                            className={`text-[#333333] hover:text-black  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug duration-300 ${
-                                                open &&
+                                            className={`text-[10px] md:text-sm font-normal font-['Open Sans']  duration-300 ${
+                                                !open &&
                                                 "scale-0 md:transform-none"
                                             }`}
                                         >
@@ -205,29 +223,30 @@ export default function Sidemenu(props) {
                             ))}
                         </div>
                     </div>
-                    <div className='self-stretch h-full w-full flex-col justify-start pt-2 items-start  flex'>
-                        <div className='p-2 rounded-lg flex-col justify-start items-start gap-4 flex'>
+                    <div className=' w-full self-stretch h-full flex-col justify-start pt-1 items-start  flex'>
+                        <div className='w-full flex-col justify-start items-start gap-1 flex'>
                             <div
-                                className='h-4 justify-start items-center gap-2 inline-flex cursor-pointer'
-                                onClick={handleClick}
+                                className='h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex cursor-pointer  hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:bg-blue-600'
+                                onMouseEnter={() => setMousenter(true)}
+                                onMouseLeave={() => setMousenter(false)}
                             >
                                 <div className='relative'>
                                     <IoEarthOutline size={20}></IoEarthOutline>{" "}
                                 </div>
                                 <button
                                     className={`text-[#333333] hover:text-black  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug duration-300 ${
-                                        open && "scale-0 md:transform-none"
+                                        !open && "scale-0 md:transform-none"
                                     }`}
                                 >
                                     {t("sidemenu.language")}
                                 </button>
                                 <div className='relative'>
-                                    {clicked === true && (
+                                    {mousenter === true && (
                                         <div
-                                            className={` absolute left-4 -top-2  ${
+                                            className={` relative  ${
                                                 props.locale === "en"
-                                                    ? "absolute -top-1 py-1 w-24 h-16 bg-blue-200 border rounded-xl shadow-xl z-20"
-                                                    : "absolute right-12 -top-1 py-1 w-24 h-16 bg-blue-200 border rounded-xl shadow-xl z-20"
+                                                    ? "absolute py-1 w-24 h-16 bg-blue-200 border rounded-xl shadow-xl "
+                                                    : "relative  py-1 w-24 h-16 bg-blue-200 border rounded-xl shadow-xl "
                                             }`}
                                         >
                                             <ul>
@@ -270,17 +289,17 @@ export default function Sidemenu(props) {
                             </div>
                             <Link href='/'>
                                 <div
-                                    className='justify-start items-center gap-1 inline-flex'
+                                    className='p-4 rounded-lg justify-start items-center gap-1 inline-flex hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:bg-blue-600'
                                     onClick={handleLogout}
                                 >
-                                    <div className='pt-1 w-6 h-6 relative'>
+                                    <div className=' w-6 h-4 relative'>
                                         <IoLogOutOutline size={20} />
                                     </div>
                                     <button className="text-[#333333]  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug">
                                         <div
                                             className={`duration-300 ${
-                                                open &&
-                                                "scale-0 md:transform-none"
+                                                !open &&
+                                                "scale-0  md:transform-none"
                                             }`}
                                         >
                                             {t("sidemenu.Logout")}

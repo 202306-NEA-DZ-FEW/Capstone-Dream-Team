@@ -1,9 +1,9 @@
 import { onAuthStateChanged } from "firebase/auth";
-import Link from "next/link";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect, useState } from "react";
 
 import Overview from "@/components/Overview/overview";
+import { RiLoader5Line } from "react-icons/ri";
 
 import Layout from "@/layout/Layout";
 import { auth } from "@/util/firebase";
@@ -51,13 +51,18 @@ export default function AdminDashboard({ locale }) {
                 <Layout>
                     <div className='flex flex-col w-full justify-center items-center py-48 space-y-16 '>
                         {" "}
-                        {locale === "en" ? (
-                            <div className='flex text-4xl font-semibold'>
-                                loading...
-                            </div>
-                        ) : (
+                        {locale === "ar" ? (
                             <div className='flex text-4xl font-semibold'>
                                 تحميل ...
+                            </div>
+                        ) : (
+                            <div className='flex text-4xl font-bold '>
+                                <span className='animate-pulse duration-300'>
+                                    loading...
+                                </span>
+                                <span className='animate-spin duration-300'>
+                                    <RiLoader5Line size={20} />
+                                </span>
                             </div>
                         )}
                     </div>
