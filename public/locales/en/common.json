@@ -120,10 +120,11 @@
         "dashboard": "Dashboard ",
         "signOut": "sign out",
         "joinUs": "Join us",
-        "signIn": "SignIn",
+        "signIn": "Sign in",
         "light mode": "Light mode",
         "dark mode": "Dark mode",
-        "language": "language"
+        "language": "language",
+        "aboutus":"About us"
     },
     "footer": {
         "home": "Home",

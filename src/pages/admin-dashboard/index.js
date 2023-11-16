@@ -33,15 +33,14 @@ export default function AdminDashboard() {
             {/* to check whether the user is signed in    */}
             {authUser ? (
                 // we show the page of the admin dashboard
-                <div className='grid grid-cols-4'>
+                <div className='flex flex-row'>
                     <Sidemenu handleClick={handleClick}></Sidemenu>
 
-                    <div className='col-span-4 grid grid-cols-8 w-full h-screen overflow-hidden'>
-                        {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
-                        <div className='md:col-span-2'></div>
-                        <div className='col-span-7 md:col-span-6 justify-items-center  p-8 text-2xl font-bold overflow-scroll'>
-                            {component}
-                        </div>
+                    {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
+                    <div className='order-1 md:mr-2 md:w-64 w-20'></div>
+
+                    <div className=' w-full h-screen justify-items-left  p-8 text-2xl font-bold overflow-scroll order-2'>
+                        {component}
                     </div>
                 </div>
             ) : (
