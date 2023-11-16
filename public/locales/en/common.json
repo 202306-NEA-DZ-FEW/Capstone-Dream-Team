@@ -101,7 +101,29 @@
         "donate": "Donate",
         "show_meals": "Show all meals",
         "available_meals": "Available Meals",
-        "stock": "In stock"
+        "stock": "In stock",
+        "mealsTable":{
+        "image":"Image",
+        "name":"Name",
+        "quantity":"Quantity",
+        "price":"Price"
+    },
+     "meals": {
+        "title": "Meals",
+        "description": "A list of all the restaurant's meals."
+      },
+      "mealForm": {
+        "mealName": "Meal Name",
+        "uploadFile": "Upload File",
+        "chooseImage": "Choose Image",
+        "maxMealsPerDay": "Max Meals Per Day",
+        "mealPrice": "Meal Price",
+        "addMeal": "Add A Meal"
+      },
+      "notifications": {
+        "mealAddedSuccessfully": "Meal Added Successfully",
+        "imageSizeExceedsMax": "Image size exceeds the maximum allowed size."
+      }  
     },
     "history": {
         "History": "History",
