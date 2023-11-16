@@ -10,6 +10,7 @@ import {
 import { onSnapshot } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { deleteObject } from "firebase/storage";
+import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
 import { auth, db, storage } from "src/util/firebase.js";
 
@@ -26,19 +27,20 @@ function AddMeals() {
     const [restaurantName, setRestaurantName] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMealAdded, setIsMealAdded] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [loadingForm, setLoadingForm] = useState(true);
+    const [loadingTable, setLoadingTable] = useState(false);
     const [error, setError] = useState(null);
-
+    const { t } = useTranslation("common");
     const handleImageUpload = async (event) => {
         try {
-            setLoading(false);
+            setLoadingForm(false);
             const imageFile = event.target.files[0];
             const maxSize = 5 * 1024 * 1024; // 5MB in bytes
 
             if (imageFile.size > maxSize) {
                 // Display an error message or handle the oversized file case
-                setError("Image size exceeds the maximum allowed size.");
-                setLoading(true);
+                setError(t("mealsPage.notifications.imageSizeExceedsMax"));
+                setLoadingForm(true);
                 return;
             }
             if (imageFile) {
@@ -47,11 +49,12 @@ function AddMeals() {
                 setImageName(imageFile.name);
                 const downloadURL = await getDownloadURL(storageRef);
                 setImageUrl(downloadURL);
+                return;
             }
         } catch (error) {
             console.error("Error uploading image:", error);
         } finally {
-            setLoading(true);
+            setLoadingForm(true);
         }
     };
 
@@ -61,7 +64,7 @@ function AddMeals() {
         setMealPrice("");
         setImageUrl("");
         setImageName("");
-        setLoading(true);
+        setLoadingForm(true);
         setIsModalOpen(false);
     };
     const handleSubmit = async (event) => {
@@ -114,8 +117,8 @@ function AddMeals() {
                     updatedMeals.push({ id: doc.id, ...doc.data() });
                 });
                 setMeals(updatedMeals);
+                setLoadingTable(false);
             });
-
             return unsubscribe;
         } catch (error) {
             console.error("Error fetching meals:", error);
@@ -140,12 +143,12 @@ function AddMeals() {
 
     const checkAuthenticationState = () => {
         const auth = getAuth();
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 const restaurantId = user.uid;
                 setRestaurantId(restaurantId);
                 setRestaurantName(user.displayName);
-                fetchMeals(restaurantId);
+                await fetchMeals(restaurantId);
             } else {
                 console.error("User is not logged in as a restaurant.");
             }
@@ -157,6 +160,7 @@ function AddMeals() {
         const unsubscribe = checkAuthenticationState();
 
         return () => {
+            setLoadingTable(true);
             unsubscribe();
         };
     }, []);
@@ -166,9 +170,11 @@ function AddMeals() {
             <div>
                 <div className='sm:flex sm:items-center'>
                     <div className='sm:flex-auto pl-2'>
-                        <h1 className='text-xl text-gray-900'>Meals</h1>
+                        <h1 className='text-xl text-gray-900'>
+                            {t("mealsPage.meals.title")}
+                        </h1>
                         <p className='text-sm font-semibold text-gray-700'>
-                            {`A list of all the restaurant's meals.`}
+                            {t("mealsPage.meals.description")}
                         </p>
                     </div>
                     <div className='mt-4 sm:mt-0 sm:ml-16 sm:flex-none'>
@@ -176,7 +182,7 @@ function AddMeals() {
                             onClick={() => setIsModalOpen(true)}
                             className='inline-flex items-center justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-auto'
                         >
-                            Add meal
+                            {t("mealsPage.mealForm.addMeal")}
                         </button>
                     </div>
                 </div>
@@ -184,7 +190,7 @@ function AddMeals() {
                 {isModalOpen && (
                     <div className='relative'>
                         <div className='z-50 justify-center items-center flex overflow-y-auto fixed inset-0 outline-none focus:outline-none'>
-                            <div className='relative sm:w-6/6 md:w-5/6 lg:w-2/6 my-6 mx-auto max-w-3xl'>
+                            <div className='relative p-4 w-full max-w-md'>
                                 <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-auto bg-white outline-none'>
                                     <div className='flex flex-row-reverse'>
                                         <button
@@ -192,7 +198,7 @@ function AddMeals() {
                                             className='rounded-md p-4 inline-flex items-center justify-center text-gray-700  focus:outline-none'
                                         >
                                             <svg
-                                                class='h-6 w-6'
+                                                className='h-6 w-6'
                                                 xmlns='http://www.w3.org/2000/svg'
                                                 fill='none'
                                                 viewBox='0 0 24 24'
@@ -200,9 +206,9 @@ function AddMeals() {
                                                 aria-hidden='true'
                                             >
                                                 <path
-                                                    stroke-linecap='round'
-                                                    stroke-linejoin='round'
-                                                    stroke-width='2'
+                                                    strokeLinecap='round'
+                                                    strokeLinejoin='round'
+                                                    strokeWidth='2'
                                                     d='M6 18L18 6M6 6l12 12'
                                                 />
                                             </svg>
@@ -214,7 +220,9 @@ function AddMeals() {
                                     >
                                         <div className='relative py-2'>
                                             <label className='pt-0 pr-2 pb-0 pl-2 absolute -mt-5 mr-0 mb-0 ml-1 font-medium text-gray-600 bg-white'>
-                                                Meal Name
+                                                {t(
+                                                    "mealsPage.mealForm.mealName"
+                                                )}
                                             </label>
                                             <input
                                                 type='text'
@@ -222,6 +230,7 @@ function AddMeals() {
                                                 onChange={(e) =>
                                                     setMealName(e.target.value)
                                                 }
+                                                placeholder='Meal Name'
                                                 className='border placeholder-gray-400 focus:outline-none font-semibold w-full p-4 m-0 text-base block bg-white rounded-md'
                                             />
                                         </div>
@@ -230,7 +239,9 @@ function AddMeals() {
                                                 className='pt-0 pr-2 pb-0 pl-2 absolute -mt-5 mr-0 mb-0 ml-1 font-medium text-gray-600 bg-white cursor-pointer'
                                                 htmlFor='file_input'
                                             >
-                                                Upload file
+                                                {t(
+                                                    "mealsPage.mealForm.uploadFile"
+                                                )}
                                             </label>
                                             <input
                                                 className='hidden'
@@ -240,16 +251,24 @@ function AddMeals() {
                                                 accept='.png, .jpg, .jpeg'
                                             />
                                             <div className='flex justify-between items-center p-4 font-semibold m-0 w-full text-base bg-white border rounded-md cursor-pointer focus:outline-none'>
-                                                <label
-                                                    htmlFor='file_input'
-                                                    className='truncate'
-                                                >
-                                                    {imageName
-                                                        ? imageName
-                                                        : "Choose an Image"}
-                                                </label>
-
-                                                {loading ? (
+                                                {imageName == "" ? (
+                                                    <label
+                                                        htmlFor='file_input'
+                                                        className='truncate text-gray-400'
+                                                    >
+                                                        {t(
+                                                            "mealsPage.mealForm.chooseImage"
+                                                        )}
+                                                    </label>
+                                                ) : (
+                                                    <label
+                                                        htmlFor='file_input'
+                                                        className='truncate'
+                                                    >
+                                                        {imageName}
+                                                    </label>
+                                                )}
+                                                {loadingForm ? (
                                                     <button
                                                         onClick={(e) => {
                                                             e.preventDefault();
@@ -271,9 +290,9 @@ function AddMeals() {
                                                             aria-hidden='true'
                                                         >
                                                             <path
-                                                                stroke-linecap='round'
-                                                                stroke-linejoin='round'
-                                                                stroke-width='2'
+                                                                strokeLinecap='round'
+                                                                strokeLinejoin='round'
+                                                                strokeWidth='2'
                                                                 d='M6 18L18 6M6 6l12 12'
                                                             />
                                                         </svg>
@@ -285,7 +304,9 @@ function AddMeals() {
                                         </div>
                                         <div className='relative py-2'>
                                             <label className='pt-0 pr-2 pb-0 pl-2 absolute -mt-5 mr-0 mb-0 ml-1 font-medium text-gray-600 bg-white'>
-                                                Max Meals Per Day
+                                                {t(
+                                                    "mealsPage.mealForm.maxMealsPerDay"
+                                                )}
                                             </label>
                                             <input
                                                 type='number'
@@ -297,21 +318,27 @@ function AddMeals() {
                                                         ).toFixed(0)
                                                     )
                                                 }
+                                                placeholder='1'
                                                 className='border placeholder-gray-400 focus:outline-none font-semibold w-full p-4 m-0 text-base block bg-white rounded-md'
                                             />
                                         </div>
                                         <div className='relative py-2'>
                                             <label className='pt-0 pr-2 pb-0 pl-2 absolute -mt-5 mr-0 mb-0 ml-1 font-medium text-gray-600 bg-white'>
-                                                Meal Price
+                                                {t(
+                                                    "mealsPage.mealForm.mealPrice"
+                                                )}
                                             </label>
-                                            <div className='flex border p-4 m-0 placeholder-gray-400 font-semibold p-2 text-base bg-white rounded-md'>
-                                                <span className='mx-1'>$</span>
+                                            <div className='flex border p-4 m-0 placeholder-gray-400 font-semibold  text-base bg-white rounded-md'>
+                                                <span className='mx-1 text-gray-400'>
+                                                    $
+                                                </span>
                                                 <input
                                                     value={mealPrice}
                                                     type='number'
                                                     min='0.00'
                                                     max='10000.00'
                                                     step='0.01'
+                                                    placeholder='0.00'
                                                     onChange={(e) =>
                                                         setMealPrice(
                                                             e.target.value
@@ -326,7 +353,9 @@ function AddMeals() {
                                                 type='submit'
                                                 className='inline-flex items-center justify-center bg-blue-500 px-6 py-2 text-lg text-white font-medium uppercase tracking-wide rounded-md'
                                             >
-                                                Add A Meal
+                                                {t(
+                                                    "mealsPage.mealForm.addMeal"
+                                                )}
                                             </button>
                                         </div>
                                     </form>
@@ -371,9 +400,9 @@ function AddMeals() {
                                     >
                                         <path
                                             stroke='currentColor'
-                                            stroke-linecap='round'
-                                            stroke-linejoin='round'
-                                            stroke-width='2'
+                                            strokeLinecap='round'
+                                            strokeLinejoin='round'
+                                            strokeWidth='2'
                                             d='m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6'
                                         />
                                     </svg>
@@ -387,12 +416,12 @@ function AddMeals() {
                 {isMealAdded && (
                     <div
                         id='toast-success'
-                        class='z-50 fixed top-0 left-1/2 transform -translate-x-1/2 flex items-center w-full max-w-xs p-4 m-4 text-gray-500 bg-white rounded-lg shadow'
+                        className='z-50 fixed top-0 left-1/2 transform -translate-x-1/2 flex items-center w-full max-w-xs p-4 m-4 text-gray-500 bg-white rounded-lg shadow'
                         role='alert'
                     >
-                        <div class='inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg '>
+                        <div className='inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg '>
                             <svg
-                                class='w-5 h-5'
+                                className='w-5 h-5'
                                 aria-hidden='true'
                                 xmlns='http://www.w3.org/2000/svg'
                                 fill='currentColor'
@@ -400,14 +429,24 @@ function AddMeals() {
                             >
                                 <path d='M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z' />
                             </svg>
-                            <span class='sr-only'>Check icon</span>
+                            <span className='sr-only'>Check icon</span>
                         </div>
-                        <div class='ml-3 text-sm font-normal'>
-                            Meal Added Successfully
+                        <div className='ml-3 text-sm font-normal'>
+                            {t("mealsPage.notifications.mealAddedSuccessfully")}
                         </div>
                     </div>
                 )}
-                <MealsTable meals={meals} onDelete={handleDeleteMeal} />
+                <div>
+                    {loadingTable ? (
+                        <div className='flex items-center justify-center '>
+                            <div className='fixed top-1/2'>
+                                <div className='p-2 h-10 w-10 border-gray-300 animate-spin rounded-full border-2 border-t-blue-600'></div>
+                            </div>
+                        </div>
+                    ) : (
+                        <MealsTable meals={meals} onDelete={handleDeleteMeal} />
+                    )}
+                </div>
             </div>
         </div>
     );
