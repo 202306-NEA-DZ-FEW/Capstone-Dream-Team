@@ -205,7 +205,7 @@ export default function Navbar({ locale }) {
 
                             <li className='lg:hidden'>
                                 <button
-                                    className='flex py-2 pl-3 pr-4 lg:text-blue-900 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   '
+                                    className='flex py-2 pl-3 pr-4 lg:text-blue-950 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   '
                                     onClick={handleClick}
                                 >
                                     <IoEarthOutline size={30}></IoEarthOutline>{" "}

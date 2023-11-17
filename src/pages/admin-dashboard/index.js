@@ -1,9 +1,9 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect, useState } from "react";
+import { FaTruckLoading } from "react-icons/fa";
 
 import Overview from "@/components/Overview/overview";
-import { RiLoader5Line } from "react-icons/ri";
 
 import Layout from "@/layout/Layout";
 import { auth } from "@/util/firebase";
@@ -61,7 +61,7 @@ export default function AdminDashboard({ locale }) {
                                     loading...
                                 </span>
                                 <span className='animate-spin duration-300'>
-                                    <RiLoader5Line size={20} />
+                                    <FaTruckLoading size={20} />
                                 </span>
                             </div>
                         )}

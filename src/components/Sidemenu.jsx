@@ -140,7 +140,7 @@ export default function Sidemenu(props) {
                 )}
                 <div className=' w-full h-full pl-3 shadow-xl border-r border-gray-200 flex flex-col justify-between items-start  gap-8'>
                     <div className='w-full flex-col justify-start items-start gap-2 flex '>
-                        <div className=' md:border-b md:border-gray-400 items-center gap-3 my-6 md:mx-auto justify-start md:justify-center '>
+                        <div className=' mx-auto md:border-b md:border-gray-400 items-center gap-3 my-6 md:mx-auto justify-start md:justify-center '>
                             <div
                                 className={`w-16 h-16 bg-white rounded-full border border-blue-200 md:w-20 mt-2 mb-4 md:mb-6  md:h-20 relative  ease-out duration-500  ${
                                     !open &&
@@ -195,10 +195,10 @@ export default function Sidemenu(props) {
                                     className=' flex-col justify-start items-start gap-1 flex '
                                 >
                                     <div
-                                        className={` h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:bg-blue-600 ${
+                                        className={` h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:outline-none focus:bg-blue-600 ${
                                             clicked === true
-                                                ? "focus:bg-blue-600"
-                                                : "bg-transparent"
+                                                ? "focus:outline-none focus-within:text-orange-600 focus-current:border-b-2 "
+                                                : ""
                                         }`}
                                         onClick={() => {
                                             props.handleClick(
@@ -207,11 +207,11 @@ export default function Sidemenu(props) {
                                             setClicked(true);
                                         }}
                                     >
-                                        <div className='relative'>
+                                        <div className='relative focus:outline-none'>
                                             {component.icon}
                                         </div>
                                         <button
-                                            className={`text-[10px] md:text-sm font-normal font-['Open Sans']  duration-300 ${
+                                            className={` focus:outline-none text-[10px] md:text-sm font-normal font-['Open Sans']  duration-300 ${
                                                 !open &&
                                                 "scale-0 md:transform-none"
                                             }`}
@@ -226,15 +226,15 @@ export default function Sidemenu(props) {
                     <div className=' w-full self-stretch h-full flex-col justify-start pt-1 items-start  flex'>
                         <div className='w-full flex-col justify-start items-start gap-1 flex'>
                             <div
-                                className='h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex cursor-pointer  hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:bg-blue-600'
+                                className='h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex cursor-pointer  hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:outline-none focus:bg-blue-600'
                                 onMouseEnter={() => setMousenter(true)}
                                 onMouseLeave={() => setMousenter(false)}
                             >
-                                <div className='relative'>
+                                <div className='focus:outline-none relative'>
                                     <IoEarthOutline size={20}></IoEarthOutline>{" "}
                                 </div>
                                 <button
-                                    className={`text-[#333333] hover:text-black  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug duration-300 ${
+                                    className={`text-[#333333] hover:text-black  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug focus:outline-none duration-300 ${
                                         !open && "scale-0 md:transform-none"
                                     }`}
                                 >
