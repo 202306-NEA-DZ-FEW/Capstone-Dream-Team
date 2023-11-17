@@ -111,11 +111,7 @@ export default function Story({ story, similarStories }) {
                 </h1>
             </div>
             <div>
-                <BlogCardList
-                    language={router.locale}
-                    blogs={similarStories}
-                    numToShow={3}
-                />
+                <BlogCardList blogs={similarStories} numToShow={3} />
             </div>
         </Layout>
     );

@@ -110,18 +110,14 @@ export default function Blog({ blog, similarBlogs }) {
                 </h1>
             </div>
             <div>
-                <BlogCardList
-                    language={router.locale}
-                    blogs={similarBlogs}
-                    numToShow={3}
-                />
+                <BlogCardList blogs={similarBlogs} numToShow={3} />
             </div>
         </Layout>
     );
 }
 export async function getStaticPaths() {
     const paths = [];
-    const q = query(collection(db, "blogs"), where("type", "==", "blog"));
+    const q = query(collection(db, "blogs"), where("type", "==", "article"));
     const queryBlog = await getDocs(q);
     queryBlog.forEach((doc) => {
         paths.push({ params: { blog: doc.id } });

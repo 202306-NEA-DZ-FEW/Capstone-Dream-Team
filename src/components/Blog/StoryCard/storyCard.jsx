@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
 
-export default function StoryCard({ story, index, language }) {
+export default function StoryCard({ story, index }) {
     const { t } = useTranslation("common");
     const [isPair, setIsPair] = useState(true);
+    const router = useRouter();
     useEffect(() => {
         if (index % 2 == 0) setIsPair(true);
         else setIsPair(false);
@@ -33,7 +35,7 @@ export default function StoryCard({ story, index, language }) {
                                     <span>
                                         {t("blogPage.storyCard.readMore")}
                                     </span>
-                                    {language === "en" ? (
+                                    {router.locale === "en" ? (
                                         <svg
                                             className='w-4 h-4 ml-1 mt-1'
                                             viewBox='0 0 24 24'

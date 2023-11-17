@@ -35,11 +35,7 @@ export default function Blogs({ blogs, stories }) {
                         </p>
                     </div>
                 </div>
-                <StoryCardList
-                    language={router.locale}
-                    stories={stories}
-                    numToShow={storiesNum}
-                />
+                <StoryCardList stories={stories} numToShow={storiesNum} />
                 {storiesNum < stories.length && (
                     <div className='flex flex-row-reverse justify-center'>
                         <p className='text-base flex text-teal-500 font-bold no-underline hover:underline pb-5 px-24'>
@@ -77,11 +73,7 @@ export default function Blogs({ blogs, stories }) {
                         </p>
                     </div>
                 </div>
-                <BlogCardList
-                    language={router.locale}
-                    blogs={blogs}
-                    numToShow={blogsNum}
-                />
+                <BlogCardList blogs={blogs} numToShow={blogsNum} />
                 {blogsNum < blogs.length && (
                     <div className='flex flex-row-reverse justify-center '>
                         <p className='text-base flex text-teal-500 font-bold no-underline hover:underline pb-5 px-24'>
