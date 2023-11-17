@@ -1,22 +1,24 @@
+import { useTranslation } from "next-i18next";
 import React from "react";
 
 const MealsTable = ({ meals, onDelete }) => {
+    const { t } = useTranslation("common");
     return (
-        <div className='overflow-hidden rounded-md border border-gray-200 shadow-md mt-5'>
+        <div className='overflow-x-auto overflow-y-hidden rounded-md border border-gray-200 shadow-md mt-5'>
             <table className='w-full text-center text-sm rtl:text-right'>
                 <thead className='text-xs  uppercase bg-gray-50 '>
                     <tr>
-                        <th scope='col' className='px-16 py-3'>
-                            Image
+                        <th scope='col' className='px-6 py-3'>
+                            {t("mealsPage.mealsTable.image")}
                         </th>
                         <th scope='col' className='px-6 py-3'>
-                            Name
+                            {t("mealsPage.mealsTable.name")}
                         </th>
                         <th scope='col' className='px-6 py-3'>
-                            Quantity
+                            {t("mealsPage.mealsTable.quantity")}
                         </th>
                         <th scope='col' className='px-6 py-3'>
-                            Price
+                            {t("mealsPage.mealsTable.price")}
                         </th>
                         <th scope='col' className='px-6 py-3'>
                             {" "}

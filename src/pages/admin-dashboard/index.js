@@ -42,7 +42,7 @@ export default function AdminDashboard({ locale }) {
                     {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
                     <div className='order-1 md:mr-2 md:w-64 w-20'></div>
 
-                    <div className=' w-full h-screen justify-items-left  p-8 text-2xl font-bold overflow-scroll order-2'>
+                    <div className=' w-full h-screen justify-items-left  p-8 text-2xl font-bold overflow-scroll order-2 z-40'>
                         {component}
                     </div>
                 </div>

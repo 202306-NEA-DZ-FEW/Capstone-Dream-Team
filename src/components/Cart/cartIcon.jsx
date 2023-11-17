@@ -17,16 +17,16 @@ const CartIcon = () => {
 
     useEffect(() => {
         // Function to retrieve the unique identifier from the cookie
-        /*function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(";").shift();
-    }
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
 
-    // Retrieve the unique identifier from the cookie
-    const visitorID = getCookie("visitorID");*/
+        // Retrieve the unique identifier from the cookie
+        const visitorID = getCookie("visitorID");
 
-        const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
+        //const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
 
         const fetchMealsInCart = async () => {
             if (visitorID) {
