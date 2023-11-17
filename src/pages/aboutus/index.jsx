@@ -31,8 +31,8 @@ export default function Aboutus() {
                                 Our project{" "}
                             </h2>
                             <p className='font-normal text-base leading-6 text-gray-600 mt-6'>
-                                This website serves as the capstone project for
-                                the frontend web development in Re:coded. It is
+                                This website serves as the Capstone Project for
+                                the Frontend Web Development in Re:coded. It is
                                 dedicated to showcasing our ability to create
                                 websites in accordance with specified
                                 requirements and even infuse creativity into the
@@ -174,48 +174,42 @@ export default function Aboutus() {
                     </div>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap'>
                         <Teamcard
-                            linkedin='https://tailgrail.com/tailwind/teams'
-                            github='https://tailgrail.com/'
-                            name='Mouloud'
-                            profile='Designer'
+                            linkedin='https://www.linkedin.com/in/mouloud-mecheter-4a3701166/'
+                            github='https://github.com/mouloud247'
+                            name='Mouloud Mecheter'
+                            profile='Front-end Developer'
                             img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
                         />
                         <Teamcard
-                            linkedin=''
-                            github=''
-                            name='Mouloud'
-                            profile='Designer'
+                            linkedin='https://www.linkedin.com/in/walid-t-belharazem/'
+                            github='https://github.com/walidbelharazem'
+                            name='Walid Belharazem'
+                            profile='Front-end Developer'
                             img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
                         />
                         <Teamcard
-                            linkedin=''
-                            github=''
-                            name='Mouloud'
-                            profile='Designer'
+                            linkedin='https://www.linkedin.com/in/fatima-merzouk/'
+                            github='https://github.com/merzoukfatima'
+                            name='Fatima Merzouk'
+                            profile='Front-end Developer'
                             img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
                         />
                         <Teamcard
-                            linkedin=''
-                            github=''
-                            name='Mouloud'
-                            profile='Designer'
+                            linkedin='https://www.linkedin.com/in/bouchra-ikram-aboura-1750b5169/'
+                            github='https://github.com/ikoworld'
+                            name='Bouchra Aboura'
+                            profile='Front-end Developer'
                             img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
                         />
                         <Teamcard
-                            linkedin=''
-                            github=''
-                            name='Mouloud'
-                            profile='Designer'
+                            linkedin='https://www.linkedin.com/'
+                            github='https://github.com/mounibzaidi'
+                            name='Mounib Zaidi'
+                            profile='Front-end Developer'
                             img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
                         />
                     </div>
                 </section>
-
-                {/* <div className='w-full px-4 mb-32 lg:w-1/3 md:w-1/2 lg:mb-0'>
-                    <div className='relative'>
-                        <Historybar />
-                    </div>
-                </div> */}
             </Layout>
         </>
     );
