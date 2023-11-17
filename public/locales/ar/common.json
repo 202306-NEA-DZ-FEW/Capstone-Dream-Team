@@ -61,7 +61,9 @@
             "Country": "البلد",
             "Zip": "الرمز البريدي",
             "Payment informations": "معلومات الدفع",
-            "Payment was successful": "تمت عملية الدفع بنجاح"
+            "Payment was successful": "تمت عملية الدفع بنجاح",
+            "Pay": "دفع",
+            "Processing": "جارٍ المعالجة"
         }
     },
     "blogPage": {

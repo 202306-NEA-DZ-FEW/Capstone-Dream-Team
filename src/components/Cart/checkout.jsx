@@ -232,7 +232,9 @@ const Checkout = ({ Total, cart }) => {
                                                     name='cus_name'
                                                     type='text'
                                                     required=''
-                                                    placeholder='Your Name'
+                                                    placeholder={t(
+                                                        "cartPage.checkout.Name"
+                                                    )}
                                                     aria-label='Name'
                                                     onChange={(event) =>
                                                         setName(
@@ -256,7 +258,9 @@ const Checkout = ({ Total, cart }) => {
                                                     name='cus_email'
                                                     type='text'
                                                     required=''
-                                                    placeholder='Your Email'
+                                                    placeholder={t(
+                                                        "cartPage.checkout.Email"
+                                                    )}
                                                     aria-label='Email'
                                                     onChange={(event) =>
                                                         setEmail(
@@ -290,7 +294,9 @@ const Checkout = ({ Total, cart }) => {
                                                     name='cus_email'
                                                     type='text'
                                                     required=''
-                                                    placeholder='City'
+                                                    placeholder={t(
+                                                        "cartPage.checkout.City"
+                                                    )}
                                                     aria-label='Email'
                                                 />
                                             </div>
@@ -309,7 +315,9 @@ const Checkout = ({ Total, cart }) => {
                                                     name='cus_email'
                                                     type='text'
                                                     required=''
-                                                    placeholder='Country'
+                                                    placeholder={t(
+                                                        "cartPage.checkout.Country"
+                                                    )}
                                                     aria-label='Email'
                                                 />
                                             </div>
@@ -326,7 +334,9 @@ const Checkout = ({ Total, cart }) => {
                                                     name='cus_email'
                                                     type='text'
                                                     required=''
-                                                    placeholder='Zip'
+                                                    placeholder={t(
+                                                        "cartPage.checkout.Zip"
+                                                    )}
                                                     aria-label='Email'
                                                 />
                                             </div>
@@ -367,8 +377,12 @@ const Checkout = ({ Total, cart }) => {
                                                     disabled={paymentLoading}
                                                 >
                                                     {paymentLoading
-                                                        ? "Processing..."
-                                                        : "Pay"}
+                                                        ? t(
+                                                              "cartPage.checkout.Processing"
+                                                          )
+                                                        : t(
+                                                              "cartPage.checkout.Pay"
+                                                          )}
                                                     ${Total}
                                                 </button>
                                             </div>

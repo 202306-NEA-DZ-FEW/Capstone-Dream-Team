@@ -61,7 +61,9 @@
             "Country": "Country",
             "Zip": "Zip",
             "Payment informations": "Payment Informations",
-            "Payment was successful": "Payment Was Successful"
+            "Payment was successful": "Payment Was Successful",
+            "Pay": "Pay",
+            "Processing": "Processing"
         }
     },
     "blogPage": {
