@@ -34,9 +34,7 @@ exports[`renders correctly 1`] = `
             <p
               className="text-base flex text-teal-500 font-bold no-underline hover:underline py-4"
             >
-              <span>
-                blogPage.storyCard.readMore
-              </span>
+              <span />
               <svg
                 className="w-4 h-4 ml-1 mt-1"
                 fill="none"

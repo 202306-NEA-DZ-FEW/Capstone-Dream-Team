@@ -21,13 +21,15 @@ const blogs = [
         },
     },
 ];
+jest.mock("next/router", () => ({
+    useRouter: jest.fn(),
+}));
+jest.mock("next-i18next", () => ({
+    useTranslation: jest.fn().mockReturnValue({ t: jest.fn() }),
+}));
 it("renders correctly", () => {
     const tree = renderer
-        .create(
-            <I18nextProvider i18n={i18n}>
-                <BlogCardList blogs={blogs} numToShow={2} language='en' />
-            </I18nextProvider>
-        )
+        .create(<BlogCardList blogs={blogs} numToShow={2} />)
         .toJSON();
     expect(tree).toMatchSnapshot();
 });
