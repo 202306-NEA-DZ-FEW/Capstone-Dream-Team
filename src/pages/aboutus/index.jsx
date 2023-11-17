@@ -200,7 +200,7 @@ export default function Aboutus() {
                             img='images/aboutus/bouchra.png'
                         />
                         <Teamcard
-                            linkedin='https://www.linkedin.com/'
+                            linkedin='https://www.linkedin.com/in/mounib-zaidi/'
                             github='https://github.com/mounibzaidi'
                             name='Mounib Zaidi'
                             profile='Front-end Developer'
