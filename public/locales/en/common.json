@@ -228,5 +228,19 @@
         "Settings": "Settings",
         "Logout": "Logout",
         "language": "Language"
+    },
+    "aboutus": {
+        "Our project": "Our project",
+        "p1": "This website serves as the Capstone Project for the Frontend Web Development in Re:coded. It is dedicated to showcasing our ability to create websites in accordance with specified requirements and even infuse creativity into the process. Leveraging our technical skills, including GitHub, HTML, CSS, JavaScript, Firebase and Next.js, we successfully executed this project. Moreover, we employed our soft skills to facilitate effective communication, making this experience highly valuable and the timely delivery of the project.",
+        "Our Goal": "Our Goal",
+        "p2": "Our vision was to create a donation website that is easy to navigate and understand its purpose. Firstly, donors can explore relevant blogs on the Blogs page. To discover restaurants and their meals, they can visit the Meals page and add items to their cart for donation. When ready to make a donation, donors can proceed to the checkout page by clicking the cart icon, entering their name, and providing credit card. The process is designed to be swift, without requiring sign-ups that might elongate the experience.",
+        "p3": "On the other hand, restaurants are required to sign up to add their meals to our database via the dashboard. Through the dashboard, they can access an overview of donation history, visualize the number of donations per month or year, and update their profile information (name, image, password, email, etc.) through the settings.",
+        "Responsiveness": "Responsiveness",
+        "p resp": "We have ensured full responsiveness across various screen types and sizes by utilizing Tailwind CSS for this website.",
+        "Firebase": "Firebase",
+        "p fir": "We built our backend using Firebase and organized it into three blocks: a donors collection, a restaurants collection, and a meals collection.",
+        "Creativity": "Creativity",
+        "p creat": "We enriched our database by working with meals instead of coupons ; and we used Stripe for real time paiment.",
+        "Team": "Meet Our Wonderful Team"
     }
 }
