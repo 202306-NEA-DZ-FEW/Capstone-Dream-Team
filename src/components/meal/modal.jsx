@@ -52,7 +52,7 @@ const Modal = ({ currentRestaurantId }) => {
             <button
                 data-modal-target='default-modal'
                 data-modal-toggle='default-modal'
-                className='block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus-ring-blue-800'
+                className='block text-blue-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
                 type='button'
                 onClick={toggleModal}
             >
@@ -69,14 +69,7 @@ const Modal = ({ currentRestaurantId }) => {
                 >
                     <div className='relative w-full max-h-full'>
                         {/* Modal content */}
-                        <div
-                            style={{
-                                backgroundImage:
-                                    "url(/images/meals/Image218.png)",
-                                backgroundSize: "cover",
-                            }}
-                            className='relative bg-white border-4 border-blue-500 rounded-lg shadow dark:bg-gray-700'
-                        >
+                        <div className='relative bg-white border-4 border-blue-500 rounded-lg shadow dark:bg-gray-700'>
                             {/* TITLE & HIDE X */}
                             <div className='flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600'>
                                 <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>

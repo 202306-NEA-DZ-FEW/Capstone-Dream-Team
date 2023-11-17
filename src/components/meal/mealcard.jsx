@@ -51,21 +51,21 @@ export default function Mealcard({
     return (
         <div className='mb-10 w-80 h-96 relative'>
             {/* <div className='w-80 h-96 left-0 top-0 absolute bg-transparent' /> */}
-            <div className='w-80 h-96 left-0 top-[92px] absolute  rounded-3xl shadow bg-orange-100'>
+            <div className='w-80 h-96 left-0 top-[92px] absolute  rounded-3xl shadow bg-white border border-3 border-orange-200'>
                 {/**meal name*/}
                 <div className='top-[160px] absolute flex-col left-1/2 -translate-x-1/2 '>
-                    <p className='flex text-black text-xl font-bold justify-center items-center font-roboto whitespace-nowrap pb-2'>
+                    <p className='flex text-blue-950 text-xl font-bold justify-center items-center whitespace-nowrap pb-2'>
                         {name}
                     </p>
 
                     {/**meal price*/}
-                    <div className="  flex text-neutral-400 text-lg font-semibold font-['Roboto'] justify-center item-center">
+                    <div className='  flex text-neutral-400 text-orange-400 text-xl font-bold  justify-center item-center'>
                         {price} £
                     </div>
                 </div>
 
                 {/**separation ine */}
-                <div className='w-72 h-px left-1/2 -translate-x-1/2 top-[243px] absolute border-2 border-neutral-400 border-opacity-20'></div>
+                <div className='w-72 h-px left-1/2 -translate-x-1/2 top-[243px] absolute border border-neutral-400 border-opacity-20'></div>
 
                 {/* the donate button */}
                 {/* <div className='w-60 h-11 left-1/2 -translate-x-1/2 top-[329px] absolute'>
@@ -82,7 +82,7 @@ export default function Mealcard({
 
                 {/* Qty */}
                 <div className='mt-[267px] pl-5 pr-5 flex justify-between items-center'>
-                    <div className="text-neutral-400 text-base font-medium font-['Roboto']">
+                    <div className='text-neutral-400 text-base font-medium text-blue-950 '>
                         {t("cartPage.card.quantityLeft")}: {maxMeals}
                     </div>
                     <ul className='w-32 h-8 flex items-center'>

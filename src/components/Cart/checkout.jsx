@@ -172,7 +172,7 @@ const Checkout = ({ Total, cart }) => {
                     id='default-modal'
                     tabIndex='-1'
                     aria-hidden='true'
-                    className='fixed flex justify-center items-center w-full z-50 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100% - 1rem)] max-h-full'
+                    className='fixed flex justify-center items-center w-full z-50 p-4 overflow-x-hidden overflow-y-auto inset-0 h-[calc(100% - 1rem)] max-h-full'
                 >
                     <div className='relative w-full max-w-full max-h-full sm:max-w-2xl'>
                         {/* Modal content */}

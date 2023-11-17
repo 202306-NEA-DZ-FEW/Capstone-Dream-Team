@@ -6,9 +6,9 @@ import { useTranslation } from "next-i18next";
 export default function Aboutus() {
     const [imageIndex, setImageIndex] = useState(0);
     const images = [
-        "images/aboutus/recoded.png",
-        "images/aboutus/materials.png",
-        "images/aboutus/buymeameal.png",
+        "/images/aboutus/recoded.png",
+        "/images/aboutus/materials.png",
+        "/images/aboutus/buymeameal.png",
     ];
     const { t } = useTranslation("common");
     useEffect(() => {
@@ -67,7 +67,7 @@ export default function Aboutus() {
                             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 lg:gap-12 gap-10'>
                                 {/* <!-- Team Card --> */}
                                 <div className='flex p-4 shadow-sm rounded-md border border-orange-100 bg-orange-50'>
-                                    <div className='mr-6'>
+                                    <div className=' mx-6'>
                                         <img
                                             width='40'
                                             height='100'
@@ -80,12 +80,12 @@ export default function Aboutus() {
                                             {t("aboutus.Responsiveness")}
                                         </p>
                                         <p className='mt-2 font-normal text-base leading-6 text-gray-600'>
-                                            {t("aboutus.Responsiveness")}
+                                            {t("aboutus.p resp")}
                                         </p>
                                     </div>
                                 </div>
                                 <div className='flex p-4 shadow-sm rounded-md border border-orange-100 bg-orange-50'>
-                                    <div className='mr-6'>
+                                    <div className='mx-6'>
                                         <img
                                             width='36'
                                             height='36'
@@ -103,7 +103,7 @@ export default function Aboutus() {
                                     </div>
                                 </div>
                                 <div className='flex p-4 shadow-sm rounded-md border border-orange-100 bg-orange-50'>
-                                    <div className='mr-6'>
+                                    <div className='mx-6'>
                                         <img
                                             width='36'
                                             height='100'
@@ -159,14 +159,14 @@ export default function Aboutus() {
                             github='https://github.com/ikoworld'
                             name='Bouchra Aboura'
                             profile='Front-end Developer'
-                            img='images/aboutus/bouchra.png'
+                            img='/images/aboutus/bouchra.png'
                         />
                         <Teamcard
                             linkedin='https://www.linkedin.com/in/mounib-zaidi/'
                             github='https://github.com/mounibzaidi'
                             name='Mounib Zaidi'
                             profile='Front-end Developer'
-                            img='images/aboutus/mounib.jpeg'
+                            img='/images/aboutus/mounib.jpeg'
                         />
                     </div>
                 </section>
