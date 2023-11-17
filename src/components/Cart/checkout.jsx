@@ -49,7 +49,7 @@ const Checkout = ({ Total, cart }) => {
     function getCurrentDate() {
         const currentDate = new Date();
         const day = currentDate.getDate();
-        const month = currentDate.getMonth() + 1; // Months are 0-based, so add 1
+        const month = currentDate.getMonth() + 1;
         const year = currentDate.getFullYear();
 
         // Ensure day and month have two digits (e.g., 05 instead of 5)
@@ -159,7 +159,6 @@ const Checkout = ({ Total, cart }) => {
 
     return (
         <div>
-            {/* Modal toggle : must be donate button from the mouloud component !!!! */}
             <button
                 className='transition-colors rounded-full text-sm bg-orange-400  hover:bg-opacity-50 p-2 rounded-sm w-full text-white text-hover shadow-md'
                 onClick={toggleModal}
@@ -267,15 +266,6 @@ const Checkout = ({ Total, cart }) => {
                                                 >
                                                     Address
                                                 </label>
-                                                {/* <input
-                                                    className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
-                                                    id='cus_email'
-                                                    name='cus_email'
-                                                    type='text'
-                                                    required=''
-                                                    placeholder='Street'
-                                                    aria-label='Email'
-                                                /> */}
                                             </div>
                                             <div className='mt-2'>
                                                 <label
@@ -354,15 +344,6 @@ const Checkout = ({ Total, cart }) => {
                                                         />
                                                     </div>
                                                 </label>
-                                                {/* <input
-                                                    className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
-                                                    id='cus_name'
-                                                    name='cus_name'
-                                                    type='text'
-                                                    required=''
-                                                    placeholder='Card Number MM/YY CVC'
-                                                    aria-label='Name'
-                                                /> */}
                                             </div>
 
                                             <div className='mt-4'>
