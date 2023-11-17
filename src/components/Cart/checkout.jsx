@@ -163,7 +163,7 @@ const Checkout = ({ Total, cart }) => {
                 className='transition-colors rounded-full text-sm bg-orange-400  hover:bg-opacity-50 p-2 rounded-sm w-full text-white text-hover shadow-md'
                 onClick={toggleModal}
             >
-                DONATE NOW
+                {t("cartPage.checkout.DONATE NOW")}
             </button>
 
             {/* Main modal */}
@@ -180,7 +180,7 @@ const Checkout = ({ Total, cart }) => {
                             {/* TITLE & HIDE X */}
                             <div className='flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600'>
                                 <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>
-                                    Checkout
+                                    {t("cartPage.checkout.Checkout")}
                                 </h3>
                                 <button
                                     type='button'
@@ -213,14 +213,18 @@ const Checkout = ({ Total, cart }) => {
                                             onSubmit={handleSubmit}
                                         >
                                             <p className='text-gray-800 font-medium'>
-                                                Donor informations
+                                                {t(
+                                                    "cartPage.checkout.Donor informations"
+                                                )}
                                             </p>
                                             <div className=''>
                                                 <label
                                                     className='block text-sm text-gray-600'
                                                     htmlFor='cus_name'
                                                 >
-                                                    Name
+                                                    {t(
+                                                        "cartPage.checkout.Name"
+                                                    )}
                                                 </label>
                                                 <input
                                                     className='w-full px-5 py-1 text-gray-700 bg-gray-200 rounded'
@@ -242,7 +246,9 @@ const Checkout = ({ Total, cart }) => {
                                                     className='block text-sm text-gray-600'
                                                     htmlFor='cus_email'
                                                 >
-                                                    Email
+                                                    {t(
+                                                        "cartPage.checkout.Email"
+                                                    )}
                                                 </label>
                                                 <input
                                                     className='w-full px-5 py-4 text-gray-700 bg-gray-200 rounded'
@@ -264,7 +270,9 @@ const Checkout = ({ Total, cart }) => {
                                                     className='block text-sm text-gray-600'
                                                     htmlFor='cus_email'
                                                 >
-                                                    Address
+                                                    {t(
+                                                        "cartPage.checkout.Address"
+                                                    )}
                                                 </label>
                                             </div>
                                             <div className='mt-2'>
@@ -272,7 +280,9 @@ const Checkout = ({ Total, cart }) => {
                                                     className='hidden text-sm block text-gray-600'
                                                     htmlFor='cus_email'
                                                 >
-                                                    City
+                                                    {t(
+                                                        "cartPage.checkout.City"
+                                                    )}
                                                 </label>
                                                 <input
                                                     className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
@@ -289,7 +299,9 @@ const Checkout = ({ Total, cart }) => {
                                                     className='hidden block text-sm text-gray-600'
                                                     htmlFor='cus_email'
                                                 >
-                                                    Country
+                                                    {t(
+                                                        "cartPage.checkout.Country"
+                                                    )}
                                                 </label>
                                                 <input
                                                     className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
@@ -306,7 +318,7 @@ const Checkout = ({ Total, cart }) => {
                                                     className='hidden block text-sm text-gray-600'
                                                     htmlFor='cus_email'
                                                 >
-                                                    Zip
+                                                    {t("cartPage.checkout.Zip")}
                                                 </label>
                                                 <input
                                                     className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
@@ -319,7 +331,9 @@ const Checkout = ({ Total, cart }) => {
                                                 />
                                             </div>
                                             <p className='mt-4 text-gray-800 font-medium'>
-                                                Payment informations
+                                                {t(
+                                                    "cartPage.checkout.Payment informations"
+                                                )}
                                             </p>
                                             <div className=''>
                                                 <label>
@@ -361,7 +375,9 @@ const Checkout = ({ Total, cart }) => {
                                         </form>
                                         {paymentSuccess && (
                                             <p style={{ color: "green" }}>
-                                                Payment was successful!
+                                                {t(
+                                                    "cartPage.checkout.Payment was successful"
+                                                )}
                                             </p>
                                         )}
                                     </div>
