@@ -8,8 +8,9 @@ import Historybar from "@/components/History/Historybar";
 export default function Aboutus() {
     const [imageIndex, setImageIndex] = useState(0);
     const images = [
-        "https://i.ibb.co/RjNH7QB/Rectangle-122-1.png",
-        "https://techjobsforgood-prod.s3.amazonaws.com/company_profile_photos/8fd56ba8-b08a-48b0-9a6f-f03c3b49d5c4-20210602-115002.png",
+        "images/aboutus/recoded.png",
+        "images/aboutus/materials.png",
+        "images/aboutus/buymeameal.png",
     ];
 
     useEffect(() => {
@@ -27,7 +28,7 @@ export default function Aboutus() {
                     <div className='flex lg:flex-row flex-col lg:gap-8 sm:gap-10 gap-12'>
                         <div className='w-full lg:w-6/12'>
                             <h2 className='w-full font-bold text-blue-700 lg:text-4xl text-3xl lg:leading-10 leading-9'>
-                                About the website{" "}
+                                Our project{" "}
                             </h2>
                             <p className='font-normal text-base leading-6 text-gray-600 mt-6'>
                                 This website serves as the capstone project for

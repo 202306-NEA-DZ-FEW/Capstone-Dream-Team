@@ -67,9 +67,9 @@ const Checkout = ({ Total, cart }) => {
         setPaymentLoading(true);
 
         try {
+            const amountInCents = Total * 100;
             const response = await axios.post("/api/create-payment-intent", {
-                // Include any necessary data for the payment
-                //amount: Total,
+                amount: amountInCents,
             });
 
             const { error, paymentIntent } = await stripe.confirmCardPayment(
