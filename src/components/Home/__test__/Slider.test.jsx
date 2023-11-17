@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import Slider from "../Slider";
+import Slider from "../HeroSection";
 
 it("rend correctement", () => {
     const tree = renderer.create(<Slider />).toJSON();

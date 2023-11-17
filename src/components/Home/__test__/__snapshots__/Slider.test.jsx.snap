@@ -13,18 +13,17 @@ exports[`rend correctement 1`] = `
       <h1
         class="text-center p-2 text-3xl sm:text-3xl font-light text-black leading-tight mb-4"
       >
-         
-        We are on a mission to combat hunger
+        home.HeroSection.mission
         <strong
           class="mt-4 font-black text-3xl text-blue-700 sm:text-4xl block"
         >
-          You can help too!
+          home.HeroSection.help
         </strong>
       </h1>
       <p
         class="text-center  sm:text-lg text-gray-500 leading-relaxed"
       >
-        Please support our cause with a small donation today! People are dying from hanger and every dollar counts and brings us closer to our fundraising goal. Thank you for your generosity!.
+        home.HeroSection.text
       </p>
       <div
         className="self-center mt-8"
@@ -36,7 +35,7 @@ exports[`rend correctement 1`] = `
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
-          Donate Now
+          home.HeroSection.donate
         </a>
       </div>
     </div>
