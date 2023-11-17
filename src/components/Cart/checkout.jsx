@@ -12,7 +12,7 @@ import {
     deleteDoc,
 } from "firebase/firestore";
 
-import { db } from "@/util/firebase";
+import { db } from "../../util/firebase";
 
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
@@ -49,7 +49,7 @@ const Checkout = ({ Total, cart }) => {
     function getCurrentDate() {
         const currentDate = new Date();
         const day = currentDate.getDate();
-        const month = currentDate.getMonth() + 1; // Months are 0-based, so add 1
+        const month = currentDate.getMonth() + 1;
         const year = currentDate.getFullYear();
 
         // Ensure day and month have two digits (e.g., 05 instead of 5)
@@ -68,9 +68,9 @@ const Checkout = ({ Total, cart }) => {
         setPaymentLoading(true);
 
         try {
+            const amountInCents = Total * 100;
             const response = await axios.post("/api/create-payment-intent", {
-                // Include any necessary data for the payment
-                //amount: Total,
+                amount: amountInCents,
             });
 
             const { error, paymentIntent } = await stripe.confirmCardPayment(
@@ -159,9 +159,8 @@ const Checkout = ({ Total, cart }) => {
 
     return (
         <div>
-            {/* Modal toggle : must be donate button from the mouloud component !!!! */}
             <button
-                className='transition-colors text-sm bg-teal-500 hover:bg-purple-700 p-2 rounded-sm w-full text-white text-hover shadow-md'
+                className='transition-colors rounded-full text-sm bg-orange-400  hover:bg-opacity-50 p-2 rounded-sm w-full text-white text-hover shadow-md'
                 onClick={toggleModal}
             >
                 DONATE NOW
@@ -173,9 +172,9 @@ const Checkout = ({ Total, cart }) => {
                     id='default-modal'
                     tabIndex='-1'
                     aria-hidden='true'
-                    className='fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full'
+                    className='fixed flex justify-center items-center w-full z-50 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100% - 1rem)] max-h-full'
                 >
-                    <div className='relative w-full max-h-full'>
+                    <div className='relative w-full max-w-full max-h-full sm:max-w-2xl'>
                         {/* Modal content */}
                         <div className='relative bg-white border-4 border-blue-500 rounded-lg shadow dark:bg-gray-700'>
                             {/* TITLE & HIDE X */}
@@ -214,7 +213,7 @@ const Checkout = ({ Total, cart }) => {
                                             onSubmit={handleSubmit}
                                         >
                                             <p className='text-gray-800 font-medium'>
-                                                Donor information
+                                                Donor informations
                                             </p>
                                             <div className=''>
                                                 <label
@@ -267,15 +266,6 @@ const Checkout = ({ Total, cart }) => {
                                                 >
                                                     Address
                                                 </label>
-                                                <input
-                                                    className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
-                                                    id='cus_email'
-                                                    name='cus_email'
-                                                    type='text'
-                                                    required=''
-                                                    placeholder='Street'
-                                                    aria-label='Email'
-                                                />
                                             </div>
                                             <div className='mt-2'>
                                                 <label
@@ -329,21 +319,31 @@ const Checkout = ({ Total, cart }) => {
                                                 />
                                             </div>
                                             <p className='mt-4 text-gray-800 font-medium'>
-                                                Payment information
+                                                Payment informations
                                             </p>
                                             <div className=''>
                                                 <label>
-                                                    <CardElement />
+                                                    <div className='p-4 bg-gray-200 rounded'>
+                                                        <CardElement
+                                                            options={{
+                                                                style: {
+                                                                    base: {
+                                                                        fontSize:
+                                                                            "16px",
+                                                                        color: "#424770",
+                                                                        "::placeholder":
+                                                                            {
+                                                                                color: "#aab7c4",
+                                                                            },
+                                                                    },
+                                                                    invalid: {
+                                                                        color: "#9e2146",
+                                                                    },
+                                                                },
+                                                            }}
+                                                        />
+                                                    </div>
                                                 </label>
-                                                <input
-                                                    className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
-                                                    id='cus_name'
-                                                    name='cus_name'
-                                                    type='text'
-                                                    required=''
-                                                    placeholder='Card Number MM/YY CVC'
-                                                    aria-label='Name'
-                                                />
                                             </div>
 
                                             <div className='mt-4'>

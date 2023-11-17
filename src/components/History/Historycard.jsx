@@ -16,8 +16,8 @@ export default function Historycard() {
     const { t } = useTranslation("common");
     const [authUser, setAuthUser] = useState(null); // State to store the authenticated user.
 
-    const user = auth.currentUser;
     useEffect(() => {
+        const user = auth.currentUser;
         // // Use Firebase's 'onAuthStateChanged' to listen for changes in user authentication state.
         onAuthStateChanged(auth, (user) => {
             //     // If a user is authenticated, set 'authUser' to the user; otherwise, set it to null.
@@ -74,42 +74,12 @@ export default function Historycard() {
     };
 
     return (
-        // <div className='flex-col pl-50'>
-        //     {blogData.map((Donors, index) => (
-        //         <div className='mb-4' key={index}>
-        //             <div className='bg-neutral-100 rounded-full p-4 flex items-center space-x-3'>
-        //                 <img
-        //                     className='w-14 h-14 rounded-full'
-        //                     src='https://via.placeholder.com/56x56'
-        //                 />
-        //                 <div className='flex flex-row items-center space-x-60'>
-        //                     <div className='text-2xl font-normal font-Poppins leading-tight'>
-        //                         {Donors.Name}
-        //                     </div>
-        //                     <div className='text-2xl font-normal font-Poppins leading-tight'>
-        //                         {Donors.meal}
-        //                     </div>
-        //                     <div className='text-2xl font-normal font-Poppins leading-tight'>
-        //                         {Donors.numb_meal}
-        //                     </div>
-        //                     <div className='text-2xl font-normal font-Poppins leading-tight'>
-        //                         {Donors.price}
-        //                     </div>
-        //                     <div className='text-2xl font-normal font-Poppins leading-tight'>
-        //                         {Donors.DATE}
-        //                     </div>
-        //                     <button
-        //                         className={`rounded-xl text-white font-bold text-xl px-4 py-2 ${ Donors.numbmeal === 0 ? "bg-red-500" : "bg-green-500" }`}
-        //                         onClick={() => handleDecrement(index)}
-        //                     > {Donors.numbmeal}  </button>
-        //                 </div>
-        //             </div>{" "}
-        //         </div>
-        //     ))}
-        // </div>
+        <div className='overflow-x-auto'>
+            {/* <div className='overflow-x-auto sm:-mx-6 lg:-mx-8'> */}
 
-        <div className='overflow-x-auto sm:-mx-6 lg:-mx-8'>
-            <div className='inline-block min-w-full py-2 sm:px-6 lg:px-8'>
+            <div className='inline-block min-w-full py-2 '>
+                {/* <div className='inline-block min-w-full py-2 sm:px-6 lg:px-8'> */}
+
                 <div className='overflow-hidden'>
                     <table className='min-w-full text-center text-sm font-light'>
                         <thead className='border-b bg-neutral-800 font-medium text-white dark:border-neutral-500 dark:bg-neutral-900'>
@@ -158,17 +128,18 @@ export default function Historycard() {
                                     <td className='whitespace-nowrap  px-6 py-4'>
                                         {" "}
                                         <button
-                                            className={`rounded-xl whitespace-nowrap px-4 py-2 ${
+                                            className={`rounded-lg whitespace-nowrap px-8 py-4 ${
                                                 Donors.numbmeal === 0
                                                     ? "bg-red-500"
                                                     : "bg-green-500"
-                                            }`}
+                                            } w-full h-full pl-8 pr-8 pt-1 pb-1 bg-opacity-20 flex items-center justify-center rounded-md`}
                                             onClick={() =>
                                                 handleDecrement(index)
                                             }
                                         >
-                                            {" "}
-                                            {Donors.numbmeal}{" "}
+                                            <div className='text-green-800 text-base font-poppins font-normal leading-6 break-words'>
+                                                {Donors.numbmeal}
+                                            </div>
                                         </button>{" "}
                                     </td>
                                 </tr>

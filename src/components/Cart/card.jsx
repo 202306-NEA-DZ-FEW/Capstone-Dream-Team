@@ -295,3 +295,12 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
 }
 
 export default Card;
+
+{
+    /* <p class='text-xs text-gray-600 font-semibold'>
+       {t("cartPage.card.quantityLeft")}:{" "}
+       <span class='font-normal'>
+           {mealObject.maxMeals}
+       </span>
+    </p> */
+}

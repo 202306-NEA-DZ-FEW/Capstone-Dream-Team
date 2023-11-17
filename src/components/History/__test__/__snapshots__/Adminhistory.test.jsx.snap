@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="overflow-x-auto"
+>
+  <div
+    className="inline-block min-w-full py-2 "
+  >
+    <div
+      className="overflow-hidden"
+    >
+      <table
+        className="min-w-full text-center text-sm font-light"
+      >
+        <thead
+          className="border-b bg-neutral-800 font-medium text-white dark:border-neutral-500 dark:bg-neutral-900"
+        >
+          <tr>
+            <th
+              className=" px-6 py-4"
+              scope="col"
+            >
+              history.Doner
+            </th>
+            <th
+              className=" px-6 py-4"
+              scope="col"
+            >
+              history.Meal
+            </th>
+            <th
+              className=" px-6 py-4"
+              scope="col"
+            >
+              history.Quantity
+            </th>
+            <th
+              className=" px-6 py-4"
+              scope="col"
+            >
+              history.Price
+            </th>
+            <th
+              className=" px-6 py-4"
+              scope="col"
+            >
+              history.Date
+            </th>
+            <th
+              className=" px-6 py-4"
+              scope="col"
+            >
+              history.UsedMeals
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+  </div>
+</div>
+`;
