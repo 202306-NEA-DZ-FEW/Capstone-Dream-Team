@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import AboutUs from "../../components/Home/AboutUs";
 import Teamcard from "@/components/aboutus/Teamcard";
 import Layout from "@/layout/Layout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Historybar from "@/components/History/Historybar";
 
 export default function Aboutus() {
     const [imageIndex, setImageIndex] = useState(0);
@@ -49,7 +47,7 @@ export default function Aboutus() {
                             <img
                                 className='lg:block hidden w-full h-full object-cover'
                                 src={images[imageIndex]}
-                                alt='people discussing on board'
+                                alt='capstone images'
                             />
                             <img
                                 className='lg:hidden sm:block hidden w-full h-full object-cover'
