@@ -52,19 +52,20 @@ export default function Navbar({ locale }) {
                         </div>
                     </div>
 
-                    <div className='flex items-center text-[#192655] px-2 lg:order-2 '>
+                    <div className='flex items-center text-blue-800 hover:text-[#192655] px-2 lg:order-2 '>
                         <Link href='/cart'>
                             <CartIcon></CartIcon>
                         </Link>
 
                         <button
-                            className='hidden text-[#192655] lg:inline-block mx-2 z-20'
-                            onClick={handleClick}
+                            className='hidden text-blue-800 hover:text-[#192655] lg:inline-block mx-2 z-20'
+                            onMouseEnter={() => setClicked(true)}
                         >
                             <IoEarthOutline size={20}></IoEarthOutline>{" "}
                         </button>
                         {clicked && isMobileMenuOpen === false && (
                             <div
+                                onMouseLeave={() => setClicked(false)}
                                 className={`${
                                     locale === "en"
                                         ? "absolute right-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
@@ -106,7 +107,8 @@ export default function Navbar({ locale }) {
                         <button
                             type='button'
                             onClick={toggleMobileMenu}
-                            className={`inline-flex items-center p-2 ml-1 text-sm text-[#192655] rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  duration-300 ease-in-out'
+                            onMouseLeave={() => setMobileMenuOpen(false)}
+                            className={`inline-flex items-center p-2 ml-1 text-sm text-[#192655] rounded-lg lg:hidden hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-200  duration-300 ease-in-out'
                            ${
                                isMobileMenuOpen
                                    ? "rotate-180"
@@ -154,7 +156,7 @@ export default function Navbar({ locale }) {
                         <ul className='flex flex-col text-lg normal-case space-y-12 lg:space-y-0 items-center mt-4 font-medium lg:flex-row lg:space-x-6 lg:mt-0'>
                             <li>
                                 <Link
-                                    className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '
+                                    className='block py-2 pl-3 pr-4 lg:text-blue-900  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer '
                                     href='/'
                                 >
                                     {t("Navbar.home")}
@@ -162,7 +164,7 @@ export default function Navbar({ locale }) {
                             </li>
                             <li>
                                 <Link
-                                    className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '
+                                    className='block py-2 pl-3 pr-4 lg:text-blue-900 lg:font-bold border-b border-gray-100 hover:text-blue-800 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer '
                                     href='/meals'
                                 >
                                     {t("Navbar.meals")}
@@ -171,7 +173,7 @@ export default function Navbar({ locale }) {
                             <li>
                                 <Link
                                     href='/blogs'
-                                    className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '
+                                    className='block py-2 pl-3 pr-4 lg:text-blue-900 lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655]  lg:hover:border-0 cursor-pointer '
                                 >
                                     {t("Navbar.blogs")}
                                 </Link>
@@ -179,14 +181,14 @@ export default function Navbar({ locale }) {
                             <li>
                                 <Link
                                     href='/aboutUs'
-                                    className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '
+                                    className='block py-2 pl-3 pr-4 lg:text-blue-900  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655]  lg:hover:border-0 cursor-pointer '
                                 >
                                     {t("Navbar.aboutus")}
                                 </Link>
                             </li>
                             <li>
                                 <div className='relative group'>
-                                    <span className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '>
+                                    <span className='block py-2 pl-3 pr-4 lg:text-blue-900 lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655]  lg:hover:border-0 cursor-pointer '>
                                         {!auth.currentUser ? (
                                             <Link href='/signup'>
                                                 {t("Navbar.signIn")}{" "}
@@ -203,7 +205,7 @@ export default function Navbar({ locale }) {
 
                             <li className='lg:hidden'>
                                 <button
-                                    className='flex py-2 pl-3 pr-4 text-[#192655]   lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   '
+                                    className='flex py-2 pl-3 pr-4 lg:text-blue-900 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   '
                                     onClick={handleClick}
                                 >
                                     <IoEarthOutline size={30}></IoEarthOutline>{" "}
@@ -213,6 +215,7 @@ export default function Navbar({ locale }) {
                                 </button>
                                 {isMobileMenuOpen === true && clicked && (
                                     <div
+                                        onMouseLeave={() => setClicked(false)}
                                         className={`${
                                             locale === "en"
                                                 ? " py-2 w-38 bg-white rounded-sm shadow-xl z-20"
