@@ -6,10 +6,12 @@ const stripeInstance = new stripe(stripeSecretKey);
 export default async function createPaymentIntent(req, res) {
     if (req.method === "POST") {
         try {
-            //const { amount } = req.body;
+            // const { Total } = req.body;
+            // const amountInCents = Total * 100;
+
             // Create a PaymentIntent using the Stripe API
             const paymentIntent = await stripeInstance.paymentIntents.create({
-                amount: 5000,
+                amount: 8000,
                 currency: "usd",
                 description: "Product purchase",
                 payment_method: "pm_card_visa",

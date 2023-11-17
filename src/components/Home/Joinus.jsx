@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 export default function Joinus() {
+    const { t } = useTranslation("common");
     return (
         <div className='flex-col max-w-screen-xl max-h-full my-10 p-6 m-4 mb-8  '>
             <div className='flex max-h-screen '>
@@ -8,26 +10,23 @@ export default function Joinus() {
                     style={{ backgroundImage: 'url("/images/bg-cover.png")' }}
                 >
                     <h1 className='text-center max-w-lg mb-6  font-sans text-3xl font-bold leading-none tracking-tight text-[#192655] sm:text-4xl md:mx-auto'>
-                        Working Together to End Hunger
+                        {t("home.joinus.title")}
                     </h1>
                     <p className='p-2 text-sm md:text-base'>
-                        Your small act of kindness can make a big difference.
-                        Together, we can change lives and create a brighter
-                        future. Donate today and be the change you wish to see
-                        in the world.
+                        {t("home.joinus.text")}
                     </p>
                     <div className='flex w-full justify-center gap-4 mb-2 mt-2 '>
                         <Link
                             href='/signIn'
                             class='bg-white hover:bg-orange-600 hover:text-white mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-orange-400 border border-orange-400 tracking-widest'
                         >
-                            join Us
+                            {t("home.joinus.joinus")}
                         </Link>
                         <Link
                             href='/signUp'
                             class='bg-orange-400 hover:bg-orange-600 mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-white tracking-widest'
                         >
-                            Donate
+                            {t("home.joinus.donate")}
                         </Link>
                     </div>
                 </div>

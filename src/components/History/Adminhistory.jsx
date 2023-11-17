@@ -5,9 +5,10 @@ import Historycard from "./Historycard";
 export default function Adminhistory() {
     return (
         <>
-            <Historybar />
+            {/* <Historybar /> */}
             <Historycard />
         </>
+
         // <div className='flex-col'>
         //     <Historybar />
         //     <div className='flex-col'>

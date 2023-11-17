@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
+import { useRef } from "react";
 
 import BlogCardList from "@/components/Blog/BlogCard/blogCardList";
 import Footer from "@/components/Footer";
@@ -13,9 +14,9 @@ import Sponsors from "@/components/Home/Sponsors";
 
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
-import { useRef } from "react";
+
+import HeroSection from "../components/Home/HeroSection";
 import Restaurant from "../components/Home/Restaurant";
-import Slider from "../components/Home/Slider";
 import useIsVisible from "../components/useIsVisible";
 
 export default function HomePage({ blogs, locale }) {
@@ -48,7 +49,7 @@ export default function HomePage({ blogs, locale }) {
                             isVisible1 ? "opacity-100" : "opacity-0"
                         }`}
                     >
-                        <Slider></Slider>
+                        <HeroSection></HeroSection>
                     </div>
                     <div
                         ref={ref2}
@@ -92,11 +93,10 @@ export default function HomePage({ blogs, locale }) {
                     >
                         <div className='m-6 p-12  '>
                             <h1 className=' text-lg text-center  mb-6 md:text-4xl uppercase font-extrabold text- mx-auto'>
-                                Blogs
+                                {t("home.blogs.title")}
                             </h1>
                             <h2 className=' mb-6 text-center font-sans text-2xl  leading-none tracking-tight  sm:text-2xl mx-12'>
-                                Explore here articles about hunger and poverty
-                                in our world
+                                {t("home.blogs.subtitle")}
                             </h2>
                             <div className='sm:max-w-sm text-white bg-blue-900 sm:mx-auto rounded-xl lg:max-w-full'>
                                 <BlogCardList
@@ -110,7 +110,7 @@ export default function HomePage({ blogs, locale }) {
                                     href='/blogs'
                                     className='bg-orange-400 hover:bg-orange-600 hover:text-white  py-3 px-8 text-lg rounded-full font-bold uppercase text-white border border-orange-400 tracking-widest'
                                 >
-                                    see more
+                                    {t("home.blogs.see more")}
                                 </Link>
                             </div>
                         </div>
