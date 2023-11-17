@@ -204,7 +204,7 @@ export default function Aboutus() {
                             github='https://github.com/mounibzaidi'
                             name='Mounib Zaidi'
                             profile='Front-end Developer'
-                            img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
+                            img='images/aboutus/mounib.jpeg'
                         />
                     </div>
                 </section>
