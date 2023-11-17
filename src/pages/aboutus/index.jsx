@@ -176,28 +176,28 @@ export default function Aboutus() {
                             github='https://github.com/mouloud247'
                             name='Mouloud Mecheter'
                             profile='Front-end Developer'
-                            img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
+                            img='https://media.licdn.com/dms/image/D4D03AQFEVj3F6unZOw/profile-displayphoto-shrink_800_800/0/1690826886119?e=1705536000&v=beta&t=t9ks0eD59TE23xi1Ihl4WYSfFMnaa40_RyhAU9ENf7o'
                         />
                         <Teamcard
                             linkedin='https://www.linkedin.com/in/walid-t-belharazem/'
                             github='https://github.com/walidbelharazem'
                             name='Walid Belharazem'
                             profile='Front-end Developer'
-                            img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
+                            img='https://media.licdn.com/dms/image/D4D03AQG8mC0NMyT_ZQ/profile-displayphoto-shrink_800_800/0/1694126020760?e=1705536000&v=beta&t=hWISFdPhy0va94t9_QKetPg-y4blsxSfGGrQGzo2eEk'
                         />
                         <Teamcard
                             linkedin='https://www.linkedin.com/in/fatima-merzouk/'
                             github='https://github.com/merzoukfatima'
                             name='Fatima Merzouk'
                             profile='Front-end Developer'
-                            img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
+                            img='https://media.licdn.com/dms/image/D4E03AQEReqL3lIqZqA/profile-displayphoto-shrink_800_800/0/1690643982079?e=1705536000&v=beta&t=NQmJVhxKnIbsTAPcIqlfQ6Y80WZh2u0OkaWoNDn5m98'
                         />
                         <Teamcard
                             linkedin='https://www.linkedin.com/in/bouchra-ikram-aboura-1750b5169/'
                             github='https://github.com/ikoworld'
                             name='Bouchra Aboura'
                             profile='Front-end Developer'
-                            img='https://pbs.twimg.com/profile_images/1602443868527595520/cOjnC2Zh_400x400.jpg'
+                            img='images/aboutus/bouchra.png'
                         />
                         <Teamcard
                             linkedin='https://www.linkedin.com/'
