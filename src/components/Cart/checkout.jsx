@@ -1,5 +1,6 @@
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 import {
     addDoc,
@@ -126,7 +127,26 @@ const Checkout = ({ Total, cart }) => {
                     }
                 });
 
-                // add your code here !!!
+                // Send email to donor
+
+                const data = [name, email, Total, cart];
+                //console.log(data);
+                const response = await fetch("/api/route", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify(data),
+                });
+                if (response.status === 200) {
+                    toast.success(
+                        "Checkout successfull, check your E-mail inbox"
+                    );
+                }
+                if (response.status === 400) {
+                    toast.error("Error sending E-mail");
+                }
 
                 setPaymentSuccess(true);
             }

@@ -1,9 +1,9 @@
 import { onAuthStateChanged } from "firebase/auth";
-import Link from "next/link";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect, useState } from "react";
 
 import Overview from "@/components/Overview/overview";
+import { RiLoader5Line } from "react-icons/ri";
 
 import Layout from "@/layout/Layout";
 import { auth } from "@/util/firebase";
@@ -11,7 +11,7 @@ import { auth } from "@/util/firebase";
 // Import the AddMeals component
 import Sidemenu from "../../components/Sidemenu";
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ locale }) {
     const [component, setComponent] = useState(<Overview />);
 
     function handleClick(selectedComponent) {
@@ -33,15 +33,17 @@ export default function AdminDashboard() {
             {/* to check whether the user is signed in    */}
             {authUser ? (
                 // we show the page of the admin dashboard
-                <div className='grid grid-cols-4'>
-                    <Sidemenu handleClick={handleClick}></Sidemenu>
+                <div className='flex flex-row '>
+                    <Sidemenu
+                        locale={locale}
+                        handleClick={handleClick}
+                    ></Sidemenu>
 
-                    <div className='col-span-4 grid grid-cols-8 w-full h-screen overflow-hidden'>
-                        {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
-                        <div className='md:col-span-2'></div>
-                        <div className='col-span-7 md:col-span-6 justify-items-center  p-8 text-2xl font-bold overflow-scroll'>
-                            {component}
-                        </div>
+                    {/* we pass a function to the Sidemenu so it shows the component based on what the user clicked */}
+                    <div className='order-1 md:mr-2 md:w-64 w-20'></div>
+
+                    <div className=' w-full h-screen justify-items-left  p-8 text-2xl font-bold overflow-scroll order-2 z-40'>
+                        {component}
                     </div>
                 </div>
             ) : (
@@ -49,15 +51,20 @@ export default function AdminDashboard() {
                 <Layout>
                     <div className='flex flex-col w-full justify-center items-center py-48 space-y-16 '>
                         {" "}
-                        <div className='flex text-2xl font-semibold'>
-                            You need to have an acount to enter the dashboard
-                            page !
-                        </div>
-                        <Link href='/signup'>
-                            <button className='bg-orange-400 hover:bg-orange-600 mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-white tracking-widest hover:shadow-lg transform hover:scale-105 '>
-                                Create account
-                            </button>
-                        </Link>
+                        {locale === "ar" ? (
+                            <div className='flex text-4xl font-semibold'>
+                                تحميل ...
+                            </div>
+                        ) : (
+                            <div className='flex text-4xl font-bold '>
+                                <span className='animate-pulse duration-300'>
+                                    loading...
+                                </span>
+                                <span className='animate-spin duration-300'>
+                                    <RiLoader5Line size={20} />
+                                </span>
+                            </div>
+                        )}
                     </div>
                 </Layout>
             )}

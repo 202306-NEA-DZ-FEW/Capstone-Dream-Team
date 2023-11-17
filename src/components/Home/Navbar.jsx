@@ -14,7 +14,6 @@ import CartIcon from "../Cart/cartIcon";
 
 export default function Navbar({ locale }) {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [dropdownOpen, setDropdownopen] = useState(false);
 
     const [clicked, setClicked] = useState(false);
 
@@ -32,15 +31,6 @@ export default function Navbar({ locale }) {
     function handleClick() {
         setClicked(!clicked);
     }
-
-    const handleDropdown = () => {
-        setDropdownopen(!dropdownOpen);
-    };
-    const handleLogout = async () => {
-        // Sign out the authenticated user using Firebase's 'signOut' function.
-        await signOut(auth);
-        setDropdownopen(!dropdownOpen);
-    };
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
@@ -196,10 +186,7 @@ export default function Navbar({ locale }) {
                             </li>
                             <li>
                                 <div className='relative group'>
-                                    <span
-                                        onClick={handleDropdown}
-                                        className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '
-                                    >
+                                    <span className='block py-2 pl-3 pr-4 text-[#192655]  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:hover:border-0 cursor-pointer '>
                                         {!auth.currentUser ? (
                                             <Link href='/signup'>
                                                 {t("Navbar.signIn")}{" "}
