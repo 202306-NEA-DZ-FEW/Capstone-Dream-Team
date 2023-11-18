@@ -13,8 +13,8 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { IoEarthOutline } from "react-icons/io5";
 import { LiaHistorySolid } from "react-icons/lia";
 
-import AddMeals from "./Meals/addMeals";
 import Adminhistory from "./History/Adminhistory";
+import AddMeals from "./Meals/addMeals";
 import Overview from "./Overview/overview";
 import Settings from "./Settings";
 import { auth, db } from "../util/firebase";
@@ -51,7 +51,7 @@ export default function Sidemenu(props) {
     const [authUser, setAuthUser] = useState(null); // State to store the authenticated user.
     const [open, setOpen] = useState(false);
     // Use 'useEffect' to run code when 'authUser' changes.
-    const [clicked, setClicked] = useState(false);
+    const [clicked, setClicked] = useState("");
     const [mousenter, setMousenter] = useState(false);
     const router = useRouter();
 
@@ -63,9 +63,6 @@ export default function Sidemenu(props) {
         router.push({ pathname, query }, asPath, { locale: newLanguage });
     };
 
-    function handleClick() {
-        setClicked(!clicked);
-    }
     useEffect(() => {
         // Use Firebase's 'onAuthStateChanged' to listen for changes in user authentication state.
         onAuthStateChanged(auth, (user) => {
@@ -192,33 +189,26 @@ export default function Sidemenu(props) {
                             {components.map((component, index) => (
                                 <div
                                     key={index}
-                                    className=' flex-col justify-start items-start gap-1 flex '
+                                    className={`w-4/5 h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex  ${
+                                        clicked === component.name
+                                            ? "focus:outline-non text-orange-600  "
+                                            : ""
+                                    }`}
+                                    onClick={() => {
+                                        props.handleClick(component.element);
+                                        setClicked(component.name);
+                                    }}
                                 >
-                                    <div
-                                        className={` h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:outline-none focus:bg-blue-600 ${
-                                            clicked === true
-                                                ? "focus:outline-none focus-within:text-orange-600 focus-current:border-b-2 "
-                                                : ""
-                                        }`}
-                                        onClick={() => {
-                                            props.handleClick(
-                                                component.element
-                                            );
-                                            setClicked(true);
-                                        }}
-                                    >
-                                        <div className='relative focus:outline-none'>
-                                            {component.icon}
-                                        </div>
-                                        <button
-                                            className={` focus:outline-none text-[10px] md:text-sm font-normal font-['Open Sans']  duration-300 ${
-                                                !open &&
-                                                "scale-0 md:transform-none"
-                                            }`}
-                                        >
-                                            {t(`${component.name}`)}
-                                        </button>
+                                    <div className='relative focus:outline-none'>
+                                        {component.icon}
                                     </div>
+                                    <button
+                                        className={` focus:outline-none text-[10px] md:text-sm font-normal font-['Open Sans']  duration-300 ${
+                                            !open && "scale-0 md:transform-none"
+                                        }`}
+                                    >
+                                        {t(`${component.name}`)}
+                                    </button>
                                 </div>
                             ))}
                         </div>
@@ -226,7 +216,7 @@ export default function Sidemenu(props) {
                     <div className=' w-full self-stretch h-full flex-col justify-start pt-1 items-start  flex'>
                         <div className='w-full flex-col justify-start items-start gap-1 flex'>
                             <div
-                                className='h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex cursor-pointer  hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:outline-none focus:bg-blue-600'
+                                className='h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex cursor-pointer  focus:outline-none focus:text-orange-600'
                                 onMouseEnter={() => setMousenter(true)}
                                 onMouseLeave={() => setMousenter(false)}
                             >
@@ -234,7 +224,7 @@ export default function Sidemenu(props) {
                                     <IoEarthOutline size={20}></IoEarthOutline>{" "}
                                 </div>
                                 <button
-                                    className={`text-[#333333] hover:text-black  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug focus:outline-none duration-300 ${
+                                    className={`text-[#333333] text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug focus:outline-none duration-300 ${
                                         !open && "scale-0 md:transform-none"
                                     }`}
                                 >

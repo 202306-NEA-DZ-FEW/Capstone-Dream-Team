@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="w-full h-full flex-col mt-6 p-6 justify-center  text-center"
+>
+  <h1
+    className="font-bold mr-6 text-2xl sm:text-3xl lg:text-4xl text-[#192655] "
+  >
+    home.ourGoals.title
+  </h1>
+  <div
+    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-4 w-full h-full   "
+  >
+    <div
+      class=" w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20"
+    >
+      <div
+        class="flex justify-center md:justify-end -mt-16"
+      >
+        <img
+          alt="step"
+          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
+          src="images/home/Goals/noPoverty.png"
+        />
+      </div>
+      <div>
+        <h2
+          class="text-gray-800 text-3xl font-semibold"
+        >
+          home.ourGoals.goal1
+        </h2>
+        <p
+          class="mt-2 text-gray-600 h-full"
+        >
+          home.ourGoals.goal1text
+        </p>
+      </div>
+    </div>
+    <div
+      class=" w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20"
+    >
+      <div
+        class="flex justify-center md:justify-end -mt-16"
+      >
+        <img
+          alt="step"
+          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
+          src="images/home/Goals/zeroHunger.png"
+        />
+      </div>
+      <div>
+        <h2
+          class="text-gray-800 text-3xl font-semibold"
+        >
+          home.ourGoals.goal2
+        </h2>
+        <p
+          class="mt-2 text-gray-600 h-full"
+        >
+          home.ourGoals.goal2text
+        </p>
+      </div>
+    </div>
+    <div
+      class=" w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20"
+    >
+      <div
+        class="flex justify-center md:justify-end -mt-16"
+      >
+        <img
+          alt="step"
+          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
+          src="images/home/Goals/health.png"
+        />
+      </div>
+      <div>
+        <h2
+          class="text-gray-800 text-3xl font-semibold"
+        >
+          home.ourGoals.goal3
+        </h2>
+        <p
+          class="mt-2 text-gray-600 h-full"
+        >
+          home.ourGoals.goal3text
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
