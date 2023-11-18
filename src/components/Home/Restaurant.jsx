@@ -1,16 +1,14 @@
+import { useTranslation } from "next-i18next";
 export default function Restaurant() {
+    const { t } = useTranslation("common");
     return (
         <div className=' my-20 py-20 bg-gradient-to-bl bg-white flex items-center max-w-screen-xl justify-center scroll-smooth '>
             <div className='container mx-auto p-4'>
                 <h2 className='hover:-translate-y-3 duration-300 max-w-lg mb-10 font-sans text-2xl text-center font-bold leading-none tracking-tight text-[#192655] sm:text-3xl lg:text-4xl md:mx-auto'>
-                    Join Us - Restaurants can make a Difference
+                    {t("home.restaurant.title")}
                 </h2>
                 <p className='text-base text-center text-gray-700 md:text-lg mb-16'>
-                    As a restaurant owner or manager, you play a vital role in
-                    our mission. We are reaching out to you with an exciting
-                    opportunity to not only make a positive impact on your
-                    community but also promote your restaurant to a wider
-                    audience. Here is how you can participate:
+                    {t("home.restaurant.subtitle")}
                 </p>
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8'>
                     <div className='hover:-translate-y-3 duration-300 cursor-pointer hover:shadow-2xl bg-white rounded-lg border p-4'>
@@ -21,14 +19,10 @@ export default function Restaurant() {
                         ></img>
                         <div class='py-4 text-center'>
                             <div class='font-bold text-orange-600 text-xl mb-2'>
-                                List Your Meals
+                                {t("home.restaurant.step1")}
                             </div>
                             <p class='text-gray-700 text-base'>
-                                By joining our cause, you can easily showcase
-                                your restaurant and its delectable dishes on our
-                                website. We will create a dedicated page for
-                                your restaurant, complete with mouthwatering
-                                images and descriptions of your meals.
+                                {t("home.restaurant.step1text")}
                             </p>
                         </div>
                     </div>
@@ -40,13 +34,10 @@ export default function Restaurant() {
                         ></img>
                         <div class='py-4 text-center'>
                             <div class='font-bold text-orange-600 text-xl mb-2'>
-                                Accept meal donation
+                                {t("home.restaurant.step2")}
                             </div>
                             <p class='text-gray-700 text-center text-base'>
-                                Donors who want to support our mission can
-                                purchase meals from your restaurant. These meals
-                                can be redeemed by those in need, ensuring that
-                                you reach a broader customer base.
+                                {t("home.restaurant.step2text")}
                             </p>
                         </div>
                     </div>
@@ -58,14 +49,10 @@ export default function Restaurant() {
                         ></img>
                         <div class='py-4 text-center'>
                             <div class='font-bold text-orange-600 text-xl mb-2'>
-                                Dashboard Control
+                                {t("home.restaurant.step3")}
                             </div>
                             <p class='text-gray-700 text-base'>
-                                We provide you with a secure and user-friendly
-                                dashboard that allows you to verify and track
-                                coupon redemptions. You will have full control
-                                over the process and can monitor the impact your
-                                contributions are making.{" "}
+                                {t("home.restaurant.step3text")}
                             </p>
                         </div>
                     </div>
@@ -77,14 +64,10 @@ export default function Restaurant() {
                         ></img>
                         <div class='py-4 text-center'>
                             <div class='font-bold text-orange-600 text-xl mb-2'>
-                                Coupon Deletion
+                                {t("home.restaurant.step4")}
                             </div>
                             <p class='text-gray-700 text-base'>
-                                Once a coupon is used and a meal is delivered to
-                                someone in need, you can easily mark it as
-                                redeemed in your dashboard. This ensures that
-                                the coupons are used only once, maintaining the
-                                integrity of the program.{" "}
+                                {t("home.restaurant.step4text")}
                             </p>
                         </div>
                     </div>

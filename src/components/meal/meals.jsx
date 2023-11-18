@@ -43,6 +43,7 @@ export default function Meals() {
                             Name: restaurant.restaurantName,
                             email: restaurant.email,
                             current_restaurant_Id: restaurant.restaurantId,
+                            image: restaurant.image,
                             mealDetails: mealDetails,
                         };
                     })
@@ -59,13 +60,14 @@ export default function Meals() {
     return (
         <div>
             {rest.map((restaurant, index) => (
-                <div className=' pb-12 pt-3 ' key={index}>
-                    <div>
+                <div className=' mb-5 mt-10 ' key={index}>
+                    <div className=' pl-3 pr-3 '>
                         <Mealbar
                             name={restaurant.Name}
                             current_restaurant_Id={
                                 restaurant.current_restaurant_Id
                             }
+                            image={restaurant.image}
                         />
                     </div>
                     <div className='pb-10 pt-5 flex justify-center items-center '>

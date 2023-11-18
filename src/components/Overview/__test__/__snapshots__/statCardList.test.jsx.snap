@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="mx-6 mb-6"
+>
+  <div
+    className="flex flex-wrap -mx-6"
+  >
+    <div
+      className="w-full mt-6 px-2 sm:w-1/2 xl:w-1/4 "
+    >
+      <div
+        className="flex flex-col px-5 py-6 shadow-sm rounded-md border border-orange-100 bg-orange-50"
+      >
+        <div
+          className="flex"
+        >
+          <div
+            className="flex items-center h-11 w-11 justify-center p-3 rounded-full bg-orange-400 bg-opacity-80"
+          >
+            <div
+              className="text-2xl text-white"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M48 34v144c0 16 32 32 32 32 0 112-16 176-16 208 0 16 0 32 16 48s16 16 32 0 16-32 16-48c0-32-16-96-16-208 0 0 32-16 32-32V34h-18v96h-21V34H87v96H66V34H48zm202 0c-16 0-16 16-16 16v272h.4c-4.6 45.8-10.4 76.8-10.4 96 0 16 0 32 16 48s16 16 32 0 16-32 16-48c0-22.1-7.6-59.5-12.4-117.5C287.9 270.4 298 232.2 298 194c0-48-25.8-137.6-48-160zm166 0a64 96 0 0 0-64 96 64 96 0 0 0 47.9 92.8C398.8 326.9 384 387.2 384 418c0 16 0 32 16 48s16 16 32 0 16-32 16-48c0-30.8-14.8-91.1-15.9-195.1A64 96 0 0 0 480 130a64 96 0 0 0-64-96z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            className="mx-2"
+          >
+            <h4
+              className="text-2xl font-bold text-gray-700 p-1"
+            >
+              0
+            </h4>
+          </div>
+        </div>
+        <div
+          className="text-gray-500 overflow-hidden whitespace-nowrap text-base break-words pt-2"
+        >
+          overview.statCard.totalMeals
+        </div>
+      </div>
+    </div>
+    <div
+      className="w-full mt-6 px-2 sm:w-1/2 xl:w-1/4 "
+    >
+      <div
+        className="flex flex-col px-5 py-6 shadow-sm rounded-md border border-orange-100 bg-orange-50"
+      >
+        <div
+          className="flex"
+        >
+          <div
+            className="flex items-center h-11 w-11 justify-center p-3 rounded-full bg-orange-400 bg-opacity-80"
+          >
+            <div
+              className="text-2xl text-white"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+                <path
+                  d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            className="mx-2"
+          >
+            <h4
+              className="text-2xl font-bold text-gray-700 p-1"
+            >
+              0
+            </h4>
+          </div>
+        </div>
+        <div
+          className="text-gray-500 overflow-hidden whitespace-nowrap text-base break-words pt-2"
+        >
+          overview.statCard.totalActiveMeals
+        </div>
+      </div>
+    </div>
+    <div
+      className="w-full mt-6 px-2 sm:w-1/2 xl:w-1/4"
+    >
+      <div
+        className="flex flex-col px-5 py-6 shadow-sm rounded-md border border-orange-100 bg-orange-50"
+      >
+        <div
+          className="flex"
+        >
+          <div
+            className="flex items-center h-11 w-11 justify-center p-3 rounded-full bg-orange-400 bg-opacity-80"
+          >
+            <div
+              className="text-2xl text-white"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+                <path
+                  d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            className="mx-2"
+          >
+            <h4
+              className="text-2xl font-bold text-gray-700 p-1"
+            >
+              0
+            </h4>
+          </div>
+        </div>
+        <div
+          className="text-gray-500 overflow-hidden whitespace-nowrap text-base break-words pt-2"
+        >
+          overview.statCard.totalDonors
+        </div>
+      </div>
+    </div>
+    <div
+      className="w-full mt-6 px-2 sm:w-1/2 xl:w-1/4"
+    >
+      <div
+        className="flex flex-col px-5 py-6 shadow-sm rounded-md border border-orange-100 bg-orange-50"
+      >
+        <div
+          className="flex"
+        >
+          <div
+            className="flex items-center h-11 w-11 justify-center p-3 rounded-full bg-orange-400 bg-opacity-80"
+          >
+            <div
+              className="text-2xl text-white"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+                <path
+                  d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            className="mx-2"
+          >
+            <h4
+              className="text-2xl font-bold text-gray-700 p-1"
+            >
+              0
+            </h4>
+          </div>
+        </div>
+        <div
+          className="text-gray-500 overflow-hidden whitespace-nowrap text-base break-words pt-2"
+        >
+          overview.statCard.totalDonation
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

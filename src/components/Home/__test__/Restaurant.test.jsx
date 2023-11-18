@@ -1,7 +1,8 @@
 import renderer from "react-test-renderer";
-import Slider from "../Slider";
+
+import Restaurant from "../Restaurant";
 
 it("rend correctement", () => {
-    const tree = renderer.create(<Slider />).toJSON();
+    const tree = renderer.create(<Restaurant />).toJSON();
     expect(tree).toMatchSnapshot();
 });

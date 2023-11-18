@@ -6,6 +6,7 @@ import {
     query,
     where,
 } from "firebase/firestore";
+import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
 import { BsPersonFillUp } from "react-icons/bs";
 import { GiForkKnifeSpoon } from "react-icons/gi";
@@ -20,7 +21,7 @@ const StatCardList = () => {
     const [totalMeals, setTotalMeals] = useState(0);
     const [totalActiveMeals, setTotalActiveMeals] = useState(0);
     const [totalDonation, setTotalDonation] = useState(0);
-
+    const { t } = useTranslation("common");
     useEffect(() => {
         // Define a function to fetch user information from Firestore.
         onAuthStateChanged(auth, (user) => {
@@ -47,7 +48,7 @@ const StatCardList = () => {
                 });
                 setTotalMeals(totalMeals);
                 setTotalActiveMeals(totalActiveMeals);
-                setTotalDonation(totalDonation);
+                setTotalDonation(totalDonation.toFixed(2));
             }
         };
         const unsubscribe = onSnapshot(collection(db, "donors"), () => {
@@ -64,7 +65,7 @@ const StatCardList = () => {
                 <div className='w-full mt-6 px-2 sm:w-1/2 xl:w-1/4 '>
                     <StatCard
                         icon={<GiForkKnifeSpoon />}
-                        title='Total Meals'
+                        title={t("overview.statCard.totalMeals")}
                         number={totalMeals}
                     />
                 </div>
@@ -72,21 +73,21 @@ const StatCardList = () => {
                 <div className='w-full mt-6 px-2 sm:w-1/2 xl:w-1/4 '>
                     <StatCard
                         icon={<BsPersonFillUp />}
-                        title='Total Active Meals'
+                        title={t("overview.statCard.totalActiveMeals")}
                         number={totalActiveMeals}
                     />
                 </div>
                 <div className='w-full mt-6 px-2 sm:w-1/2 xl:w-1/4'>
                     <StatCard
                         icon={<BsPersonFillUp />}
-                        title='Total Donors'
+                        title={t("overview.statCard.totalDonors")}
                         number={totalDonors}
                     />
                 </div>
                 <div className='w-full mt-6 px-2 sm:w-1/2 xl:w-1/4'>
                     <StatCard
                         icon={<BsPersonFillUp />}
-                        title='Total Donation'
+                        title={t("overview.statCard.totalDonation")}
                         number={totalDonation}
                     />
                 </div>

@@ -1,4 +1,6 @@
+import { useTranslation } from "next-i18next";
 export default function Donation() {
+    const { t } = useTranslation("common");
     return (
         <>
             <div
@@ -11,13 +13,14 @@ export default function Donation() {
                 <div className='max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12 '>
                     <h2 className='max-w-lg mb-6  font-sans text-3xl font-bold leading-none tracking-tight text-white sm:text-4xl md:mx-auto'>
                         <span className='relative inline-block'>
-                            <span className='relative'>Empower</span>
+                            <span className='relative'>
+                                {t("home.donation.empower")}
+                            </span>
                         </span>{" "}
-                        Change - Become a Donor
+                        {t("home.donation.title")}
                     </h2>
                     <p className='text-base text-white md:text-lg'>
-                        At BUY ME A MEAL website,your generosity has the power
-                        to change lives. Here is how you can contribute:
+                        {t("home.donation.subtitle")}
                     </p>
                 </div>
                 <div className='grid max-w-md gap-8 row-gap-10 sm:mx-auto lg:max-w-full lg:grid-cols-3'>
@@ -33,13 +36,10 @@ export default function Donation() {
                         </div>
                         <div>
                             <h6 className='mb-2 font-semibold text-xl leading-5'>
-                                Purchase Donation Coupons
+                                {t("home.donation.step1title")}
                             </h6>
                             <p className='mb-3 text-sm text-gray-900'>
-                                With just a few clicks, you can acquire special
-                                donation coupons through our user-friendly
-                                platform. These coupons serve as the catalyst
-                                for nourishing those who hunger for a meal.
+                                {t("home.donation.step1text")}
                             </p>
                         </div>
                     </div>
@@ -55,13 +55,10 @@ export default function Donation() {
                         </div>
                         <div>
                             <h6 className='mb-2 font-semibold text-xl leading-5'>
-                                Make a Meaningful Impact
+                                {t("home.donation.step2title")}
                             </h6>
                             <p className='mb-3 text-sm text-gray-900'>
-                                Your contributions directly translate into meals
-                                for those in need. Your support helps us create
-                                a tangible and positive difference in the
-                                community.
+                                {t("home.donation.step2text")}
                             </p>
                         </div>
                     </div>
@@ -77,12 +74,10 @@ export default function Donation() {
                         </div>
                         <div>
                             <h6 className='mb-2 font-semibold text-xl leading-5'>
-                                Join a Community of Givers
+                                {t("home.donation.step3title")}
                             </h6>
                             <p className='mb-3 text-sm text-gray-900'>
-                                By becoming a donor, you join a community of
-                                like-minded individuals committed to making the
-                                world a better place, one meal at a time.
+                                {t("home.donation.step3text")}
                             </p>
                         </div>
                     </div>

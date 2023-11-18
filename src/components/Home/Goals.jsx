@@ -1,27 +1,29 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 export default function Goals() {
+    const { t } = useTranslation("common");
     const images = [
         {
             url: "images/home/Goals/noPoverty.png",
-            title: "Eradicate Poverty",
-            text: "We aim to reduce poverty by ensuring that individuals and families in need have access to nutritious meals, regardless of their financial circumstances. Through your generous contributions, we strive to improve the lives of those facing economic hardship",
+            title: "home.ourGoals.goal1",
+            text: "home.ourGoals.goal1text",
         },
         {
             url: "images/home/Goals/zeroHunger.png",
-            title: "Zero Hunger",
-            text: "Our mission is to eliminate hunger by providing regular access to wholesome and nourishing meals for those who are food-insecure. We encourage community participation and volunteering to create a lasting impact on food accessibility.",
+            title: "home.ourGoals.goal2",
+            text: "home.ourGoals.goal2text",
         },
         {
             url: "images/home/Goals/health.png",
-            title: "Promote Good Health",
-            text: "At Buy Me a Meal, we are on a mission to provide nutrition to prevent bad health and combat diseases caused by malnutrition",
+            title: "home.ourGoals.goal3",
+            text: "home.ourGoals.goal3text",
         },
     ];
 
     return (
         <div className='w-full h-full flex-col mt-6 p-6 justify-center  text-center'>
             <h1 className='font-bold mr-6 text-2xl sm:text-3xl lg:text-4xl text-[#192655] '>
-                Our Goals{" "}
+                {t("home.ourGoals.title")}
             </h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-4 w-full h-full   '>
                 {images.map((image, index) => (
@@ -38,10 +40,10 @@ export default function Goals() {
                         </div>
                         <div>
                             <h2 class='text-gray-800 text-3xl font-semibold'>
-                                {image.title}
+                                {t(`${image.title}`)}
                             </h2>
                             <p class='mt-2 text-gray-600 h-full'>
-                                {image.text}
+                                {t(`${image.text}`)}
                             </p>
                         </div>
                     </div>
