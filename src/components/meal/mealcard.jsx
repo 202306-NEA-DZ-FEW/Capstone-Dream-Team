@@ -15,6 +15,8 @@ export default function Mealcard({
     const [mealObject, setMealObject] = useState(mealDetail);
 
     // Function to handle quantity change
+    //console.log(mealDetail);
+    //console.log(mealObject);
 
     const handleQuantityChange = (event) => {
         const newQuantity = parseInt(event.target.value, 10);
@@ -48,16 +50,18 @@ export default function Mealcard({
 
     return (
         <div className='mb-10 w-80 h-96 relative'>
-            <div className='w-80 h-96 left-0 top-0 absolute bg-transparent' />
-            <div className='w-80 h-96 left-0 top-[92px] absolute bg-rose-100 rounded-3xl shadow'>
+            {/* <div className='w-80 h-96 left-0 top-0 absolute bg-transparent' /> */}
+            <div className='w-80 h-96 left-0 top-[92px] absolute  rounded-3xl shadow bg-orange-100'>
                 {/**meal name*/}
-                <div className="left-1/2 -translate-x-1/2 top-[160px] absolute justify-center text-black text-xl font-bold font-['Roboto']">
-                    {name}
-                </div>
+                <div className='top-[160px] absolute flex-col left-1/2 -translate-x-1/2 '>
+                    <p className='flex text-black text-xl font-bold justify-center items-center font-roboto whitespace-nowrap pb-2'>
+                        {name}
+                    </p>
 
-                {/**meal price*/}
-                <div className="left-1/2 -translate-x-1/2 top-[205px] absolute text-neutral-400 text-lg font-semibold font-['Roboto']">
-                    {price} £
+                    {/**meal price*/}
+                    <div className="  flex text-neutral-400 text-lg font-semibold font-['Roboto'] justify-center item-center">
+                        {price} £
+                    </div>
                 </div>
 
                 {/**separation ine */}

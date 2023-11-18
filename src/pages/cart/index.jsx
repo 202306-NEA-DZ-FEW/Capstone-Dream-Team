@@ -227,11 +227,7 @@ function Cart() {
                                 {/*<p class="text-gray-600 text-sm font-normal">Arrives on Jul 16</p>*/}
                             </div>
                         </div>
-                        {/*<hr class="bg-gray-200 h-0.5" />
-          <div class="flex flex-row justify-between">
-            <p class="text-gray-600">Discount Coupon</p>
-            <a class="text-gray-500 text-base underline" href="#">Add</a>
-  </div>*/}
+
                         <hr class='bg-gray-200 h-0.5' />
                         <div class='flex flex-row justify-between'>
                             <p class='text-gray-600'>

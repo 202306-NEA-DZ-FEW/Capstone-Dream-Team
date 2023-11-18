@@ -15,6 +15,7 @@ import { db } from "@/util/firebase";
 
 function AddToCartButton({ mealObject }) {
     //cookie ; uid
+
     const [visitorID, setVisitorID] = useState(null);
 
     const [isInCart, setIsInCart] = useState(false);
@@ -144,11 +145,11 @@ function AddToCartButton({ mealObject }) {
         <div>
             <button
                 onClick={toggleCart}
-                className={`w-32 h-3.5 left-[57.88px] top-[10.42px] absolute text-center text-black text-xl font-bold font-['Roboto'] leading-relaxed ${
-                    isInCart ? "bg-red-500" : "bg-blue-500"
+                className={`w-60 h-11 left-0 top-0 absolute rounded-full text-center text-black text-xl font-bold font-['Roboto'] leading-relaxed ${
+                    isInCart ? "bg-red-500" : "bg-orange-400 bg-opacity-80"
                 }`}
             >
-                {isInCart ? "Cancel" : `Donate....`}
+                {isInCart ? "Cancel" : `Donate`}
             </button>
         </div>
     );

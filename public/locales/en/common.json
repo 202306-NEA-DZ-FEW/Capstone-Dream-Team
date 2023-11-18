@@ -34,7 +34,7 @@
     },
     "cartPage": {
         "cart": {
-            "meal": "Meal",
+            "meal": "Meals",
             "price": "Price",
             "quantity": "QTY",
             "subtotal": "Subtotal",
@@ -153,6 +153,29 @@
         "meals": "meals",
         "blog": "blog",
         "followUs": "follow us"
+    },
+    "overview":{
+        "statCard":{
+            "totalMeals":"Total Meals",
+            "totalActiveMeals":"Total Active Meals",
+            "totalDonors":"Total Donors",
+            "totalDonation":"Total Donation"
+        },
+        "chartGraph":{
+            "donationPerDay":"Donation per day",
+            "weekdays": {
+                "0": "Sunday",
+                "1": "Monday",
+                "2": "Tuesday",
+                "3": "Wednesday",
+                "4": "Thursday",
+                "5": "Friday",
+                "6": "Saturday"
+              },
+              "date":"Date",
+              "day":"Day",
+              "count":"Count"
+        }
     },
     "home":{
         "HeroSection":{
