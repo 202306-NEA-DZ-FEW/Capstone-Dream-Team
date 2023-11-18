@@ -103,7 +103,7 @@ const Modal = ({ currentRestaurantId }) => {
                             {/* Modal body */}
                             <div className='p-6 space-y-6'>
                                 <div className='pb-10 pt-5 flex justify-center items-center'>
-                                    <div className='grid center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20 md:gap-10 xl:gap-8'>
+                                    <div className='grid center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 md:gap-8 lg:gap-4 xl:gap-20 '>
                                         {meals.map((mealDetail, mealIndex) => (
                                             <div
                                                 className='flex md:mb-10'
