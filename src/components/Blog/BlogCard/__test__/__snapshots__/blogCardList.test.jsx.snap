@@ -13,14 +13,14 @@ exports[`renders correctly 1`] = `
       >
         <img
           alt="Sample Title 1"
-          className="object-cover object-center scale-110 transition-all duration-400 hover:scale-100 rounded-xl object-cover w-full h-56"
+          className="rounded-xl object-cover w-full h-56"
           src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
         />
         <div
           className="py-2"
         >
           <p
-            className="w-80 text-stone-900 text-xl font-medium font-Outfit capitalize line-clamp-2"
+            className="w-80 text-stone-900 text-xl font-medium capitalize line-clamp-2"
           >
             Sample Title 1
           </p>
@@ -36,7 +36,7 @@ exports[`renders correctly 1`] = `
             onTouchStart={[Function]}
           >
             <button
-              className="bg-green-500 hover:bg-green-700 active:bg-green-800 px-4 py-2 rounded-md text-white font-medium font-Outfit"
+              className="bg-orange-400 hover:bg-orange-600 active:bg-green-800 px-4 py-2 rounded-md text-white font-medium font-Outfit"
             />
           </a>
           <div
@@ -57,14 +57,14 @@ exports[`renders correctly 1`] = `
       >
         <img
           alt="Sample Title 2"
-          className="object-cover object-center scale-110 transition-all duration-400 hover:scale-100 rounded-xl object-cover w-full h-56"
+          className="rounded-xl object-cover w-full h-56"
           src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
         />
         <div
           className="py-2"
         >
           <p
-            className="w-80 text-stone-900 text-xl font-medium font-Outfit capitalize line-clamp-2"
+            className="w-80 text-stone-900 text-xl font-medium capitalize line-clamp-2"
           >
             Sample Title 2
           </p>
@@ -80,7 +80,7 @@ exports[`renders correctly 1`] = `
             onTouchStart={[Function]}
           >
             <button
-              className="bg-green-500 hover:bg-green-700 active:bg-green-800 px-4 py-2 rounded-md text-white font-medium font-Outfit"
+              className="bg-orange-400 hover:bg-orange-600 active:bg-green-800 px-4 py-2 rounded-md text-white font-medium font-Outfit"
             />
           </a>
           <div

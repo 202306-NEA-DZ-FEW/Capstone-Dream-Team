@@ -22,25 +22,21 @@ export default function Blog({ blog, similarBlogs }) {
     return (
         <Layout>
             <main>
-                <div className=''>
-                    <div className='relative bg-gradient-to-r from-purple-600 to-blue-600 h-screen text-white overflow-hidden'>
-                        <div className='absolute inset-0'>
-                            <img
-                                src='/images/fatoom_in_yemen.png'
-                                alt={blog.title}
-                                className='object-cover object-center w-full h-full'
-                            />
-                            <div className='absolute inset-0 bg-black opacity-50'></div>
+                <div className='mt-10 max-w-screen-lg mx-auto'>
+                    <div className='mb-4 md:mb-0 w-full mx-auto relative'>
+                        <div className='px-4 lg:px-0'>
+                            <h2 className='pt-2 pb-4 text-4xl font-medium font-Outfit text-gray-800 leading-tight mb-2 '>
+                                {blog.title}
+                            </h2>
                         </div>
 
-                        <div className='relative z-10 flex flex-col justify-center mt-10 max-w-screen-lg mx-auto h-full'>
-                            <h1 className='text-5xl font-medium leading-tight mb-4'>
-                                {blog.title}
-                            </h1>
-                        </div>
+                        <img
+                            src='https://images.unsplash.com/photo-1587614387466-0a72ca909e16?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
+                            className='w-full object-cover lg:rounded h-96'
+                        />
                     </div>
 
-                    <div className='flex flex-col lg:flex-row lg:space-x-12 mt-10 max-w-screen-lg mx-auto'>
+                    <div className='flex flex-col lg:flex-row lg:space-x-12'>
                         <div className='px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4'>
                             {paragraphs.map((paragraph, index) => (
                                 <p className='pb-6' key={index}>
@@ -111,7 +107,7 @@ export default function Blog({ blog, similarBlogs }) {
                         </div>
                     </div>
 
-                    <div className='pt-2 pb-4 mt-10 max-w-screen-lg mx-auto'>
+                    <div className='pt-2 pb-4'>
                         <h2 className='text-4xl font-medium font-Outfit text-orange-500 leading-tight mb-2 '>
                             Related Articles
                         </h2>

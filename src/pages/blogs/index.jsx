@@ -27,7 +27,7 @@ export default function Blogs({ blogs, stories }) {
             <div className='flex flex-col dark:text-white'>
                 <div className='container mx-auto flex px-5 py-24 items-center justify-center flex-col'>
                     <div className='text-center lg:w-2/3 w-full'>
-                        <p className='sm:text-4xl text-4xl mb-4 font-medium p-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-200 via-teal-400 to-teal-600'>
+                        <p className='sm:text-4xl text-4xl mb-4 font-medium p-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via--400 to-blue-600'>
                             {t("blogPage.titleStories")}
                         </p>
                         <p className='mb-8 text-xl md:text-2xl lg:text-2xl'>
