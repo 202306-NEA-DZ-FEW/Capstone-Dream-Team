@@ -159,10 +159,12 @@
         "aboutus":"من نحن"
     },
     "footer": {
-        "home": "الصفحة الرئيسية",
-        "meals": "وجبات",
+        "home": "الرئيسية",
+        "meals": "الوجبات",
         "blog": "المدونة",
-        "followUs": "تابعنا"
+        "aboutus":"من نحن",
+        "copyright": "© 2023 Buymeameal, Inc. جميع الحقوق محفوظة."
+        
     },
         "overview": {
           "statCard": {
