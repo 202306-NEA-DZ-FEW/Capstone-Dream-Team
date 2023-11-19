@@ -80,6 +80,8 @@ export default function Historycard() {
 
             <div className='py-4 mx-4 md:mx-6'>
                 <div className='mt-4 pb-4 flex space-x-3 border-b border-gray-200 dark:border-gray-700'>
+                    {/** adjust the history styling */}
+                    <div>History</div>
                     <div>
                         <svg
                             className='fill-stroke text-gray-600 dark:text-white'
@@ -121,7 +123,8 @@ export default function Historycard() {
 
                 <div className='overflow-hidden'>
                     <table className='min-w-full text-center text-sm font-light'>
-                        <thead className='border-b bg-neutral-800 font-medium text-white dark:border-neutral-500 dark:bg-neutral-900'>
+                        {/* <thead className='border-b bg-gray-50 font-medium text-black dark:border-neutral-500 dark:bg-neutral-900'> */}
+                        <thead className='border-b bg-blue-300 bg-opacity-50 font-medium text-Black dark:border-neutral-500 dark:bg-neutral-900'>
                             <tr>
                                 <th scope='col' className=' px-6 py-4'>
                                     {t("history.Doner")}
@@ -177,9 +180,9 @@ export default function Historycard() {
                                             <button
                                                 className={`rounded-lg whitespace-nowrap px-8 py-4 ${
                                                     Donors.numbmeal === 0
-                                                        ? "bg-red-500"
-                                                        : "bg-green-500"
-                                                } w-full h-full pl-8 pr-8 pt-1 pb-1 bg-opacity-20 flex items-center justify-center rounded-md`}
+                                                        ? "bg-red-400"
+                                                        : "bg-green-300"
+                                                } w-full h-full pl-8 pr-8 pt-1 pb-1  flex items-center justify-center rounded-md`}
                                                 onClick={() =>
                                                     handleDecrement(index)
                                                 }
