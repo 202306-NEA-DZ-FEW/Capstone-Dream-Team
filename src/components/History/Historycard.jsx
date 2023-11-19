@@ -15,6 +15,7 @@ export default function Historycard() {
     const [blogData, setBlogData] = useState([]);
     const { t } = useTranslation("common");
     const [authUser, setAuthUser] = useState(null); // State to store the authenticated user.
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         const user = auth.currentUser;
@@ -77,6 +78,44 @@ export default function Historycard() {
         <div className='overflow-x-auto'>
             {/* <div className='overflow-x-auto sm:-mx-6 lg:-mx-8'> */}
 
+            <div className='py-4 mx-4 md:mx-6'>
+                <div className='mt-4 pb-4 flex space-x-3 border-b border-gray-200 dark:border-gray-700'>
+                    <div>
+                        <svg
+                            className='fill-stroke text-gray-600 dark:text-white'
+                            width={20}
+                            height={20}
+                            viewBox='0 0 20 20'
+                            fill='none'
+                            xmlns='http://www.w3.org/2000/svg'
+                        >
+                            <path
+                                d='M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z'
+                                stroke='currentColor'
+                                strokeWidth='1.25'
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                            />
+                            <path
+                                d='M19.0004 19.0004L14.6504 14.6504'
+                                stroke='currentColor'
+                                strokeWidth='1.25'
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                            />
+                        </svg>
+                    </div>
+                    <input
+                        type='text'
+                        placeholder="Search for the donor's name"
+                        onChange={(e) => {
+                            setSearch(e.target.value);
+                        }}
+                        className='focus:outline-none bg-transparent w-full text-sm text-gray-600'
+                    />
+                </div>
+            </div>
+
             <div className='inline-block min-w-full py-2 '>
                 {/* <div className='inline-block min-w-full py-2 sm:px-6 lg:px-8'> */}
 
@@ -105,45 +144,53 @@ export default function Historycard() {
                             </tr>
                         </thead>
                         <tbody>
-                            {blogData.map((Donors, index) => (
-                                <tr
-                                    className='border-b dark:border-neutral-500'
-                                    key={index}
-                                >
-                                    <td className='whitespace-nowrap  px-6 py-4 font-medium'>
-                                        {Donors.Name}
-                                    </td>
-                                    <td className='whitespace-nowrap  px-6 py-4'>
-                                        {Donors.meal}
-                                    </td>
-                                    <td className='whitespace-nowrap  px-6 py-4'>
-                                        {Donors.numb_meal}
-                                    </td>
-                                    <td className='whitespace-nowrap  px-6 py-4'>
-                                        {Donors.price} £
-                                    </td>
-                                    <td className='whitespace-nowrap  px-6 py-4'>
-                                        {Donors.DATE}
-                                    </td>
-                                    <td className='whitespace-nowrap  px-6 py-4'>
-                                        {" "}
-                                        <button
-                                            className={`rounded-lg whitespace-nowrap px-8 py-4 ${
-                                                Donors.numbmeal === 0
-                                                    ? "bg-red-500"
-                                                    : "bg-green-500"
-                                            } w-full h-full pl-8 pr-8 pt-1 pb-1 bg-opacity-20 flex items-center justify-center rounded-md`}
-                                            onClick={() =>
-                                                handleDecrement(index)
-                                            }
-                                        >
-                                            <div className='text-green-800 text-base font-poppins font-normal leading-6 break-words'>
-                                                {Donors.numbmeal}
-                                            </div>
-                                        </button>{" "}
-                                    </td>
-                                </tr>
-                            ))}
+                            {blogData
+                                .filter((Donors) => {
+                                    return search.toLowerCase() === ""
+                                        ? Donors
+                                        : Donors.Name.toLowerCase().includes(
+                                              search
+                                          );
+                                })
+                                .map((Donors, index) => (
+                                    <tr
+                                        className='border-b dark:border-neutral-500'
+                                        key={index}
+                                    >
+                                        <td className='whitespace-nowrap  px-6 py-4 font-medium'>
+                                            {Donors.Name}
+                                        </td>
+                                        <td className='whitespace-nowrap  px-6 py-4'>
+                                            {Donors.meal}
+                                        </td>
+                                        <td className='whitespace-nowrap  px-6 py-4'>
+                                            {Donors.numb_meal}
+                                        </td>
+                                        <td className='whitespace-nowrap  px-6 py-4'>
+                                            {Donors.price} £
+                                        </td>
+                                        <td className='whitespace-nowrap  px-6 py-4'>
+                                            {Donors.DATE}
+                                        </td>
+                                        <td className='whitespace-nowrap  px-6 py-4'>
+                                            {" "}
+                                            <button
+                                                className={`rounded-lg whitespace-nowrap px-8 py-4 ${
+                                                    Donors.numbmeal === 0
+                                                        ? "bg-red-500"
+                                                        : "bg-green-500"
+                                                } w-full h-full pl-8 pr-8 pt-1 pb-1 bg-opacity-20 flex items-center justify-center rounded-md`}
+                                                onClick={() =>
+                                                    handleDecrement(index)
+                                                }
+                                            >
+                                                <div className='text-green-800 text-base font-poppins font-normal leading-6 break-words'>
+                                                    {Donors.numbmeal}
+                                                </div>
+                                            </button>{" "}
+                                        </td>
+                                    </tr>
+                                ))}
                         </tbody>
                     </table>
                 </div>

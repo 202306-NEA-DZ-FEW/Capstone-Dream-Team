@@ -3,7 +3,7 @@ import Mealbar from "./mealbar";
 import React, { useState, useEffect } from "react";
 import { collection, query, getDocs, where } from "firebase/firestore"; // Import Firestore functions
 import { db } from "../../util/firebase"; // Replace with your Firebase config import
-
+import Bar from "./Bar";
 export default function Meals() {
     const [rest, setRest] = useState([]);
     const [search, setSearch] = useState("");
@@ -60,6 +60,8 @@ export default function Meals() {
 
     return (
         <div>
+            {/* <Bar /> */}
+            {/**search bar 
             <form>
                 <label
                     htmlFor='default-search'
@@ -102,7 +104,45 @@ export default function Meals() {
                         Search
                     </button>
                 </div>
-            </form>
+            </form>*/}
+            <div className='py-4 mx-4 md:mx-6'>
+                <div className='mt-4 pb-4 flex space-x-3 border-b border-gray-200 dark:border-gray-700'>
+                    <div>
+                        <svg
+                            className='fill-stroke text-gray-600 dark:text-white'
+                            width={20}
+                            height={20}
+                            viewBox='0 0 20 20'
+                            fill='none'
+                            xmlns='http://www.w3.org/2000/svg'
+                        >
+                            <path
+                                d='M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z'
+                                stroke='currentColor'
+                                strokeWidth='1.25'
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                            />
+                            <path
+                                d='M19.0004 19.0004L14.6504 14.6504'
+                                stroke='currentColor'
+                                strokeWidth='1.25'
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                            />
+                        </svg>
+                    </div>
+                    <input
+                        type='text'
+                        placeholder='Search for your favourite restaurant'
+                        onChange={(e) => {
+                            setSearch(e.target.value);
+                        }}
+                        className='focus:outline-none w-full bg-transparent text-sm text-gray-600'
+                    />
+                </div>
+            </div>
+
             {rest
                 .filter((restaurant) => {
                     return search.toLowerCase() === ""
