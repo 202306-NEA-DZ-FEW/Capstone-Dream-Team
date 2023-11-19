@@ -81,7 +81,9 @@ export default function Historycard() {
             <div className='py-4 mx-4 md:mx-6'>
                 <div className='mt-4 pb-4 flex space-x-3 border-b border-gray-200 dark:border-gray-700'>
                     {/** adjust the history styling */}
-                    <div>History</div>
+                    <div className='tracking-wider font-light font-roboto'>
+                        History
+                    </div>
                     <div>
                         <svg
                             className='fill-stroke text-gray-600 dark:text-white'

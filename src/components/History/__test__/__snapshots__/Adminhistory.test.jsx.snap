@@ -10,7 +10,9 @@ exports[`renders correctly 1`] = `
     <div
       className="mt-4 pb-4 flex space-x-3 border-b border-gray-200 dark:border-gray-700"
     >
-      <div>
+      <div
+        className="tracking-wider font-light font-roboto"
+      >
         History
       </div>
       <div>

@@ -73,7 +73,7 @@ export default function Mealcard({
 
                 {/* Qty */}
                 <div className='mt-[267px] pl-5 pr-5 flex justify-between items-center'>
-                    <div className='text-neutral-400 text-base font-medium text-blue-950 '>
+                    <div className=' text-base font-medium text-blue-950 '>
                         {t("cartPage.card.quantityLeft")}: {maxMeals}
                     </div>
                     <ul className='w-32 h-8 flex items-center'>

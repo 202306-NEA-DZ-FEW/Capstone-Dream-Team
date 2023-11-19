@@ -12,7 +12,7 @@ exports[`renders correctly 1`] = `
     className="flex flex-row items-center justify-between w-full"
   >
     <span
-      className="text-3xl font-bold font-Roboto leading-relaxed"
+      className="text-3xl font-[Changa] leading-relaxed"
     >
       Restaurant
     </span>
