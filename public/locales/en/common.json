@@ -48,7 +48,9 @@
             "averagePayPerMeal": "Average Price Per Meal",
             "total": "Total",
             "donate": "Donate",
-            "message": "Your Cart is Empty"
+            "message": "Your Cart is Empty",
+            "message2": "Looks like you have not added anything to your cart.",
+            "message3": "Click here to add"
         },
         "card": {
             "restaurant": "Restaurant",

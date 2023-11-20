@@ -14,10 +14,12 @@ import Checkout from "@/components/Cart/checkout";
 
 import Layout from "@/layout/Layout";
 import { db } from "@/util/firebase";
+import Link from "next/link";
 
 function Cart() {
     const { t } = useTranslation("common");
     const [meals, setMeals] = useState([]);
+    const [hoverOver, setHoverOver] = useState(false);
 
     const [visitorID, setVisitorID] = useState(null);
 
@@ -100,95 +102,129 @@ function Cart() {
 
     return (
         <Layout>
-            <div className='flex flex-col xl2:flex-row w-screen h-full  py-7 pl-2 pr-2'>
-                {/* Header Section */}
-                <div className='w-full flex flex-col h-fit gap-4 p-4'>
-                    <div className='flex flex-col md:flex-row gap-3 justify-between pl-4 pr-4 h-14 border-b-2'>
-                        <div className='  gap-6'>
-                            <p className='text-blue-900 text-xl font-semibold md2:w-[376px]'>
-                                {t("cartPage.cart.meal")}
+            {visitorID && meals.length !== 0 ? (
+                <div className='flex flex-col xl2:flex-row w-screen h-full  py-7 pl-2 pr-2'>
+                    {/* Header Section */}
+                    <div className='w-full flex flex-col h-fit gap-4 p-4'>
+                        <div className='flex flex-col md:flex-row gap-3 justify-between pl-4 pr-4 h-14 border-b-2'>
+                            <div className='  gap-6'>
+                                <p className='text-blue-900 text-xl font-semibold md2:w-[376px]'>
+                                    {t("cartPage.cart.meal")}
+                                </p>
+                            </div>
+                            <p className='text-blue-900 text-xl font-semibold hidden md2:block w-[100px] text-center'>
+                                {t("cartPage.cart.price")}
+                            </p>
+                            <p className='text-blue-900 text-xl font-semibold hidden md2:block w-[100px] text-center'>
+                                {t("cartPage.cart.quantity")}
+                            </p>
+                            <p className='text-blue-900 text-xl font-semibold hidden md2:block w-[100px] text-center'>
+                                {t("cartPage.cart.subtotal")}
+                            </p>
+                            <p className='text-blue-900 text-xl font-semibold hidden md2:block w-[100px] text-center'>
+                                {t("cartPage.cart.remove")}
                             </p>
                         </div>
-                        <p className='text-blue-900 text-xl font-semibold hidden md2:block w-[100px] text-center'>
-                            {t("cartPage.cart.price")}
-                        </p>
-                        <p className='text-blue-900 text-xl font-semibold hidden md2:block w-[100px] text-center'>
-                            {t("cartPage.cart.quantity")}
-                        </p>
-                        <p className='text-blue-900 text-xl font-semibold hidden md2:block w-[100px] text-center'>
-                            {t("cartPage.cart.subtotal")}
-                        </p>
-                        <p className='text-blue-900 text-xl font-semibold hidden md2:block w-[100px] text-center'>
-                            {t("cartPage.cart.remove")}
-                        </p>
-                    </div>
-                    {/* I map here to put the Cards*/}
-                    {visitorID && meals.length !== 0 ? (
-                        meals.map((meal) => (
+                        {/* I map here to put the Cards*/}
+
+                        {meals.map((meal) => (
                             <Card
                                 mealObject={meal}
                                 onUpdateQuantity={updateQuantity}
                                 onRemoveFromCart={removeFromCart}
                                 key={meal.id}
                             />
-                        ))
-                    ) : (
-                        <p>{t("cartPage.cart.message")}</p>
-                    )}
-                </div>
+                        ))}
 
-                {/* Checkout Card Section */}
-                <div className='flex flex-col w-full xl2:w-1/3 h-fit gap-4 p-4'>
-                    <p className='text-blue-900 text-xl font-semibold'>
-                        {t("cartPage.cart.summary")}
-                    </p>
-                    <div className='flex flex-col p-4 gap-4 text-lg font-semibold shadow-md border rounded-sm'>
-                        <div className='flex flex-row justify-between'>
-                            <p className='text-gray-600'>
-                                {t("cartPage.cart.totalMeals")}
-                            </p>
-                            <p className='text-end font-bold'>{totalMeals}</p>
-                        </div>
-                        <hr className='bg-gray-200 h-0.5' />
-                        <div className='flex flex-row justify-between'>
-                            <p className='text-gray-600'>
-                                {t("cartPage.cart.averagePayPerMeal")}
-                            </p>
-                            <div>
+                        {/*<p>{t("cartPage.cart.message")}</p>*/}
+                    </div>
+
+                    {/* Checkout Card Section */}
+                    <div className='flex flex-col w-full xl2:w-1/3 h-fit gap-4 p-4'>
+                        <p className='text-blue-900 text-xl font-semibold'>
+                            {t("cartPage.cart.summary")}
+                        </p>
+                        <div className='flex flex-col p-4 gap-4 text-lg font-semibold shadow-md border rounded-sm'>
+                            <div className='flex flex-row justify-between'>
+                                <p className='text-gray-600'>
+                                    {t("cartPage.cart.totalMeals")}
+                                </p>
                                 <p className='text-end font-bold'>
-                                    {Number.isNaN(totalCartPrice / totalMeals)
-                                        ? "$0"
-                                        : `$${(
-                                              totalCartPrice / totalMeals
-                                          ).toFixed(2)}`}
+                                    {totalMeals}
                                 </p>
                             </div>
-                        </div>
-
-                        <hr className='bg-gray-200 h-0.5' />
-                        <div className='flex flex-row justify-between'>
-                            <p className='text-gray-600'>
-                                {t("cartPage.cart.total")}
-                            </p>
-                            <div>
-                                <p className='text-end font-bold'>
-                                    ${totalCartPrice.toFixed(2)}
+                            <hr className='bg-gray-200 h-0.5' />
+                            <div className='flex flex-row justify-between'>
+                                <p className='text-gray-600'>
+                                    {t("cartPage.cart.averagePayPerMeal")}
                                 </p>
+                                <div>
+                                    <p className='text-end font-bold'>
+                                        {Number.isNaN(
+                                            totalCartPrice / totalMeals
+                                        )
+                                            ? "$0"
+                                            : `$${(
+                                                  totalCartPrice / totalMeals
+                                              ).toFixed(2)}`}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <Checkout
-                                Total={totalCartPrice.toFixed(2)}
-                                cart={meals}
-                            />
-                            {/* <button >
+
+                            <hr className='bg-gray-200 h-0.5' />
+                            <div className='flex flex-row justify-between'>
+                                <p className='text-gray-600'>
+                                    {t("cartPage.cart.total")}
+                                </p>
+                                <div>
+                                    <p className='text-end font-bold'>
+                                        ${totalCartPrice.toFixed(2)}
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <Checkout
+                                    Total={totalCartPrice.toFixed(2)}
+                                    cart={meals}
+                                />
+                                {/* <button >
                                  {t("cartPage.cart.donate")} 
                                 
                             </button>*/}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            ) : (
+                <div className='flex flex-col text-center justify-center mx-4 my-4'>
+                    <div className='flex justify-center'>
+                        <Link href='/meals'>
+                            <img
+                                className={`hover:transform hover:rotate-12 duration-300  ${
+                                    hoverOver &&
+                                    "transform rotate-12 duration-300"
+                                }`}
+                                src='/images/cart/cart.png'
+                            />
+                        </Link>
+                    </div>
+                    <p className='font-semibold text-4xl mb-8'>
+                        {t("cartPage.cart.message")}
+                    </p>
+                    <p className=' text-2xl'>
+                        {t("cartPage.cart.message2")}
+                        <Link
+                            className='pointer-cursor hover:text-blue-500'
+                            href='/meals'
+                            onMouseOver={() => setHoverOver(true)}
+                            onMouseLeave={() => setHoverOver(false)}
+                        >
+                            {" "}
+                            {t("cartPage.cart.message3")}
+                        </Link>{" "}
+                    </p>
+                </div>
+            )}
         </Layout>
     );
 }
