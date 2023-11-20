@@ -3,21 +3,15 @@ import Modal from "./modal";
 
 export default function Mealbar({ name, current_restaurant_Id, image }) {
     return (
-        <div
-            className='rounded-full p-4  flex items-center space-x-3'
-            style={{
-                backgroundImage: "url(/images/meals/Image218.png)",
-                backgroundSize: "cover",
-            }}
-        >
+        <div className='rounded-2xl p-4 border-2 flex items-center space-x-3'>
             <img className='w-14 h-14 rounded-full' src={image} />
 
-            <div className='flex flex-row items-center justify-between w-full'>
-                <span className='text-3xl font-bold font-Roboto leading-relaxed'>
+            <div className='flex flex-col md:flex-row items-center justify-between w-full'>
+                <span className='text-3xl font-[Changa] text-blue-700 leading-relaxed'>
                     {name}
                 </span>
 
-                <span className='text-xl font-Roboto leading-relaxed ml-auto'>
+                <span className='text-blue-950 text-xl font-bold leading-relaxed ml-auto'>
                     <Modal currentRestaurantId={current_restaurant_Id} />
                 </span>
             </div>

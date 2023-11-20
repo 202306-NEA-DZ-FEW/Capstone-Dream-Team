@@ -14,7 +14,8 @@ module.exports = {
     extend: {
       screens: {
         'xl2': '1160px', // Add your custom breakpoint
-        'md2': '820px'
+        'md2': '820px',
+        'lg2': '1330px'
       },
     },
   },

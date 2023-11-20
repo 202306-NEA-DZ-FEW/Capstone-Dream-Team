@@ -9,8 +9,7 @@ export default function Mealspage() {
     return (
         <>
             <Layout>
-                {/* <Mealcard /> */}
-                <Meals />
+                <Meals className='' />
             </Layout>
         </>
     );
