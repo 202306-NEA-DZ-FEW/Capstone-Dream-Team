@@ -41,43 +41,47 @@ exports[`renders correctly 1`] = `
       />
     </div>
   </div>
-  <ul
-    aria-label="Pagination"
-    className="flex items-center justify-center space-x-2"
-    role="navigation"
+  <div
+    className="mb-5"
   >
-    <li
-      className="previous cursor-not-allowed opacity-50"
+    <ul
+      aria-label="Pagination"
+      className="flex items-center justify-center space-x-2"
+      role="navigation"
     >
-      <a
-        aria-disabled="true"
-        aria-label="Previous page"
-        className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-700 "
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        rel="prev"
-        role="button"
-        tabIndex="-1"
+      <li
+        className="previous cursor-not-allowed opacity-50"
       >
-        Previous
-      </a>
-    </li>
-    <li
-      className="next"
-    >
-      <a
-        aria-disabled="false"
-        aria-label="Next page"
-        className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-700"
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        rel="next"
-        role="button"
-        tabIndex="0"
+        <a
+          aria-disabled="true"
+          aria-label="Previous page"
+          className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-700 "
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          rel="prev"
+          role="button"
+          tabIndex="-1"
+        >
+          Previous
+        </a>
+      </li>
+      <li
+        className="next"
       >
-        Next
-      </a>
-    </li>
-  </ul>
+        <a
+          aria-disabled="false"
+          aria-label="Next page"
+          className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-700"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          rel="next"
+          role="button"
+          tabIndex="0"
+        >
+          Next
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 `;

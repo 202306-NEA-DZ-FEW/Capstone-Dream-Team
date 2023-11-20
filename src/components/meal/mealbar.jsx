@@ -6,7 +6,7 @@ export default function Mealbar({ name, current_restaurant_Id, image }) {
         <div className='rounded-2xl p-4 border-2 flex items-center space-x-3'>
             <img className='w-14 h-14 rounded-full' src={image} />
 
-            <div className='flex flex-row items-center justify-between w-full'>
+            <div className='flex flex-col md:flex-row items-center justify-between w-full'>
                 <span className='text-3xl font-[Changa] leading-relaxed'>
                     {name}
                 </span>

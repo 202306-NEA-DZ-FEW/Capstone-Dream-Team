@@ -79,44 +79,47 @@ export default function Historycard() {
             {/* <div className='overflow-x-auto sm:-mx-6 lg:-mx-8'> */}
 
             <div className='py-4 mx-4 md:mx-6'>
-                <div className='mt-4 pb-4 flex space-x-3 border-b border-gray-200 dark:border-gray-700'>
-                    {/** adjust the history styling */}
-                    <div className='tracking-wider font-light font-roboto'>
-                        History
+                <div className='mt-4 pb-4 flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 dark:border-gray-700'>
+                    <div className='mb-2 sm:mb-0 tracking-wider font-light font-roboto'>
+                        {t("history.History ")}
                     </div>
-                    <div>
-                        <svg
-                            className='fill-stroke text-gray-600 dark:text-white'
-                            width={20}
-                            height={20}
-                            viewBox='0 0 20 20'
-                            fill='none'
-                            xmlns='http://www.w3.org/2000/svg'
-                        >
-                            <path
-                                d='M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z'
-                                stroke='currentColor'
-                                strokeWidth='1.25'
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                            />
-                            <path
-                                d='M19.0004 19.0004L14.6504 14.6504'
-                                stroke='currentColor'
-                                strokeWidth='1.25'
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                            />
-                        </svg>
+
+                    <div className='flex items-center'>
+                        <div>
+                            <svg
+                                className='fill-stroke text-gray-600 dark:text-white'
+                                width={20}
+                                height={20}
+                                viewBox='0 0 20 20'
+                                fill='none'
+                                xmlns='http://www.w3.org/2000/svg'
+                            >
+                                <path
+                                    d='M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z'
+                                    stroke='currentColor'
+                                    strokeWidth='1.25'
+                                    strokeLinecap='round'
+                                    strokeLinejoin='round'
+                                />
+                                <path
+                                    d='M19.0004 19.0004L14.6504 14.6504'
+                                    stroke='currentColor'
+                                    strokeWidth='1.25'
+                                    strokeLinecap='round'
+                                    strokeLinejoin='round'
+                                />
+                            </svg>
+                        </div>
+
+                        <input
+                            type='text'
+                            placeholder="Search for the donor's name"
+                            onChange={(e) => {
+                                setSearch(e.target.value);
+                            }}
+                            className='focus:outline-none bg-transparent w-full text-sm text-gray-600 mt-2 sm:mt-0 sm:ml-4'
+                        />
                     </div>
-                    <input
-                        type='text'
-                        placeholder="Search for the donor's name"
-                        onChange={(e) => {
-                            setSearch(e.target.value);
-                        }}
-                        className='focus:outline-none bg-transparent w-full text-sm text-gray-600'
-                    />
                 </div>
             </div>
 
