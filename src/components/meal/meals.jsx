@@ -215,7 +215,7 @@ export default function Meals() {
                         "px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-700"
                     }
                     disabledClassName={"cursor-not-allowed opacity-50"}
-                    activeClassName={"bg-green-500 text-black"}
+                    activeClassName={"bg-blue-700 text-black"}
                     pageClassName={
                         "px-4 py-2 border border-gray-300 rounded-full hover:bg-blue-400"
                     }
