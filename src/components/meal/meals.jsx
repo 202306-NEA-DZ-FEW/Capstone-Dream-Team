@@ -5,10 +5,12 @@ import { collection, query, getDocs, where } from "firebase/firestore"; // Impor
 import { db } from "../../util/firebase"; // Replace with your Firebase config import
 import Bar from "./Bar";
 import ReactPaginate from "react-paginate";
+import { useTranslation } from "next-i18next";
 
 export default function Meals() {
     const [rest, setRest] = useState([]);
     const [search, setSearch] = useState("");
+    const { t } = useTranslation("common");
 
     useEffect(() => {
         async function fetchMeals() {
@@ -148,7 +150,7 @@ export default function Meals() {
                     </div>
                     <input
                         type='text'
-                        placeholder='Search for your favourite restaurant'
+                        placeholder={t("mealsPage.Search")}
                         onChange={(e) => {
                             setSearch(e.target.value);
                         }}
@@ -215,7 +217,7 @@ export default function Meals() {
                         "px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-700"
                     }
                     disabledClassName={"cursor-not-allowed opacity-50"}
-                    activeClassName={"bg-blue-700 text-black"}
+                    activeClassName={"bg-blue-700 text-white"}
                     pageClassName={
                         "px-4 py-2 border border-gray-300 rounded-full hover:bg-blue-400"
                     }

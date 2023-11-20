@@ -36,7 +36,7 @@ exports[`renders correctly 1`] = `
       <input
         className="focus:outline-none w-full bg-transparent text-sm text-gray-600"
         onChange={[Function]}
-        placeholder="Search for your favourite restaurant"
+        placeholder="mealsPage.Search"
         type="text"
       />
     </div>

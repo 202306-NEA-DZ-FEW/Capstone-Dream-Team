@@ -81,7 +81,7 @@ export default function Historycard() {
             <div className='py-4 mx-4 md:mx-6'>
                 <div className='mt-4 pb-4 flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 dark:border-gray-700'>
                     <div className='mb-2 sm:mb-0 tracking-wider font-light font-roboto'>
-                        {t("history.History ")}
+                        {t("history.History")}
                     </div>
 
                     <div className='flex items-center'>
@@ -113,7 +113,7 @@ export default function Historycard() {
 
                         <input
                             type='text'
-                            placeholder="Search for the donor's name"
+                            placeholder={t("history.Search")}
                             onChange={(e) => {
                                 setSearch(e.target.value);
                             }}

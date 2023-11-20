@@ -115,6 +115,7 @@
     "mealsPage": {
         "donate": "Donate",
         "show_meals": "Show all meals",
+        "Search": "Search for your favourite restaurant",
         "available_meals": "Available Meals",
         "stock": "In stock",
         "mealsTable": {
@@ -145,6 +146,7 @@
         "Doner": "Doner",
         "Meal": "Meal",
         "Quantity": "Quantity",
+        "Search": "Search for the donor's name",
         "Price": "Price",
         "Date": "Date",
         "UsedMeals": "Used Meals"
@@ -168,6 +170,29 @@
         "meals": "meals",
         "blog": "blog",
         "followUs": "follow us"
+    },
+    "overview": {
+        "statCard": {
+            "totalMeals": "Total Meals",
+            "totalActiveMeals": "Total Active Meals",
+            "totalDonors": "Total Donors",
+            "totalDonation": "Total Donation"
+        },
+        "chartGraph": {
+            "donationPerDay": "Donation per day",
+            "weekdays": {
+                "0": "Sunday",
+                "1": "Monday",
+                "2": "Tuesday",
+                "3": "Wednesday",
+                "4": "Thursday",
+                "5": "Friday",
+                "6": "Saturday"
+            },
+            "date": "Date",
+            "day": "Day",
+            "count": "Count"
+        }
     },
     "home": {
         "HeroSection": {

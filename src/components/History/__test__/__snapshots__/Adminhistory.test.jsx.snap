@@ -13,7 +13,7 @@ exports[`renders correctly 1`] = `
       <div
         className="mb-2 sm:mb-0 tracking-wider font-light font-roboto"
       >
-        history.History 
+        history.History
       </div>
       <div
         className="flex items-center"
@@ -46,7 +46,7 @@ exports[`renders correctly 1`] = `
         <input
           className="focus:outline-none bg-transparent w-full text-sm text-gray-600 mt-2 sm:mt-0 sm:ml-4"
           onChange={[Function]}
-          placeholder="Search for the donor's name"
+          placeholder="history.Search"
           type="text"
         />
       </div>
