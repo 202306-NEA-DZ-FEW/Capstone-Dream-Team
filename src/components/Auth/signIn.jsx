@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import SignInWithGoogleButton from "./buttons/googleSignInButton";
 import { useTranslation } from "next-i18next";
+import toast from "react-hot-toast";
 
 const provider = new GoogleAuthProvider();
 
@@ -25,7 +26,7 @@ const SignIn = ({ updateComponent }) => {
                 router.push("/admin-dashboard");
             })
             .catch((error) => {
-                alert("Wrong Email Or Password Please Enter Valid Information");
+                toast.error(`${t("signupPage.signIn.wronginfos")}`);
             });
     };
 
@@ -38,7 +39,7 @@ const SignIn = ({ updateComponent }) => {
             router.push("/admin-dashboard");
         } catch {
             (error) => {
-                alert("Error, please try again");
+                toast.error(`${t("signupPage.signUp.try-again")}`);
             };
         }
     };
@@ -67,7 +68,7 @@ const SignIn = ({ updateComponent }) => {
             >
                 <div className='relative'>
                     <p
-                        class='bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+                        className='bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
                   absolute'
                     >
                         {t("signupPage.email")}
@@ -87,7 +88,7 @@ const SignIn = ({ updateComponent }) => {
                     />
                 </div>
                 <div className='relative'>
-                    <p class='bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute'>
+                    <p className='bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute'>
                         {t("signupPage.password")}
                     </p>
                     <FaLock className='absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400' />

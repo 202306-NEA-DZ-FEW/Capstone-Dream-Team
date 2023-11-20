@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="flex flex-col h-1/2 items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl relative z-10"
+>
+  <h1
+    className="w-full text-4xl  text-center leading-snug "
+  />
+  <div
+    className="mb-2 flex text-m text-black  "
+  >
+    <p>
+       
+    </p>
+    <span
+      className="ml-1 cursor-pointer underline"
+      onClick={[Function]}
+    >
+       
+       
+    </span>
+  </div>
+  <form
+    className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8"
+    onSubmit={[Function]}
+  >
+    <div
+      className="relative"
+    >
+      <p
+        className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
+      />
+      <svg
+        className="absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 512 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
+        />
+      </svg>
+      <input
+        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md pl-8"
+        id="username"
+        name="username"
+        onChange={[Function]}
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="relative"
+    >
+      <p
+        className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
+      />
+      <svg
+        className="absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 448 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"
+        />
+      </svg>
+      <input
+        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md pl-8"
+        id="password"
+        name="password"
+        onChange={[Function]}
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
+    <div>
+      <button
+        className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500 rounded-lg transition duration-200 hover:bg-indigo-600 ease"
+        type="submit"
+      />
+    </div>
+  </form>
+  <div
+    className="mb-6 block text-gray-600 mt-2"
+  >
+    <label
+      className="block text-orange-600 text-sm underline cursor-pointer"
+      onClick={[Function]}
+    />
+  </div>
+  <div
+    className="mb-6 block text-gray-600 mt-2 w-full"
+  >
+    <div
+      className="inline-block w-full p-2 border border-gray-300 rounded-lg shadow hover:shadow-md hover:bg-indigo-500 cursor-pointer relative bg-white text-center "
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="flex items-center  justify-center  "
+        onClick={[Function]}
+      >
+        <div
+          className="w-6 h-6  "
+        >
+          <svg
+            enableBackground="new 0 0 48 48"
+            fill="currentColor"
+            height={24}
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            version="1.1"
+            viewBox="0 0 48 48"
+            width={24}
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+            y="0px"
+          >
+            <path
+              d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
+	c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
+	c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+              fill="#FFC107"
+            />
+            <path
+              d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
+	C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+              fill="#FF3D00"
+            />
+            <path
+              d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
+	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+              fill="#4CAF50"
+            />
+            <path
+              d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
+	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+              fill="#1976D2"
+            />
+          </svg>
+        </div>
+        <span
+          className="text-md font-semibold rounded mr-2 ml-2 false"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

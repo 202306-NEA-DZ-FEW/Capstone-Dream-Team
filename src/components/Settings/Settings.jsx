@@ -18,9 +18,11 @@ import {
     EmailAuthProvider,
     deleteUser,
 } from "firebase/auth";
-import { getDownloadURL, ref, uploadBytes, getStorage } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { deleteObject } from "firebase/storage";
 import { useTranslation } from "next-i18next";
+import { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function Settings() {
     const { t } = useTranslation("common");
@@ -47,7 +49,6 @@ export default function Settings() {
     const [previewSrc, setPreviewSrc] = useState(null);
     // state for remove logo button
     const [showButton, setShowButton] = useState(false);
-    const [hidden, setHidden] = useState(false);
 
     const router = useRouter();
     const user = auth.currentUser;
@@ -159,13 +160,18 @@ export default function Settings() {
                 });
             }
 
-            // Update email
-            updateEmail(auth.currentUser, formData.email);
+            if (user.email !== formData.email) {
+                // Update email
+                updateEmail(auth.currentUser, formData.email);
+            }
+            toast.success(
+                `${t("signupPage.settings.mes_updatedsuccessfully")}`
+            );
         } else if (
             user.email !== formData.email &&
             user.emailVerified === false
         ) {
-            return alert("please verify your email in order to update it");
+            toast.error(`${t("signupPage.settings.verify_email")}`);
         }
         setIsEditable(false);
     };
@@ -175,10 +181,10 @@ export default function Settings() {
         auth.languageCode = router.locale;
         await sendEmailVerification(auth.currentUser)
             .then(() => {
-                alert("Email verification sent!");
+                toast.success(`${t("signupPage.settings.email_sent")}`);
             })
             .catch((error) => {
-                alert("Please try again");
+                toast.error(`${t("signupPage.settings.try_again")}`);
             });
     };
 
@@ -197,16 +203,17 @@ export default function Settings() {
                     // User re-authenticated.
                     updatePassword(user, newPassword);
                     // Password updated successfully
-                    console.log("Password updated");
+                    toast.success(`${t("signupPage.settings.pass_updated")}`);
                 })
                 .catch((error) => {
                     // An error ocurred
                     console.log(error);
-                    alert("Wrong password, please enter valid password");
+                    toast.error(`${t("signupPage.settings.wrong_pass")}`);
                 });
         } catch (error) {
             // Handle error
-            console.error("Error updating password:", error);
+            toast.error(`${t("signupPage.settings.errorupdate_pass")}`);
+            console.log(error);
         }
     };
 
@@ -233,15 +240,17 @@ export default function Settings() {
 
                     // account deleted successfully
                     console.log("account deleted");
+                    toast.success(`${t("signupPage.settings.success_delete")}`);
                 })
                 .catch((error) => {
                     // An error ocurred
                     console.log(error);
-                    alert("Wrong password, please enter valid password");
+                    toast.error(`${t("signupPage.settings.wrong_pass")}`);
                 });
         } catch (error) {
             // Handle error
-            console.error("Error deleting account:", error);
+            toast.error(`${t("signupPage.settings.error_delete")}`);
+            console.log(error);
         }
     };
 
@@ -265,7 +274,7 @@ export default function Settings() {
             if (validImageTypes.includes(file.type)) {
                 uploadToFirebaseStorage(file);
             } else {
-                alert("Please upload a valid image file (JPEG, PNG, GIF).");
+                toast.error(`${t("signupPage.settings.valid_image")}`);
             }
         }
     };
@@ -278,7 +287,7 @@ export default function Settings() {
             if (validImageTypes.includes(file.type)) {
                 uploadToFirebaseStorage(file);
             } else {
-                alert("Please upload a valid image file (JPEG, PNG, GIF).");
+                toast.error(`${t("signupPage.settings.valid_image")}`);
             }
         }
     };
@@ -338,29 +347,29 @@ export default function Settings() {
 
     return (
         <>
+            <Toaster
+                position='buttom-right'
+                toastOptions={{ duration: 7000, className: "text-lg" }}
+            />
             <Head>
                 <link
                     rel='stylesheet'
                     href='https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css'
                 />
-                <link
-                    rel='stylesheet'
-                    href='https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css'
-                />
             </Head>
 
-            <section class=' py-1 bg-blueGray-50'>
-                <div class='w-full lg:w-8/12 px-4 mx-auto mt-6' />
-                <div class='relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0'>
-                    <div class='rounded-t bg-white mb-0 px-6 py-6'>
-                        <div class='text-center flex justify-between'>
-                            <h6 class='text-blueGray-700 text-xl font-bold '>
+            <section className=' py-1'>
+                <div className='w-full lg:w-8/12 px-4 mx-auto ' />
+                <div className='relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg  border-0'>
+                    <div className='rounded-t bg-white mb-0 px-6 py-6'>
+                        <div className='text-center flex justify-between'>
+                            <h6 className='text-blueGray-700  tracking-wider font-light font-roboto'>
                                 {t("settings.my_account")}
                             </h6>
                             <div>
                                 {isEditable ? (
                                     <button
-                                        class='bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'
+                                        className='bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'
                                         type='submit'
                                         onClick={handleFormSubmit}
                                     >
@@ -368,7 +377,7 @@ export default function Settings() {
                                     </button>
                                 ) : null}
                                 <button
-                                    class='bg-teal-500 text-white active:bg-teal-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'
+                                    className='bg-orange-400 text-white active:bg-teal-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'
                                     type='button'
                                     onClick={handleSettings}
                                 >
@@ -377,15 +386,15 @@ export default function Settings() {
                             </div>
                         </div>
                     </div>
-                    <div class='flex-auto px-4 lg:px-10 py-10 pt-0'>
+                    <div className='flex-auto px-4 lg:px-10 py-10 pt-0'>
                         <form>
-                            <h6 class='text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase'>
+                            <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
                                 {t("settings.user_information")}
                             </h6>
 
-                            <div class='flex flex-wrap sm:flex sm:flex-nowrap justify-center sm:justify-start'>
+                            <div className='flex flex-wrap sm:flex sm:flex-nowrap justify-center sm:justify-start'>
                                 <div
-                                    className={` relative h-60 w-70 p-6 ml-4 mr-4 mb-4 ${
+                                    className={` relative h-60 w-70 p-6 ml-4 mr-4 mb-4 border ${
                                         isDragOver ? "border-indigo-600" : ""
                                     }`}
                                     onDragOver={handleDragOver}
@@ -394,14 +403,18 @@ export default function Settings() {
                                 >
                                     <input
                                         type='file'
-                                        className='absolute inset-0 h-60 w-70 opacity-0 z-20'
+                                        className='absolute inset-0 h-60 w-70 opacity-0 z-20 '
                                         onChange={handleFileChange}
                                         onMouseEnter={() => setShowButton(true)}
                                         onMouseLeave={() =>
                                             setShowButton(false)
                                         }
                                     />
-                                    <div className='text-center'>
+                                    <div
+                                        className={`text-center ${
+                                            previewSrc && "opacity-0"
+                                        }`}
+                                    >
                                         <img
                                             className='mx-auto h-12 w-12'
                                             src='https://www.svgrepo.com/show/357902/image-upload.svg'
@@ -426,12 +439,6 @@ export default function Settings() {
                                                     {" "}
                                                     {t("settings.to_upload")}
                                                 </span>
-                                                {/* <input
-                                                    id='file-upload'
-                                                    name='file-upload'
-                                                    type='file'
-                                                    className='sr-only'
-                                                    />*/}
                                             </label>
                                         </h3>
                                     </div>
@@ -459,11 +466,11 @@ export default function Settings() {
                                     )}
                                 </div>
 
-                                <div class='flex flex-wrap w-full'>
-                                    <div class='w-full lg:w-6/12 px-4'>
-                                        <div class='relative w-full mb-3'>
+                                <div className='flex flex-wrap w-full'>
+                                    <div className='w-full lg:w-6/12 px-4'>
+                                        <div className='relative w-full mb-3'>
                                             <label
-                                                class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                                className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                                 htmlfor='grid-password'
                                             >
                                                 {t("settings.restaurant_name")}
@@ -473,15 +480,15 @@ export default function Settings() {
                                                 name='restaurantName'
                                                 onChange={handleChange}
                                                 readOnly={!isEditable}
-                                                class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                                className='border  px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                                 value={formData.restaurantName}
                                             />
                                         </div>
                                     </div>
-                                    <div class='w-full lg:w-6/12 px-4'>
-                                        <div class='relative w-full mb-3'>
+                                    <div className='w-full lg:w-6/12 px-4'>
+                                        <div className='relative w-full mb-3'>
                                             <label
-                                                class='block  text-blueGray-600 text-xs font-bold mb-2'
+                                                className='block  text-blueGray-600 text-xs font-bold mb-2'
                                                 htmlfor='grid-password'
                                             >
                                                 {t("settings.email_address")}{" "}
@@ -505,15 +512,15 @@ export default function Settings() {
                                                 name='email'
                                                 onChange={handleChange}
                                                 readOnly={!isEditable}
-                                                class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                                className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                                 value={formData.email}
                                             />
                                         </div>
                                     </div>
-                                    <div class='w-full lg:w-6/12 px-4'>
-                                        <div class='relative w-full mb-3'>
+                                    <div className='w-full lg:w-6/12 px-4'>
+                                        <div className='relative w-full mb-3'>
                                             <label
-                                                class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                                className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                                 htmlfor='grid-password'
                                             >
                                                 {t("settings.first_name")}
@@ -523,15 +530,15 @@ export default function Settings() {
                                                 name='firstName'
                                                 onChange={handleChange}
                                                 readOnly={!isEditable}
-                                                class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                                className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                                 value={formData.firstName}
                                             />
                                         </div>
                                     </div>
-                                    <div class='w-full lg:w-6/12 px-4'>
-                                        <div class='relative w-full mb-3'>
+                                    <div className='w-full lg:w-6/12 px-4'>
+                                        <div className='relative w-full mb-3'>
                                             <label
-                                                class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                                className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                                 htmlfor='grid-password'
                                             >
                                                 {t("settings.last_name")}
@@ -541,23 +548,23 @@ export default function Settings() {
                                                 name='lastName'
                                                 onChange={handleChange}
                                                 readOnly={!isEditable}
-                                                class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                                className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                                 value={formData.lastName}
                                             />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <hr class='mt-6 border-b-1 border-blueGray-300' />
+                            <hr className='mt-6 border-b-1 border-blueGray-300' />
 
-                            <h6 class='text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase'>
+                            <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
                                 {t("settings.contact_information")}
                             </h6>
-                            <div class='flex flex-wrap'>
-                                <div class='w-full lg:w-12/12 px-4'>
-                                    <div class='relative w-full mb-3'>
+                            <div className='flex flex-wrap'>
+                                <div className='w-full lg:w-12/12 px-4'>
+                                    <div className='relative w-full mb-3'>
                                         <label
-                                            class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.address")}
@@ -567,15 +574,15 @@ export default function Settings() {
                                             name='address'
                                             onChange={handleChange}
                                             readOnly={!isEditable}
-                                            class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                            className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                             value={formData.address}
                                         />
                                     </div>
                                 </div>
-                                <div class='w-full lg:w-4/12 px-4'>
-                                    <div class='relative w-full mb-3'>
+                                <div className='w-full lg:w-4/12 px-4'>
+                                    <div className='relative w-full mb-3'>
                                         <label
-                                            class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.city")}
@@ -585,15 +592,15 @@ export default function Settings() {
                                             name='city'
                                             onChange={handleChange}
                                             readOnly={!isEditable}
-                                            class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                            className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                             value={formData.city}
                                         />
                                     </div>
                                 </div>
-                                <div class='w-full lg:w-4/12 px-4'>
-                                    <div class='relative w-full mb-3'>
+                                <div className='w-full lg:w-4/12 px-4'>
+                                    <div className='relative w-full mb-3'>
                                         <label
-                                            class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.country")}
@@ -603,15 +610,15 @@ export default function Settings() {
                                             name='country'
                                             onChange={handleChange}
                                             readOnly={!isEditable}
-                                            class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                            className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                             value={formData.country}
                                         />
                                     </div>
                                 </div>
-                                <div class='w-full lg:w-4/12 px-4'>
-                                    <div class='relative w-full mb-3'>
+                                <div className='w-full lg:w-4/12 px-4'>
+                                    <div className='relative w-full mb-3'>
                                         <label
-                                            class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.postal_code")}
@@ -621,15 +628,15 @@ export default function Settings() {
                                             name='postalCode'
                                             onChange={handleChange}
                                             readOnly={!isEditable}
-                                            class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                            className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                             value={formData.postalCode}
                                         />
                                     </div>
                                 </div>
-                                <div class='w-full lg:w-4/12 px-4'>
-                                    <div class='relative w-full mb-3'>
+                                <div className='w-full lg:w-4/12 px-4'>
+                                    <div className='relative w-full mb-3'>
                                         <label
-                                            class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.phone_number")}
@@ -639,23 +646,23 @@ export default function Settings() {
                                             name='phoneNumber'
                                             onChange={handleChange}
                                             readOnly={!isEditable}
-                                            class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                            className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                             value={formData.phoneNumber}
                                         />
                                     </div>
                                 </div>
                             </div>
 
-                            <hr class='mt-6 border-b-1 border-blueGray-300' />
+                            <hr className='mt-6 border-b-1 border-blueGray-300' />
 
-                            <h6 class='text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase'>
+                            <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
                                 {t("settings.description")}
                             </h6>
-                            <div class='flex flex-wrap'>
-                                <div class='w-full lg:w-12/12 px-4'>
-                                    <div class='relative w-full mb-3'>
+                            <div className='flex flex-wrap'>
+                                <div className='w-full lg:w-12/12 px-4'>
+                                    <div className='relative w-full mb-3'>
                                         <label
-                                            class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.description")}
@@ -665,7 +672,7 @@ export default function Settings() {
                                             name='about'
                                             onChange={handleChange}
                                             readOnly={!isEditable}
-                                            class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                            className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                             rows='4'
                                             value={formData.about}
                                         />
@@ -673,17 +680,17 @@ export default function Settings() {
                                 </div>
                             </div>
                         </form>
-                        <hr class='mt-6 border-b-1 border-blueGray-300' />
+                        <hr className='mt-6 border-b-1 border-blueGray-300' />
 
                         <form>
-                            <h6 class='text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase'>
+                            <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
                                 {t("settings.reset_your_password")}
                             </h6>
-                            <div class='flex flex-wrap'>
-                                <div class='w-full lg:w-4/12 px-4'>
-                                    <div class='relative w-full mb-3'>
+                            <div className='flex flex-wrap'>
+                                <div className='w-full lg:w-4/12 px-4'>
+                                    <div className='relative w-full mb-3'>
                                         <label
-                                            class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.enter_your_password")}
@@ -697,15 +704,15 @@ export default function Settings() {
                                                 )
                                             }
                                             readOnly={!isEditable}
-                                            class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                            className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                             value={currentPassword}
                                         />
                                     </div>
                                 </div>
-                                <div class='w-full lg:w-4/12 px-4'>
-                                    <div class='relative w-full mb-3'>
+                                <div className='w-full lg:w-4/12 px-4'>
+                                    <div className='relative w-full mb-3'>
                                         <label
-                                            class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t(
@@ -719,14 +726,14 @@ export default function Settings() {
                                                 setNewPassword(e.target.value)
                                             }
                                             readOnly={!isEditable}
-                                            class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                            className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                             value={newPassword}
                                         />
                                     </div>
                                 </div>
 
                                 <button
-                                    class='bg-teal-500 text-white active:bg-teal-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3'
+                                    className='bg-orange-400 text-white  font-bold uppercase text-xs px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3'
                                     type='submit'
                                     onClick={handleChangePassword}
                                 >
@@ -735,17 +742,17 @@ export default function Settings() {
                             </div>
                         </form>
 
-                        <hr class='mt-6 border-b-1 border-blueGray-300' />
+                        <hr className='mt-6 border-b-1 border-blueGray-300' />
 
                         <form>
-                            <h6 class='text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase'>
+                            <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
                                 {t("settings.delete_your_account")}
                             </h6>
-                            <div class='flex flex-wrap'>
-                                <div class='w-full lg:w-4/12 px-4'>
-                                    <div class='relative w-full mb-3'>
+                            <div className='flex flex-wrap'>
+                                <div className='w-full lg:w-4/12 px-4'>
+                                    <div className='relative w-full mb-3'>
                                         <label
-                                            class='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.enter_your_password")}
@@ -757,13 +764,13 @@ export default function Settings() {
                                                 setPassword(e.target.value)
                                             }
                                             readOnly={!isEditable}
-                                            class='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                                            className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                                             value={password}
                                         />
                                     </div>
                                 </div>
                                 <button
-                                    class='bg-teal-500 text-white active:bg-teal-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3'
+                                    className='bg-orange-400 text-white  font-bold uppercase text-xs px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3'
                                     type='submit'
                                     onClick={handleDeleteAccount}
                                 >
