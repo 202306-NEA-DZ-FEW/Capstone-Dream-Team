@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddToCartButton Component renders correctly 1`] = `
+<div>
+  <button
+    className="w-32 h-3.5 left-[57.88px] top-[10.42px] absolute text-center text-black text-xl font-bold font-['Roboto'] leading-relaxed bg-blue-500"
+    onClick={[Function]}
+  >
+    Donate....
+  </button>
+</div>
+`;

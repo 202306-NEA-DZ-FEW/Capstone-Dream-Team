@@ -1,11 +1,15 @@
 import renderer from "react-test-renderer";
-import SignUp from "../signUp";
-
-import { getAuth } from "@/util/firebase";
+import Settings from "../Settings";
+import { getAuth, auth } from "@/util/firebase";
 
 // Mock the Firebase services
 jest.mock("@/util/firebase", () => ({
     getAuth: jest.fn(),
+    auth: { currentUser: jest.fn() },
+}));
+
+jest.mock("next-i18next", () => ({
+    useTranslation: jest.fn().mockReturnValue({ t: jest.fn() }),
 }));
 
 // Mock the useRouter hook
@@ -15,12 +19,9 @@ jest.mock("next/router", () => ({
     }),
 }));
 
-jest.mock("next-i18next", () => ({
-    useTranslation: jest.fn().mockReturnValue({ t: jest.fn() }),
-}));
-
 it("renders correctly", () => {
     getAuth.mockReturnValue();
-    const tree = renderer.create(<SignUp />).toJSON();
+
+    const tree = renderer.create(<Settings />).toJSON();
     expect(tree).toMatchSnapshot();
 });

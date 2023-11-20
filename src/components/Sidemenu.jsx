@@ -16,7 +16,7 @@ import { PiMoonStarsLight } from "react-icons/pi";
 import AddMeals from "./Meals/addMeals";
 import Adminhistory from "./History/Adminhistory";
 import Overview from "./Overview/overview";
-import Settings from "./Settings";
+import Settings from "./Settings/Settings";
 import { auth, db } from "../util/firebase";
 
 export default function Sidemenu(props) {

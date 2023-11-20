@@ -7,7 +7,7 @@ import {
     where,
 } from "firebase/firestore";
 import { db } from "@/util/firebase";
-import { FaShoppingCart } from "react-icons/fa";
+
 import { GiShoppingCart } from "react-icons/gi";
 
 const CartIcon = () => {

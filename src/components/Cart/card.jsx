@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { collection, deleteDoc, getDocs, doc } from "firebase/firestore";
 import { db } from "@/util/firebase";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     const { t } = useTranslation("common");
     const [quantity, setQuantity] = useState(mealObject.quantity);
+
+    const router = useRouter();
+
     const cartCollection = collection(db, "cart");
 
     console.log(mealObject);
@@ -27,6 +31,7 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
             ) {
                 deleteDoc(doc(db, "cart", docSnapshot.id))
                     .then(() => {
+                        console.log(docSnapshot.id);
                         console.log("Product removed successfully!");
                     })
                     .catch((error) => {
@@ -91,54 +96,51 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
     }, []);
 
     return (
-        /* <div>
-       <p>{mealObject.name}</p>
-       <p>{mealObject.price}</p>
-       <p>{mealObject.description}</p>
-       <AddToCartButton mealObject={mealObject} />
- 
- 
-     </div>*/
-
-        <div class='flex flex-col p-4 text-lg font-semibold border-b-2 rounded-sm'>
-            <div class='flex flex-row gap-3 justify-between '>
-                <div class='flex flex-col md2:flex-row gap-6 items-center justify-center text-center md2:text-left'>
-                    <div class='w-28 h-28'>
+        <div className='flex flex-col p-4 text-lg font-semibold border-b-2 rounded-sm'>
+            <div className='flex flex-row gap-3 justify-between '>
+                <div
+                    className={`flex flex-col md2:flex-row gap-6 items-center justify-center text-center ${
+                        router.locale === "ar"
+                            ? "md2:text-right"
+                            : "md2:text-left"
+                    }`}
+                >
+                    <div className='w-28 h-28'>
                         <img
-                            class='w-full h-full'
+                            className='w-full h-full'
                             src={mealObject.imageUrl}
                             alt='image'
                         />
                     </div>
-                    <div class='flex flex-col gap-1 w-36 md:w-60'>
-                        <p class='text-lg text-gray-800 font-semibold'>
+                    <div className='flex flex-col gap-1 w-36 md:w-60'>
+                        <p className='text-lg text-gray-800 font-semibold'>
                             {mealObject.description}
                         </p>
-                        {/* <p class='text-xs text-gray-600 font-semibold'>
+                        {/* <p className='text-xs text-gray-600 font-semibold'>
                             {t("cartPage.card.restaurant")}:{" "}
-                            <span class='font-normal'>{mealObject.name}</span>
+                            <span className='font-normal'>{mealObject.name}</span>
                         </p>*/}
-                        <p class='text-xs text-gray-600 font-semibold hidden md2:block'>
+                        <p className='text-xs text-gray-600 font-semibold hidden md2:block'>
                             {t("cartPage.card.quantityLeft")}:{" "}
-                            <span class='font-normal'>
+                            <span className='font-normal'>
                                 {mealObject.maxMeals}
                             </span>
                         </p>
                     </div>
                 </div>
 
-                <div class='self-center text-center w-[100px] hidden md2:block'>
+                <div className='self-center text-center w-[100px] hidden md2:block'>
                     {/* Price */}
-                    <p class='text-gray-800 font-normal text-xl '>
-                        ${mealObject.price.toFixed(2)}
+                    <p className='text-gray-800 font-normal text-xl '>
+                        ${Number(mealObject.price).toFixed(2)}
                     </p>
                 </div>
 
                 {isSmallScreen ? (
                     <div className='flex flex-col justify-center items-center gap-4'>
-                        <div class='flex flex-row self-center gap-1 w-[100px] justify-center'>
+                        <div className='flex flex-row self-center gap-1 w-[100px] justify-center'>
                             <button
-                                class='w-5 h-5 self-center rounded-full border border-gray-300'
+                                className='w-5 h-5 self-center rounded-full border border-gray-300'
                                 onClick={decreament}
                             >
                                 <svg
@@ -155,13 +157,13 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                             </button>
                             <input
                                 type='text'
-                                id={`${mealObject.id}`}
+                                id={`${mealObject.name}`}
                                 value={quantity}
-                                class='w-8 h-8 text-center text-gray-900 text-sm outline-none border border-gray-300 rounded-sm'
+                                className='w-8 h-8 text-center text-gray-900 text-sm outline-none border border-gray-300 rounded-sm'
                                 onChange={handleQuantityChange}
                             />
                             <button
-                                class='w-5 h-5 self-center rounded-full border border-gray-300'
+                                className='w-5 h-5 self-center rounded-full border border-gray-300'
                                 onClick={increament}
                             >
                                 <svg
@@ -178,16 +180,19 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                             </button>
                         </div>
 
-                        <div class='self-center text-center w-[100px]'>
+                        <div className='self-center text-center w-[100px]'>
                             {/* subtotal*/}
-                            <p class='text-gray-800 font-normal text-xl'>
+                            <p className='text-gray-800 font-normal text-xl'>
                                 ${totalMealPrice.toFixed(2)}
                             </p>
                         </div>
-                        <div class='self-center w-[100px] text-center '>
-                            <button class=' ' onClick={removeFromCollection}>
+                        <div className='self-center w-[100px] text-center '>
+                            <button
+                                className=' '
+                                onClick={removeFromCollection}
+                            >
                                 <svg
-                                    class=''
+                                    className=''
                                     height='24px'
                                     width='24px'
                                     id='Layer_1'
@@ -213,9 +218,9 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                     </div>
                 ) : (
                     <>
-                        <div class='flex flex-row self-center gap-1 w-[100px] justify-center'>
+                        <div className='flex flex-row self-center gap-1 w-[100px] justify-center'>
                             <button
-                                class='w-5 h-5 self-center rounded-full border border-gray-300'
+                                className='w-5 h-5 self-center rounded-full border border-gray-300'
                                 onClick={decreament}
                             >
                                 <svg
@@ -232,13 +237,13 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                             </button>
                             <input
                                 type='text'
-                                id={`${mealObject.id}`}
+                                id={`${mealObject.name}`}
                                 value={quantity}
-                                class='w-8 h-8 text-center text-gray-900 text-sm outline-none border border-gray-300 rounded-sm'
+                                className='w-8 h-8 text-center text-gray-900 text-sm outline-none border border-gray-300 rounded-sm'
                                 onChange={handleQuantityChange}
                             />
                             <button
-                                class='w-5 h-5 self-center rounded-full border border-gray-300'
+                                className='w-5 h-5 self-center rounded-full border border-gray-300'
                                 onClick={increament}
                             >
                                 <svg
@@ -255,16 +260,19 @@ function Card({ mealObject, onRemoveFromCart, onUpdateQuantity }) {
                             </button>
                         </div>
 
-                        <div class='self-center text-center w-[100px]'>
+                        <div className='self-center text-center w-[100px]'>
                             {/* subtotal*/}
-                            <p class='text-gray-800 font-normal text-xl'>
+                            <p className='text-gray-800 font-normal text-xl'>
                                 ${totalMealPrice.toFixed(2)}
                             </p>
                         </div>
-                        <div class='self-center w-[100px] text-center '>
-                            <button class=' ' onClick={removeFromCollection}>
+                        <div className='self-center w-[100px] text-center '>
+                            <button
+                                className=' '
+                                onClick={removeFromCollection}
+                            >
                                 <svg
-                                    class=''
+                                    className=''
                                     height='24px'
                                     width='24px'
                                     id='Layer_1'

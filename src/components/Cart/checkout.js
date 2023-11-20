@@ -161,7 +161,7 @@ const Checkout = ({ Total, cart }) => {
         <div>
             {/* Modal toggle : must be donate button from the mouloud component !!!! */}
             <button
-                className='transition-colors text-sm bg-teal-500 hover:bg-purple-700 p-2 rounded-sm w-full text-white text-hover shadow-md'
+                className='transition-colors text-sm bg-orange-400 hover:bg-orange-600 p-2 rounded-sm w-full text-white text-hover shadow-md'
                 onClick={toggleModal}
             >
                 DONATE NOW
