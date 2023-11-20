@@ -212,7 +212,7 @@ function Cart() {
                         {t("cartPage.cart.message")}
                     </p>
                     <p className=' text-2xl'>
-                        {t("cartPage.cart.message2")}
+                        {t("cartPage.cart.message2")}.
                         <Link
                             className='pointer-cursor hover:text-blue-500'
                             href='/meals'
