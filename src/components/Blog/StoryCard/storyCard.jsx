@@ -12,7 +12,49 @@ export default function StoryCard({ story, index }) {
         else setIsPair(false);
     }, [index]);
     return (
-        <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-24 lg:py-12'>
+        <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-6 lg:px-12 lg:py-12'>
+            <div className='max-w-6xl mx-auto p-4 sm:px-6 h-full antialiased'>
+                <Link href={`blogs/story/${story.id}`}>
+                    <article className='group max-w-sm mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center'>
+                        <div
+                            className={`relative block  ${
+                                isPair ? "" : "order-1"
+                            }`}
+                        >
+                            <div
+                                className='absolute inset-0 bg-orange-300 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none'
+                                aria-hidden='true'
+                            ></div>
+                            <figure className='relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out'>
+                                <img
+                                    className='absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out'
+                                    src='/images/fatoom_in_yemen.png'
+                                    width='540'
+                                    height='303'
+                                    alt={story.data.title}
+                                />
+                            </figure>
+                        </div>
+                        <div>
+                            <div className={`${isPair ? "order-1" : ""}`}>
+                                <h3 className='text-2xl lg:text-3xl font-bold leading-tight mb-2 group-hover:text-blue-700 transition duration-150 ease-in-out text-blue-600'>
+                                    {story.data.title}
+                                </h3>
+                                <p className='text-lg text-gray-400 flex-grow line-clamp-3'>
+                                    {story.data.content
+                                        .replace("**", "")
+                                        .replace("/n", "")}
+                                </p>{" "}
+                            </div>
+                        </div>
+                    </article>{" "}
+                </Link>
+            </div>
+        </div>
+    );
+}
+{
+    /* <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-24 lg:py-12'>
             <div
                 className={`flex flex-col items-center justify-between ${
                     isPair ? "lg:flex-row" : "lg:flex-row-reverse"
@@ -31,38 +73,9 @@ export default function StoryCard({ story, index }) {
                                 href={`blogs/story/${story.id}`}
                                 className='flex '
                             >
-                                <p className='text-base flex text-teal-500 font-bold no-underline hover:underline py-4'>
-                                    <span>
-                                        {t("blogPage.storyCard.readMore")}
-                                    </span>
-                                    {router.locale === "en" ? (
-                                        <svg
-                                            className='w-4 h-4 ml-1 mt-1'
-                                            viewBox='0 0 24 24'
-                                            stroke='currentColor'
-                                            strokeWidth='2'
-                                            fill='none'
-                                            strokeLinecap='round'
-                                            strokeLinejoin='round'
-                                        >
-                                            <path d='M5 12h14'></path>
-                                            <path d='M12 5l7 7-7 7'></path>
-                                        </svg>
-                                    ) : (
-                                        <svg
-                                            className='w-4 h-4 ml-1 mt-1'
-                                            viewBox='0 0 24 24'
-                                            stroke='currentColor'
-                                            strokeWidth='2'
-                                            fill='none'
-                                            strokeLinecap='round'
-                                            strokeLinejoin='round'
-                                        >
-                                            <path d='M19 12H5'></path>
-                                            <path d='M12 5l-7 7 7 7'></path>
-                                        </svg>
-                                    )}
-                                </p>
+                                <button className='bg-orange-400 hover:bg-orange-600 active:bg-green-800 px-4 py-2 rounded-md text-white font-medium font-Outfit'>
+                                    {t("blogPage.storyCard.readMore")}
+                                </button>
                             </Link>
                         </div>
                     </div>
@@ -75,6 +88,5 @@ export default function StoryCard({ story, index }) {
                     />
                 </div>
             </div>
-        </div>
-    );
+            </div>*/
 }

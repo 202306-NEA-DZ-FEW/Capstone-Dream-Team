@@ -18,35 +18,85 @@ import { db } from "@/util/firebase";
 export default function Blog({ blog, similarBlogs }) {
     const { t } = useTranslation("common");
     const router = useRouter();
-    const paragraphs = blog.content.split("\n\n");
+
     return (
         <Layout>
             <main>
-                <div className=''>
-                    <div className='relative bg-gradient-to-r from-purple-600 to-blue-600 h-screen text-white overflow-hidden'>
-                        <div className='absolute inset-0'>
-                            <img
-                                src='/images/fatoom_in_yemen.png'
-                                alt={blog.title}
-                                className='object-cover object-center w-full h-full'
-                            />
-                            <div className='absolute inset-0 bg-black opacity-50'></div>
-                        </div>
-
-                        <div className='relative z-10 flex flex-col justify-center mt-10 max-w-screen-lg mx-auto h-full'>
-                            <h1 className='text-5xl font-medium leading-tight mb-4'>
+                <div className='mt-10 max-w-screen-lg mx-auto'>
+                    <div className='mb-4 md:mb-0 w-full relative h-96'>
+                        <div className='absolute left-0 bottom-0 w-full h-full z-10 bg-gradient-to-b from-transparent to-black opacity-80'></div>
+                        <img
+                            src='/images/fatoom_in_yemen.png'
+                            className='w-full h-full z-0 object-cover hover:object-scale-down'
+                        />
+                        <div className='p-4 absolute bottom-0 left-0 z-20'>
+                            <h2 className='text-4xl font-semibold text-gray-100 leading-tight'>
                                 {blog.title}
-                            </h1>
+                            </h2>
+                            <div className='flex mt-3'>
+                                <img
+                                    src='https://randomuser.me/api/portraits/men/97.jpg'
+                                    className='h-10 w-10 rounded-full mr-2 object-cover'
+                                />
+                                <div>
+                                    <p className='font-semibold text-gray-200 text-sm'>
+                                        {blog.author}
+                                    </p>
+                                    <p className='font-semibold text-gray-400 text-xs'>
+                                        {blog.publish_date
+                                            .split("/")
+                                            .map((part, index) =>
+                                                index === 1
+                                                    ? [
+                                                          "Jan",
+                                                          "Feb",
+                                                          "Mar",
+                                                          "Apr",
+                                                          "May",
+                                                          "Jun",
+                                                          "Jul",
+                                                          "Aug",
+                                                          "Sep",
+                                                          "Oct",
+                                                          "Nov",
+                                                          "Dec",
+                                                      ][part - 1]
+                                                    : part
+                                            )
+                                            .join(" ")}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div className='flex flex-col lg:flex-row lg:space-x-12 mt-10 max-w-screen-lg mx-auto'>
+                    <div className='flex flex-col lg:flex-row lg:space-x-12'>
                         <div className='px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4'>
-                            {paragraphs.map((paragraph, index) => (
-                                <p className='pb-6' key={index}>
-                                    {paragraph}
-                                </p>
-                            ))}
+                            {blog.content
+                                .split("/n/n")
+                                .map((paragraph, index) => (
+                                    <p className='pb-6' key={index}>
+                                        {paragraph
+                                            .split("/n")
+                                            .map((line, index) => (
+                                                <span key={index}>
+                                                    {line
+                                                        .split("**")
+                                                        .map((part, index) =>
+                                                            index % 2 === 0 ? (
+                                                                part
+                                                            ) : (
+                                                                <strong
+                                                                    key={index}
+                                                                >
+                                                                    {part}
+                                                                </strong>
+                                                            )
+                                                        )}
+                                                    <br />
+                                                </span>
+                                            ))}
+                                    </p>
+                                ))}
                         </div>
 
                         <div className='w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm pt-2'>
@@ -112,12 +162,11 @@ export default function Blog({ blog, similarBlogs }) {
                     </div>
 
                     <div className='pt-2 pb-4 mt-10 max-w-screen-lg mx-auto'>
-                        <h2 className='text-4xl font-medium font-Outfit text-orange-500 leading-tight mb-2 '>
-                            Related Articles
+                        <h2 className='text-4xl font-medium font-Outfit text-gray-800 leading-tight mb-2 '>
+                            {t("blogPage.blog.relatedArticles")}
                         </h2>
                         <p className='text-base text-gray-800 leading-tight'>
-                            The world needs to fight with the hunger. Let’s
-                            learn more
+                            {t("blogPage.blog.subRelatedArticles")}
                         </p>
                     </div>
                 </div>
@@ -131,7 +180,8 @@ export async function getStaticPaths() {
     const q = query(collection(db, "blogs"), where("type", "==", "article"));
     const queryBlog = await getDocs(q);
     queryBlog.forEach((doc) => {
-        paths.push({ params: { blog: doc.id } });
+        paths.push({ params: { blog: doc.id }, locale: "en" });
+        paths.push({ params: { blog: doc.id }, locale: "ar" });
     });
     return {
         paths,
@@ -146,7 +196,8 @@ export async function getStaticProps({ locale, params }) {
     const blog = docSnap.data();
     const q = query(
         collection(db, "blogs"),
-        where("tags", "array-contains-any", blog.tags)
+        where("tags", "array-contains-any", blog.tags),
+        where("type", "==", "article")
     );
     const queryBlog = await getDocs(q);
     queryBlog.forEach((doc) => {
