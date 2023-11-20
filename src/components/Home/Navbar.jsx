@@ -180,7 +180,7 @@ export default function Navbar({ locale }) {
                             </li>
                             <li>
                                 <Link
-                                    href='/aboutUs'
+                                    href='/aboutus'
                                     className='block py-2 pl-3 pr-4 lg:text-blue-900  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655]  lg:hover:border-0 cursor-pointer '
                                 >
                                     {t("Navbar.aboutus")}
