@@ -132,7 +132,7 @@ export default function Aboutus() {
                             {t("aboutus.Team")}{" "}
                         </h1>
                     </div>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap'>
+                    <div className=' grid grid-cols-1 s3:grid-cols-2 m3:grid-cols-3 lg3:grid-cols-5 gap'>
                         <Teamcard
                             linkedin='https://www.linkedin.com/in/mouloud-mecheter-4a3701166/'
                             github='https://github.com/mouloud247'
