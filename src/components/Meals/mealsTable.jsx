@@ -6,7 +6,7 @@ const MealsTable = ({ meals, onDelete }) => {
     return (
         <div className='overflow-x-auto overflow-y-hidden rounded-md border border-gray-200 shadow-md mt-5'>
             <table className='w-full text-center text-sm rtl:text-right'>
-                <thead className='text-xs  uppercase bg-gray-50 '>
+                <thead className='text-xs  uppercase bg-blue-300 bg-opacity-50 '>
                     <tr>
                         <th scope='col' className='px-6 py-3'>
                             {t("mealsPage.mealsTable.image")}
@@ -68,6 +68,7 @@ const MealsTable = ({ meals, onDelete }) => {
                                         </svg>
                                  </button> */}
                                     <button
+                                        className='text-red-700'
                                         onClick={() =>
                                             onDelete(meal.id, meal.imageUrl)
                                         }

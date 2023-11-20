@@ -170,7 +170,7 @@ function AddMeals() {
             <div>
                 <div className='sm:flex sm:items-center'>
                     <div className='sm:flex-auto pl-2'>
-                        <h1 className='text-xl text-gray-900'>
+                        <h1 className='tracking-wider font-light font-roboto'>
                             {t("mealsPage.meals.title")}
                         </h1>
                         <p className='text-sm font-semibold text-gray-700'>

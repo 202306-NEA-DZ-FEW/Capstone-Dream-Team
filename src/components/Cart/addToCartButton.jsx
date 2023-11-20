@@ -141,12 +141,14 @@ function AddToCartButton({ mealObject }) {
         }
     };
 
+    // className='bg-orange-400 hover:bg-orange-600 hover:text-white  py-3 px-8 text-lg rounded-full font-bold uppercase text-white border border-orange-400 tracking-widest'
+
     return (
         <div>
             <button
                 onClick={toggleCart}
-                className={`w-60 h-11 left-0 top-0 absolute rounded-full text-center text-black text-xl font-bold font-['Roboto'] leading-relaxed ${
-                    isInCart ? "bg-red-500" : "bg-orange-400 bg-opacity-80"
+                className={`w-60 h-11 left-0 top-0 absolute rounded-full text-center text-white text-xl font-bold uppercase leading-relaxed ${
+                    isInCart ? "bg-red-500" : "bg-orange-400 "
                 }`}
             >
                 {isInCart ? "Cancel" : `Donate`}
