@@ -1,10 +1,9 @@
 import renderer from "react-test-renderer";
 import Enter from "../index";
-import { getAuth } from "@/util/firebase";
 
 // Mock the Firebase services
 jest.mock("@/util/firebase", () => ({
-    getAuth: jest.fn(),
+    //getAuth: jest.fn(),
     auth: { currentUser: jest.fn() },
 }));
 
@@ -24,7 +23,7 @@ beforeEach(() => {
 });
 
 it("renders correctly", () => {
-    getAuth.mockReturnValue();
+    //getAuth.mockReturnValue();
 
     const tree = renderer.create(<Enter />).toJSON();
     expect(tree).toMatchSnapshot();
