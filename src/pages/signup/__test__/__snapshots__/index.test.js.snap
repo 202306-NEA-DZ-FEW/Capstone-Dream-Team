@@ -429,7 +429,7 @@ Array [
                 onMouseLeave={[Function]}
               >
                 <div
-                  className="flex items-center space-x-2 justify-center  "
+                  className="flex items-center  justify-center  "
                   onClick={[Function]}
                 >
                   <div
@@ -477,7 +477,7 @@ Array [
                     </svg>
                   </div>
                   <span
-                    className="text-md font-semibold rounded false"
+                    className="text-md font-semibold rounded mr-2 ml-2 false"
                   />
                 </div>
               </div>

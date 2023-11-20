@@ -181,7 +181,7 @@ exports[`renders correctly 1`] = `
       onMouseLeave={[Function]}
     >
       <div
-        className="flex items-center justify-center space-x-2"
+        className="flex items-center justify-center"
         onClick={[Function]}
       >
         <div
@@ -229,7 +229,7 @@ exports[`renders correctly 1`] = `
           </svg>
         </div>
         <span
-          className="text-md font-semibold rounded false"
+          className="text-md font-semibold rounded mr-2 ml-2 false"
         />
       </div>
     </div>
