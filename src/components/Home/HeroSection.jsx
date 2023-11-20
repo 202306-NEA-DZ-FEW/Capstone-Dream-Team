@@ -4,16 +4,16 @@ import React from "react";
 export default function HeroSection() {
     const { t } = useTranslation("common");
     return (
-        <main class='bg-white  font-open-sans'>
-            <div class='container mx-auto px-8 py-8 lg:py-10 relative flex flex-col lg:flex-row items-center'>
-                <div class='lg:w-1/2 bg-white p-6 rounded-xl flex flex-col items-center lg:items-start'>
-                    <h1 class='text-center p-2 text-3xl sm:text-3xl font-light text-black leading-tight mb-4'>
+        <main className='bg-white  font-open-sans'>
+            <div className='container mx-auto px-8 py-8 lg:py-10 relative flex flex-col lg:flex-row items-center'>
+                <div className='lg:w-1/2 bg-white p-6 rounded-xl flex flex-col items-center lg:items-start'>
+                    <h1 className='text-center p-2 text-3xl sm:text-3xl font-light text-black leading-tight mb-4'>
                         {t("home.HeroSection.mission")}
-                        <strong class='mt-4 font-black text-3xl text-blue-700 sm:text-4xl block'>
+                        <strong className='mt-4 font-black text-3xl text-blue-700 sm:text-4xl block'>
                             {t("home.HeroSection.help")}
                         </strong>
                     </h1>
-                    <p class='text-center  sm:text-lg text-gray-500 leading-relaxed'>
+                    <p className='text-center  sm:text-lg text-gray-500 leading-relaxed'>
                         {t("home.HeroSection.text")}
                     </p>
                     <div className='self-center mt-8'>
@@ -25,7 +25,7 @@ export default function HeroSection() {
                         </Link>
                     </div>
                 </div>
-                <div class=''>
+                <div>
                     <img src='images/home/slider/slider3.png' alt='helping' />
                 </div>
             </div>
