@@ -13,7 +13,8 @@
                 "first": "Don't you Have an account ?",
                 "second": "Sign Up"
             },
-            "subtitle2": "I forgot my password"
+            "subtitle2": "I forgot my password",
+            "wronginfos": "Wrong Email Or Password Please Enter Valid Information"
         },
         "signUp": {
             "title": "Create Account",
@@ -23,7 +24,10 @@
                 "second": "Sign In"
             },
             "name": "Name of Restaurant",
-            "confirm-password": "Confirm Your Password"
+            "confirm-password": "Confirm Your Password",
+            "pass-length": "Password must be at least 8 characters long",
+            "pass-confirm": "Please confirm your password",
+            "try-again": "Error, please try again"
         },
         "reset-password": {
             "title": "Reset Your Password",
@@ -44,7 +48,9 @@
             "averagePayPerMeal": "Average Price Per Meal",
             "total": "Total",
             "donate": "Donate",
-            "message": "Your Cart is Empty"
+            "message": "Your Cart is Empty",
+            "message2": "Looks like you have not added anything to your cart",
+            "message3": "Click here to add"
         },
         "card": {
             "restaurant": "Restaurant",
@@ -86,7 +92,7 @@
         }
     },
     "settings": {
-        "my_account": "My account",
+        "my_account": "Settings",
         "edit": "Edit",
         "save": "save",
         "user_information": "user information",
@@ -110,7 +116,17 @@
         "enter_your_password": "enter your password",
         "enter_your_new_password": "enter your new password",
         "delete_your_account": "delete your account",
-        "delete": "delete"
+        "delete": "delete",
+        "mes_updatedsuccessfully": "Profile updated successfully",
+        "verify_email": "Please verify your email in order to update it",
+        "email_sent": "Email verification sent!",
+        "try_again": "Please try again",
+        "pass_updated": "Password updated successfully",
+        "wrong_pass": "Wrong password, please enter valid password",
+        "errorupdate_pass": "Error updating password",
+        "success_delete": "Your account is deleted successfully",
+        "error_delete": "Error deleting account, please try again",
+        "valid_image": "Please upload a valid image file (JPEG, PNG, GIF)."
     },
     "mealsPage": {
         "donate": "Donate",

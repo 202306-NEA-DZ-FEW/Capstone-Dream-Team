@@ -14,14 +14,14 @@ const SignUpWithGoogleButton = ({ signUpWithGoogle }) => {
             onMouseLeave={() => setIsHovered(false)}
         >
             <div
-                className='flex items-center justify-center space-x-2'
+                className='flex items-center justify-center'
                 onClick={signUpWithGoogle}
             >
                 <div className='w-6 h-6'>
                     <FcGoogle size={24} />
                 </div>
                 <span
-                    className={`text-md font-semibold rounded ${
+                    className={`text-md font-semibold rounded mr-2 ml-2 ${
                         isHovered && "text-white"
                     }`}
                 >
