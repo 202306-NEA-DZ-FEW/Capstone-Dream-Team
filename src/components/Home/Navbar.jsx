@@ -1,24 +1,21 @@
-import { signOut } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-
-import { useEffect, useState } from "react";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { BsSun } from "react-icons/bs";
+import { useState } from "react";
 import { IoEarthOutline } from "react-icons/io5";
 
-import { auth } from "../../util/firebase";
 import CartIcon from "../Cart/cartIcon";
+import { auth } from "../../util/firebase";
 
 export default function Navbar({ locale }) {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
     const [clicked, setClicked] = useState(false);
 
     const router = useRouter();
     const { t } = useTranslation("common");
+
+    const { pathname } = router;
 
     // Function to change the language
     const changeLanguage = (newLanguage) => {
@@ -156,7 +153,11 @@ export default function Navbar({ locale }) {
                         <ul className='flex flex-col text-lg normal-case space-y-12 lg:space-y-0 items-center mt-4 font-medium lg:flex-row lg:space-x-6 lg:mt-0'>
                             <li>
                                 <Link
-                                    className='block py-2 pl-3 pr-4 lg:text-blue-900  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer '
+                                    className={`block py-2 pl-3 pr-4 lg:text-blue-900  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer  ${
+                                        pathname === "/"
+                                            ? "focus:outline-non lg:text-orange-600  "
+                                            : ""
+                                    }`}
                                     href='/'
                                 >
                                     {t("Navbar.home")}
@@ -164,7 +165,11 @@ export default function Navbar({ locale }) {
                             </li>
                             <li>
                                 <Link
-                                    className='block py-2 pl-3 pr-4 lg:text-blue-900 lg:font-bold border-b border-gray-100 hover:text-blue-800 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer '
+                                    className={`block py-2 pl-3 pr-4 lg:text-blue-900 lg:font-bold border-b border-gray-100 hover:text-blue-800 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer ${
+                                        pathname === "/meals"
+                                            ? "focus:outline-non lg:text-orange-600  "
+                                            : ""
+                                    }`}
                                     href='/meals'
                                 >
                                     {t("Navbar.meals")}
@@ -173,7 +178,11 @@ export default function Navbar({ locale }) {
                             <li>
                                 <Link
                                     href='/blogs'
-                                    className='block py-2 pl-3 pr-4 lg:text-blue-900 lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655]  lg:hover:border-0 cursor-pointer '
+                                    className={`block py-2 pl-3 pr-4 lg:text-blue-900 lg:font-bold border-b border-gray-100 hover:text-blue-800 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer ${
+                                        pathname === "/blogs"
+                                            ? "focus:outline-non lg:text-orange-600  "
+                                            : ""
+                                    }`}
                                 >
                                     {t("Navbar.blogs")}
                                 </Link>
@@ -181,14 +190,25 @@ export default function Navbar({ locale }) {
                             <li>
                                 <Link
                                     href='/aboutus'
-                                    className='block py-2 pl-3 pr-4 lg:text-blue-900  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655]  lg:hover:border-0 cursor-pointer '
+                                    className={`block py-2 pl-3 pr-4 lg:text-blue-900 lg:font-bold border-b border-gray-100 hover:text-blue-800 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer ${
+                                        pathname === "/aboutus"
+                                            ? "focus:outline-non lg:text-orange-600  "
+                                            : ""
+                                    }`}
                                 >
                                     {t("Navbar.aboutus")}
                                 </Link>
                             </li>
                             <li>
                                 <div className='relative group'>
-                                    <span className='block py-2 pl-3 pr-4 lg:text-blue-900 lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655]  lg:hover:border-0 cursor-pointer '>
+                                    <span
+                                        className={`block py-2 pl-3 pr-4 lg:text-blue-900 lg:font-bold border-b border-gray-100 hover:text-blue-800 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer ${
+                                            pathname === "/signup" ||
+                                            pathname === "/admin-dashboard"
+                                                ? "focus:outline-non lg:text-orange-600  "
+                                                : ""
+                                        }`}
+                                    >
                                         {!auth.currentUser ? (
                                             <Link href='/signup'>
                                                 {t("Navbar.signIn")}{" "}
