@@ -18,10 +18,6 @@ jest.mock("next/router", () => ({
     }),
 }));
 
-beforeEach(() => {
-    jest.clearAllMocks();
-});
-
 it("renders correctly", () => {
     //getAuth.mockReturnValue();
 
