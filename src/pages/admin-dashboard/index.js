@@ -57,11 +57,12 @@ export default function AdminDashboard({ locale }) {
                             </div>
                         ) : (
                             <div className='flex text-4xl font-bold '>
-                                <span className='animate-pulse duration-300'>
-                                    loading...
-                                </span>
                                 <span className='animate-spin duration-300'>
                                     <FaTruckLoading size={20} />
+                                </span>
+                                <span className=''>loading</span>
+                                <span className='animate-pulse duration-300'>
+                                    ...
                                 </span>
                             </div>
                         )}
