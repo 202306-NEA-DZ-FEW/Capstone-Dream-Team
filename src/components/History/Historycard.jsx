@@ -83,7 +83,6 @@ export default function Historycard() {
                     <div className='mb-2 sm:mb-0 tracking-wider font-light font-roboto'>
                         {t("history.History")}
                     </div>
-
                     <div className='flex items-center'>
                         <div>
                             <svg
@@ -126,7 +125,7 @@ export default function Historycard() {
             <div className='inline-block min-w-full py-2 '>
                 {/* <div className='inline-block min-w-full py-2 sm:px-6 lg:px-8'> */}
 
-                <div className='overflow-hidden'>
+                <div className='overflow-hidden  rounded-md border border-gray-200 shadow-md'>
                     <table className='min-w-full text-center text-sm font-light'>
                         {/* <thead className='border-b bg-gray-50 font-medium text-black dark:border-neutral-500 dark:bg-neutral-900'> */}
                         <thead className='border-b bg-blue-300 bg-opacity-50 font-medium text-Black dark:border-neutral-500 dark:bg-neutral-900'>
