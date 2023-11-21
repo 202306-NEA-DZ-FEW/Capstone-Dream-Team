@@ -38,7 +38,7 @@ export default function Blogs({ blogs, stories }) {
                     <div className='flex justify-center pt-4 pb-10'>
                         <div className='flex items-center justify-center'>
                             <div
-                                className='flex items-center rounded-full border border-gray-300 bg-secondary-50 px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gray-100'
+                                className='flex items-center rounded-full bg-orange-300 bg-secondary-50 px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-orange-400'
                                 onClick={showMoreStories}
                             >
                                 <p className='px-1'>{t("blogPage.loadMore")}</p>
@@ -75,7 +75,7 @@ export default function Blogs({ blogs, stories }) {
                     <div className='flex justify-center pt-4 pb-10'>
                         <div className='flex items-center justify-center'>
                             <div
-                                className='flex items-center rounded-full border border-gray-300 bg-secondary-50 px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gray-100'
+                                className='flex items-center rounded-full bg-orange-300 bg-secondary-50 px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-orange-400'
                                 onClick={showMoreBlogs}
                             >
                                 <p className='px-1'>{t("blogPage.loadMore")}</p>

@@ -10,7 +10,6 @@ exports[`renders correctly 1`] = `
     <img
       alt="Sample Title 1"
       className="rounded-xl object-cover w-full h-56"
-      src="/images/fatoom_in_yemen.png"
     />
     <div
       className="group-hover:bg-transparent transition rounded-xl duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-700 opacity-25"
@@ -35,7 +34,7 @@ exports[`renders correctly 1`] = `
       onTouchStart={[Function]}
     >
       <p
-        className="bg-blue-400 hover:bg-blue-500 px-4 py-2 rounded-md text-white font-medium font-Outfit"
+        className="bg-blue-400 group-hover:bg-blue-500 px-4 py-2 rounded-md text-white font-medium font-Outfit"
       />
     </a>
     <div

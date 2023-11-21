@@ -9,7 +9,7 @@ export default function BlogCard({ blog }) {
         <div className='dark:text-white flex flex-col justify-center lg:py-5 md:py-5 overflow-hidden w-80  transition-shadow duration-300 rounded group'>
             <div className='relative'>
                 <img
-                    src='/images/fatoom_in_yemen.png'
+                    src={blog.data.featured_image}
                     className='rounded-xl object-cover w-full h-56'
                     alt={blog.data.title}
                 />
@@ -27,7 +27,7 @@ export default function BlogCard({ blog }) {
                         blog.data.type == "article" ? "blog" : "story"
                     }/${blog.id}`}
                 >
-                    <p className='bg-blue-400 hover:bg-blue-500 px-4 py-2 rounded-md text-white font-medium font-Outfit'>
+                    <p className='bg-blue-400 group-hover:bg-blue-500 px-4 py-2 rounded-md text-white font-medium font-Outfit'>
                         {t("blogPage.storyCard.readMore")}
                     </p>
                 </Link>
