@@ -164,14 +164,12 @@ export default function Settings() {
                 // Update email
                 updateEmail(auth.currentUser, formData.email);
             }
-            toast.success(
-                `${t("signupPage.settings.mes_updatedsuccessfully")}`
-            );
+            toast.success(`${t("settings.mes_updatedsuccessfully")}`);
         } else if (
             user.email !== formData.email &&
             user.emailVerified === false
         ) {
-            toast.error(`${t("signupPage.settings.verify_email")}`);
+            toast.error(`${t("settings.verify_email")}`);
         }
         setIsEditable(false);
     };
@@ -181,10 +179,10 @@ export default function Settings() {
         auth.languageCode = router.locale;
         await sendEmailVerification(auth.currentUser)
             .then(() => {
-                toast.success(`${t("signupPage.settings.email_sent")}`);
+                toast.success(`${t("settings.email_sent")}`);
             })
             .catch((error) => {
-                toast.error(`${t("signupPage.settings.try_again")}`);
+                toast.error(`${t("settings.try_again")}`);
             });
     };
 
@@ -203,16 +201,16 @@ export default function Settings() {
                     // User re-authenticated.
                     updatePassword(user, newPassword);
                     // Password updated successfully
-                    toast.success(`${t("signupPage.settings.pass_updated")}`);
+                    toast.success(`${t("settings.pass_updated")}`);
                 })
                 .catch((error) => {
                     // An error ocurred
                     console.log(error);
-                    toast.error(`${t("signupPage.settings.wrong_pass")}`);
+                    toast.error(`${t("settings.wrong_pass")}`);
                 });
         } catch (error) {
             // Handle error
-            toast.error(`${t("signupPage.settings.errorupdate_pass")}`);
+            toast.error(`${t("settings.errorupdate_pass")}`);
             console.log(error);
         }
     };
@@ -240,16 +238,16 @@ export default function Settings() {
 
                     // account deleted successfully
                     console.log("account deleted");
-                    toast.success(`${t("signupPage.settings.success_delete")}`);
+                    toast.success(`${t("settings.success_delete")}`);
                 })
                 .catch((error) => {
                     // An error ocurred
                     console.log(error);
-                    toast.error(`${t("signupPage.settings.wrong_pass")}`);
+                    toast.error(`${t("settings.wrong_pass")}`);
                 });
         } catch (error) {
             // Handle error
-            toast.error(`${t("signupPage.settings.error_delete")}`);
+            toast.error(`${t("settings.error_delete")}`);
             console.log(error);
         }
     };
@@ -274,7 +272,7 @@ export default function Settings() {
             if (validImageTypes.includes(file.type)) {
                 uploadToFirebaseStorage(file);
             } else {
-                toast.error(`${t("signupPage.settings.valid_image")}`);
+                toast.error(`${t("settings.valid_image")}`);
             }
         }
     };
@@ -287,7 +285,7 @@ export default function Settings() {
             if (validImageTypes.includes(file.type)) {
                 uploadToFirebaseStorage(file);
             } else {
-                toast.error(`${t("signupPage.settings.valid_image")}`);
+                toast.error(`${t("settings.valid_image")}`);
             }
         }
     };

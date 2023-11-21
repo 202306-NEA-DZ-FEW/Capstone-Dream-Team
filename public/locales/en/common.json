@@ -283,5 +283,10 @@
         "Creativity": "Creativity",
         "p creat": "We enriched our database by working with meals instead of coupons ; and we used Stripe for real time paiment.",
         "Team": "Meet Our Wonderful Team"
+    },
+    "404Page": {
+        "message1": "Page Not Found",
+        "message2": "Sorry, the page you are looking for could not be found.",
+        "button": "Return Home"
     }
 }
