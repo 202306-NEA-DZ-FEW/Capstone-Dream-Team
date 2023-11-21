@@ -9,8 +9,32 @@ class MyDocument extends Document {
     render() {
         return (
             <Html lang='en'>
-                <Head></Head>
-                <body dir='ltr'>
+                <Head>
+                    <link
+                        rel='shortcut icon'
+                        href='/images/home/Navbar/sidebarLogo.png'
+                    />
+                    <link
+                        rel='preconnect'
+                        href='https://fonts.googleapis.com'
+                    />
+                    <link rel='preconnect' href='https://fonts.gstatic.com' />
+                    <link
+                        href='https://fonts.googleapis.com/css2?family=Outfit&display=swap'
+                        rel='stylesheet'
+                    />
+
+                    <link
+                        rel='preconnect'
+                        href='https://fonts.googleapis.com'
+                    />
+                    <link rel='preconnect' href='https://fonts.gstatic.com' />
+                    <link
+                        href='https://fonts.googleapis.com/css2?family=Changa:wght@500&family=Elsie&family=Outfit&display=swap'
+                        rel='stylesheet'
+                    />
+                </Head>
+                <body className='font-[outfit]' dir='ltr'>
                     <Main />
                     <NextScript />
                 </body>
