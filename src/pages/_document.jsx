@@ -11,6 +11,10 @@ class MyDocument extends Document {
             <Html lang='en'>
                 <Head>
                     <link
+                        rel='shortcut icon'
+                        href='/images/home/Navbar/sidebarLogo.png'
+                    />
+                    <link
                         rel='preconnect'
                         href='https://fonts.googleapis.com'
                     />
