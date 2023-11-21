@@ -81,7 +81,7 @@ const Modal = ({ currentRestaurantId }) => {
                                 <div>
                                     <button
                                         type='button'
-                                        className='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover-bg-gray-600 dark:hover-text-white'
+                                        className='text-gray-400 bg-transparent hover:rotate-90 duration-300 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover-bg-gray-600 dark:hover-text-white'
                                         data-modal-hide='default-modal'
                                         onClick={hideModal}
                                     >
