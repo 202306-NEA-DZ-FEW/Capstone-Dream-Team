@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 import { FaEnvelope, FaLock, FaUtensils } from "react-icons/fa";
-
+import toast from "react-hot-toast";
 import SignUpWithGoogleButton from "./buttons/googleSignUpButton";
 import { auth, db } from "../../util/firebase";
 
@@ -26,12 +26,12 @@ const SignUp = ({ updateComponent }) => {
     const handleSignUp = async (e) => {
         e.preventDefault();
         if (password.length < 8) {
-            alert("Password must be at least 8 characters long");
+            toast.error(`${t("signupPage.signUp.pass-length")}`);
             return;
         }
 
         if (password !== passConfirm) {
-            alert("Please confirm your password");
+            toast.error(`${t("signupPage.signUp.pass-confirm")}`);
             return;
         }
 
@@ -59,7 +59,7 @@ const SignUp = ({ updateComponent }) => {
                 displayName: name,
             });
         } catch (error) {
-            alert("Error, please try again");
+            toast.error(`${t("signupPage.signUp.try-again")}`);
             console.log(error);
         }
     };
@@ -87,7 +87,7 @@ const SignUp = ({ updateComponent }) => {
                 // Add other user-related data as needed
             });
         } catch (error) {
-            alert("Error, please try again");
+            toast.error(`${t("signupPage.signUp.try-again")}`);
         }
     };
 

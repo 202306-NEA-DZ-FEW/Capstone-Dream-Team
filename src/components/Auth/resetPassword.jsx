@@ -2,21 +2,20 @@ import React, { useState } from "react";
 import { auth } from "@/util/firebase";
 import { FaEnvelope } from "react-icons/fa";
 import { useTranslation } from "next-i18next";
+import toast from "react-hot-toast";
 
 function ResetPassword({ updateComponent }) {
     const { t } = useTranslation("common");
     const [email, setEmail] = useState("");
-    const [message, setMessage] = useState(null);
-    const success = "Password reset email sent. Check your inbox.";
-    const failure = "Error sending password reset email. Please try again.";
+
     const handleResetPassword = async (e) => {
         e.preventDefault();
         try {
             await auth.sendPasswordResetEmail(email);
 
-            setMessage(success);
+            toast.success(`${t("signupPage.reset-password.successMessage")}`);
         } catch (error) {
-            setMessage(failure);
+            toast.error(`${t("signupPage.reset-password.failureMessage")}`);
         }
     };
 
@@ -39,7 +38,7 @@ function ResetPassword({ updateComponent }) {
             >
                 <div className='relative'>
                     <p
-                        class='bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+                        className='bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
                   absolute'
                     >
                         {t("signupPage.email")}
@@ -76,21 +75,6 @@ function ResetPassword({ updateComponent }) {
                     {" "}
                     {t("signupPage.signUp.subtitle.second")}
                 </span>
-            </div>
-            <div
-                className={
-                    message === "Password reset email sent. Check your inbox."
-                        ? "text-teal-500 text-center justify-center"
-                        : "text-red-500 text-center justify-center"
-                }
-            >
-                {message && (
-                    <p>
-                        {message === success
-                            ? t("signupPage.reset-password.successMessage")
-                            : t("signupPage.reset-password.failureMessage")}
-                    </p>
-                )}
             </div>
         </div>
     );

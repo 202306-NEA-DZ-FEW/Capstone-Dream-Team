@@ -32,7 +32,7 @@ const EmailTemplate = ({ object }) => {
 
             <div
                 style={{
-                    padding: "24px 0",
+                    padding: "24px",
                     fontSize: "14px",
                     fontFamily: "Open Sans",
                     color: "black",
@@ -68,7 +68,6 @@ const EmailTemplate = ({ object }) => {
                     style={{
                         marginBottom: "20px",
                         borderRadius: "8px",
-                        overflow: "hidden",
                     }}
                 >
                     <p style={{ marginBottom: "10px", fontWeight: "bold" }}>
@@ -79,6 +78,7 @@ const EmailTemplate = ({ object }) => {
                             width: "100%",
                             border: "1px solid #e2e8f0",
                             marginBottom: "10px",
+                            overflow: "scroll",
                         }}
                     >
                         <thead>
@@ -168,7 +168,7 @@ const EmailTemplate = ({ object }) => {
                                             textAlign: "center",
                                         }}
                                     >
-                                        {meal.price}
+                                        ${meal.price}
                                     </td>
                                 </tr>
                             ))}
