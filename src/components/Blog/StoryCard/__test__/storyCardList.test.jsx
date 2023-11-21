@@ -1,8 +1,7 @@
-import { I18nextProvider } from "react-i18next";
+import { useRouter } from "next/router";
 import renderer from "react-test-renderer";
 
 import StoryCardList from "../storyCardList";
-import i18n from "../../../../util/i18n";
 const stories = [
     {
         id: "1",
@@ -21,13 +20,18 @@ const stories = [
         },
     },
 ];
+jest.mock("next/router", () => ({
+    useRouter: jest.fn(),
+}));
+jest.mock("next-i18next", () => ({
+    useTranslation: jest.fn().mockReturnValue({ t: jest.fn() }),
+}));
 it("renders correctly", () => {
+    useRouter.mockReturnValue({
+        locale: "en", // Mock the locale property
+    });
     const tree = renderer
-        .create(
-            <I18nextProvider i18n={i18n}>
-                <StoryCardList stories={stories} numToShow={2} language='en' />
-            </I18nextProvider>
-        )
+        .create(<StoryCardList stories={stories} numToShow={2} />)
         .toJSON();
     expect(tree).toMatchSnapshot();
 });
