@@ -64,7 +64,6 @@ function Enter() {
                     <div className='flex flex-col items-center w-full pt-5 pr-10 pb-20 pl-10 lg:pt-20 lg:flex-row'>
                         <div className='w-full bg-cover relative max-w-md lg:max-w-2xl lg:w-7/12 '>
                             <div className='flex flex-col items-center justify-center w-full lg:h-1/2 relative lg:px-10 '>
-                                {/*<img src="/images/signup/Asset1.png" class="w-full h-full rounded-2xl " />*/}
                                 {imageUrls.map((imageUrl, index) => (
                                     <img
                                         key={index}
