@@ -13,7 +13,8 @@
                 "first": "Don't you Have an account ?",
                 "second": "Sign Up"
             },
-            "subtitle2": "I forgot my password"
+            "subtitle2": "I forgot my password",
+            "wronginfos": "Wrong Email Or Password Please Enter Valid Information"
         },
         "signUp": {
             "title": "Create Account",
@@ -23,7 +24,10 @@
                 "second": "Sign In"
             },
             "name": "Name of Restaurant",
-            "confirm-password": "Confirm Your Password"
+            "confirm-password": "Confirm Your Password",
+            "pass-length": "Password must be at least 8 characters long",
+            "pass-confirm": "Please confirm your password",
+            "try-again": "Error, please try again"
         },
         "reset-password": {
             "title": "Reset Your Password",
@@ -44,11 +48,28 @@
             "averagePayPerMeal": "Average Price Per Meal",
             "total": "Total",
             "donate": "Donate",
-            "message": "Your Cart is Empty"
+            "message": "Your Cart is Empty",
+            "message2": "Looks like you have not added anything to your cart",
+            "message3": "Click here to add"
         },
         "card": {
             "restaurant": "Restaurant",
             "quantityLeft": "Qty Left"
+        },
+        "checkout": {
+            "DONATE NOW": "DONATE NOW",
+            "Checkout": "Checkout",
+            "Donor informations": "Donor Informations",
+            "Name": "Name",
+            "Email": "Email",
+            "Address": "Address",
+            "City": "City",
+            "Country": "Country",
+            "Zip": "Zip",
+            "Payment informations": "Payment Informations",
+            "Payment was successful": "Payment Was Successful",
+            "Pay": "Pay",
+            "Processing": "Processing"
         }
     },
     "blogPage": {
@@ -72,7 +93,7 @@
         }
     },
     "settings": {
-        "my_account": "My account",
+        "my_account": "Settings",
         "edit": "Edit",
         "save": "save",
         "user_information": "user information",
@@ -96,41 +117,53 @@
         "enter_your_password": "enter your password",
         "enter_your_new_password": "enter your new password",
         "delete_your_account": "delete your account",
-        "delete": "delete"
+        "delete": "delete",
+        "mes_updatedsuccessfully": "Profile updated successfully",
+        "verify_email": "Please verify your email in order to update it",
+        "email_sent": "Email verification sent!",
+        "try_again": "Please try again",
+        "pass_updated": "Password updated successfully",
+        "wrong_pass": "Wrong password, please enter valid password",
+        "errorupdate_pass": "Error updating password",
+        "success_delete": "Your account is deleted successfully",
+        "error_delete": "Error deleting account, please try again",
+        "valid_image": "Please upload a valid image file (JPEG, PNG, GIF)."
     },
     "mealsPage": {
         "donate": "Donate",
         "show_meals": "Show all meals",
+        "Search": "Search for your favourite restaurant",
         "available_meals": "Available Meals",
         "stock": "In stock",
-        "mealsTable":{
-        "image":"Image",
-        "name":"Name",
-        "quantity":"Quantity",
-        "price":"Price"
-    },
-     "meals": {
-        "title": "Meals",
-        "description": "A list of all the restaurant's meals."
-      },
-      "mealForm": {
-        "mealName": "Meal Name",
-        "uploadFile": "Upload File",
-        "chooseImage": "Choose Image",
-        "maxMealsPerDay": "Max Meals Per Day",
-        "mealPrice": "Meal Price",
-        "addMeal": "Add A Meal"
-      },
-      "notifications": {
-        "mealAddedSuccessfully": "Meal Added Successfully",
-        "imageSizeExceedsMax": "Image size exceeds the maximum allowed size."
-      }  
+        "mealsTable": {
+            "image": "Image",
+            "name": "Name",
+            "quantity": "Quantity",
+            "price": "Price"
+        },
+        "meals": {
+            "title": "Meals",
+            "description": "A list of all the restaurant's meals."
+        },
+        "mealForm": {
+            "mealName": "Meal Name",
+            "uploadFile": "Upload File",
+            "chooseImage": "Choose Image",
+            "maxMealsPerDay": "Max Meals Per Day",
+            "mealPrice": "Meal Price",
+            "addMeal": "Add A Meal"
+        },
+        "notifications": {
+            "mealAddedSuccessfully": "Meal Added Successfully",
+            "imageSizeExceedsMax": "Image size exceeds the maximum allowed size."
+        }
     },
     "history": {
         "History": "History",
         "Doner": "Doner",
         "Meal": "Meal",
         "Quantity": "Quantity",
+        "Search": "Search for the donor's name",
         "Price": "Price",
         "Date": "Date",
         "UsedMeals": "Used Meals"
@@ -147,7 +180,7 @@
         "light mode": "Light mode",
         "dark mode": "Dark mode",
         "language": "language",
-        "aboutus":"About us"
+        "aboutus": "About us"
     },
     "footer": {
         "home": "Home",
@@ -155,15 +188,15 @@
         "blog": "blog",
         "followUs": "follow us"
     },
-    "overview":{
-        "statCard":{
-            "totalMeals":"Total Meals",
-            "totalActiveMeals":"Total Active Meals",
-            "totalDonors":"Total Donors",
-            "totalDonation":"Total Donation"
+    "overview": {
+        "statCard": {
+            "totalMeals": "Total Meals",
+            "totalActiveMeals": "Total Active Meals",
+            "totalDonors": "Total Donors",
+            "totalDonation": "Total Donation"
         },
-        "chartGraph":{
-            "donationPerDay":"Donation per day",
+        "chartGraph": {
+            "donationPerDay": "Donation per day",
             "weekdays": {
                 "0": "Sunday",
                 "1": "Monday",
@@ -172,68 +205,84 @@
                 "4": "Thursday",
                 "5": "Friday",
                 "6": "Saturday"
-              },
-              "date":"Date",
-              "day":"Day",
-              "count":"Count"
+            },
+            "date": "Date",
+            "day": "Day",
+            "count": "Count"
         }
     },
-    "home":{
-        "HeroSection":{
-      "mission":"We are on a mission to combat hunger",
-      "help":"You can help too!",
-      "text":"Please support our cause with a small donation today! People are dying from hanger and every dollar counts and brings us closer to our fundraising goal. Thank you for your generosity!.",
-      "donate":"Donate Now"
+    "home": {
+        "HeroSection": {
+            "mission": "We are on a mission to combat hunger",
+            "help": "You can help too!",
+            "text": "Please support our cause with a small donation today! People are dying from hanger and every dollar counts and brings us closer to our fundraising goal. Thank you for your generosity!.",
+            "donate": "Donate Now"
         },
-       "donation":{
-        "empower":"Empower",
-        "title":"Change- Become a Donor",
-         "subtitle":"At BUY ME A MEAL website,your generosity has the power to change lives. Here is how you can contribute:",
-           "step1title":"Purchase Donation Coupons",
-           "step1text":"With just a few clicks, you can acquire special donation coupons through our user-friendly platform. These coupons serve as the catalyst for nourishing those who hunger for a meal.",
-           "step2title":"Make a Meaningful Impact",
-           "step2text":"Your contributions directly translate into meals for those in need. Your support helps us create a tangible and positive difference in the community",
-           "step3title":"Join a Community of Givers",
-           "step3text":"By becoming a donor, you join a community of like-minded individuals committed to making the world a better place, one meal at a time"
+        "donation": {
+            "empower": "Empower",
+            "title": "Change- Become a Donor",
+            "subtitle": "At BUY ME A MEAL website,your generosity has the power to change lives. Here is how you can contribute:",
+            "step1title": "Purchase Donation Coupons",
+            "step1text": "With just a few clicks, you can acquire special donation coupons through our user-friendly platform. These coupons serve as the catalyst for nourishing those who hunger for a meal.",
+            "step2title": "Make a Meaningful Impact",
+            "step2text": "Your contributions directly translate into meals for those in need. Your support helps us create a tangible and positive difference in the community",
+            "step3title": "Join a Community of Givers",
+            "step3text": "By becoming a donor, you join a community of like-minded individuals committed to making the world a better place, one meal at a time"
         },
-        "ourGoals":{
-            "title":"Our Goals",
-            "goal1":"Eradicate Poverty",
-            "goal1text":"We aim to reduce poverty by ensuring that individuals and families in need have access to nutritious meals, regardless of their financial circumstances. Through your generous contributions, we strive to improve the lives of those facing economic hardship.",
-            "goal2":"Zero Hunger",
-            "goal2text":"Our mission is to eliminate hunger by providing regular access to wholesome and nourishing meals for those who are food-insecure. We encourage community participation and volunteering to create a lasting impact on food accessibility",
-            "goal3":"Promote Good Health",
-            "goal3text":"At Buy Me a Meal, we are on a mission to provide nutrition to prevent bad health and combat diseases caused by malnutrition"
-        }
-        ,"restaurant":{
-            "title":"Join Us - Restaurants can make a Difference",
-            "subtitle":"As a restaurant owner or manager, you play a vital role in our mission. We are reaching out to you with an exciting opportunity to not only make a positive impact on your community but also promote your restaurant to a wider audience. Here is how you can participate:",
-            "step1":"List Your Meals",
-            "step1text":"By joining our cause, you can easily showcase your restaurant and its delectable dishes on our website. We will create a dedicated page for your restaurant, complete with mouthwatering images and descriptions of your meals.",
-            "step2":"Accept meal donation",
-            "step2text":"Donors who want to support our mission can purchase meals from your restaurant. These meals can be redeemed by those in need, ensuring that you reach a broader customer base.",
-            "step3":"Dashboard Control",
-            "step3text":"We provide you with a secure and user-friendly dashboard that allows you to verify and track coupon redemptions. You will have full control over the process and can monitor the impact your contributions are making.",
-            "step4":"Meal Deletion",
+        "ourGoals": {
+            "title": "Our Goals",
+            "goal1": "Eradicate Poverty",
+            "goal1text": "We aim to reduce poverty by ensuring that individuals and families in need have access to nutritious meals, regardless of their financial circumstances. Through your generous contributions, we strive to improve the lives of those facing economic hardship.",
+            "goal2": "Zero Hunger",
+            "goal2text": "Our mission is to eliminate hunger by providing regular access to wholesome and nourishing meals for those who are food-insecure. We encourage community participation and volunteering to create a lasting impact on food accessibility",
+            "goal3": "Promote Good Health",
+            "goal3text": "At Buy Me a Meal, we are on a mission to provide nutrition to prevent bad health and combat diseases caused by malnutrition"
+        },
+        "restaurant": {
+            "title": "Join Us - Restaurants can make a Difference",
+            "subtitle": "As a restaurant owner or manager, you play a vital role in our mission. We are reaching out to you with an exciting opportunity to not only make a positive impact on your community but also promote your restaurant to a wider audience. Here is how you can participate:",
+            "step1": "List Your Meals",
+            "step1text": "By joining our cause, you can easily showcase your restaurant and its delectable dishes on our website. We will create a dedicated page for your restaurant, complete with mouthwatering images and descriptions of your meals.",
+            "step2": "Accept meal donation",
+            "step2text": "Donors who want to support our mission can purchase meals from your restaurant. These meals can be redeemed by those in need, ensuring that you reach a broader customer base.",
+            "step3": "Dashboard Control",
+            "step3text": "We provide you with a secure and user-friendly dashboard that allows you to verify and track coupon redemptions. You will have full control over the process and can monitor the impact your contributions are making.",
+            "step4": "Meal Deletion",
             "step4text": "Once a meal is provided to a person in need, you can easily mark it as used in your control panel. This ensures that the meals purchased by donors have been distributed, maintaining the integrity of the program."
-           
-    },"joinus":{
-        "title":"Working Together to End Hunger",
-        "text":"Your small act of kindness can make a big difference. Together, we can change lives and create a brighter future. Donate today and be the change you wish to see in the world.",
-        "donate":"Donate",
-        "joinus":"join us"
-    },"blogs":{
-        "title":"Blogs",
-        "subtitle":"Explore here articles about hunger and poverty in our world",
-        "see more":"see more"
-      },
-      "ourSponsors":"Our Sponsors"
-},"sidemenu":{
-    "overview":"Overview",
-    "Meals":"Meals",
-    "History":"History",
-    "Settings":"Settings",
-    "Logout":"Logout",
-    "language":"Language"
-}
+        },
+        "joinus": {
+            "title": "Working Together to End Hunger",
+            "text": "Your small act of kindness can make a big difference. Together, we can change lives and create a brighter future. Donate today and be the change you wish to see in the world.",
+            "donate": "Donate",
+            "joinus": "join us"
+        },
+        "blogs": {
+            "title": "Blogs",
+            "subtitle": "Explore here articles about hunger and poverty in our world",
+            "see more": "see more"
+        },
+        "ourSponsors": "Our Sponsors"
+    },
+    "sidemenu": {
+        "overview": "Overview",
+        "Meals": "Meals",
+        "History": "History",
+        "Settings": "Settings",
+        "Logout": "Logout",
+        "language": "Language"
+    },
+    "aboutus": {
+        "Our project": "Our project",
+        "p1": "This website serves as the Capstone Project for the Frontend Web Development in Re:coded. It is dedicated to showcasing our ability to create websites in accordance with specified requirements and even infuse creativity into the process. Leveraging our technical skills, including GitHub, HTML, CSS, JavaScript, Firebase and Next.js, we successfully executed this project. Moreover, we employed our soft skills to facilitate effective communication, making this experience highly valuable and the timely delivery of the project.",
+        "Our Goal": "Our Goal",
+        "p2": "Our vision was to create a donation website that is easy to navigate and understand its purpose. Firstly, donors can explore relevant blogs on the Blogs page. To discover restaurants and their meals, they can visit the Meals page and add items to their cart for donation. When ready to make a donation, donors can proceed to the checkout page by clicking the cart icon, entering their name, and providing credit card. The process is designed to be swift, without requiring sign-ups that might elongate the experience.",
+        "p3": "On the other hand, restaurants are required to sign up to add their meals to our database via the dashboard. Through the dashboard, they can access an overview of donation history, visualize the number of donations per month or year, and update their profile information (name, image, password, email, etc.) through the settings.",
+        "Responsiveness": "Responsiveness",
+        "p resp": "We have ensured full responsiveness across various screen types and sizes by utilizing Tailwind CSS for this website.",
+        "Firebase": "Firebase",
+        "p fir": "We built our backend using Firebase and organized it into three blocks: a donors collection, a restaurants collection, and a meals collection.",
+        "Creativity": "Creativity",
+        "p creat": "We enriched our database by working with meals instead of coupons ; and we used Stripe for real time paiment.",
+        "Team": "Meet Our Wonderful Team"
+    }
 }

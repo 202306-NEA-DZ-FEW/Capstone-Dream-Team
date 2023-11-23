@@ -16,7 +16,7 @@ import { LiaHistorySolid } from "react-icons/lia";
 import Adminhistory from "./History/Adminhistory";
 import AddMeals from "./Meals/addMeals";
 import Overview from "./Overview/overview";
-import Settings from "./Settings";
+import Settings from "./Settings/Settings";
 import { auth, db } from "../util/firebase";
 
 export default function Sidemenu(props) {
