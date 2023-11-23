@@ -65,8 +65,8 @@
             "readMore": "Read More"
         },
         "blog": {
-            "relatedArticles":"Related Articles",
-            "subRelatedArticles":"The world needs to fight with the hunger. Let’s learn more",
+            "moreArticles":"More Articles",
+            "subMoreArticles":"The world needs to fight with the hunger. Let’s learn more",
             "moreStories":"More Stories",
             "subMoreStories":"More Stories, More Impact: Dive into Compelling Narratives of Hope"
         }
