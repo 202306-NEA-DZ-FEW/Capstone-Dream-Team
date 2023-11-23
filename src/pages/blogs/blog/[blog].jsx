@@ -166,10 +166,10 @@ export default function Blog({ blog, similarBlogs }) {
 
                     <div className='pt-2 pb-4 mt-10 max-w-screen-lg mx-auto'>
                         <h2 className='text-4xl font-medium font-Outfit text-blue-500 leading-tight mb-2 '>
-                            {t("blogPage.blog.relatedArticles")}
+                            {t("blogPage.blog.moreArticles")}
                         </h2>
                         <p className='text-base text-gray-800 leading-tight'>
-                            {t("blogPage.blog.subRelatedArticles")}
+                            {t("blogPage.blog.subMoreArticles")}
                         </p>
                     </div>
                 </div>
@@ -207,11 +207,13 @@ export async function getStaticProps({ locale, params }) {
         if (params.blog != doc.id)
             dataBlogs.push({ id: doc.id, data: doc.data() });
     });
+
+    const shuffledDataBlogs = dataBlogs.slice().sort(() => Math.random() - 0.5);
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
             blog: blog,
-            similarBlogs: dataBlogs,
+            similarBlogs: shuffledDataBlogs,
         },
     };
 }
