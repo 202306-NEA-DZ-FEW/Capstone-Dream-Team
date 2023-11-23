@@ -86,9 +86,10 @@
             "readMore": "اقرأ المزيد"
         },
         "blog": {
-            "back": "رجوع",
-            "tags": "الكلمات الدلالية",
-            "publishedOn": "نشرت يوم"
+          "moreArticles": "المزيد من المقالات",
+          "subMoreArticles": "العالم بحاجة لمكافحة الجوع. دعونا نتعلم المزيد",
+          "moreStories": "المزيد من القصص",
+          "subMoreStories": "المزيد من القصص، المزيد من التأثير: استمتع بقصص ملهمة تنبض بالأمل"
         }
     },
     "settings": {
@@ -182,10 +183,12 @@
         "aboutus": "من نحن"
     },
     "footer": {
-        "home": "الصفحة الرئيسية",
-        "meals": "وجبات",
+        "home": "الرئيسية",
+        "meals": "الوجبات",
         "blog": "المدونة",
-        "followUs": "تابعنا"
+        "aboutus":"من نحن",
+        "copyright": "© 2023 Buymeameal, Inc. جميع الحقوق محفوظة."
+        
     },
     "overview": {
         "statCard": {

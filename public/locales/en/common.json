@@ -86,9 +86,10 @@
             "readMore": "Read More"
         },
         "blog": {
-            "back": "Back",
-            "tags": "Tags",
-            "publishedOn": "Published on"
+            "moreArticles":"More Articles",
+            "subMoreArticles":"The world needs to fight with the hunger. Let’s learn more",
+            "moreStories":"More Stories",
+            "subMoreStories":"More Stories, More Impact: Dive into Compelling Narratives of Hope"
         }
     },
     "settings": {
@@ -183,9 +184,10 @@
     },
     "footer": {
         "home": "Home",
-        "meals": "meals",
-        "blog": "blog",
-        "followUs": "follow us"
+        "meals": "Meals",
+        "blog": "Blog",
+        "aboutus": "About us",
+        "copyright": "© 2023 Buymeameal, Inc. All rights reserved."
     },
     "overview": {
         "statCard": {
