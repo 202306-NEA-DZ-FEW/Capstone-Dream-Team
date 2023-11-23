@@ -8,7 +8,7 @@ exports[`renders correctly 1`] = `
     className="py-4 mx-4 md:mx-6"
   >
     <div
-      className="mt-4 pb-4 flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 dark:border-gray-700"
+      className="mt-4 pb-4 flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 "
     >
       <div
         className="mb-2 sm:mb-0 tracking-wider font-light font-roboto"
@@ -62,7 +62,7 @@ exports[`renders correctly 1`] = `
         className="min-w-full text-center text-sm font-light"
       >
         <thead
-          className="border-b bg-blue-300 bg-opacity-50 font-medium text-Black dark:border-neutral-500 dark:bg-neutral-900"
+          className="border-b bg-blue-300 bg-opacity-50 font-medium text-Black "
         >
           <tr>
             <th

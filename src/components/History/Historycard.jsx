@@ -79,7 +79,7 @@ export default function Historycard() {
             {/* <div className='overflow-x-auto sm:-mx-6 lg:-mx-8'> */}
 
             <div className='py-4 mx-4 md:mx-6'>
-                <div className='mt-4 pb-4 flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 dark:border-gray-700'>
+                <div className='mt-4 pb-4 flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 '>
                     <div className='mb-2 sm:mb-0 tracking-wider font-light font-roboto'>
                         {t("history.History")}
                     </div>
@@ -123,12 +123,9 @@ export default function Historycard() {
             </div>
 
             <div className='inline-block min-w-full py-2 '>
-                {/* <div className='inline-block min-w-full py-2 sm:px-6 lg:px-8'> */}
-
                 <div className='overflow-hidden  rounded-md border border-gray-200 shadow-md'>
                     <table className='min-w-full text-center text-sm font-light'>
-                        {/* <thead className='border-b bg-gray-50 font-medium text-black dark:border-neutral-500 dark:bg-neutral-900'> */}
-                        <thead className='border-b bg-blue-300 bg-opacity-50 font-medium text-Black dark:border-neutral-500 dark:bg-neutral-900'>
+                        <thead className='border-b bg-blue-300 bg-opacity-50 font-medium text-Black '>
                             <tr>
                                 <th scope='col' className=' px-6 py-4'>
                                     {t("history.Doner")}
