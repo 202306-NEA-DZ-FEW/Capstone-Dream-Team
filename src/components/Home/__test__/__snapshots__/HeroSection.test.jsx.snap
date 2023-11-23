@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
       className="lg:w-1/2 bg-white p-6 rounded-xl flex flex-col items-center lg:items-start"
     >
       <h1
-        className="text-center p-2 text-3xl sm:text-3xl font-light text-black leading-tight mb-4"
+        className="text-center p-2 text-3xl sm:text-3xl font-thin font-sans font-roboto text-black leading-tight mb-4"
       >
         home.HeroSection.mission
         <strong
