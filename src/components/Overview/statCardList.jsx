@@ -9,6 +9,8 @@ import {
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
 import { BsPersonFillUp } from "react-icons/bs";
+import { BsCurrencyDollar } from "react-icons/bs";
+import { FaCheck } from "react-icons/fa6";
 import { GiForkKnifeSpoon } from "react-icons/gi";
 
 import { auth, db } from "@/util/firebase";
@@ -79,14 +81,14 @@ const StatCardList = () => {
                 </div>
                 <div className='w-full mt-6 px-2 sm:w-1/2 xl:w-1/4'>
                     <StatCard
-                        icon={<BsPersonFillUp />}
+                        icon={<FaCheck />}
                         title={t("overview.statCard.totalDonors")}
                         number={totalDonors}
                     />
                 </div>
                 <div className='w-full mt-6 px-2 sm:w-1/2 xl:w-1/4'>
                     <StatCard
-                        icon={<BsPersonFillUp />}
+                        icon={<BsCurrencyDollar />}
                         title={t("overview.statCard.totalDonation")}
                         number={totalDonation}
                     />

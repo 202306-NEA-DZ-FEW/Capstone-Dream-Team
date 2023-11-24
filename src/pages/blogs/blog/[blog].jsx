@@ -70,8 +70,8 @@ export default function Blog({ blog, similarBlogs }) {
                             </div>
                         </div>
                     </div>
-                    <div className='flex flex-col lg:flex-row lg:space-x-12'>
-                        <div className='px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4'>
+                    <div className='flex flex-col lg:flex-row'>
+                        <div className='px-4 lg:px-4 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4'>
                             {blog.content
                                 .split("/n/n")
                                 .map((paragraph, index) => (
@@ -100,8 +100,8 @@ export default function Blog({ blog, similarBlogs }) {
                                 ))}
                         </div>
 
-                        <div className='w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm pt-2'>
-                            <div className='p-4 border-t border-b md:border md:rounded'>
+                        <div className='w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm pt-2 lg:px-4'>
+                            <div className='p-4 lg:px-4 border-t border-b md:border md:rounded'>
                                 <div className='flex flex-col items-center py-2'>
                                     <img
                                         src={blog.author_image}
@@ -116,7 +116,7 @@ export default function Blog({ blog, similarBlogs }) {
                                         </p>
                                     </div>
                                 </div>
-                                <div className='flex justify-center space-x-5'>
+                                <div className='flex justify-center'>
                                     <Link
                                         href={blog.author_linkedin}
                                         target='_blank'
@@ -129,7 +129,7 @@ export default function Blog({ blog, similarBlogs }) {
                                             fill='currentColor'
                                             stroke-width='0'
                                             viewBox='0 0 496 512'
-                                            className='w-6 h-6 text-gray-800 hover:text-black'
+                                            className='w-6 h-6 text-gray-800 hover:text-black mx-2'
                                             height='1em'
                                             width='1em'
                                             xmlns='http://www.w3.org/2000/svg'
@@ -151,7 +151,7 @@ export default function Blog({ blog, similarBlogs }) {
                                             fill='currentColor'
                                             stroke-width='0'
                                             viewBox='0 0 448 512'
-                                            className='w-6 h-6 text-blue-800 hover:text-blue-900'
+                                            className='w-6 h-6 text-blue-800 hover:text-blue-900 mx-2'
                                             height='1em'
                                             width='1em'
                                             xmlns='http://www.w3.org/2000/svg'
@@ -164,7 +164,7 @@ export default function Blog({ blog, similarBlogs }) {
                         </div>
                     </div>
 
-                    <div className='pt-2 pb-4 mt-10 max-w-screen-lg mx-auto'>
+                    <div className='pt-2 pb-4 mt-10 max-w-screen-lg mx-auto px-4 lg:px-0'>
                         <h2 className='text-4xl font-medium font-Outfit text-blue-500 leading-tight mb-2 '>
                             {t("blogPage.blog.moreArticles")}
                         </h2>

@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="col-span-12 rounded-md border border-stroke bg-white px-5 pt-7 pb-7 shadow sm:px-7.5 xl:col-span-8"
+  className="mx-6 col-span-12 rounded-md border border-stroke bg-white px-5 pt-7 pb-7 shadow sm:px-7.5 xl:col-span-8"
 >
   <div
     className="flex w-full flex-col flex-wrap items-start justify-between gap-3 sm:flex-nowrap"
