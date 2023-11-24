@@ -47,7 +47,7 @@ exports[`renders correctly 1`] = `
         >
           <img
             alt="step"
-            className="w-[200px] h-[120px]"
+            className="w-[200px] h-[100px]"
             src="images/home/donation/step1-removebg-preview.png"
           />
         </div>
