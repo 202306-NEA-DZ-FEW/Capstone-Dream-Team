@@ -28,7 +28,7 @@ export default function Donation() {
                         <div className='sm:mr-4'>
                             <div className='flex items-center justify-center w-16 h-16 mb-4 rounded-full '>
                                 <img
-                                    className='w-[200px] h-[120px]'
+                                    className='w-[200px] h-[100px]'
                                     src='images/home/donation/step1-removebg-preview.png'
                                     alt='step'
                                 />
