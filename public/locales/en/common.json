@@ -155,7 +155,8 @@
         },
         "notifications": {
             "mealAddedSuccessfully": "Meal Added Successfully",
-            "imageSizeExceedsMax": "Image size exceeds the maximum allowed size."
+            "imageSizeExceedsMax": "Image size exceeds the maximum allowed size.",
+            "fullAllInputs":"Please fill in all fields before submitting."
         }
     },
     "history": {
