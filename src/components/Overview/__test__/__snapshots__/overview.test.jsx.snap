@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
       <div
         className="mb-2 sm:mb-0 tracking-wider font-light font-roboto"
       >
-        history.History
+        overview.title
       </div>
     </div>
   </div>

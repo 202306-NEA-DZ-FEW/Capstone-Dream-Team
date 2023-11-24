@@ -12,7 +12,7 @@ export default function Overview() {
             <div className='mx-4 md:mx-6'>
                 <div className='mt-4 pb-4 flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 dark:border-gray-700'>
                     <div className='mb-2 sm:mb-0 tracking-wider font-light font-roboto'>
-                        {t("history.History")}
+                        {t("overview.title")}
                     </div>
                 </div>
             </div>

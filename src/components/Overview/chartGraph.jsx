@@ -18,7 +18,35 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 
 function ChartGraph() {
     const [authUser, setAuthUser] = useState(null);
-    const [chartData, setChartData] = useState(null);
+    const [chartData, setChartData] = useState({
+        series: [
+            {
+                name: "Donation per day",
+                data: [],
+            },
+        ],
+        options: {
+            stroke: {
+                curve: "smooth",
+            },
+
+            xaxis: {
+                type: "category",
+                categories: [],
+            },
+            yaxis: {
+                type: "numeric",
+                min: 0,
+                labels: {
+                    style: {
+                        colors: "#575757",
+                        fontSize: "14px",
+                    },
+                },
+                forceNiceScale: true,
+            },
+        },
+    });
     const { t } = useTranslation("common");
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -99,12 +127,7 @@ function ChartGraph() {
                                 forceNiceScale: true,
                             },
                             tooltip: {
-                                custom: function ({
-                                    series,
-                                    seriesIndex,
-                                    dataPointIndex,
-                                    w,
-                                }) {
+                                custom: function ({ dataPointIndex }) {
                                     const data = chartArray[dataPointIndex];
                                     return (
                                         `<div style="background-color: #ffffff; padding: 10px; border: 1px solid #cccccc; border-radius: 5px;">` +
@@ -137,7 +160,7 @@ function ChartGraph() {
         return () => {
             unsubscribe();
         };
-    }, [authUser]);
+    }, [authUser, chartData]);
 
     return (
         <div className='mx-6 col-span-12 rounded-md border border-stroke bg-white px-5 pt-7 pb-7 shadow sm:px-7.5 xl:col-span-8'>
