@@ -16,9 +16,7 @@ export default function Sponsors() {
                 const data = await Promise.all(
                     querySnapshot.docs.map(async (doc) => {
                         const restaurant = doc.data();
-
                         // Fetch details for each meal using restaurant_id
-
                         return {
                             Name: restaurant.restaurantName,
                             email: restaurant.email,
@@ -26,7 +24,15 @@ export default function Sponsors() {
                         };
                     })
                 );
-                const restaurant = data.slice(0, 4);
+                const restaurant = data
+                    .filter((element) => {
+                        return (
+                            element.image !== undefined &&
+                            element.image !== null
+                        );
+                    })
+                    .slice(0, 4);
+                // const restaurant=data.slice(0, 4);
                 setRest(restaurant);
             } catch (error) {
                 console.error("Error fetching data:", error);
