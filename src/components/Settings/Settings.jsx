@@ -2,12 +2,17 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { auth, db, storage } from "@/util/firebase";
+
 import {
     doc,
     getDoc,
+    getDocs,
     updateDoc,
     deleteDoc,
     deleteField,
+    where,
+    query,
+    collection,
 } from "firebase/firestore";
 import {
     updateProfile,
@@ -17,6 +22,8 @@ import {
     reauthenticateWithCredential,
     EmailAuthProvider,
     deleteUser,
+    GoogleAuthProvider,
+    reauthenticateWithPopup,
 } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { deleteObject } from "firebase/storage";
@@ -49,6 +56,8 @@ export default function Settings() {
     const [previewSrc, setPreviewSrc] = useState(null);
     // state for remove logo button
     const [showButton, setShowButton] = useState(false);
+    //state for authentication provider
+    const [googleProvider, setGoogleProvider] = useState(false);
 
     const router = useRouter();
     const user = auth.currentUser;
@@ -70,6 +79,12 @@ export default function Settings() {
                 });
 
                 const user = auth.currentUser;
+                // Retreive the authentication provider
+                const signUpProvider = user.providerData[0].providerId;
+                if (signUpProvider === "google.com") {
+                    setGoogleProvider(true);
+                }
+
                 if (user) {
                     console.log(user);
                     const userId = user.uid;
@@ -218,33 +233,147 @@ export default function Settings() {
     // Function to hundle delete account
     const handleDeleteAccount = async (e) => {
         e.preventDefault();
+
         try {
-            const credential = EmailAuthProvider.credential(
-                user.email,
-                password
-            );
+            // Retreive the authentication provider
+            const signUpProvider = user.providerData[0].providerId;
 
-            await reauthenticateWithCredential(user, credential)
-                .then(() => {
-                    // User re-authenticated.
-                    deleteUser(user);
-                    router.push("/");
-                    deleteDoc(doc(db, "restaurant", user.uid));
-                    if (previewSrc) {
-                        const desertRef = ref(storage, previewSrc);
-                        // Delete the logo image from storage
-                        deleteObject(desertRef);
-                    }
+            if (signUpProvider === "google.com") {
+                //setGoogleProvider(true);
+                console.log("khlat");
+                const provider = new GoogleAuthProvider();
+                await reauthenticateWithPopup(user, provider)
+                    .then(async () => {
+                        // User re-authenticated.
+                        const confirmation = window.confirm(
+                            "Are you sure you want to delete your account? This action is irreversible."
+                        );
+                        if (confirmation) {
+                            await deleteDoc(doc(db, "restaurant", user.uid));
+                            if (previewSrc) {
+                                const desertRef = ref(storage, previewSrc);
+                                // Delete the logo image from storage
+                                await deleteObject(desertRef);
+                            }
 
-                    // account deleted successfully
-                    console.log("account deleted");
-                    toast.success(`${t("settings.success_delete")}`);
-                })
-                .catch((error) => {
-                    // An error ocurred
-                    console.log(error);
-                    toast.error(`${t("settings.wrong_pass")}`);
-                });
+                            // Delete all the restaurant meals from meals and cart collection
+                            const q = query(
+                                collection(db, "meals"),
+                                where("restaurantId", "==", user.uid)
+                            );
+
+                            const querySnapshot = await getDocs(q);
+                            querySnapshot.forEach(async (doc) => {
+                                try {
+                                    await deleteDoc(doc.ref);
+                                    console.log("document deleted from meals");
+                                } catch (error) {
+                                    console.error(
+                                        "Error deleting document: ",
+                                        error
+                                    );
+                                }
+                            });
+
+                            const d = query(
+                                collection(db, "cart"),
+                                where("restaurantId", "==", user.uid)
+                            );
+
+                            const querySnapshotCart = await getDocs(d);
+                            querySnapshotCart.forEach(async (doc) => {
+                                try {
+                                    console.log(doc.data());
+                                    await deleteDoc(doc.ref);
+                                } catch (error) {
+                                    console.error(
+                                        "Error deleting document: ",
+                                        error
+                                    );
+                                }
+                            });
+
+                            //await auth.signOut();
+                            await deleteUser(user);
+                            router.push("/");
+
+                            // account deleted successfully
+                            console.log("account deleted");
+                            toast.success(`${t("settings.success_delete")}`);
+                        }
+                    })
+                    .catch((error) => {
+                        // An error ocurred
+                        console.log(error);
+                        toast.error(`${t("settings.error_delete")}`);
+                    });
+            } else {
+                console.log("email khlat");
+                const credential = EmailAuthProvider.credential(
+                    user.email,
+                    password
+                );
+
+                await reauthenticateWithCredential(user, credential)
+                    .then(async () => {
+                        // User re-authenticated.
+
+                        await deleteDoc(doc(db, "restaurant", user.uid));
+                        if (previewSrc) {
+                            const desertRef = ref(storage, previewSrc);
+                            // Delete the logo image from storage
+                            await deleteObject(desertRef);
+                        }
+
+                        // Delete all the restaurant meals from meals and cart collection
+                        const d = query(
+                            collection(db, "cart"),
+                            where("restaurantId", "==", user.uid)
+                        );
+
+                        const querySnapshotCart = await getDocs(d);
+                        querySnapshotCart.forEach(async (doc) => {
+                            try {
+                                console.log(doc.data());
+                                await deleteDoc(doc.ref);
+                            } catch (error) {
+                                console.error(
+                                    "Error deleting document: ",
+                                    error
+                                );
+                            }
+                        });
+
+                        const q = query(
+                            collection(db, "meals"),
+                            where("restaurantId", "==", user.uid)
+                        );
+
+                        const querySnapshot = await getDocs(q);
+                        querySnapshot.forEach(async (doc) => {
+                            try {
+                                await deleteDoc(doc.ref);
+                            } catch (error) {
+                                console.error(
+                                    "Error deleting document: ",
+                                    error
+                                );
+                            }
+                        });
+
+                        //await auth.signOut();
+                        await deleteUser(user);
+                        router.push("/");
+                        // account deleted successfully
+                        console.log("account deleted");
+                        toast.success(`${t("settings.success_delete")}`);
+                    })
+                    .catch((error) => {
+                        // An error ocurred
+                        console.log(error);
+                        toast.error(`${t("settings.wrong_pass")}`);
+                    });
+            }
         } catch (error) {
             // Handle error
             toast.error(`${t("settings.error_delete")}`);
@@ -511,7 +640,11 @@ export default function Settings() {
                                                 onChange={handleChange}
                                                 readOnly={!isEditable}
                                                 className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
-                                                value={formData.email}
+                                                value={
+                                                    googleProvider === true
+                                                        ? user.email
+                                                        : formData.email
+                                                }
                                             />
                                         </div>
                                     </div>
@@ -678,9 +811,15 @@ export default function Settings() {
                                 </div>
                             </div>
                         </form>
-                        <hr className='mt-6 border-b-1 border-blueGray-300' />
+                        <hr
+                            className={
+                                googleProvider
+                                    ? "hidden"
+                                    : "mt-6 border-b-1 border-blueGray-300"
+                            }
+                        />
 
-                        <form>
+                        <form className={googleProvider && "hidden"}>
                             <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
                                 {t("settings.reset_your_password")}
                             </h6>
@@ -747,7 +886,13 @@ export default function Settings() {
                                 {t("settings.delete_your_account")}
                             </h6>
                             <div className='flex flex-wrap'>
-                                <div className='w-full lg:w-4/12 px-4'>
+                                <div
+                                    className={
+                                        googleProvider
+                                            ? "hidden"
+                                            : "w-full lg:w-4/12 px-4"
+                                    }
+                                >
                                     <div className='relative w-full mb-3'>
                                         <label
                                             className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
