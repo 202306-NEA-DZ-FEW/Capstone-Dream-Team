@@ -185,9 +185,10 @@
     },
     "footer": {
         "home": "Home",
-        "meals": "meals",
-        "blog": "blog",
-        "followUs": "follow us"
+        "meals": "Meals",
+        "blog": "Blog",
+        "aboutus": "About us",
+        "copyright": "© 2023 Buymeameal, Inc. All rights reserved."
     },
     "overview": {
         "statCard": {

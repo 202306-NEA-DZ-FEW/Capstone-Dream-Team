@@ -38,15 +38,6 @@ function ChartGraph() {
 
                 querySnapshot.forEach((doc) => {
                     const meal = doc.data();
-                    // const dateParts = meal.date.split("/");
-                    // const formattedDate = new Date(
-                    //     dateParts[2],
-                    //     dateParts[1] - 1,
-                    //     dateParts[0]
-                    // );
-                    // const day = new Intl.DateTimeFormat("en-Us", {
-                    //     weekday: "long",
-                    // }).format(formattedDate);
                     const date = meal.date;
                     if (chart[date]) {
                         chart[date]++;
@@ -149,7 +140,7 @@ function ChartGraph() {
     }, [authUser]);
 
     return (
-        <div className='col-span-12 rounded-md border border-stroke bg-white px-5 pt-7 pb-7 shadow sm:px-7.5 xl:col-span-8'>
+        <div className='mx-6 col-span-12 rounded-md border border-stroke bg-white px-5 pt-7 pb-7 shadow sm:px-7.5 xl:col-span-8'>
             <div className='flex w-full flex-col flex-wrap items-start justify-between gap-3 sm:flex-nowrap'>
                 <p className='font-bold text-primary'>
                     {t("overview.chartGraph.donationPerDay")}
