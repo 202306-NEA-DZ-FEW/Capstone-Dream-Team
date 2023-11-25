@@ -4,7 +4,7 @@ export default function Donation() {
     return (
         <>
             <div
-                className='px-4 py-16 mx-auto my-20 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 bg-gray-100 bg-cover'
+                className='px-4 py-16 mx-auto my-20 sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8 lg:py-20 bg-gray-100 bg-cover'
                 style={{
                     backgroundImage:
                         'url("/images/home/donation/bannerhero.png")',
