@@ -18,7 +18,7 @@ export default function Blogs({ blogs, stories }) {
     };
 
     const showMoreBlogs = () => {
-        setBlogsNum(blogsNum + 3); // Show all stories when the button is clicked
+        setBlogsNum(blogsNum + 6); // Show all stories when the button is clicked
     };
     return (
         <Layout>
@@ -62,7 +62,7 @@ export default function Blogs({ blogs, stories }) {
 
                 <div className='container mx-auto flex px-5 py-10 items-center justify-center flex-col'>
                     <div className='text-center lg:w-2/3 w-full'>
-                        <p className='sm:text-4xl text-4xl mb-4 font-medium p-4 bg-clip-text text-transparent bg-gradient-to-r from-orange-200  via-orange-400 to-orange-600'>
+                        <p className='sm:text-4xl text-4xl mb-4 font-medium px-4 bg-clip-text text-transparent bg-gradient-to-r from-orange-200  via-orange-400 to-orange-600'>
                             {t("blogPage.titleBlogs")}
                         </p>
                         <p className='mb-8 sm:text-2xl text-2xl '>

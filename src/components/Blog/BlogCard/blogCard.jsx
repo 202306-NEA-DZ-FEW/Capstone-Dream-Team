@@ -12,7 +12,7 @@ export default function BlogCard({ blog }) {
                     blog.data.type == "article" ? "blog" : "story"
                 }/${blog.id}`}
             >
-                <div className='relative'>
+                <div className='relative '>
                     <img
                         src={blog.data.featured_image}
                         className='rounded-xl object-cover w-full h-56'

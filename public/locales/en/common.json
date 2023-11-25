@@ -155,7 +155,8 @@
         },
         "notifications": {
             "mealAddedSuccessfully": "Meal Added Successfully",
-            "imageSizeExceedsMax": "Image size exceeds the maximum allowed size."
+            "imageSizeExceedsMax": "Image size exceeds the maximum allowed size.",
+            "fullAllInputs":"Please fill in all fields before submitting."
         }
     },
     "history": {
@@ -190,6 +191,7 @@
         "copyright": "© 2023 Buymeameal, Inc. All rights reserved."
     },
     "overview": {
+        "title":"Overview",
         "statCard": {
             "totalMeals": "Total Meals",
             "totalActiveMeals": "Total Active Meals",
