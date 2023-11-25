@@ -84,12 +84,12 @@ exports[`renders correctly 1`] = `
           className="flex-col justify-center items-start inline-flex scale-0 md:transform-none"
         >
           <div
-            className="w-[150px] break-words text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']"
+            className="w-[150px] break-words text-zinc-950  text-base font-bold font-['Open Sans']"
           >
             loading...
           </div>
           <div
-            className="w-[150px] break-all text-neutral-800  dark:text-white text-[10px] lg:text-[14px] font-normal font-['Open Sans']"
+            className="w-[150px] break-all text-neutral-800 text-[10px] lg:text-[14px] font-normal font-['Open Sans']"
           >
             loading...
           </div>
@@ -238,7 +238,7 @@ exports[`renders correctly 1`] = `
         className="w-full flex-col justify-start items-start gap-1 flex"
       >
         <div
-          className="h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex cursor-pointer  focus:outline-none focus:text-orange-600"
+          className="h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex cursor-pointer hover:text-orange-600   focus:outline-none focus:text-orange-600"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -272,7 +272,7 @@ exports[`renders correctly 1`] = `
              
           </div>
           <button
-            className="text-[#333333] text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug focus:outline-none duration-300 scale-0 md:transform-none"
+            className="text-[#333333] text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug hover:text-orange-600  focus:outline-none duration-300 scale-0 md:transform-none"
           >
             sidemenu.language
           </button>
@@ -287,7 +287,7 @@ exports[`renders correctly 1`] = `
           onTouchStart={[Function]}
         >
           <div
-            className="p-4 rounded-lg justify-start items-center gap-1 inline-flex hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:bg-blue-600"
+            className="p-4 rounded-lg justify-start items-center gap-1 inline-flex hover:text-orange-600 "
             onClick={[Function]}
           >
             <div
@@ -317,7 +317,7 @@ exports[`renders correctly 1`] = `
               </svg>
             </div>
             <button
-              className="text-[#333333]  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug"
+              className="text-[#333333]  hover:text-orange-600 text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug"
             >
               <div
                 className="duration-300 scale-0  md:transform-none"
