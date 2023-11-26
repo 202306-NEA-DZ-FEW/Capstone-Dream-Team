@@ -10,11 +10,13 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useTranslation } from "next-i18next";
 
 import { db } from "@/util/firebase";
 
 function AddToCartButton({ mealObject }) {
     //cookie ; uid
+    const { t } = useTranslation("common");
 
     const [visitorID, setVisitorID] = useState(null);
 
@@ -151,7 +153,9 @@ function AddToCartButton({ mealObject }) {
                     isInCart ? "bg-red-500" : "bg-orange-400 "
                 }`}
             >
-                {isInCart ? "Cancel" : `Donate`}
+                {isInCart
+                    ? t("cartPage.cart.Cancel")
+                    : t("cartPage.cart.donate")}
             </button>
         </div>
     );
