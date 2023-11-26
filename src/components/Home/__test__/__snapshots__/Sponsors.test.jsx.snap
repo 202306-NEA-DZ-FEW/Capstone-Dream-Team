@@ -2,7 +2,7 @@
 
 exports[`rend correctement 1`] = `
 <div
-  class="max-w-screen-xl mx-auto flex h-full  my-20 py-20 items-center justify-center  bg-[#BCE4EB]"
+  class="max-w-screen-xl mx-auto flex h-full  my-20 p-4 items-center justify-center  bg-[#BCE4EB]"
 >
   <div
     class="w-full rounded-lg bg-white px-8 py-4 shadow-md m-4"
