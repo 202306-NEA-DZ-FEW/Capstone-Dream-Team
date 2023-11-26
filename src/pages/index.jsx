@@ -6,7 +6,7 @@ import * as React from "react";
 import { useRef } from "react";
 
 import BlogCardList from "@/components/Blog/BlogCard/blogCardList";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer/Footer";
 import Donation from "@/components/Home/Donation";
 import Goals from "@/components/Home/Goals";
 import Joinus from "@/components/Home/Joinus";
@@ -125,7 +125,6 @@ export default function HomePage({ blogs, locale }) {
                     </div>
                 </div>
             </Layout>
-            <Footer />
         </>
     );
 }
