@@ -37,7 +37,7 @@ Array [
           />
           <div>
             <button
-              className="bg-orange-400 text-white active:bg-teal-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+              className="bg-orange-400 text-white active:bg-teal-600  uppercase text-sm px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
               onClick={[Function]}
               type="button"
             />
@@ -49,7 +49,7 @@ Array [
       >
         <form>
           <h6
-            className="text-blue-600 text-sm mt-3 mb-6 font-bold uppercase"
+            className="text-blue-600 text-base mt-3 mb-6  "
           />
           <div
             className="flex flex-wrap sm:flex sm:flex-nowrap justify-center sm:justify-start"
@@ -105,7 +105,7 @@ Array [
                   className="relative w-full mb-3"
                 >
                   <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    className="block  text-blueGray-600 text-sm  mb-2"
                     htmlfor="grid-password"
                   />
                   <input
@@ -125,7 +125,7 @@ Array [
                   className="relative w-full mb-3"
                 >
                   <label
-                    className="block  text-blueGray-600 text-xs font-bold mb-2"
+                    className="block  text-blueGray-600 text-sm  mb-2"
                     htmlfor="grid-password"
                   >
                      
@@ -136,7 +136,6 @@ Array [
                     onChange={[Function]}
                     readOnly={true}
                     type="email"
-                    value=""
                   />
                 </div>
               </div>
@@ -147,7 +146,7 @@ Array [
                   className="relative w-full mb-3"
                 >
                   <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    className="block text-blueGray-600 text-sm  mb-2"
                     htmlfor="grid-password"
                   />
                   <input
@@ -167,7 +166,7 @@ Array [
                   className="relative w-full mb-3"
                 >
                   <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    className="block text-blueGray-600 text-sm  mb-2"
                     htmlfor="grid-password"
                   />
                   <input
@@ -186,7 +185,7 @@ Array [
             className="mt-6 border-b-1 border-blueGray-300"
           />
           <h6
-            className="text-blue-600 text-sm mt-3 mb-6 font-bold uppercase"
+            className="text-blue-600 text-base mt-3 mb-6  "
           />
           <div
             className="flex flex-wrap"
@@ -198,7 +197,7 @@ Array [
                 className="relative w-full mb-3"
               >
                 <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  className="block text-blueGray-600 text-sm  mb-2"
                   htmlfor="grid-password"
                 />
                 <input
@@ -218,7 +217,7 @@ Array [
                 className="relative w-full mb-3"
               >
                 <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  className="block text-blueGray-600 text-sm  mb-2"
                   htmlfor="grid-password"
                 />
                 <input
@@ -238,7 +237,7 @@ Array [
                 className="relative w-full mb-3"
               >
                 <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  className="block text-blueGray-600 text-sm  mb-2"
                   htmlfor="grid-password"
                 />
                 <input
@@ -258,7 +257,7 @@ Array [
                 className="relative w-full mb-3"
               >
                 <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  className="block text-blueGray-600 text-sm  mb-2"
                   htmlfor="grid-password"
                 />
                 <input
@@ -278,7 +277,7 @@ Array [
                 className="relative w-full mb-3"
               >
                 <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  className="block text-blueGray-600 text-sm  mb-2"
                   htmlfor="grid-password"
                 />
                 <input
@@ -296,7 +295,7 @@ Array [
             className="mt-6 border-b-1 border-blueGray-300"
           />
           <h6
-            className="text-blue-600 text-sm mt-3 mb-6 font-bold uppercase"
+            className="text-blue-600 text-base mt-3 mb-6 "
           />
           <div
             className="flex flex-wrap"
@@ -308,7 +307,7 @@ Array [
                 className="relative w-full mb-3"
               >
                 <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  className="block text-blueGray-600 text-sm  mb-2"
                   htmlfor="grid-password"
                 />
                 <textarea
@@ -331,7 +330,7 @@ Array [
           className={false}
         >
           <h6
-            className="text-blue-600 text-sm mt-3 mb-6 font-bold uppercase"
+            className="text-blue-600 text-base mt-3 mb-6  "
           />
           <div
             className="flex flex-wrap"
@@ -343,7 +342,7 @@ Array [
                 className="relative w-full mb-3"
               >
                 <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  className="block text-blueGray-600 text-sm  mb-2"
                   htmlfor="grid-password"
                 />
                 <input
@@ -363,7 +362,7 @@ Array [
                 className="relative w-full mb-3"
               >
                 <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  className="block text-blueGray-600 text-sm  mb-2"
                   htmlfor="grid-password"
                 />
                 <input
@@ -377,7 +376,7 @@ Array [
               </div>
             </div>
             <button
-              className="bg-orange-400 text-white  font-bold uppercase text-xs px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3"
+              className="bg-orange-400 text-white   text-sm px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3"
               onClick={[Function]}
               type="submit"
             />
@@ -388,7 +387,7 @@ Array [
         />
         <form>
           <h6
-            className="text-blue-600 text-sm mt-3 mb-6 font-bold uppercase"
+            className="text-blue-600 text-base mt-3 mb-6  "
           />
           <div
             className="flex flex-wrap"
@@ -400,7 +399,7 @@ Array [
                 className="relative w-full mb-3"
               >
                 <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  className="block text-blueGray-600 text-sm  mb-2"
                   htmlfor="grid-password"
                 />
                 <input
@@ -414,7 +413,7 @@ Array [
               </div>
             </div>
             <button
-              className="bg-orange-400 text-white  font-bold uppercase text-xs px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3"
+              className="bg-orange-400 text-white   text-sm px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3"
               onClick={[Function]}
               type="submit"
             />

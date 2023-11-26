@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "color": "black",
+      "fontFamily": "Open Sans",
+      "fontSize": "14px",
+      "padding": "24px",
+    }
+  }
+>
+  <div>
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "width": "100%",
+        }
+      }
+    >
+      <img
+        alt="logo"
+        src="https://capstone-dream-team-git-85-meals-74d28e-merzoukfatimas-projects.vercel.app/_next/image?url=%2Fimages%2Fhome%2FNavbar%2Flogo.png&w=96&q=75"
+        style={
+          Object {
+            "height": "80px",
+            "width": "80px",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <p
+      style={
+        Object {
+          "marginBottom": "5px",
+          "marginTop": "0px",
+        }
+      }
+    >
+      26-11-2023
+    </p>
+    <p
+      style={
+        Object {
+          "fontWeight": "bold",
+          "marginBottom": "5px",
+        }
+      }
+    >
+      Dear 
+      mouloud
+      ,
+    </p>
+    <p>
+      We want to express our sincere gratitude for your donation of $
+      25
+       on 
+      26-11-2023
+      . Your kindness has made a meaningful impact, helping us provide nourishment to those in need. Thank you for being a beacon of compassion and support in our community.
+       
+    </p>
+  </div>
+  <div
+    style={
+      Object {
+        "borderRadius": "8px",
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <p
+      style={
+        Object {
+          "fontWeight": "bold",
+          "marginBottom": "10px",
+        }
+      }
+    >
+      Your donation details:
+    </p>
+    <table
+      style={
+        Object {
+          "border": "1px solid #e2e8f0",
+          "marginBottom": "10px",
+          "overflow": "scroll",
+          "width": "100%",
+        }
+      }
+    >
+      <thead>
+        <tr
+          style={
+            Object {
+              "backgroundColor": "#1a4b8a",
+              "color": "white",
+            }
+          }
+        >
+          <th
+            style={
+              Object {
+                "border": "1px solid #1a4b8a",
+                "padding": "12px",
+                "textAlign": "center",
+                "textTransform": "uppercase",
+              }
+            }
+          >
+            Meal
+          </th>
+          <th
+            style={
+              Object {
+                "border": "1px solid #1a4b8a",
+                "padding": "12px",
+                "textAlign": "center",
+                "textTransform": "uppercase",
+              }
+            }
+          >
+            Restaurant Name
+          </th>
+          <th
+            style={
+              Object {
+                "border": "1px solid #1a4b8a",
+                "padding": "12px",
+                "textAlign": "center",
+                "textTransform": "uppercase",
+              }
+            }
+          >
+            Quantity
+          </th>
+          <th
+            style={
+              Object {
+                "border": "1px solid #1a4b8a",
+                "padding": "12px",
+                "textAlign": "center",
+                "textTransform": "uppercase",
+              }
+            }
+          >
+            Price
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+         
+        <tr>
+          <td
+            style={
+              Object {
+                "border": "1px solid #1a4b8a",
+                "padding": "12px",
+                "textAlign": "center",
+              }
+            }
+          >
+            Sushi
+          </td>
+          <td
+            style={
+              Object {
+                "border": "1px solid #1a4b8a",
+                "padding": "12px",
+                "textAlign": "center",
+              }
+            }
+          >
+            Big Burger
+          </td>
+          <td
+            style={
+              Object {
+                "border": "1px solid #1a4b8a",
+                "padding": "12px",
+                "textAlign": "center",
+              }
+            }
+          >
+            4
+          </td>
+          <td
+            style={
+              Object {
+                "border": "1px solid #1a4b8a",
+                "padding": "12px",
+                "textAlign": "center",
+              }
+            }
+          >
+            $
+            23
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Your total donation: $
+      25
+    </p>
+  </div>
+  <p
+    style={
+      Object {
+        "marginBottom": "5px",
+      }
+    }
+  >
+    You truly make a difference.
+  </p>
+  <p
+    style={
+      Object {
+        "fontWeight": "bold",
+        "marginBottom": "2px",
+      }
+    }
+  >
+    Sincerely,
+  </p>
+  <p
+    style={
+      Object {
+        "marginBottom": "0px",
+      }
+    }
+  >
+    Buy me a meal Team
+  </p>
+  <a
+    href="mailto:buymeamealorg@gmail.com"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    buymeamealorg@gmail.com
+  </a>
+  <br />
+  <a
+    href="https://capstone-dream-team-git-85-meals-74d28e-merzoukfatimas-projects.vercel.app/"
+  >
+    Buy me a meal website
+  </a>
+  <p
+    style={
+      Object {
+        "marginTop": "0px",
+      }
+    }
+  >
+    Algeria.
+  </p>
+</div>
+`;
