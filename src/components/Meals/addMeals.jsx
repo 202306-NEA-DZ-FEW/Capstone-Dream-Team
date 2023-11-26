@@ -67,10 +67,23 @@ function AddMeals() {
         setLoadingForm(true);
         setIsModalOpen(false);
     };
+    const checkInputs = () => {
+        if (
+            mealName.trim() === "" ||
+            maxMeals.trim() === "" ||
+            mealPrice.trim() === "" ||
+            imageName.trim() === ""
+        ) {
+            setError(t("mealsPage.notifications.fullAllInputs"));
+            return false;
+        } else return true;
+    };
     const handleSubmit = async (event) => {
         event.preventDefault();
         const user = auth.currentUser;
-
+        if (!checkInputs()) {
+            return;
+        }
         if (!restaurantId) {
             console.error("Restaurant ID is missing.");
             return;
@@ -168,14 +181,11 @@ function AddMeals() {
     return (
         <div>
             <div>
-                <div className='sm:flex sm:items-center'>
+                {/* <div className='sm:flex sm:items-center'>
                     <div className='sm:flex-auto pl-2'>
                         <h1 className='tracking-wider font-light font-roboto'>
                             {t("mealsPage.meals.title")}
                         </h1>
-                        <p className='text-sm font-semibold text-gray-700'>
-                            {t("mealsPage.meals.description")}
-                        </p>
                     </div>
                     <div className='mt-4 sm:mt-0 sm:ml-16 sm:flex-none'>
                         <button
@@ -185,8 +195,22 @@ function AddMeals() {
                             {t("mealsPage.mealForm.addMeal")}
                         </button>
                     </div>
+                </div> */}
+                <div className='mx-4 md:mx-6'>
+                    <div className='mt-4 pb-4 flex flex-col justify-between sm:flex-row items-center border-b border-gray-200 dark:border-gray-700'>
+                        <div className='mb-2 sm:mb-0 tracking-wider font-light font-roboto'>
+                            {t("mealsPage.meals.title")}
+                        </div>
+                        <div className='mt-4 sm:mt-0 sm:ml-16 sm:flex-none'>
+                            <button
+                                onClick={() => setIsModalOpen(true)}
+                                className='inline-flex items-center justify-center rounded-md border border-transparent bg-blue-500 px-4 py-1 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-auto'
+                            >
+                                {t("mealsPage.mealForm.addMeal")}
+                            </button>
+                        </div>
+                    </div>
                 </div>
-
                 {isModalOpen && (
                     <div className='relative'>
                         <div className='z-50 justify-center items-center flex overflow-y-auto fixed inset-0 outline-none focus:outline-none'>
@@ -380,12 +404,12 @@ function AddMeals() {
                                     </svg>
                                     <span className='sr-only'>Error icon</span>
                                 </div>
-                                <div className='ml-3 text-sm font-normal'>
+                                <div className='mx-3 text-sm font-normal'>
                                     {error}
                                 </div>
                                 <button
                                     type='button'
-                                    className='ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700'
+                                    className='mx-auto -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700'
                                     data-dismiss-target='#toast-danger'
                                     aria-label='Close'
                                     onClick={() => setError(null)}

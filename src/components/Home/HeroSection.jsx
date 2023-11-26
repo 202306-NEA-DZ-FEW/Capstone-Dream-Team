@@ -7,7 +7,7 @@ export default function HeroSection() {
         <main className='bg-white  font-open-sans'>
             <div className='container mx-auto px-8 py-8 lg:py-10 relative flex flex-col lg:flex-row items-center'>
                 <div className='lg:w-1/2 bg-white p-6 rounded-xl flex flex-col items-center lg:items-start'>
-                    <h1 className='text-center p-2 text-3xl sm:text-3xl font-light text-black leading-tight mb-4'>
+                    <h1 className='text-center p-2 text-3xl sm:text-3xl font-thin font-sans font-roboto text-black leading-tight mb-4'>
                         {t("home.HeroSection.mission")}
                         <strong className='mt-4 font-black text-3xl text-blue-700 sm:text-4xl block'>
                             {t("home.HeroSection.help")}

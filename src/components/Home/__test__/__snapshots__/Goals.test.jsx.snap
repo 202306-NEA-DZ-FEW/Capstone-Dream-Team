@@ -13,10 +13,10 @@ exports[`renders correctly 1`] = `
     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-4 w-full h-full   "
   >
     <div
-      class=" w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20"
+      className=" w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20"
     >
       <div
-        class="flex justify-center md:justify-end -mt-16"
+        className="flex justify-center md:justify-end -mt-16"
       >
         <img
           alt="step"
@@ -26,22 +26,22 @@ exports[`renders correctly 1`] = `
       </div>
       <div>
         <h2
-          class="text-gray-800 text-3xl font-semibold"
+          className="text-gray-800 text-3xl font-semibold"
         >
           home.ourGoals.goal1
         </h2>
         <p
-          class="mt-2 text-gray-600 h-full"
+          className="mt-2 text-gray-600 h-full"
         >
           home.ourGoals.goal1text
         </p>
       </div>
     </div>
     <div
-      class=" w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20"
+      className=" w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20"
     >
       <div
-        class="flex justify-center md:justify-end -mt-16"
+        className="flex justify-center md:justify-end -mt-16"
       >
         <img
           alt="step"
@@ -51,22 +51,22 @@ exports[`renders correctly 1`] = `
       </div>
       <div>
         <h2
-          class="text-gray-800 text-3xl font-semibold"
+          className="text-gray-800 text-3xl font-semibold"
         >
           home.ourGoals.goal2
         </h2>
         <p
-          class="mt-2 text-gray-600 h-full"
+          className="mt-2 text-gray-600 h-full"
         >
           home.ourGoals.goal2text
         </p>
       </div>
     </div>
     <div
-      class=" w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20"
+      className=" w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20"
     >
       <div
-        class="flex justify-center md:justify-end -mt-16"
+        className="flex justify-center md:justify-end -mt-16"
       >
         <img
           alt="step"
@@ -76,12 +76,12 @@ exports[`renders correctly 1`] = `
       </div>
       <div>
         <h2
-          class="text-gray-800 text-3xl font-semibold"
+          className="text-gray-800 text-3xl font-semibold"
         >
           home.ourGoals.goal3
         </h2>
         <p
-          class="mt-2 text-gray-600 h-full"
+          className="mt-2 text-gray-600 h-full"
         >
           home.ourGoals.goal3text
         </p>

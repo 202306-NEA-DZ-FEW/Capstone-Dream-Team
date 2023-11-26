@@ -87,9 +87,10 @@
             "readMore": "اقرأ المزيد"
         },
         "blog": {
-            "back": "رجوع",
-            "tags": "الكلمات الدلالية",
-            "publishedOn": "نشرت يوم"
+          "moreArticles": "المزيد من المقالات",
+          "subMoreArticles": "العالم بحاجة لمكافحة الجوع. دعونا نتعلم المزيد",
+          "moreStories": "المزيد من القصص",
+          "subMoreStories": "المزيد من القصص، المزيد من التأثير: استمتع بقصص ملهمة تنبض بالأمل"
         }
     },
     "settings": {
@@ -155,7 +156,8 @@
         },
         "notifications": {
             "mealAddedSuccessfully": "تمت إضافة الوجبة بنجاح",
-            "imageSizeExceedsMax": "حجم الصورة يتجاوز الحد الأقصى المسموح به"
+            "imageSizeExceedsMax": "حجم الصورة يتجاوز الحد الأقصى المسموح به",
+            "fullAllInputs":"يرجى ملء جميع الحقول قبل الإرسال"
         }
     },
     "history": {
@@ -183,12 +185,15 @@
         "aboutus": "من نحن"
     },
     "footer": {
-        "home": "الصفحة الرئيسية",
-        "meals": "وجبات",
+        "home": "الرئيسية",
+        "meals": "الوجبات",
         "blog": "المدونة",
-        "followUs": "تابعنا"
+        "aboutus":"من نحن",
+        "copyright": "© 2023 Buymeameal, Inc. جميع الحقوق محفوظة."
+        
     },
     "overview": {
+        "title":"ملخص",
         "statCard": {
             "totalMeals": "إجمالي الوجبات",
             "totalActiveMeals": "إجمالي الوجبات المعلقة",
@@ -196,7 +201,7 @@
             "totalDonation": "إجمالي التبرع"
         },
         "chartGraph": {
-            "donationPerDay": "التبرع باليوم",
+            "donationPerDay": "التبرعات/اليوم",
             "weekdays": {
                 "0": "الأحد",
                 "1": "الاثنين",
