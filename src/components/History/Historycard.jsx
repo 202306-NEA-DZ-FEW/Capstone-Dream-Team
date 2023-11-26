@@ -19,9 +19,9 @@ export default function Historycard() {
 
     useEffect(() => {
         const user = auth.currentUser;
-        // // Use Firebase's 'onAuthStateChanged' to listen for changes in user authentication state.
+        // Use Firebase's 'onAuthStateChanged' to listen for changes in user authentication state.
         onAuthStateChanged(auth, (user) => {
-            //     // If a user is authenticated, set 'authUser' to the user; otherwise, set it to null.
+            // If a user is authenticated, set 'authUser' to the user; otherwise, set it to null.
             user ? setAuthUser(user) : setAuthUser(null);
         });
         async function fetchBlogs() {
@@ -123,7 +123,7 @@ export default function Historycard() {
             </div>
 
             <div className='inline-block min-w-full py-2 '>
-                <div className='overflow-hidden  rounded-md border border-gray-200 shadow-md'>
+                <div className='overflow-hidden'>
                     <table className='min-w-full text-center text-sm font-light'>
                         <thead className='border-b bg-blue-300 bg-opacity-50 font-medium text-Black '>
                             <tr>
