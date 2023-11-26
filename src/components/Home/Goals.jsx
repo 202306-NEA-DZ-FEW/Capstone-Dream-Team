@@ -29,9 +29,9 @@ export default function Goals() {
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        class=' w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20'
+                        className=' w-full h-2/3 py-4 px-8 bg-white shadow-lg rounded-lg my-20'
                     >
-                        <div class='flex justify-center md:justify-end -mt-16'>
+                        <div className='flex justify-center md:justify-end -mt-16'>
                             <img
                                 class='w-20 h-20 object-cover rounded-full border-2 border-indigo-500'
                                 src={image.url}
@@ -39,10 +39,10 @@ export default function Goals() {
                             />
                         </div>
                         <div>
-                            <h2 class='text-gray-800 text-3xl font-semibold'>
+                            <h2 className='text-gray-800 text-3xl font-semibold'>
                                 {t(`${image.title}`)}
                             </h2>
-                            <p class='mt-2 text-gray-600 h-full'>
+                            <p className='mt-2 text-gray-600 h-full'>
                                 {t(`${image.text}`)}
                             </p>
                         </div>

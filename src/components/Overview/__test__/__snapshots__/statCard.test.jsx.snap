@@ -8,7 +8,7 @@ exports[`renders correctly 1`] = `
     className="flex"
   >
     <div
-      className="flex items-center h-11 w-11 justify-center p-3 rounded-full bg-orange-400 bg-opacity-80"
+      className="flex items-center h-15 w-15 justify-center p-3 rounded-full bg-orange-400 bg-opacity-80"
     >
       <div
         className="text-2xl text-white"

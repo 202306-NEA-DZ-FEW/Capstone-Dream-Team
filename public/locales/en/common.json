@@ -87,9 +87,10 @@
             "readMore": "Read More"
         },
         "blog": {
-            "back": "Back",
-            "tags": "Tags",
-            "publishedOn": "Published on"
+            "moreArticles":"More Articles",
+            "subMoreArticles":"The world needs to fight with the hunger. Let’s learn more",
+            "moreStories":"More Stories",
+            "subMoreStories":"More Stories, More Impact: Dive into Compelling Narratives of Hope"
         }
     },
     "settings": {
@@ -155,7 +156,8 @@
         },
         "notifications": {
             "mealAddedSuccessfully": "Meal Added Successfully",
-            "imageSizeExceedsMax": "Image size exceeds the maximum allowed size."
+            "imageSizeExceedsMax": "Image size exceeds the maximum allowed size.",
+            "fullAllInputs":"Please fill in all fields before submitting."
         }
     },
     "history": {
@@ -184,11 +186,13 @@
     },
     "footer": {
         "home": "Home",
-        "meals": "meals",
-        "blog": "blog",
-        "followUs": "follow us"
+        "meals": "Meals",
+        "blog": "Blog",
+        "aboutus": "About us",
+        "copyright": "© 2023 Buymeameal, Inc. All rights reserved."
     },
     "overview": {
+        "title":"Overview",
         "statCard": {
             "totalMeals": "Total Meals",
             "totalActiveMeals": "Total Active Meals",
