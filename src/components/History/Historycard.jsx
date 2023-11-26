@@ -78,7 +78,7 @@ export default function Historycard() {
         <div className='overflow-x-auto'>
             {/* <div className='overflow-x-auto sm:-mx-6 lg:-mx-8'> */}
 
-            <div className='py-4 mx-4 md:mx-6'>
+            <div className='pb-4 mx-4 md:mx-6'>
                 <div className='mt-4 pb-4 flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 '>
                     <div className='mb-2 sm:mb-0 tracking-wider font-light font-roboto'>
                         {t("history.History")}
