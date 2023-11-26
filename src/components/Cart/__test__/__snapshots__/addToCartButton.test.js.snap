@@ -5,8 +5,6 @@ exports[`AddToCartButton Component renders correctly 1`] = `
   <button
     className="w-60 h-11 left-0 top-0 absolute rounded-full text-center text-white text-xl font-bold uppercase leading-relaxed bg-orange-400 "
     onClick={[Function]}
-  >
-    Donate
-  </button>
+  />
 </div>
 `;

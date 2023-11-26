@@ -48,6 +48,7 @@
             "averagePayPerMeal": "Average Price Per Meal",
             "total": "Total",
             "donate": "Donate",
+            "Cancel": "Cancel",
             "message": "Your Cart is Empty",
             "message2": "Looks like you have not added anything to your cart",
             "message3": "Click here to add"
@@ -86,8 +87,8 @@
             "readMore": "Read More"
         },
         "blog": {
-            "relatedArticles": "Related Articles",
-            "subRelatedArticles": "The world needs to fight with the hunger. Let’s learn more",
+            "moreArticles": "More Articles",
+            "subMoreArticles": "The world needs to fight with the hunger. Let’s learn more",
             "moreStories": "More Stories",
             "subMoreStories": "More Stories, More Impact: Dive into Compelling Narratives of Hope"
         }
@@ -155,18 +156,19 @@
         },
         "notifications": {
             "mealAddedSuccessfully": "Meal Added Successfully",
-            "imageSizeExceedsMax": "Image size exceeds the maximum allowed size."
+            "imageSizeExceedsMax": "Image size exceeds the maximum allowed size.",
+            "fullAllInputs": "Please fill in all fields before submitting."
         }
     },
     "history": {
         "History": "History",
-        "Doner": "Doner",
+        "Doner": "Donor",
         "Meal": "Meal",
         "Quantity": "Quantity",
         "Search": "Search for the donor's name",
         "Price": "Price",
         "Date": "Date",
-        "UsedMeals": "Used Meals"
+        "UsedMeals": "available Meals"
     },
     "Navbar": {
         "home": "Home",
@@ -184,11 +186,13 @@
     },
     "footer": {
         "home": "Home",
-        "meals": "meals",
-        "blog": "blog",
-        "followUs": "follow us"
+        "meals": "Meals",
+        "blog": "Blog",
+        "aboutus": "About us",
+        "copyright": "© 2023 Buymeameal, Inc. All rights reserved."
     },
     "overview": {
+        "title": "Overview",
         "statCard": {
             "totalMeals": "Total Meals",
             "totalActiveMeals": "Total Active Meals",
@@ -284,10 +288,5 @@
         "Creativity": "Creativity",
         "p creat": "We enriched our database by working with meals instead of coupons ; and we used Stripe for real time paiment.",
         "Team": "Meet Our Wonderful Team"
-    },
-    "404Page": {
-        "message1": "Page Not Found",
-        "message2": "Sorry, the page you are looking for could not be found.",
-        "button": "Return Home"
     }
 }

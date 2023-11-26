@@ -174,12 +174,12 @@ export default function Sidemenu(props) {
                                     !open && "scale-0 md:transform-none"
                                 }`}
                             >
-                                <div className="w-[150px] break-words text-zinc-950 dark:text-white text-base font-bold font-['Open Sans']">
+                                <div className="w-[150px] break-words text-zinc-950  text-base font-bold font-['Open Sans']">
                                     {userData
                                         ? userData.restaurantName
                                         : "loading..."}
                                 </div>
-                                <div className="w-[150px] break-all text-neutral-800  dark:text-white text-[10px] lg:text-[14px] font-normal font-['Open Sans']">
+                                <div className="w-[150px] break-all text-neutral-800 text-[10px] lg:text-[14px] font-normal font-['Open Sans']">
                                     {userData ? userData.email : "loading..."}
                                 </div>
                             </div>
@@ -216,7 +216,7 @@ export default function Sidemenu(props) {
                     <div className=' w-full self-stretch h-full flex-col justify-start pt-1 items-start  flex'>
                         <div className='w-full flex-col justify-start items-start gap-1 flex'>
                             <div
-                                className='h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex cursor-pointer  focus:outline-none focus:text-orange-600'
+                                className='h-4 p-4 rounded-lg justify-start items-center gap-2 inline-flex cursor-pointer hover:text-orange-600   focus:outline-none focus:text-orange-600'
                                 onMouseEnter={() => setMousenter(true)}
                                 onMouseLeave={() => setMousenter(false)}
                             >
@@ -224,7 +224,7 @@ export default function Sidemenu(props) {
                                     <IoEarthOutline size={20}></IoEarthOutline>{" "}
                                 </div>
                                 <button
-                                    className={`text-[#333333] text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug focus:outline-none duration-300 ${
+                                    className={`text-[#333333] text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug hover:text-orange-600  focus:outline-none duration-300 ${
                                         !open && "scale-0 md:transform-none"
                                     }`}
                                 >
@@ -279,13 +279,13 @@ export default function Sidemenu(props) {
                             </div>
                             <Link href='/'>
                                 <div
-                                    className='p-4 rounded-lg justify-start items-center gap-1 inline-flex hover:text-white hover:bg-blue-400 active:bg-blue-700 focus:bg-blue-600'
+                                    className='p-4 rounded-lg justify-start items-center gap-1 inline-flex hover:text-orange-600 '
                                     onClick={handleLogout}
                                 >
                                     <div className=' w-6 h-4 relative'>
                                         <IoLogOutOutline size={20} />
                                     </div>
-                                    <button className="text-[#333333]  dark:text-white text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug">
+                                    <button className="text-[#333333]  hover:text-orange-600 text-[10px] md:text-sm font-normal font-['Open Sans'] leading-snug">
                                         <div
                                             className={`duration-300 ${
                                                 !open &&

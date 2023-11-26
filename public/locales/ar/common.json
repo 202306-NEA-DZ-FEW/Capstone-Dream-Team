@@ -48,6 +48,7 @@
             "averagePayPerMeal": "متوسط ثمن الوجبة",
             "total": "المجموع الكلي",
             "donate": "تبرع",
+            "Cancel": "إلغاء",
             "message": "السلة فارغة",
             "message2": "يبدو أنك لم تضف شيئا إلى السلة",
             "message3": "إضغط هنا لإضافة وجبات"
@@ -86,8 +87,8 @@
             "readMore": "اقرأ المزيد"
         },
         "blog": {
-            "relatedArticles": "المقالات ذات الصلة",
-            "subRelatedArticles": "العالم بحاجة لمكافحة الجوع. دعونا نتعلم المزيد",
+            "moreArticles": "المزيد من المقالات",
+            "subMoreArticles": "العالم بحاجة لمكافحة الجوع. دعونا نتعلم المزيد",
             "moreStories": "المزيد من القصص",
             "subMoreStories": "المزيد من القصص، المزيد من التأثير: استمتع بقصص ملهمة تنبض بالأمل"
         }
@@ -155,7 +156,8 @@
         },
         "notifications": {
             "mealAddedSuccessfully": "تمت إضافة الوجبة بنجاح",
-            "imageSizeExceedsMax": "حجم الصورة يتجاوز الحد الأقصى المسموح به"
+            "imageSizeExceedsMax": "حجم الصورة يتجاوز الحد الأقصى المسموح به",
+            "fullAllInputs": "يرجى ملء جميع الحقول قبل الإرسال"
         }
     },
     "history": {
@@ -166,7 +168,7 @@
         "Search": "ابحث عن اسم المتبرع",
         "Price": "السعر",
         "Date": "اليوم",
-        "UsedMeals": "الوجبات المقدمة"
+        "UsedMeals": "الوجبات المتوفرة"
     },
     "Navbar": {
         "home": "الرئيسية",
@@ -183,12 +185,14 @@
         "aboutus": "من نحن"
     },
     "footer": {
-        "home": "الصفحة الرئيسية",
-        "meals": "وجبات",
+        "home": "الرئيسية",
+        "meals": "الوجبات",
         "blog": "المدونة",
-        "followUs": "تابعنا"
+        "aboutus": "من نحن",
+        "copyright": "© 2023 Buymeameal, Inc. جميع الحقوق محفوظة."
     },
     "overview": {
+        "title": "ملخص",
         "statCard": {
             "totalMeals": "إجمالي الوجبات",
             "totalActiveMeals": "إجمالي الوجبات المعلقة",
@@ -196,7 +200,7 @@
             "totalDonation": "إجمالي التبرع"
         },
         "chartGraph": {
-            "donationPerDay": "التبرع باليوم",
+            "donationPerDay": "التبرعات/اليوم",
             "weekdays": {
                 "0": "الأحد",
                 "1": "الاثنين",

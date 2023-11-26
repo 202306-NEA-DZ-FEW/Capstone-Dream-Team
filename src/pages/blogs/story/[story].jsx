@@ -208,11 +208,15 @@ export async function getStaticProps({ locale, params }) {
         if (params.story != doc.id)
             dataStories.push({ id: doc.id, data: doc.data() });
     });
+    const shuffledDataStories = dataStories
+        .slice()
+        .sort(() => Math.random() - 0.5);
+
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
             story: story,
-            similarStories: dataStories,
+            similarStories: shuffledDataStories,
         },
     };
 }

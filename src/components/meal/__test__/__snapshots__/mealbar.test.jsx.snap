@@ -2,35 +2,35 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="rounded-2xl p-4 border-2 flex items-center space-x-3"
+  className="rounded-2xl p-4 border-2 flex justify-between items-center w-full "
 >
-  <img
-    className="w-14 h-14 rounded-full"
-    src="https://viaplaceholder.com/56x56"
-  />
   <div
-    className="flex flex-col md:flex-row items-center justify-between w-full"
+    className="flex items-center justify-between space-x-3"
   >
-    <span
+    <img
+      className="w-14 h-14 rounded-full"
+      src="https://viaplaceholder.com/56x56"
+    />
+    <div
       className="text-3xl font-[Changa] text-blue-700 leading-relaxed"
     >
       Restaurant
-    </span>
-    <span
-      className="text-blue-950 text-xl font-bold leading-relaxed ml-auto"
-    >
-      <div>
-        <button
-          className="block text-blue-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-          data-modal-target="default-modal"
-          data-modal-toggle="default-modal"
-          onClick={[Function]}
-          type="button"
-        >
-          mealsPage.show_meals
-        </button>
-      </div>
-    </span>
+    </div>
+  </div>
+  <div
+    className="text-blue-950 text-xl font-bold leading-relaxed "
+  >
+    <div>
+      <button
+        className="block text-blue-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+        data-modal-target="default-modal"
+        data-modal-toggle="default-modal"
+        onClick={[Function]}
+        type="button"
+      >
+        mealsPage.show_meals
+      </button>
+    </div>
   </div>
 </div>
 `;

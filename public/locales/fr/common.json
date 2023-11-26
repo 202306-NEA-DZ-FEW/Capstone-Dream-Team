@@ -1,0 +1,286 @@
+{
+  "test": "Salut",
+  "signupPage": {
+    "email": "Email",
+    "password": "Mot de passe",
+    "buttons": {
+      "first": "Se connecter avec Google",
+      "second": "S'inscrire avec Google"
+    },
+    "signIn": {
+      "title": "Se connecter",
+      "subtitle": {
+        "first": "Vous n'avez pas de compte ?",
+        "second": "S'inscrire"
+      },
+      "subtitle2": "J'ai oublié mon mot de passe",
+      "wronginfos": "Mauvais e-mail ou mot de passe. Veuillez entrer des informations valides."
+    },
+    "signUp": {
+      "title": "Créer un compte",
+      "title2": "S'inscrire",
+      "subtitle": {
+        "first": "Vous avez déjà un compte ?",
+        "second": "Se connecter"
+      },
+      "name": "Nom du restaurant",
+      "confirm-password": "Confirmez votre mot de passe",
+      "pass-length": "Le mot de passe doit comporter au moins 8 caractères",
+      "pass-confirm": "Veuillez confirmer votre mot de passe",
+      "try-again": "Erreur, veuillez réessayer"
+    },
+    "reset-password": {
+      "title": "Réinitialiser votre mot de passe",
+      "subtitle": "Écrivez votre e-mail pour demander la réinitialisation du mot de passe",
+      "successMessage": "E-mail de réinitialisation envoyé avec succès",
+      "failureMessage": "Erreur lors de l'envoi de l'e-mail de réinitialisation du mot de passe. Veuillez réessayer."
+    }
+  },
+  "cartPage": {
+    "cart": {
+      "meal": "Repas",
+      "price": "Prix",
+      "quantity": "QTE",
+      "subtotal": "Sous-total",
+      "remove": "Supprimer",
+      "summary": "Résumé",
+      "totalMeals": "Total des repas",
+      "averagePayPerMeal": "Prix moyen par repas",
+      "total": "Total",
+      "donate": "Donner",
+      "Cancel": "Annuler",
+      "message": "Votre panier est vide",
+      "message2": "On dirait que vous n'avez rien ajouté à votre panier",
+      "message3": "Cliquez ici pour ajouter"
+    },
+    "card": {
+      "restaurant": "Restaurant",
+      "quantityLeft": "Qté restante"
+    },
+    "checkout": {
+      "DONATE NOW": "FAIRE UN DON MAINTENANT",
+      "Checkout": "Paiement",
+      "Donor informations": "Informations du donateur",
+      "Name": "Nom",
+      "Email": "Email",
+      "Address": "Adresse",
+      "City": "Ville",
+      "Country": "Pays",
+      "Zip": "Code postal",
+      "Payment informations": "Informations de paiement",
+      "Payment was successful": "Paiement réussi",
+      "Pay": "Payer",
+      "Processing": "Traitement"
+    }
+  },
+  "blogPage": {
+    "titleStories": "Histoires d'espoir : Nourrir les esprits, changer des vies",
+    "sub-textStories": "Explorez des histoires inspirantes d'espoir, de transformation et du pouvoir de donner. Notre voyage nous emmène à travers la vie de personnes qui inspirent le changement, et ensemble, nous pouvons faire la différence. Rejoignez-nous dans notre mission de nourrir les esprits, changer des vies et soutenir ceux qui en ont besoin. Votre contribution peut nous aider à transformer ces histoires en impact réel dans le monde.",
+    "titleBlogs": "Découvrir des solutions : Comprendre les problèmes",
+    "sub-textBlogs": "Explorer notre collection d'articles perspicaces est la clé pour comprendre le problème, qui est déjà à moitié résolu. Nos blogs vous guident à travers des perspectives et des idées éclairant des questions cruciales. Rejoignez-nous alors que nous plongeons dans des sujets pressants, partageons des connaissances et militons pour un monde meilleur. Votre engagement, par la lecture, peut transformer les mots en un impact significatif.",
+    "loadMore": "Voir plus",
+    "seeMore": "Voir plus",
+    "blogCard": {
+      "readMore": "Lire la suite"
+    },
+    "storyCard": {
+      "readMore": "Lire la suite"
+    },
+    "blog": {
+      "back": "Retour",
+      "tags": "Étiquettes",
+      "publishedOn": "Publié le"
+    }
+  },
+  "settings": {
+    "my_account": "Paramètres",
+    "edit": "Éditer",
+    "save": "Enregistrer",
+    "user_information": "Informations utilisateur",
+    "drag_and_drop": "Glisser-déposer",
+    "or_browse": "ou parcourir",
+    "to_upload": "pour télécharger",
+    "restaurant_name": "Nom du restaurant",
+    "email_address": "ADRESSE E-MAIL",
+    "verify_your_email": "Vérifiez votre e-mail",
+    "first_name": "Prénom (propriétaire)",
+    "last_name": "Nom de famille (propriétaire)",
+    "contact_information": "Coordonnées",
+    "address": "Adresse",
+    "city": "Ville",
+    "country": "Pays",
+    "postal_code": "Code postal",
+    "phone_number": "Numéro de téléphone",
+    "description": "Description",
+    "reset_your_password": "Réinitialiser votre mot de passe",
+    "reset": "Réinitialiser",
+    "enter_your_password": "Entrez votre mot de passe",
+    "enter_your_new_password": "Entrez votre nouveau mot de passe",
+    "delete_your_account": "Supprimer votre compte",
+    "delete": "Supprimer",
+    "mes_updatedsuccessfully": "Profil mis à jour avec succès",
+    "verify_email": "Veuillez vérifier votre e-mail pour le mettre à jour",
+    "email_sent": "Vérification par e-mail envoyée !",
+    "try_again": "Veuillez réessayer",
+    "pass_updated": "Mot de passe mis à jour avec succès",
+    "wrong_pass": "Mot de passe incorrect, veuillez entrer un mot de passe valide",
+    "errorupdate_pass": "Erreur lors de la mise à jour du mot de passe",
+    "success_delete": "Votre compte est supprimé avec succès",
+    "error_delete": "Erreur lors de la suppression du compte, veuillez réessayer",
+    "valid_image": "Veuillez télécharger un fichier image valide (JPEG, PNG, GIF)."
+  },
+  "mealsPage": {
+    "donate": "Donner",
+    "show_meals": "Voir tous les repas",
+    "Search": "Recherchez votre restaurant préféré",
+    "available_meals": "Repas disponibles",
+    "stock": "En stock",
+    "mealsTable": {
+      "image": "Image",
+      "name": "Nom",
+      "quantity": "Quantité",
+      "price": "Prix"
+    },
+    "meals": {
+      "title": "Repas",
+      "description": "Liste de tous les repas du restaurant."
+    },
+    "mealForm": {
+      "mealName": "Nom du repas",
+      "uploadFile": "Télécharger le fichier",
+      "chooseImage": "Choisir une image",
+      "maxMealsPerDay": "Max de repas par jour",
+      "mealPrice": "Prix du repas",
+      "addMeal": "Ajouter un repas"
+    },
+    "notifications": {
+      "mealAddedSuccessfully": "Repas ajouté avec succès",
+      "imageSizeExceedsMax": "La taille de l'image dépasse la taille maximale autorisée."
+    }
+  },
+  "history": {
+    "History": "Historique",
+    "Doner": "Donateur",
+    "Meal": "Repas",
+    "Quantity": "Quantité",
+    "Search": "Recherchez le nom du donateur",
+    "Price": "Prix",
+    "Date": "Date",
+    "UsedMeals": "Repas disponibles"
+  },
+  "Navbar": {
+    "home": "Accueil",
+    "meals": "Repas",
+    "blogs": "Blogs",
+    "restaurant": "Restaurant",
+    "dashboard": "Tableau de bord",
+    "signOut": "Déconnexion",
+    "joinUs": "Rejoignez-nous",
+    "signIn": "Se connecter",
+    "light mode": "Mode clair",
+    "dark mode": "Mode sombre",
+    "language": "Langue",
+    "aboutus": "À propos de nous"
+  },
+  "footer": {
+    "home": "Accueil",
+    "meals": "Repas",
+    "blog": "Blog",
+    "followUs": "Suivez-nous"
+  },
+  "overview": {
+    "statCard": {
+      "totalMeals": "Total des repas",
+      "totalActiveMeals": "Total des repas actifs",
+      "totalDonors": "Total des donateurs",
+      "totalDonation": "Total des dons"
+    },
+    "chartGraph": {
+      "donationPerDay": "Don par jour",
+      "weekdays": {
+        "0": "Dimanche",
+        "1": "Lundi",
+        "2": "Mardi",
+        "3": "Mercredi",
+        "4": "Jeudi",
+        "5": "Vendredi",
+        "6": "Samedi"
+      },
+      "date": "Date",
+      "day": "Jour",
+      "count": "Nombre"
+    }
+  },
+  "home": {
+    "HeroSection": {
+      "mission": "Nous sommes en mission pour combattre la faim",
+      "help": "Vous pouvez aussi aider !",
+      "text": "S'il vous plaît, soutenez notre cause avec un petit don aujourd'hui ! Des gens meurent de faim et chaque dollar compte et nous rapproche de notre objectif de collecte de fonds. Merci pour votre générosité !.",
+      "donate": "Faire un don maintenant"
+    },
+    "donation": {
+      "empower": "Autonomiser",
+      "title": "Changez - Devenez un donateur",
+      "subtitle": "Sur le site ACHETEZ-MOI UN REPAS, votre générosité a le pouvoir de changer des vies. Voici comment vous pouvez contribuer :",
+      "step1title": "Achetez des coupons de don",
+      "step1text": "En quelques clics seulement, vous pouvez acquérir des coupons de don spéciaux via notre plateforme conviviale. Ces coupons servent de catalyseur pour nourrir ceux qui ont faim d'un repas.",
+      "step2title": "Avoir un impact significatif",
+      "step2text": "Vos contributions se traduisent directement en repas pour ceux dans le besoin. Votre soutien nous aide à créer une différence tangible et positive dans la communauté.",
+      "step3title": "Rejoignez une communauté de donateurs",
+      "step3text": "En devenant donateur, vous rejoignez une communauté de personnes partageant les mêmes idées, engagées à rendre le monde meilleur, un repas à la fois."
+    },
+    "ourGoals": {
+      "title": "Nos objectifs",
+      "goal1": "Éradication de la pauvreté",
+      "goal1text": "Nous visons à réduire la pauvreté en veillant à ce que les individus et les familles dans le besoin aient accès à des repas nutritifs, indépendamment de leur situation financière. Grâce à vos contributions généreuses, nous nous efforçons d'améliorer la vie de ceux qui font face à des difficultés économiques.",
+      "goal2": "Faim zéro",
+      "goal2text": "Notre mission est d'éliminer la faim en assurant un accès régulier à des repas sains et nourrissants pour ceux qui sont en situation d'insécurité alimentaire. Nous encourageons la participation communautaire et le bénévolat pour créer un impact durable sur l'accessibilité alimentaire.",
+      "goal3": "Promouvoir la bonne santé",
+      "goal3text": "Chez Achetez-moi un repas, nous sommes en mission pour fournir une nutrition pour prévenir les problèmes de santé et lutter contre les maladies causées par la malnutrition."
+    },
+    "restaurant": {
+      "title": "Rejoignez-nous - Les restaurants peuvent faire la différence",
+      "subtitle": "En tant que propriétaire ou gestionnaire de restaurant, vous jouez un rôle vital dans notre mission. Nous vous contactons avec une opportunité passionnante de non seulement avoir un impact positif sur votre communauté, mais aussi de promouvoir votre restaurant à un public plus large. Voici comment vous pouvez participer :",
+      "step1": "Listez vos repas",
+      "step1text": "En rejoignant notre cause, vous pouvez facilement présenter votre restaurant et ses plats délicieux sur notre site web. Nous créerons une page dédiée pour votre restaurant, avec des images alléchantes et des descriptions de vos repas.",
+      "step2": "Acceptez les dons de repas",
+      "step2text": "Les donateurs qui souhaitent soutenir notre mission peuvent acheter des repas dans votre restaurant. Ces repas peuvent être récupérés par ceux dans le besoin, assurant ainsi que vous atteignez une clientèle plus large.",
+      "step3": "Contrôle du tableau de bord",
+      "step3text": "Nous vous fournissons un tableau de bord sécurisé et convivial qui vous permet de vérifier et de suivre les rachats de coupons. Vous aurez un contrôle total sur le processus et pourrez suivre l'impact de vos contributions."
+    },
+    "joinus": {
+      "title": "Travaillons ensemble pour mettre fin à la faim",
+      "text": "Votre petit geste de gentillesse peut faire une grande différence. Ensemble, nous pouvons changer des vies et créer un avenir plus lumineux. Faites un don aujourd'hui et soyez le changement que vous souhaitez voir dans le monde.",
+      "donate": "Faire un don",
+      "joinus": "Rejoignez-nous"
+    },
+    "blogs": {
+      "title": "Blogs",
+      "subtitle": "Explorez ici des articles sur la faim et la pauvreté dans notre monde",
+      "see more": "voir plus"
+    },
+    "ourSponsors": "Nos sponsors"
+  },
+  "sidemenu": {
+    "overview": "Aperçu",
+    "Meals": "Repas",
+    "History": "Historique",
+    "Settings": "Paramètres",
+    "Logout": "Déconnexion",
+    "language": "Langue"
+  },
+  "aboutus": {
+    "Our project": "Notre projet",
+    "p1": "Ce site web sert de projet de fin d'études pour le développement web frontend chez Re:coded. Il est dédié à mettre en valeur notre capacité à créer des sites web conformes aux exigences spécifiées et même à insuffler de la créativité dans le processus. En utilisant nos compétences techniques, y compris GitHub, HTML, CSS, JavaScript, Firebase et Next.js, nous avons réussi à exécuter ce projet. De plus, nous avons mis en œuvre nos compétences relationnelles pour faciliter la communication efficace, rendant cette expérience très précieuse et la livraison opportune du projet.",
+    "Our Goal": "Notre objectif",
+    "p2": "Notre vision était de créer un site web de don facile à naviguer et à comprendre son objectif. Tout d'abord, les donateurs peuvent explorer des blogs pertinents sur la page Blogs. Pour découvrir les restaurants et leurs repas, ils peuvent visiter la page Repas et ajouter des articles à leur panier pour les dons. Lorsqu'ils sont prêts à faire un don, les donateurs peuvent passer à la page de paiement en cliquant sur l'icône du panier, en saisissant leur nom et en fournissant une carte de crédit. Le processus est conçu pour être rapide, sans nécessiter d'inscription qui pourrait allonger l'expérience.",
+    "p3": "D'autre part, les restaurants doivent s'inscrire pour ajouter leurs repas à notre base de données via le tableau de bord. À travers le tableau de bord, ils peuvent accéder à un aperçu de l'historique des dons, visualiser le nombre de dons par mois ou par an et mettre à jour leurs informations de profil (nom, image, mot de passe, e-mail, etc.) via les paramètres.",
+    "Responsiveness": "Réactivité",
+    "p resp": "Nous avons assuré une réactivité totale sur différents types et tailles d'écrans en utilisant Tailwind CSS pour ce site web.",
+    "Firebase": "Firebase",
+    "p fir": "Nous avons construit notre backend en utilisant Firebase et l'avons organisé en trois blocs : une collection de donateurs, une collection de restaurants et une collection de repas.",
+    "Creativity": "Créativité",
+    "p creat": "Nous avons enrichi notre base de données en travaillant avec des repas au lieu de coupons ; et nous avons utilisé Stripe pour les paiements en temps réel.",
+    "Team": "Rencontrez notre merveilleuse équipe"
+  }
+}

@@ -34,8 +34,8 @@ export default function Navbar({ locale }) {
     };
     return (
         <>
-            <nav className='sticky z-20 mt-0 top-0 font-sans uppercase  bg-white  py-2.5  lg:backdrop-filter lg:backdrop-blur-lg lg:backdrop-opacity-25 lg:opacity-80 '>
-                <div className='flex flex-wrap items-center justify-between max-w-screen-xl px-2 mx-auto'>
+            <nav className='sticky z-20 mt-0 top-0  bg-white  py-2.5  lg:backdrop-filter lg:backdrop-blur-lg lg:backdrop-opacity-25 lg:opacity-80 '>
+                <div className='flex flex-wrap items-center justify-between max-w-screen-2xl px-2 mx-auto'>
                     <div className='flex  h-8 mr-3  sm:mb-2'>
                         <div className='flex h-full w-full ml-6 pt-3 justify-center items-center'>
                             <Link href='/'>
@@ -57,6 +57,7 @@ export default function Navbar({ locale }) {
                         <button
                             className='hidden text-blue-800 hover:text-[#192655] lg:inline-block mx-2 z-20'
                             onMouseEnter={() => setClicked(true)}
+                            onClick={() => setClicked(!clicked)}
                         >
                             <IoEarthOutline size={20}></IoEarthOutline>{" "}
                         </button>
@@ -64,9 +65,9 @@ export default function Navbar({ locale }) {
                             <div
                                 onMouseLeave={() => setClicked(false)}
                                 className={`${
-                                    locale === "en"
-                                        ? "absolute right-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
-                                        : "absolute left-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
+                                    locale === "ar"
+                                        ? "absolute left-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
+                                        : "absolute right-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
                                 }`}
                             >
                                 <ul>
@@ -93,6 +94,20 @@ export default function Navbar({ locale }) {
                                     >
                                         {" "}
                                         <button
+                                            onClick={() => changeLanguage("fr")}
+                                        >
+                                            Français
+                                        </button>
+                                    </li>
+                                    <li
+                                        className={`${
+                                            locale === "en"
+                                                ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                                : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                        }`}
+                                    >
+                                        {" "}
+                                        <button
                                             onClick={() => changeLanguage("ar")}
                                         >
                                             العربية
@@ -104,8 +119,7 @@ export default function Navbar({ locale }) {
                         <button
                             type='button'
                             onClick={toggleMobileMenu}
-                            onMouseLeave={() => setMobileMenuOpen(false)}
-                            className={`inline-flex items-center p-2 ml-1 text-sm text-[#192655] rounded-lg lg:hidden hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-200  duration-300 ease-in-out'
+                            className={`inline-flex items-center p-2 ml-1 text-sm text-blue-900 rounded-lg lg:hidden hover:bg-blue-100 focus:outline-none focus-visible:ring-1 focus:ring-blue-800  duration-300 ease-in-out'
                            ${
                                isMobileMenuOpen
                                    ? "rotate-180"
@@ -129,7 +143,9 @@ export default function Navbar({ locale }) {
                             </svg>
                             <svg
                                 className={`w-6 h-6 duration-500 ${
-                                    isMobileMenuOpen ? "" : "hidden"
+                                    isMobileMenuOpen
+                                        ? "hover:text-red-700"
+                                        : "hidden"
                                 }`}
                                 fill='currentColor'
                                 viewBox='0 0 20 20'
@@ -144,16 +160,19 @@ export default function Navbar({ locale }) {
                         </button>
                     </div>
                     <div
+                        onMouseLeave={() => {
+                            setMobileMenuOpen(false), setClicked(false);
+                        }}
                         className={`items-center justify-between lg:flex lg:w-auto lg-order-1  ${
                             isMobileMenuOpen
-                                ? " duration-700 absolute z-30 bg-white  w-60 border rounded-l-xl shadow-xl lg:border-0 lg:relative lg:h-8 sm:h-screen md:h-screen  top-14 lg:top-0"
+                                ? " duration-700 absolute z-30 bg-white  w-60 border rounded-l-xl shadow-xl lg:border-0 lg:relative  h-screen lg:h-8 top-14 lg:top-0 overflow-scroll"
                                 : "hidden"
                         } ${locale === "en" ? "right-0" : " left-0"}`}
                     >
                         <ul className='flex flex-col text-lg normal-case space-y-12 lg:space-y-0 items-center mt-4 font-medium lg:flex-row lg:space-x-6 lg:mt-0'>
                             <li>
                                 <Link
-                                    className={`block py-2 pl-3 pr-4 lg:text-blue-900  lg:font-bold border-b border-gray-100 hover:border-b hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer  ${
+                                    className={`block py-2 pl-3 pr-4 lg:text-blue-900  lg:font-bold border-b border-gray-100 hover:border-b hover:text-blue-800 hover:border-blue-950  lg:hover:bg-transparent lg:border-0 lg:hover:text-[#192655] lg:hover:border-0 cursor-pointer  ${
                                         pathname === "/"
                                             ? "focus:outline-non lg:text-orange-600  "
                                             : ""
@@ -225,7 +244,7 @@ export default function Navbar({ locale }) {
 
                             <li className='lg:hidden'>
                                 <button
-                                    className='flex py-2 pl-3 pr-4 lg:text-blue-950 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   '
+                                    className='flex py-2 pl-3 pr-4 lg:text-blue-950 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700'
                                     onClick={handleClick}
                                 >
                                     <IoEarthOutline size={30}></IoEarthOutline>{" "}
@@ -259,6 +278,24 @@ export default function Navbar({ locale }) {
                                                     English
                                                 </button>
                                             </li>
+
+                                            <li
+                                                className={`${
+                                                    locale === "en"
+                                                        ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-500 hover:text-white"
+                                                        : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-500 hover:text-white"
+                                                }`}
+                                            >
+                                                {" "}
+                                                <button
+                                                    onClick={() =>
+                                                        changeLanguage("fr")
+                                                    }
+                                                >
+                                                    Français
+                                                </button>
+                                            </li>
+
                                             <li
                                                 className={`${
                                                     locale === "en"
