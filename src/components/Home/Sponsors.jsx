@@ -43,7 +43,7 @@ export default function Sponsors() {
     }, []);
     return (
         <>
-            <div class='max-w-screen-xl mx-auto flex h-full  my-20 py-20 items-center justify-center  bg-[#BCE4EB]'>
+            <div class='max-w-screen-xl mx-auto flex h-full  my-20 p-4 items-center justify-center  bg-[#BCE4EB]'>
                 <div class='w-full rounded-lg bg-white px-8 py-4 shadow-md m-4'>
                     <div class='px-1 py-4'>
                         <h3 className=' mb-6 font-sans text-2xl text-center font-bold leading-none tracking-tight text-[#192655] sm:text-3xl md:mx-auto'>
