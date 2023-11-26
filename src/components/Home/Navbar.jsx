@@ -65,9 +65,9 @@ export default function Navbar({ locale }) {
                             <div
                                 onMouseLeave={() => setClicked(false)}
                                 className={`${
-                                    locale === "en"
-                                        ? "absolute right-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
-                                        : "absolute left-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
+                                    locale === "ar"
+                                        ? "absolute left-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
+                                        : "absolute right-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
                                 }`}
                             >
                                 <ul>
@@ -83,6 +83,20 @@ export default function Navbar({ locale }) {
                                             onClick={() => changeLanguage("en")}
                                         >
                                             English
+                                        </button>
+                                    </li>
+                                    <li
+                                        className={`${
+                                            locale === "en"
+                                                ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                                : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                        }`}
+                                    >
+                                        {" "}
+                                        <button
+                                            onClick={() => changeLanguage("fr")}
+                                        >
+                                            Français
                                         </button>
                                     </li>
                                     <li
@@ -230,7 +244,7 @@ export default function Navbar({ locale }) {
 
                             <li className='lg:hidden'>
                                 <button
-                                    className='flex py-2 pl-3 pr-4 lg:text-blue-950 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700   '
+                                    className='flex py-2 pl-3 pr-4 lg:text-blue-950 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700'
                                     onClick={handleClick}
                                 >
                                     <IoEarthOutline size={30}></IoEarthOutline>{" "}
@@ -264,6 +278,24 @@ export default function Navbar({ locale }) {
                                                     English
                                                 </button>
                                             </li>
+
+                                            <li
+                                                className={`${
+                                                    locale === "en"
+                                                        ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-500 hover:text-white"
+                                                        : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-500 hover:text-white"
+                                                }`}
+                                            >
+                                                {" "}
+                                                <button
+                                                    onClick={() =>
+                                                        changeLanguage("fr")
+                                                    }
+                                                >
+                                                    Français
+                                                </button>
+                                            </li>
+
                                             <li
                                                 className={`${
                                                     locale === "en"

@@ -48,6 +48,7 @@
             "averagePayPerMeal": "Average Price Per Meal",
             "total": "Total",
             "donate": "Donate",
+            "Cancel": "Cancel",
             "message": "Your Cart is Empty",
             "message2": "Looks like you have not added anything to your cart",
             "message3": "Click here to add"
@@ -161,13 +162,13 @@
     },
     "history": {
         "History": "History",
-        "Doner": "Doner",
+        "Doner": "Donor",
         "Meal": "Meal",
         "Quantity": "Quantity",
         "Search": "Search for the donor's name",
         "Price": "Price",
         "Date": "Date",
-        "UsedMeals": "Used Meals"
+        "UsedMeals": "available Meals"
     },
     "Navbar": {
         "home": "Home",
