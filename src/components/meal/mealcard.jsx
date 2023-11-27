@@ -59,7 +59,7 @@ export default function Mealcard({
 
                     {/**meal price*/}
                     <div className='  flex text-neutral-400 text-orange-400 text-xl font-bold  justify-center item-center'>
-                        {price} £
+                        {price} $
                     </div>
                 </div>
 

@@ -4,9 +4,9 @@ import React from "react";
 const MealsTable = ({ meals, onDelete }) => {
     const { t } = useTranslation("common");
     return (
-        <div className='overflow-x-auto overflow-y-hidden rounded-md border border-gray-200 shadow-md mt-5'>
-            <table className='w-full text-center text-sm rtl:text-right'>
-                <thead className='text-xs bg-blue-300 bg-opacity-50 '>
+        <div className='overflow-x-auto overflow-y-hidden border-gray-200  mt-5'>
+            <table className='w-full text-center text-sm rtl:text-right py-4'>
+                <thead className='text-sm bg-blue-300 bg-opacity-50 '>
                     <tr>
                         <th scope='col' className='px-6 py-3'>
                             {t("mealsPage.mealsTable.image")}
