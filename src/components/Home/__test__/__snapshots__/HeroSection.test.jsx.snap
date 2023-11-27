@@ -29,7 +29,7 @@ exports[`renders correctly 1`] = `
         className="self-center mt-8"
       >
         <a
-          className="bg-orange-400 text-center hover:bg-orange-600 mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-white tracking-widest"
+          className="bg-orange-400 text-center hover:bg-orange-500 mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-white tracking-widest"
           href="/meals"
           onClick={[Function]}
           onMouseEnter={[Function]}
