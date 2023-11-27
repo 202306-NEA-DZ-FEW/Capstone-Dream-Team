@@ -23,12 +23,11 @@ const CartIcon = () => {
             if (parts.length === 2) return parts.pop().split(";").shift();
         }
 
-        // Retrieve the unique identifier from the cookie
-        const visitorID = getCookie("visitorID");
-
         //const visitorID = "8ddb9194-5002-431d-8851-b70b3ea173b9";
 
         const fetchMealsInCart = async () => {
+            // Retrieve the unique identifier from the cookie
+            const visitorID = getCookie("visitorID");
             if (visitorID) {
                 const cartCollection = collection(db, "cart");
                 const q = query(
@@ -82,7 +81,7 @@ const CartIcon = () => {
                 aria-hidden='true'
             />
             {totalInCart > 0 && (
-                <span className='absolute bottom-4  bg-red-500 text-white rounded-full px-1 text-xs'>
+                <span className='absolute bottom-4  bg-red-500 text-white rounded-full h-4 w-4 text-xs'>
                     {totalInCart}
                 </span>
             )}
