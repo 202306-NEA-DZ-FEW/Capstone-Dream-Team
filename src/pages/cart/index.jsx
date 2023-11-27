@@ -187,10 +187,6 @@ function Cart() {
                                     Total={totalCartPrice.toFixed(2)}
                                     cart={meals}
                                 />
-                                {/* <button >
-                                 {t("cartPage.cart.donate")} 
-                                
-                            </button>*/}
                             </div>
                         </div>
                     </div>

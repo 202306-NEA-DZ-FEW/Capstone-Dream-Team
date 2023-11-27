@@ -2,9 +2,9 @@ import { useTranslation } from "next-i18next";
 export default function Restaurant() {
     const { t } = useTranslation("common");
     return (
-        <div className=' my-20 py-20 bg-gradient-to-bl bg-white flex items-center max-w-screen-xl justify-center scroll-smooth '>
+        <div className='pt-20 bg-gradient-to-bl bg-white flex items-center max-w-screen-xl justify-center scroll-smooth '>
             <div className='container mx-auto p-4'>
-                <h2 className='hover:-translate-y-3 duration-300 max-w-lg mb-10 font-sans text-2xl text-center font-bold leading-none tracking-tight text-[#192655] sm:text-3xl lg:text-4xl md:mx-auto'>
+                <h2 className='hover:-translate-y-3 duration-300 max-w-lg mb-10 font-sans text-2xl text-center font-bold leading-none tracking-tight text-[#192655] sm:text-3xl lg:text-4xl mx-auto'>
                     {t("home.restaurant.title")}
                 </h2>
                 <p className='text-base text-center text-gray-700 md:text-lg mb-16'>

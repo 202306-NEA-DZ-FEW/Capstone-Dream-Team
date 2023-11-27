@@ -87,45 +87,45 @@
             "readMore": "Read More"
         },
         "blog": {
-            "moreArticles":"More Articles",
-            "subMoreArticles":"The world needs to fight with the hunger. Let’s learn more",
-            "moreStories":"More Stories",
-            "subMoreStories":"More Stories, More Impact: Dive into Compelling Narratives of Hope"
+            "moreArticles": "More Articles",
+            "subMoreArticles": "The world needs to fight with the hunger. Let’s learn more",
+            "moreStories": "More Stories",
+            "subMoreStories": "More Stories, More Impact: Dive into Compelling Narratives of Hope"
         }
     },
     "settings": {
         "my_account": "Settings",
         "edit": "Edit",
-        "save": "save",
-        "user_information": "user information",
+        "save": "Save",
+        "user_information": "User Information",
         "drag_and_drop": "Drag and drop",
         "or_browse": "or browse",
         "to_upload": "to upload",
-        "restaurant_name": "restaurant name",
-        "email_address": "EMAIL ADDRESS",
-        "verify_your_email": "Verify your email",
-        "first_name": "first name (Owner)",
-        "last_name": "last name (Owner)",
-        "contact_information": "contact information",
-        "address": "address",
-        "city": "city",
-        "country": "country",
-        "postal_code": "postal code",
-        "phone_number": "phone number",
-        "description": "description",
-        "reset_your_password": "reset your password",
-        "reset": "reset",
-        "enter_your_password": "enter your password",
-        "enter_your_new_password": "enter your new password",
-        "delete_your_account": "delete your account",
-        "delete": "delete",
+        "restaurant_name": "Restaurant Name",
+        "email_address": "Email Address",
+        "verify_your_email": "Verify Your Email",
+        "first_name": "Firstname (Owner)",
+        "last_name": "Lastname (Owner)",
+        "contact_information": "Contact Information",
+        "address": "Address",
+        "city": "City",
+        "country": "Country",
+        "postal_code": "Postal Code",
+        "phone_number": "Phone Number",
+        "description": "Description",
+        "reset_your_password": "Reset Your Password",
+        "reset": "Reset",
+        "enter_your_password": "Enter Your Password",
+        "enter_your_new_password": "Enter Your New Password",
+        "delete_your_account": "Delete Your Account",
+        "delete": "Delete",
         "mes_updatedsuccessfully": "Profile updated successfully",
         "verify_email": "Please verify your email in order to update it",
         "email_sent": "Email verification sent!",
         "try_again": "Please try again",
         "pass_updated": "Password updated successfully",
-        "wrong_pass": "Wrong password, please enter valid password",
-        "errorupdate_pass": "Error updating password",
+        "wrong_pass": "Wrong Password, please enter valid password",
+        "errorupdate_pass": "Error Updating Password",
         "success_delete": "Your account is deleted successfully",
         "error_delete": "Error deleting account, please try again",
         "valid_image": "Please upload a valid image file (JPEG, PNG, GIF)."
@@ -157,7 +157,7 @@
         "notifications": {
             "mealAddedSuccessfully": "Meal Added Successfully",
             "imageSizeExceedsMax": "Image size exceeds the maximum allowed size.",
-            "fullAllInputs":"Please fill in all fields before submitting."
+            "fullAllInputs": "Please fill in all fields before submitting."
         }
     },
     "history": {
@@ -187,12 +187,12 @@
     "footer": {
         "home": "Home",
         "meals": "Meals",
-        "blog": "Blog",
-        "aboutus": "About us",
+        "blog": "Blogs",
+        "aboutUs": "About us",
         "copyright": "© 2023 Buymeameal, Inc. All rights reserved."
     },
     "overview": {
-        "title":"Overview",
+        "title": "Overview",
         "statCard": {
             "totalMeals": "Total Meals",
             "totalActiveMeals": "Total Active Meals",
@@ -288,5 +288,10 @@
         "Creativity": "Creativity",
         "p creat": "We enriched our database by working with meals instead of coupons ; and we used Stripe for real time paiment.",
         "Team": "Meet Our Wonderful Team"
+    },
+    "404Page": {
+        "message1": "Page not found",
+        "message2": "Sorry, the page you were looking for could not be found.",
+        "button": "Home Page"
     }
 }

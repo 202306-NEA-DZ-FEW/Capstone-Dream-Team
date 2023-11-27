@@ -3,6 +3,7 @@ import * as React from "react";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 
+import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Home/Navbar";
 
 export default function Layout({ children }) {
@@ -34,6 +35,7 @@ export default function Layout({ children }) {
             />
             <Navbar locale={router.locale} />
             {children}
+            <Footer />
         </>
     );
 }

@@ -4,7 +4,7 @@ import {
     signInWithPopup,
     updateProfile,
 } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
@@ -79,13 +79,20 @@ const SignUp = ({ updateComponent }) => {
 
             router.push("/admin-dashboard");
 
-            const userDocRef = collection(db, "restaurant");
-            await setDoc(doc(userDocRef, userId), {
-                restaurantName: userCredential.user.displayName,
-                email: userCredential.user.email,
-                restaurantId: userId,
-                // Add other user-related data as needed
-            });
+            // Check if the user document already exists in Firestore
+            const userDocRef = doc(db, "restaurant", userId);
+            const userDoc = await getDoc(userDocRef);
+            console.log(userDoc.data());
+            if (!userDoc.data()) {
+                const userDocRef = collection(db, "restaurant");
+
+                await setDoc(doc(userDocRef, userId), {
+                    restaurantName: userCredential.user.displayName,
+                    email: userCredential.user.email,
+                    restaurantId: userId,
+                    // Add other user-related data as needed
+                });
+            }
         } catch (error) {
             toast.error(`${t("signupPage.signUp.try-again")}`);
         }
