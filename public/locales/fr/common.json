@@ -128,7 +128,9 @@
     "errorupdate_pass": "Erreur lors de la mise à jour du mot de passe",
     "success_delete": "Votre compte a été supprimé avec succès",
     "error_delete": "Erreur lors de la suppression du compte, veuillez réessayer",
-    "valid_image": "Veuillez télécharger un fichier image valide (JPEG, PNG, GIF)."
+    "valid_image": "Veuillez télécharger un fichier image valide (JPEG, PNG, GIF).",
+    "delete_message": "Etes-vous sûr de vouloir supprimer votre compte ? Toutes vos données seront définitivement supprimées. Cette action ne peut pas être annulée.",
+    "cancel": "Annuler"
   },
   "mealsPage": {
     "donate": "Faire un don",

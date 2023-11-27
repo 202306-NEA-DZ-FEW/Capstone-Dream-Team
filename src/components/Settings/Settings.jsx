@@ -61,6 +61,8 @@ export default function Settings() {
     const [googleProvider, setGoogleProvider] = useState(false);
     // state for the initial user profile information
     const [initFormData, setInitFormData] = useState("");
+    // state for confirmation delete
+    const [confirmationDelete, setConfirmationDelete] = useState(false);
 
     const router = useRouter();
     const user = auth.currentUser;
@@ -279,62 +281,57 @@ export default function Settings() {
                 await reauthenticateWithPopup(user, provider)
                     .then(async () => {
                         // User re-authenticated.
-                        const confirmation = window.confirm(
-                            "Are you sure you want to delete your account? This action is irreversible."
-                        );
-                        if (confirmation) {
-                            await deleteDoc(doc(db, "restaurant", user.uid));
-                            if (previewSrc) {
-                                const desertRef = ref(storage, previewSrc);
-                                // Delete the logo image from storage
-                                await deleteObject(desertRef);
-                            }
-
-                            // Delete all the restaurant meals from meals and cart collection
-                            const q = query(
-                                collection(db, "meals"),
-                                where("restaurantId", "==", user.uid)
-                            );
-
-                            const querySnapshot = await getDocs(q);
-                            querySnapshot.forEach(async (doc) => {
-                                try {
-                                    await deleteDoc(doc.ref);
-                                    console.log("document deleted from meals");
-                                } catch (error) {
-                                    console.error(
-                                        "Error deleting document: ",
-                                        error
-                                    );
-                                }
-                            });
-
-                            const d = query(
-                                collection(db, "cart"),
-                                where("restaurantId", "==", user.uid)
-                            );
-
-                            const querySnapshotCart = await getDocs(d);
-                            querySnapshotCart.forEach(async (doc) => {
-                                try {
-                                    console.log(doc.data());
-                                    await deleteDoc(doc.ref);
-                                } catch (error) {
-                                    console.error(
-                                        "Error deleting document: ",
-                                        error
-                                    );
-                                }
-                            });
-
-                            //await auth.signOut();
-                            await deleteUser(user);
-                            router.push("/");
-
-                            // account deleted successfully
-                            console.log("account deleted");
-                            toast.success(`${t("settings.success_delete")}`);
+                        await deleteDoc(doc(db, "restaurant", user.uid));
+                        if (previewSrc) {
+                            const desertRef = ref(storage, previewSrc);
+                            // Delete the logo image from storage
+                            await deleteObject(desertRef);
                         }
+
+                        // Delete all the restaurant meals from meals and cart collection
+                        const q = query(
+                            collection(db, "meals"),
+                            where("restaurantId", "==", user.uid)
+                        );
+
+                        const querySnapshot = await getDocs(q);
+                        querySnapshot.forEach(async (doc) => {
+                            try {
+                                await deleteDoc(doc.ref);
+                                console.log("document deleted from meals");
+                            } catch (error) {
+                                console.error(
+                                    "Error deleting document: ",
+                                    error
+                                );
+                            }
+                        });
+
+                        const d = query(
+                            collection(db, "cart"),
+                            where("restaurantId", "==", user.uid)
+                        );
+
+                        const querySnapshotCart = await getDocs(d);
+                        querySnapshotCart.forEach(async (doc) => {
+                            try {
+                                console.log(doc.data());
+                                await deleteDoc(doc.ref);
+                            } catch (error) {
+                                console.error(
+                                    "Error deleting document: ",
+                                    error
+                                );
+                            }
+                        });
+
+                        //await auth.signOut();
+                        await deleteUser(user);
+                        router.push("/");
+
+                        // account deleted successfully
+                        console.log("account deleted");
+                        toast.success(`${t("settings.success_delete")}`);
                     })
                     .catch((error) => {
                         // An error ocurred
@@ -948,7 +945,10 @@ export default function Settings() {
                                 <button
                                     className='bg-orange-400 text-white   text-sm px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3'
                                     type='submit'
-                                    onClick={handleDeleteAccount}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setConfirmationDelete(true);
+                                    }}
                                 >
                                     {t("settings.delete")}
                                 </button>
@@ -957,6 +957,78 @@ export default function Settings() {
                     </div>
                 </div>
             </section>
+            {confirmationDelete && (
+                <div
+                    class='relative z-50'
+                    aria-labelledby='modal-title'
+                    role='dialog'
+                    aria-modal='true'
+                >
+                    <div class='fixed inset-0 bg-gray-500 z-50 bg-opacity-75 transition-opacity'></div>
+
+                    <div class='fixed inset-0 z-50 w-screen overflow-y-auto'>
+                        <div class='flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0'>
+                            <div class='relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
+                                <div class='bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
+                                    <div class='sm:flex sm:items-start'>
+                                        <div class='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10'>
+                                            <svg
+                                                class='h-6 w-6 text-red-600'
+                                                fill='none'
+                                                viewBox='0 0 24 24'
+                                                stroke-width='1.5'
+                                                stroke='currentColor'
+                                                aria-hidden='true'
+                                            >
+                                                <path
+                                                    stroke-linecap='round'
+                                                    stroke-linejoin='round'
+                                                    d='M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z'
+                                                />
+                                            </svg>
+                                        </div>
+                                        <div class='mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left'>
+                                            <h3
+                                                class='text-base font-semibold leading-6 text-gray-900'
+                                                id='modal-title'
+                                            >
+                                                {t(
+                                                    "settings.delete_your_account"
+                                                )}
+                                            </h3>
+                                            <div class='mt-2'>
+                                                <p class='text-sm text-gray-500'>
+                                                    {t(
+                                                        "settings.delete_message"
+                                                    )}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6'>
+                                    <button
+                                        type='button'
+                                        onClick={handleDeleteAccount}
+                                        class='inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto'
+                                    >
+                                        {t("settings.delete")}
+                                    </button>
+                                    <button
+                                        type='button'
+                                        onClick={() =>
+                                            setConfirmationDelete(false)
+                                        }
+                                        class='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto'
+                                    >
+                                        {t("settings.cancel")}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 }

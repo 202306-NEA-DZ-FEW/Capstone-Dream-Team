@@ -104,9 +104,8 @@ export default function Sidemenu(props) {
         <>
             <nav
                 style={
-                    router.locale === "ar"
+                    router.locale === "ar" || router.locale === "fr"
                         ? {
-                              backgroundPositionX: "right",
                               backgroundImage:
                                   "url(/images/sidemenu/background.png)",
                           }
