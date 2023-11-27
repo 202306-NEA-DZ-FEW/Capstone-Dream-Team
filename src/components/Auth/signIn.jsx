@@ -4,7 +4,8 @@ import {
     signInWithPopup,
 } from "firebase/auth";
 import React, { useState } from "react";
-import { auth } from "../../util/firebase";
+import { auth, db } from "../../util/firebase";
+import { collection, doc, setDoc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import SignInWithGoogleButton from "./buttons/googleSignInButton";
@@ -37,6 +38,20 @@ const SignIn = ({ updateComponent }) => {
 
             const userId = userCredential?.user?.uid;
             router.push("/admin-dashboard");
+            // Check if the user document already exists in Firestore
+            const userDocRef = doc(db, "restaurant", userId);
+            const userDoc = await getDoc(userDocRef);
+
+            if (!userDoc.data()) {
+                const userDocRef = collection(db, "restaurant");
+
+                await setDoc(doc(userDocRef, userId), {
+                    restaurantName: userCredential.user.displayName,
+                    email: userCredential.user.email,
+                    restaurantId: userId,
+                    // Add other user-related data as needed
+                });
+            }
         } catch {
             (error) => {
                 toast.error(`${t("signupPage.signUp.try-again")}`);

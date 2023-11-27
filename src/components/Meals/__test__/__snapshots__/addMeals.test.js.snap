@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div>
+    <div
+      className="mx-4 md:mx-6"
+    >
+      <div
+        className="mt-4 pb-4 flex flex-col justify-between sm:flex-row items-center border-b border-gray-200 dark:border-gray-700"
+      >
+        <div
+          className="mb-2 sm:mb-0 tracking-wider font-light font-roboto"
+        >
+          mealsPage.meals.title
+        </div>
+        <div
+          className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none"
+        >
+          <button
+            className="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-500 px-4 py-1 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-auto"
+            onClick={[Function]}
+          >
+            mealsPage.mealForm.addMeal
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="overflow-x-auto overflow-y-hidden rounded-md border border-gray-200 shadow-md mt-5"
+      >
+        <table
+          className="w-full text-center text-sm rtl:text-right"
+        >
+          <thead
+            className="text-xs bg-blue-300 bg-opacity-50 "
+          >
+            <tr>
+              <th
+                className="px-6 py-3"
+                scope="col"
+              >
+                mealsPage.mealsTable.image
+              </th>
+              <th
+                className="px-6 py-3"
+                scope="col"
+              >
+                mealsPage.mealsTable.name
+              </th>
+              <th
+                className="px-6 py-3"
+                scope="col"
+              >
+                mealsPage.mealsTable.quantity
+              </th>
+              <th
+                className="px-6 py-3"
+                scope="col"
+              >
+                mealsPage.mealsTable.price
+              </th>
+              <th
+                className="px-6 py-3"
+                scope="col"
+              >
+                 
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            className=""
+          />
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;
