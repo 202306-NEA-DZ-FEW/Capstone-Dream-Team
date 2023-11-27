@@ -17,7 +17,7 @@ export default function Joinus() {
                     </p>
                     <div className='flex w-full justify-center gap-4 mb-2 mt-2 '>
                         <Link
-                            href='/signUp'
+                            href='/signup'
                             class='bg-white hover:bg-orange-600 hover:text-white mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-orange-400 border border-orange-400 tracking-widest'
                         >
                             {t("home.joinus.joinus")}
