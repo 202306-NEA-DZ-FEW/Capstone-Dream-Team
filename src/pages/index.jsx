@@ -6,7 +6,7 @@ import * as React from "react";
 import { useRef } from "react";
 
 import BlogCardList from "@/components/Blog/BlogCard/blogCardList";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer/Footer";
 import Donation from "@/components/Home/Donation";
 import Goals from "@/components/Home/Goals";
 import Joinus from "@/components/Home/Joinus";
@@ -42,7 +42,7 @@ export default function HomePage({ blogs, locale }) {
     return (
         <>
             <Layout>
-                <div className='h-full w-full flex flex-col p-2  gap-12 bg-white dark:bg-gray-900'>
+                <div className='h-full w-full flex flex-col py-2  gap-12 bg-white dark:bg-gray-900'>
                     <div
                         ref={ref1}
                         className={`transition-opacity ease-in duration-700 ${
@@ -77,38 +77,34 @@ export default function HomePage({ blogs, locale }) {
                     </div>
                     <div
                         ref={ref5}
-                        className={`mx-auto transition-opacity ease-in duration-700 ${
+                        className={` transition-opacity ease-in duration-700 ${
                             isVisible5 ? "opacity-100" : "opacity-0"
                         }`}
                     >
-                        {" "}
-                        <Joinus></Joinus>
+                        <Sponsors></Sponsors>
                     </div>
-
                     <div
                         ref={ref6}
-                        className={`mx-auto max-w-screen-xl my-12 pt-12 py-6  from-white  transition-opacity ease-in duration-700 ${
+                        className={`mx-auto max-w-screen-xl my-6 py-6  from-white  transition-opacity ease-in duration-700 ${
                             isVisible6 ? "opacity-100" : "opacity-0"
                         }`}
                     >
-                        <div className='m-6 p-12  '>
-                            <h1 className=' text-lg text-center  mb-6 md:text-4xl uppercase font-extrabold text- mx-auto'>
+                        <div>
+                            <h1 className=' text-2xl text-center  mb-6 md:text-4xl uppercase font-extrabold text-[#192655] mx-auto'>
                                 {t("home.blogs.title")}
                             </h1>
-                            <h2 className=' mb-6 text-center font-sans text-2xl  leading-none tracking-tight  sm:text-2xl mx-12'>
+                            <h2 className=' mb-6 text-center font-sans text-2xl  leading-none tracking-tight  sm:text-xl mx-12'>
                                 {t("home.blogs.subtitle")}
                             </h2>
-                            <div className='sm:max-w-sm text-white bg-blue-900 sm:mx-auto rounded-xl lg:max-w-full'>
-                                <BlogCardList
-                                    blogs={blogs}
-                                    numToShow={3}
-                                    language={locale}
-                                ></BlogCardList>
-                            </div>
-                            <div className='mt-10 mx-auto'>
+                            <BlogCardList
+                                blogs={blogs}
+                                numToShow={3}
+                                language={locale}
+                            ></BlogCardList>
+                            <div className='lg:mt-10 lg:mx-auto flex justify-center '>
                                 <Link
                                     href='/blogs'
-                                    className='bg-orange-400 hover:bg-orange-600 hover:text-white  py-3 px-8 text-lg rounded-full font-bold uppercase text-white border border-orange-400 tracking-widest'
+                                    className='bg-orange-400 hover:bg-orange-500 hover:text-white  py-3 px-8 text-lg rounded-full font-bold uppercase text-white border border-orange-400 tracking-widest'
                                 >
                                     {t("home.blogs.see more")}
                                 </Link>
@@ -117,15 +113,15 @@ export default function HomePage({ blogs, locale }) {
                     </div>
                     <div
                         ref={ref7}
-                        className={` transition-opacity ease-in duration-700 ${
+                        className={`mx-auto transition-opacity ease-in duration-700 ${
                             isVisible7 ? "opacity-100" : "opacity-0"
                         }`}
                     >
-                        <Sponsors></Sponsors>
+                        {" "}
+                        <Joinus></Joinus>
                     </div>
                 </div>
             </Layout>
-            <Footer />
         </>
     );
 }
