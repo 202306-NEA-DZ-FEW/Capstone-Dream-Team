@@ -19,7 +19,7 @@ export default function HeroSection() {
                     <div className='self-center mt-8'>
                         <Link
                             href='/meals'
-                            className='bg-orange-400 text-center hover:bg-orange-600 mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-white tracking-widest'
+                            className='bg-orange-400 text-center hover:bg-orange-500 mt-8 py-3 px-8 text-lg rounded-full font-bold uppercase text-white tracking-widest'
                         >
                             {t("home.HeroSection.donate")}
                         </Link>
