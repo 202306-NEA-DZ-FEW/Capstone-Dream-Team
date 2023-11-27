@@ -1,15 +1,16 @@
+import { onAuthStateChanged } from "firebase/auth";
 import {
     collection,
+    doc,
     getDocs,
     query,
-    where,
-    doc,
     updateDoc,
+    where,
 } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
+
 import { auth, db } from "../../util/firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export default function Historycard() {
     const [blogData, setBlogData] = useState([]);
@@ -152,9 +153,9 @@ export default function Historycard() {
                                 .filter((Donors) => {
                                     return search.toLowerCase() === ""
                                         ? Donors
-                                        : Donors.Name.toLowerCase().includes(
-                                              search
-                                          );
+                                        : Donors.meal
+                                              .toLowerCase()
+                                              .includes(search);
                                 })
                                 .map((Donors, index) => (
                                     <tr
@@ -171,7 +172,7 @@ export default function Historycard() {
                                             {Donors.numb_meal}
                                         </td>
                                         <td className='whitespace-nowrap  px-6 py-4'>
-                                            {Donors.price} £
+                                            ${Donors.price}
                                         </td>
                                         <td className='whitespace-nowrap  px-6 py-4'>
                                             {Donors.DATE}

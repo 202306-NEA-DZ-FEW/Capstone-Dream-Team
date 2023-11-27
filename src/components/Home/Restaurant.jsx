@@ -15,43 +15,43 @@ export default function Restaurant() {
                         <img
                             src='images/home/restaurant/res1-removebg-preview.png'
                             alt='take pictures of meal'
-                            class='w-full just h-48 rounded-md object-cover'
+                            className='w-full just h-48 rounded-md object-cover'
                         ></img>
-                        <div class='py-4 text-center'>
-                            <div class='font-bold text-orange-600 text-xl mb-2'>
+                        <div className='py-4 text-center'>
+                            <div className='font-bold text-orange-600 text-xl mb-2'>
                                 {t("home.restaurant.step1")}
                             </div>
-                            <p class='text-gray-700 text-base'>
+                            <p className='text-gray-700 text-base'>
                                 {t("home.restaurant.step1text")}
                             </p>
                         </div>
                     </div>
-                    <div class='hover:-translate-y-3 duration-300 cursor-pointer hover:shadow-2xl bg-white rounded-lg border p-4'>
+                    <div className='hover:-translate-y-3 duration-300 cursor-pointer hover:shadow-2xl bg-white rounded-lg border p-4'>
                         <img
                             src='images/home/restaurant/res2-removebg-preview.png'
                             alt='accept coupon'
-                            class='w-full h-48 rounded-md object-cover'
+                            className='w-full h-48 rounded-md object-cover'
                         ></img>
-                        <div class='py-4 text-center'>
-                            <div class='font-bold text-orange-600 text-xl mb-2'>
+                        <div className='py-4 text-center'>
+                            <div className='font-bold text-orange-600 text-xl mb-2'>
                                 {t("home.restaurant.step2")}
                             </div>
-                            <p class='text-gray-700 text-center text-base'>
+                            <p className='text-gray-700 text-center text-base'>
                                 {t("home.restaurant.step2text")}
                             </p>
                         </div>
                     </div>
-                    <div class='hover:-translate-y-3 duration-300 cursor-pointer hover:shadow-2xl bg-white rounded-lg border p-4'>
+                    <div className='hover:-translate-y-3 duration-300 cursor-pointer hover:shadow-2xl bg-white rounded-lg border p-4'>
                         <img
                             src='images/home/restaurant/res3-removebg-preview.png'
                             alt='dashboard control'
-                            class='w-full h-48 rounded-md object-cover'
+                            className='w-full h-48 rounded-md object-cover'
                         ></img>
-                        <div class='py-4 text-center'>
-                            <div class='font-bold text-orange-600 text-xl mb-2'>
+                        <div className='py-4 text-center'>
+                            <div className='font-bold text-orange-600 text-xl mb-2'>
                                 {t("home.restaurant.step3")}
                             </div>
-                            <p class='text-gray-700 text-base'>
+                            <p className='text-gray-700 text-base'>
                                 {t("home.restaurant.step3text")}
                             </p>
                         </div>
@@ -60,13 +60,13 @@ export default function Restaurant() {
                         <img
                             src='images/home/restaurant/res4-removebg-preview.png'
                             alt='delete'
-                            class='w-full h-48 rounded-md object-cover'
+                            className='w-full h-48 rounded-md object-cover'
                         ></img>
-                        <div class='py-4 text-center'>
-                            <div class='font-bold text-orange-600 text-xl mb-2'>
+                        <div className='py-4 text-center'>
+                            <div className='font-bold text-orange-600 text-xl mb-2'>
                                 {t("home.restaurant.step4")}
                             </div>
-                            <p class='text-gray-700 text-base'>
+                            <p className='text-gray-700 text-base'>
                                 {t("home.restaurant.step4text")}
                             </p>
                         </div>
