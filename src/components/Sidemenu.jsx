@@ -235,8 +235,8 @@ export default function Sidemenu(props) {
                                         <div
                                             className={` relative  ${
                                                 props.locale === "en"
-                                                    ? "absolute py-1 w-24 h-16 bg-blue-200 border rounded-xl shadow-xl "
-                                                    : "relative  py-1 w-24 h-16 bg-blue-200 border rounded-xl shadow-xl "
+                                                    ? "absolute py-1 w-24  bg-blue-200 border rounded-xl shadow-xl "
+                                                    : "relative  py-1 w-24 bg-blue-200 border rounded-xl shadow-xl "
                                             }`}
                                         >
                                             <ul>
@@ -256,6 +256,24 @@ export default function Sidemenu(props) {
                                                         English
                                                     </button>
                                                 </li>
+
+                                                <li
+                                                    className={`${
+                                                        props.locale === "en"
+                                                            ? "block w-full text-center mx-auto py-1 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                                            : "block w-full text-center mx-auto py-1 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                                    }`}
+                                                >
+                                                    {" "}
+                                                    <button
+                                                        onClick={() =>
+                                                            changeLanguage("fr")
+                                                        }
+                                                    >
+                                                        Français
+                                                    </button>
+                                                </li>
+
                                                 <li
                                                     className={`${
                                                         props.locale === "en"
