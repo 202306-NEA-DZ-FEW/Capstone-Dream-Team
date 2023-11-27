@@ -286,5 +286,10 @@
     "Creativity": "Créativité",
     "p creat": "Nous avons enrichi notre base de données en travaillant avec des repas au lieu de coupons ; et nous avons utilisé Stripe pour le paiement en temps réel.",
     "Team": "Rencontrez notre merveilleuse équipe"
+  },
+  "404Page": {
+    "message1": "Page introuvable",
+    "message2": "Désolé, la page que vous recherchiez n'a pas pu être trouvée.",
+    "button": "Page d'accueil"
   }
 }
