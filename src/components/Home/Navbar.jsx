@@ -53,69 +53,76 @@ export default function Navbar({ locale }) {
                         <Link href='/cart'>
                             <CartIcon></CartIcon>
                         </Link>
-
-                        <button
-                            className='hidden text-blue-800 hover:text-[#192655] lg:inline-block mx-2 z-20'
-                            onMouseEnter={() => setClicked(true)}
-                            onClick={() => setClicked(!clicked)}
-                        >
-                            <IoEarthOutline size={20}></IoEarthOutline>{" "}
-                        </button>
-                        {clicked && isMobileMenuOpen === false && (
-                            <div
-                                onMouseLeave={() => setClicked(false)}
-                                className={`${
-                                    locale === "ar"
-                                        ? "absolute left-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
-                                        : "absolute right-1 top-16 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
-                                }`}
+                        <div className='hidden relative lg:inline-block z-20 '>
+                            <button
+                                className='p-2 text-blue-800 hover:text-[#192655]'
+                                onMouseEnter={() => setClicked(true)}
+                                onClick={() => setClicked(!clicked)}
                             >
-                                <ul>
-                                    <li
-                                        className={`${
-                                            locale === "en"
-                                                ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
-                                                : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
-                                        }`}
-                                    >
-                                        {" "}
-                                        <button
-                                            onClick={() => changeLanguage("en")}
+                                <IoEarthOutline size={20}></IoEarthOutline>{" "}
+                            </button>
+                            {clicked && isMobileMenuOpen === false && (
+                                <div
+                                    onMouseLeave={() => setClicked(false)}
+                                    className={`${
+                                        locale === "ar"
+                                            ? "absolute left-1 top-14 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
+                                            : "absolute right-1 top-14 py-2 w-28 bg-white border rounded-xl shadow-xl z-20"
+                                    }`}
+                                >
+                                    <ul>
+                                        <li
+                                            className={`${
+                                                locale === "en"
+                                                    ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                                    : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                            }`}
                                         >
-                                            English
-                                        </button>
-                                    </li>
-                                    <li
-                                        className={`${
-                                            locale === "en"
-                                                ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
-                                                : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
-                                        }`}
-                                    >
-                                        {" "}
-                                        <button
-                                            onClick={() => changeLanguage("fr")}
+                                            {" "}
+                                            <button
+                                                onClick={() =>
+                                                    changeLanguage("en")
+                                                }
+                                            >
+                                                English
+                                            </button>
+                                        </li>
+                                        <li
+                                            className={`${
+                                                locale === "en"
+                                                    ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                                    : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                            }`}
                                         >
-                                            Français
-                                        </button>
-                                    </li>
-                                    <li
-                                        className={`${
-                                            locale === "en"
-                                                ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
-                                                : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
-                                        }`}
-                                    >
-                                        {" "}
-                                        <button
-                                            onClick={() => changeLanguage("ar")}
+                                            {" "}
+                                            <button
+                                                onClick={() =>
+                                                    changeLanguage("fr")
+                                                }
+                                            >
+                                                Français
+                                            </button>
+                                        </li>
+                                        <li
+                                            className={`${
+                                                locale === "en"
+                                                    ? "block w-full text-left px-4 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                                    : "block w-full text-left px-6 py-2 text-sm capitalize text-gray-800 hover:bg-orange-600 hover:text-white"
+                                            }`}
                                         >
-                                            العربية
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        )}
+                                            {" "}
+                                            <button
+                                                onClick={() =>
+                                                    changeLanguage("ar")
+                                                }
+                                            >
+                                                العربية
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            )}
+                        </div>
                         <button
                             type='button'
                             onClick={toggleMobileMenu}
