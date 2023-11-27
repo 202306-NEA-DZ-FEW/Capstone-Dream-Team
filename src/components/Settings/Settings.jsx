@@ -2,12 +2,17 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { auth, db, storage } from "@/util/firebase";
+
 import {
     doc,
     getDoc,
+    getDocs,
     updateDoc,
     deleteDoc,
     deleteField,
+    where,
+    query,
+    collection,
 } from "firebase/firestore";
 import {
     updateProfile,
@@ -17,6 +22,9 @@ import {
     reauthenticateWithCredential,
     EmailAuthProvider,
     deleteUser,
+    GoogleAuthProvider,
+    reauthenticateWithPopup,
+    verifyBeforeUpdateEmail,
 } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { deleteObject } from "firebase/storage";
@@ -49,6 +57,10 @@ export default function Settings() {
     const [previewSrc, setPreviewSrc] = useState(null);
     // state for remove logo button
     const [showButton, setShowButton] = useState(false);
+    //state for authentication provider
+    const [googleProvider, setGoogleProvider] = useState(false);
+    // state for the initial user profile information
+    const [initFormData, setInitFormData] = useState("");
 
     const router = useRouter();
     const user = auth.currentUser;
@@ -70,6 +82,12 @@ export default function Settings() {
                 });
 
                 const user = auth.currentUser;
+                // Retreive the authentication provider
+                const signUpProvider = user.providerData[0].providerId;
+                if (signUpProvider === "google.com") {
+                    setGoogleProvider(true);
+                }
+
                 if (user) {
                     console.log(user);
                     const userId = user.uid;
@@ -79,8 +97,8 @@ export default function Settings() {
 
                     setFormData({
                         restaurantId: userId,
-                        restaurantName: data.restaurantName,
-                        email: data.email,
+                        restaurantName: user.displayName,
+                        email: user.email,
                         firstName: data.firstName ? data.firstName : " ",
                         lastName: data.lastName ? data.lastName : " ",
                         address: data.address ? data.address : "",
@@ -91,11 +109,11 @@ export default function Settings() {
                         about: data.about ? data.about : "",
                     });
 
+                    setInitFormData(data);
+
                     if (data.image) {
                         setPreviewSrc(data.image);
                     }
-
-                    console.log(userId);
                 } else {
                     // User is not logged in after resolving authentication
                     console.log("User not logged in");
@@ -142,34 +160,65 @@ export default function Settings() {
 
     // Function to handle form submit
     const handleFormSubmit = async () => {
-        const user = auth.currentUser;
-        const userId = user.uid;
-        const docRef = doc(db, "restaurant", userId);
+        if (initFormData !== formData) {
+            const user = auth.currentUser;
+            const userId = user.uid;
+            const docRef = doc(db, "restaurant", userId);
 
-        if (
-            user.email === formData.email ||
-            (user.email !== formData.email && user.emailVerified === true)
-        ) {
-            // Update restaurant object in firestore
-            await updateDoc(docRef, formData);
+            /* if (
+                 user.email === formData.email ||
+                 (user.email !== formData.email && user.emailVerified === true)
+             ) {
+     
+                 if (user.email !== formData.email) {
+                     const credential = EmailAuthProvider.credential(
+                         user.email,
+                         currentPassword
+                     );
+     
+                     await reauthenticateWithCredential(user, credential)
+                         .then(async () => {
+                             // User re-authenticated.
+                             // Update email
+                             //await updateEmail(auth.currentUser, formData.email);
+                             //await verifyBeforeUpdateEmail(auth.currentUser, formData.email, null)
+                             await sendEmailVerification(auth.currentUser, formData.email)
+                                 .then(async () => {
+                                     await updateEmail(auth.currentUser, formData.email)
+                                     //await auth.signOut();
+                                     console.log('update email sent')
+                                 })
+                                 .catch((error) => {
+                                     console.log(error);
+                                 })
+     
+     
+                             //window.location.reload();
+     
+                         })
+                         .catch((error) => {
+                             // An error ocurred
+                             console.log(error);
+                         });
+     
+                 }*/
 
             // Update displayName/restaurantName
             if (user.displayName !== formData.restaurantName) {
-                updateProfile(auth.currentUser, {
+                await updateProfile(auth.currentUser, {
                     displayName: formData.restaurantName,
                 });
             }
+            // Update restaurant object in firestore
+            await updateDoc(docRef, formData);
 
-            if (user.email !== formData.email) {
-                // Update email
-                updateEmail(auth.currentUser, formData.email);
-            }
             toast.success(`${t("settings.mes_updatedsuccessfully")}`);
-        } else if (
+            /*  } else if (
             user.email !== formData.email &&
             user.emailVerified === false
         ) {
             toast.error(`${t("settings.verify_email")}`);
+        }*/
         }
         setIsEditable(false);
     };
@@ -218,33 +267,146 @@ export default function Settings() {
     // Function to hundle delete account
     const handleDeleteAccount = async (e) => {
         e.preventDefault();
+
         try {
-            const credential = EmailAuthProvider.credential(
-                user.email,
-                password
-            );
+            // Retreive the authentication provider
+            const signUpProvider = user.providerData[0].providerId;
 
-            await reauthenticateWithCredential(user, credential)
-                .then(() => {
-                    // User re-authenticated.
-                    deleteUser(user);
-                    router.push("/");
-                    deleteDoc(doc(db, "restaurant", user.uid));
-                    if (previewSrc) {
-                        const desertRef = ref(storage, previewSrc);
-                        // Delete the logo image from storage
-                        deleteObject(desertRef);
-                    }
+            if (signUpProvider === "google.com") {
+                //setGoogleProvider(true);
 
-                    // account deleted successfully
-                    console.log("account deleted");
-                    toast.success(`${t("settings.success_delete")}`);
-                })
-                .catch((error) => {
-                    // An error ocurred
-                    console.log(error);
-                    toast.error(`${t("settings.wrong_pass")}`);
-                });
+                const provider = new GoogleAuthProvider();
+                await reauthenticateWithPopup(user, provider)
+                    .then(async () => {
+                        // User re-authenticated.
+                        const confirmation = window.confirm(
+                            "Are you sure you want to delete your account? This action is irreversible."
+                        );
+                        if (confirmation) {
+                            await deleteDoc(doc(db, "restaurant", user.uid));
+                            if (previewSrc) {
+                                const desertRef = ref(storage, previewSrc);
+                                // Delete the logo image from storage
+                                await deleteObject(desertRef);
+                            }
+
+                            // Delete all the restaurant meals from meals and cart collection
+                            const q = query(
+                                collection(db, "meals"),
+                                where("restaurantId", "==", user.uid)
+                            );
+
+                            const querySnapshot = await getDocs(q);
+                            querySnapshot.forEach(async (doc) => {
+                                try {
+                                    await deleteDoc(doc.ref);
+                                    console.log("document deleted from meals");
+                                } catch (error) {
+                                    console.error(
+                                        "Error deleting document: ",
+                                        error
+                                    );
+                                }
+                            });
+
+                            const d = query(
+                                collection(db, "cart"),
+                                where("restaurantId", "==", user.uid)
+                            );
+
+                            const querySnapshotCart = await getDocs(d);
+                            querySnapshotCart.forEach(async (doc) => {
+                                try {
+                                    console.log(doc.data());
+                                    await deleteDoc(doc.ref);
+                                } catch (error) {
+                                    console.error(
+                                        "Error deleting document: ",
+                                        error
+                                    );
+                                }
+                            });
+
+                            //await auth.signOut();
+                            await deleteUser(user);
+                            router.push("/");
+
+                            // account deleted successfully
+                            console.log("account deleted");
+                            toast.success(`${t("settings.success_delete")}`);
+                        }
+                    })
+                    .catch((error) => {
+                        // An error ocurred
+                        console.log(error);
+                        toast.error(`${t("settings.error_delete")}`);
+                    });
+            } else {
+                const credential = EmailAuthProvider.credential(
+                    user.email,
+                    password
+                );
+
+                await reauthenticateWithCredential(user, credential)
+                    .then(async () => {
+                        // User re-authenticated.
+
+                        await deleteDoc(doc(db, "restaurant", user.uid));
+                        if (previewSrc) {
+                            const desertRef = ref(storage, previewSrc);
+                            // Delete the logo image from storage
+                            await deleteObject(desertRef);
+                        }
+
+                        // Delete all the restaurant meals from meals and cart collection
+                        const d = query(
+                            collection(db, "cart"),
+                            where("restaurantId", "==", user.uid)
+                        );
+
+                        const querySnapshotCart = await getDocs(d);
+                        querySnapshotCart.forEach(async (doc) => {
+                            try {
+                                console.log(doc.data());
+                                await deleteDoc(doc.ref);
+                            } catch (error) {
+                                console.error(
+                                    "Error deleting document: ",
+                                    error
+                                );
+                            }
+                        });
+
+                        const q = query(
+                            collection(db, "meals"),
+                            where("restaurantId", "==", user.uid)
+                        );
+
+                        const querySnapshot = await getDocs(q);
+                        querySnapshot.forEach(async (doc) => {
+                            try {
+                                await deleteDoc(doc.ref);
+                            } catch (error) {
+                                console.error(
+                                    "Error deleting document: ",
+                                    error
+                                );
+                            }
+                        });
+
+                        //await auth.signOut();
+                        await deleteUser(user);
+                        router.push("/");
+                        // account deleted successfully
+                        console.log("account deleted");
+                        toast.success(`${t("settings.success_delete")}`);
+                    })
+                    .catch((error) => {
+                        // An error ocurred
+                        console.log(error);
+                        toast.error(`${t("settings.wrong_pass")}`);
+                    });
+            }
         } catch (error) {
             // Handle error
             toast.error(`${t("settings.error_delete")}`);
@@ -367,7 +529,7 @@ export default function Settings() {
                             <div>
                                 {isEditable ? (
                                     <button
-                                        className='bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'
+                                        className='bg-pink-500 text-white active:bg-pink-600  uppercase text-sm px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'
                                         type='submit'
                                         onClick={handleFormSubmit}
                                     >
@@ -375,7 +537,7 @@ export default function Settings() {
                                     </button>
                                 ) : null}
                                 <button
-                                    className='bg-orange-400 text-white active:bg-teal-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'
+                                    className='bg-orange-400 text-white active:bg-teal-600  uppercase text-sm px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'
                                     type='button'
                                     onClick={handleSettings}
                                 >
@@ -386,7 +548,7 @@ export default function Settings() {
                     </div>
                     <div className='flex-auto px-4 lg:px-10 py-10 pt-0'>
                         <form>
-                            <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
+                            <h6 className='text-blue-600 text-base mt-3 mb-6  '>
                                 {t("settings.user_information")}
                             </h6>
 
@@ -468,7 +630,7 @@ export default function Settings() {
                                     <div className='w-full lg:w-6/12 px-4'>
                                         <div className='relative w-full mb-3'>
                                             <label
-                                                className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                                className='block  text-blueGray-600 text-sm  mb-2'
                                                 htmlfor='grid-password'
                                             >
                                                 {t("settings.restaurant_name")}
@@ -486,7 +648,7 @@ export default function Settings() {
                                     <div className='w-full lg:w-6/12 px-4'>
                                         <div className='relative w-full mb-3'>
                                             <label
-                                                className='block  text-blueGray-600 text-xs font-bold mb-2'
+                                                className='block  text-blueGray-600 text-sm  mb-2'
                                                 htmlfor='grid-password'
                                             >
                                                 {t("settings.email_address")}{" "}
@@ -509,16 +671,20 @@ export default function Settings() {
                                                 type='email'
                                                 name='email'
                                                 onChange={handleChange}
-                                                readOnly={!isEditable}
+                                                readOnly={true}
                                                 className='border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
-                                                value={formData.email}
+                                                value={
+                                                    //googleProvider === true
+                                                    user.email
+                                                    //: formData.email
+                                                }
                                             />
                                         </div>
                                     </div>
                                     <div className='w-full lg:w-6/12 px-4'>
                                         <div className='relative w-full mb-3'>
                                             <label
-                                                className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                                className='block text-blueGray-600 text-sm  mb-2'
                                                 htmlfor='grid-password'
                                             >
                                                 {t("settings.first_name")}
@@ -536,7 +702,7 @@ export default function Settings() {
                                     <div className='w-full lg:w-6/12 px-4'>
                                         <div className='relative w-full mb-3'>
                                             <label
-                                                className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                                className='block text-blueGray-600 text-sm  mb-2'
                                                 htmlfor='grid-password'
                                             >
                                                 {t("settings.last_name")}
@@ -555,14 +721,14 @@ export default function Settings() {
                             </div>
                             <hr className='mt-6 border-b-1 border-blueGray-300' />
 
-                            <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
+                            <h6 className='text-blue-600 text-base mt-3 mb-6  '>
                                 {t("settings.contact_information")}
                             </h6>
                             <div className='flex flex-wrap'>
                                 <div className='w-full lg:w-12/12 px-4'>
                                     <div className='relative w-full mb-3'>
                                         <label
-                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block text-blueGray-600 text-sm  mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.address")}
@@ -580,7 +746,7 @@ export default function Settings() {
                                 <div className='w-full lg:w-4/12 px-4'>
                                     <div className='relative w-full mb-3'>
                                         <label
-                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block text-blueGray-600 text-sm  mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.city")}
@@ -598,7 +764,7 @@ export default function Settings() {
                                 <div className='w-full lg:w-4/12 px-4'>
                                     <div className='relative w-full mb-3'>
                                         <label
-                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block text-blueGray-600 text-sm  mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.country")}
@@ -616,7 +782,7 @@ export default function Settings() {
                                 <div className='w-full lg:w-4/12 px-4'>
                                     <div className='relative w-full mb-3'>
                                         <label
-                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block text-blueGray-600 text-sm  mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.postal_code")}
@@ -634,7 +800,7 @@ export default function Settings() {
                                 <div className='w-full lg:w-4/12 px-4'>
                                     <div className='relative w-full mb-3'>
                                         <label
-                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block text-blueGray-600 text-sm  mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.phone_number")}
@@ -653,14 +819,14 @@ export default function Settings() {
 
                             <hr className='mt-6 border-b-1 border-blueGray-300' />
 
-                            <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
+                            <h6 className='text-blue-600 text-base mt-3 mb-6 '>
                                 {t("settings.description")}
                             </h6>
                             <div className='flex flex-wrap'>
                                 <div className='w-full lg:w-12/12 px-4'>
                                     <div className='relative w-full mb-3'>
                                         <label
-                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block text-blueGray-600 text-sm  mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.description")}
@@ -678,17 +844,23 @@ export default function Settings() {
                                 </div>
                             </div>
                         </form>
-                        <hr className='mt-6 border-b-1 border-blueGray-300' />
+                        <hr
+                            className={
+                                googleProvider
+                                    ? "hidden"
+                                    : "mt-6 border-b-1 border-blueGray-300"
+                            }
+                        />
 
-                        <form>
-                            <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
+                        <form className={googleProvider && "hidden"}>
+                            <h6 className='text-blue-600 text-base mt-3 mb-6  '>
                                 {t("settings.reset_your_password")}
                             </h6>
                             <div className='flex flex-wrap'>
                                 <div className='w-full lg:w-4/12 px-4'>
                                     <div className='relative w-full mb-3'>
                                         <label
-                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block text-blueGray-600 text-sm  mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.enter_your_password")}
@@ -710,7 +882,7 @@ export default function Settings() {
                                 <div className='w-full lg:w-4/12 px-4'>
                                     <div className='relative w-full mb-3'>
                                         <label
-                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block text-blueGray-600 text-sm  mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t(
@@ -731,7 +903,7 @@ export default function Settings() {
                                 </div>
 
                                 <button
-                                    className='bg-orange-400 text-white  font-bold uppercase text-xs px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3'
+                                    className='bg-orange-400 text-white   text-sm px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3'
                                     type='submit'
                                     onClick={handleChangePassword}
                                 >
@@ -743,14 +915,20 @@ export default function Settings() {
                         <hr className='mt-6 border-b-1 border-blueGray-300' />
 
                         <form>
-                            <h6 className='text-blue-600 text-sm mt-3 mb-6 font-bold uppercase'>
+                            <h6 className='text-blue-600 text-base mt-3 mb-6  '>
                                 {t("settings.delete_your_account")}
                             </h6>
                             <div className='flex flex-wrap'>
-                                <div className='w-full lg:w-4/12 px-4'>
+                                <div
+                                    className={
+                                        googleProvider
+                                            ? "hidden"
+                                            : "w-full lg:w-4/12 px-4"
+                                    }
+                                >
                                     <div className='relative w-full mb-3'>
                                         <label
-                                            className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                                            className='block text-blueGray-600 text-sm  mb-2'
                                             htmlfor='grid-password'
                                         >
                                             {t("settings.enter_your_password")}
@@ -768,7 +946,7 @@ export default function Settings() {
                                     </div>
                                 </div>
                                 <button
-                                    className='bg-orange-400 text-white  font-bold uppercase text-xs px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3'
+                                    className='bg-orange-400 text-white   text-sm px-4 py-2 rounded shadow hover:bg-orange-600 outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-6 mb-3'
                                     type='submit'
                                     onClick={handleDeleteAccount}
                                 >

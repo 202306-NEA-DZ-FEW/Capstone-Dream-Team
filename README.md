@@ -37,7 +37,7 @@ Welcome to our Website : Buy Me A Meal, a platform dedicated to fighting hunger 
 ### Home Page
 
 • The home page is the main landing page when users first visit the website.
-• It typically provides an overview of the business, featured items, promotions, or any other important information.
+• It typically provides an overview, blogs and promotions.
 
 ### Admin Dashboard
 
@@ -67,7 +67,7 @@ Before running the project, make sure to set up the necessary configuration:
 -   Firebase Account: Add your Firebase secret to the .env file.
     NEXT_PUBLIC_FIREBASE_API_KEY = your_firebase_secret
 
--   Email Configuration: Add your email and password to the .env file.
+-   Nodemailer Configuration: Add your email and password to the .env file.
     EMAIL = your_email@example.com
     PASS = your_email_password
 

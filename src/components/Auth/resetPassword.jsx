@@ -3,6 +3,7 @@ import { auth } from "@/util/firebase";
 import { FaEnvelope } from "react-icons/fa";
 import { useTranslation } from "next-i18next";
 import toast from "react-hot-toast";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 function ResetPassword({ updateComponent }) {
     const { t } = useTranslation("common");
@@ -11,11 +12,12 @@ function ResetPassword({ updateComponent }) {
     const handleResetPassword = async (e) => {
         e.preventDefault();
         try {
-            await auth.sendPasswordResetEmail(email);
+            await sendPasswordResetEmail(auth, email);
 
             toast.success(`${t("signupPage.reset-password.successMessage")}`);
         } catch (error) {
             toast.error(`${t("signupPage.reset-password.failureMessage")}`);
+            console.log(error);
         }
     };
 

@@ -379,7 +379,7 @@ const Checkout = ({ Total, cart }) => {
 
                                             <div className='mt-4'>
                                                 <button
-                                                    className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded'
+                                                    className='transition-colors rounded-full text-sm bg-orange-400  hover:bg-opacity-50 p-2 rounded-sm w-full text-white text-hover shadow-md'
                                                     type='submit'
                                                     disabled={paymentLoading}
                                                 >
