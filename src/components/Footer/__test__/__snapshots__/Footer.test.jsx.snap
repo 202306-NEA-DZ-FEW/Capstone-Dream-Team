@@ -14,15 +14,31 @@ exports[`renders correctly 1`] = `
         className="px-5 py-2"
       >
         <a
-          href="/about"
+          href="/"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <p
-            className="text-base leading-6 text-white hover:text-gray-900 cursor-pointer"
+            className="text-base leading-6 text-white hover:text-orange-400 cursor-pointer"
           >
             footer.home
+          </p>
+        </a>
+      </div>
+      <div
+        className="px-5 py-2"
+      >
+        <a
+          href="/meals"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          <p
+            className="text-base leading-6 text-white hover:text-orange-400 cursor-pointer"
+          >
+            footer.meals
           </p>
         </a>
       </div>
@@ -36,25 +52,9 @@ exports[`renders correctly 1`] = `
           onTouchStart={[Function]}
         >
           <p
-            className="text-base leading-6 text-white hover:text-gray-900 cursor-pointer"
+            className="text-base leading-6 text-white hover:text-orange-400 cursor-pointer"
           >
             footer.blog
-          </p>
-        </a>
-      </div>
-      <div
-        className="px-5 py-2"
-      >
-        <a
-          href="/team"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
-        >
-          <p
-            className="text-base leading-6 text-white hover:text-gray-900 cursor-pointer"
-          >
-            footer.meals
           </p>
         </a>
       </div>
@@ -68,7 +68,7 @@ exports[`renders correctly 1`] = `
           onTouchStart={[Function]}
         >
           <p
-            className="text-base leading-6 text-white hover:text-gray-900 cursor-pointer"
+            className="text-base leading-6 text-white hover:text-orange-400 cursor-pointer"
           >
             footer.aboutUs
           </p>
