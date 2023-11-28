@@ -20,7 +20,7 @@ exports[`renders correctly 1`] = `
       >
         <div>
           <svg
-            className="fill-stroke text-gray-600 dark:text-white"
+            className="fill-stroke text-gray-600 "
             fill="none"
             height={20}
             viewBox="0 0 20 20"

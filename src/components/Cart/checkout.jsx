@@ -17,10 +17,6 @@ import { db } from "../../util/firebase";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 
-{
-    /* this compo must be imported in the card component so it popup once the Donate button is clicked */
-}
-
 const Checkout = ({ Total, cart }) => {
     const { t } = useTranslation("common");
 
@@ -176,11 +172,11 @@ const Checkout = ({ Total, cart }) => {
                 >
                     <div className='relative w-full max-w-full max-h-full sm:max-w-2xl'>
                         {/* Modal content */}
-                        <div className='relative bg-white border-4 border-blue-500 rounded-lg shadow dark:bg-gray-700'>
+                        <div className='relative bg-white border-4 border-blue-500 rounded-lg shadow '>
                             {/* TITLE & HIDE X */}
-                            <div className='flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600'>
+                            <div className='flex items-start justify-between p-4 border-b rounded-t '>
                                 <div>
-                                    <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>
+                                    <h3 className='text-xl font-semibold text-gray-900 '>
                                         {" "}
                                         {t("cartPage.checkout.Checkout")}{" "}
                                     </h3>
@@ -188,7 +184,7 @@ const Checkout = ({ Total, cart }) => {
                                 <div>
                                     <button
                                         type='button'
-                                        className='text-gray-400 bg-transparent hover:rotate-90 duration-300 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover-bg-gray-600 dark:hover-text-white'
+                                        className='text-gray-400 bg-transparent hover:rotate-90 duration-300 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center '
                                         data-modal-hide='default-modal'
                                         onClick={hideModal}
                                     >
