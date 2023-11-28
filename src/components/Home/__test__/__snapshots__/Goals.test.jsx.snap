@@ -20,7 +20,7 @@ exports[`renders correctly 1`] = `
       >
         <img
           alt="step"
-          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
+          className="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
           src="images/home/Goals/noPoverty.png"
         />
       </div>
@@ -45,7 +45,7 @@ exports[`renders correctly 1`] = `
       >
         <img
           alt="step"
-          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
+          className="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
           src="images/home/Goals/zeroHunger.png"
         />
       </div>
@@ -70,7 +70,7 @@ exports[`renders correctly 1`] = `
       >
         <img
           alt="step"
-          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
+          className="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
           src="images/home/Goals/health.png"
         />
       </div>

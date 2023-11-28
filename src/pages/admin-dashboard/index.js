@@ -71,27 +71,27 @@ export default function AdminDashboard({ locale }) {
                                     >
                                         <stop
                                             offset='0'
-                                            stop-color='#0C0355'
+                                            stopColor='#0C0355'
                                         ></stop>
                                         <stop
                                             offset='.3'
-                                            stop-color='#0C0355'
-                                            stop-opacity='.9'
+                                            stopColor='#0C0355'
+                                            stopOpacity='.9'
                                         ></stop>
                                         <stop
                                             offset='.6'
-                                            stop-color='#0C0355'
-                                            stop-opacity='.6'
+                                            stopColor='#0C0355'
+                                            stopOpacity='.6'
                                         ></stop>
                                         <stop
                                             offset='.8'
-                                            stop-color='#0C0355'
-                                            stop-opacity='.3'
+                                            stopColor='#0C0355'
+                                            stopOpacity='.3'
                                         ></stop>
                                         <stop
                                             offset='1'
-                                            stop-color='#0C0355'
-                                            stop-opacity='0'
+                                            stopColor='#0C0355'
+                                            stopOpacity='0'
                                         ></stop>
                                     </radialGradient>
                                     <circle

@@ -133,8 +133,6 @@ function ChartGraph() {
                     },
                 };
                 setChartData(chartData);
-            } else {
-                setChartData(null);
             }
         }
     };
