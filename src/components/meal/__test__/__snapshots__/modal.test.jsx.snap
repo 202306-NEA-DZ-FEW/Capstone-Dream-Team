@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <div>
   <button
-    className="block text-blue-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+    className="block text-blue-950 hover:bg-gray-200 hover:text-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
     data-modal-target="default-modal"
     data-modal-toggle="default-modal"
     onClick={[Function]}

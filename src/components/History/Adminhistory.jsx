@@ -8,14 +8,5 @@ export default function Adminhistory() {
             {/* <Historybar /> */}
             <Historycard />
         </>
-
-        // <div className='flex-col'>
-        //     <Historybar />
-        //     <div className='flex-col'>
-        //         <div className='mb-4'>
-        //             <Historycard />
-        //         </div>
-        //     </div>
-        // </div>
     );
 }

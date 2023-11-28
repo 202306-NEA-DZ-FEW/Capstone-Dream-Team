@@ -15,9 +15,6 @@ export default function Mealcard({
     const [mealObject, setMealObject] = useState(mealDetail);
 
     // Function to handle quantity change
-    //console.log(mealDetail);
-    //console.log(mealObject);
-
     const handleQuantityChange = (event) => {
         const newQuantity = parseInt(event.target.value, 10);
         if (
@@ -59,7 +56,7 @@ export default function Mealcard({
 
                     {/**meal price*/}
                     <div className='  flex text-neutral-400 text-orange-400 text-xl font-bold  justify-center item-center'>
-                        {price} £
+                        $ {price}
                     </div>
                 </div>
 

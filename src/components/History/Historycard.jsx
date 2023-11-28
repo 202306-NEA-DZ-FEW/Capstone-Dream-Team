@@ -76,8 +76,6 @@ export default function Historycard() {
 
     return (
         <div className='overflow-x-auto'>
-            {/* <div className='overflow-x-auto sm:-mx-6 lg:-mx-8'> */}
-
             <div className='pb-4 mx-4 md:mx-6'>
                 <div className='mt-4 pb-4 flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 '>
                     <div className='mb-2 sm:mb-0 tracking-wider font-light font-roboto'>
@@ -86,7 +84,7 @@ export default function Historycard() {
                     <div className='flex items-center'>
                         <div>
                             <svg
-                                className='fill-stroke text-gray-600 dark:text-white'
+                                className='fill-stroke text-gray-600 '
                                 width={20}
                                 height={20}
                                 viewBox='0 0 20 20'
@@ -152,15 +150,12 @@ export default function Historycard() {
                                 .filter((Donors) => {
                                     return search.toLowerCase() === ""
                                         ? Donors
-                                        : Donors.Name.toLowerCase().includes(
-                                              search
-                                          );
+                                        : Donors.meal
+                                              .toLowerCase()
+                                              .includes(search);
                                 })
                                 .map((Donors, index) => (
-                                    <tr
-                                        className='border-b dark:border-neutral-500'
-                                        key={index}
-                                    >
+                                    <tr className='border-b ' key={index}>
                                         <td className='whitespace-nowrap  px-6 py-4 font-medium'>
                                             {Donors.Name}
                                         </td>
@@ -171,7 +166,7 @@ export default function Historycard() {
                                             {Donors.numb_meal}
                                         </td>
                                         <td className='whitespace-nowrap  px-6 py-4'>
-                                            {Donors.price} £
+                                            $ {Donors.price}
                                         </td>
                                         <td className='whitespace-nowrap  px-6 py-4'>
                                             {Donors.DATE}

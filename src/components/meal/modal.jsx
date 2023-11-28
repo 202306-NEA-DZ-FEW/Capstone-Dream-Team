@@ -52,7 +52,7 @@ const Modal = ({ currentRestaurantId }) => {
             <button
                 data-modal-target='default-modal'
                 data-modal-toggle='default-modal'
-                className='block text-blue-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
+                className='block text-blue-950 hover:bg-gray-200 hover:text-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
                 type='button'
                 onClick={toggleModal}
             >
@@ -69,11 +69,11 @@ const Modal = ({ currentRestaurantId }) => {
                 >
                     <div className='relative w-full max-h-full'>
                         {/* Modal content */}
-                        <div className='relative bg-white border-4 border-blue-500 rounded-lg shadow dark:bg-gray-700'>
+                        <div className='relative bg-white border-4 border-blue-500 rounded-lg shadow '>
                             {/* TITLE & HIDE X */}
-                            <div className='flex items-center  justify-between p-4 border-b rounded-t dark:border-gray-600'>
+                            <div className='flex items-center  justify-between p-4 border-b rounded-t '>
                                 <div>
-                                    <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>
+                                    <h3 className='text-xl font-semibold text-gray-900 '>
                                         {" "}
                                         {t("mealsPage.available_meals")}{" "}
                                     </h3>
@@ -81,7 +81,7 @@ const Modal = ({ currentRestaurantId }) => {
                                 <div>
                                     <button
                                         type='button'
-                                        className='text-gray-400 bg-transparent hover:rotate-90 duration-300 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover-bg-gray-600 dark:hover-text-white'
+                                        className='text-gray-400 bg-transparent hover:rotate-90 duration-300 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center '
                                         data-modal-hide='default-modal'
                                         onClick={hideModal}
                                     >
