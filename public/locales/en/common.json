@@ -128,7 +128,9 @@
         "errorupdate_pass": "Error Updating Password",
         "success_delete": "Your account is deleted successfully",
         "error_delete": "Error deleting account, please try again",
-        "valid_image": "Please upload a valid image file (JPEG, PNG, GIF)."
+        "valid_image": "Please upload a valid image file (JPEG, PNG, GIF).",
+        "delete_message": "Are you sure you want to deleteyour account? All of your data will be permanently removed. This action cannot be undone.",
+        "cancel": "Cancel"
     },
     "mealsPage": {
         "donate": "Donate",

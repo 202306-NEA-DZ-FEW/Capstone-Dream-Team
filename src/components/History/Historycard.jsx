@@ -1,15 +1,16 @@
+import { onAuthStateChanged } from "firebase/auth";
 import {
     collection,
+    doc,
     getDocs,
     query,
-    where,
-    doc,
     updateDoc,
+    where,
 } from "firebase/firestore";
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
+
 import { auth, db } from "../../util/firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export default function Historycard() {
     const [blogData, setBlogData] = useState([]);
