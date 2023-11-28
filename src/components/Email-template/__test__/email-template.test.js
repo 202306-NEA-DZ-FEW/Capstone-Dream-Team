@@ -13,7 +13,7 @@ const formatDate = (date) => {
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
     const year = date.getFullYear();
 
-    return `${26}-${11}-${2023}`;
+    return `${27}-${11}-${2023}`;
 };
 jest.mock("../email-template", () => {
     const actualModule = jest.requireActual("../email-template");
@@ -22,7 +22,7 @@ jest.mock("../email-template", () => {
         __esModule: true,
         default: ({ object }) => {
             const [name, email, total, cart] = object;
-            const today = new Date("2023-11-26");
+            const today = new Date("2023-11-27");
             const formattedDate = formatDate(today);
             return actualModule.default({
                 object: [name, email, total, cart, formattedDate],

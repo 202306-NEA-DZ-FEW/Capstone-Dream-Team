@@ -47,7 +47,7 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      27-11-2023
+      28-11-2023
     </p>
     <p
       style={
@@ -65,7 +65,7 @@ exports[`renders correctly 1`] = `
       We want to express our sincere gratitude for your donation of $
       25
        on 
-      27-11-2023
+      28-11-2023
       . Your kindness has made a meaningful impact, helping us provide nourishment to those in need. Thank you for being a beacon of compassion and support in our community.
        
     </p>
