@@ -600,7 +600,7 @@ export default function Settings() {
                                         </h3>
                                     </div>
                                     {previewSrc && (
-                                        <div class='absolute h-60 w-70  flex items-center justify-center overflow-hidden  absolute top-0 left-0 object-cover'>
+                                        <div className='absolute h-60 w-70  flex items-center justify-center overflow-hidden  absolute top-0 left-0 object-cover'>
                                             <img
                                                 src={previewSrc}
                                                 className='h-full w-full'
